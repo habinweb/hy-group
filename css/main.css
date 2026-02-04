@@ -674,10 +674,11 @@ canvas {
 
 .review-form.open {
   visibility: visible;
-  max-height: max-content;
+  max-height: 200px;
   z-index: 1;
-}
 
+  overflow: hidden;
+}
 .input-box.form {
   padding: 0 5vw;
   display: flex;
