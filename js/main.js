@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
 //가로 스크롤
 // index.html의 scroll탭 가로 스크롤
 const boxes = document.querySelectorAll(
-  ".favorite-list, .hot-wrap, .poster-box, .review-wrap"
+  ".favorite-list, .hot-wrap, .poster-box, .review-wrap",
 );
 
 boxes.forEach((box) => {
@@ -93,6 +93,5 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
-
 
 console.log("페이지가 로드되었습니다.");

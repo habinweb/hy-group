@@ -636,7 +636,9 @@ button {
   border-radius: 10px;
   background: var(--c-gray);
   height: max-content;
-  transition: opacity 0.3s ease, max-height 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    max-height 0.3s ease;
   overflow: hidden;
 }
 
