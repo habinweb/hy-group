@@ -164,37 +164,92 @@
             <div class="hot-nav-container">
               <div class="hot-wrap">
                 <ul class="hot-nav-box">
-                  <li class="all-btn active">
-                    <p>All</p>
-                    <span class="point"></span>
+                  <li class="hot-btn">
+                    <button
+                      type="button"
+                      class="hot-btn-inner"
+                      data-platform="all"
+                    >
+                      <span>All</span>
+                      <span class="point"></span>
+                    </button>
                   </li>
-                  <li class="all-btn">
-                    <img src="img/netflix.png" alt="보류" />
-                    <span class="point"></span>
+
+                  <li class="hot-btn">
+                    <button
+                      type="button"
+                      class="hot-btn-inner"
+                      data-platform="넷플릭스"
+                    >
+                      <img src="img/netflix.png" alt="넷플릭스" />
+                      <span class="point"></span>
+                    </button>
                   </li>
-                  <li class="all-btn">
-                    <img src="img/watcha.png" alt="보류" />
-                    <span class="point"></span>
+
+                  <li class="hot-btn">
+                    <button
+                      type="button"
+                      class="hot-btn-inner"
+                      data-platform="왓챠"
+                    >
+                      <img src="img/watcha.png" alt="왓챠" />
+                      <span class="point"></span>
+                    </button>
                   </li>
-                  <li class="all-btn">
-                    <img src="img/wavve.png" alt="보류" />
-                    <span class="point"></span>
+
+                  <li class="hot-btn">
+                    <button
+                      type="button"
+                      class="hot-btn-inner"
+                      data-platform="웨이브"
+                    >
+                      <img src="img/wavve.png" alt="웨이브" />
+                      <span class="point"></span>
+                    </button>
                   </li>
-                  <li class="all-btn">
-                    <img src="img/TVING.png" alt="보류" />
-                    <span class="point"></span>
+
+                  <li class="hot-btn">
+                    <button
+                      type="button"
+                      class="hot-btn-inner"
+                      data-platform="티빙"
+                    >
+                      <img src="img/TVING.png" alt="티빙" />
+                      <span class="point"></span>
+                    </button>
                   </li>
-                  <li class="all-btn">
-                    <img src="img/disney.png" alt="보류" />
-                    <span class="point"></span>
+
+                  <li class="hot-btn">
+                    <button
+                      type="button"
+                      class="hot-btn-inner"
+                      data-platform="디즈니플러스"
+                    >
+                      <img src="img/disney.png" alt="디즈니플러스" />
+                      <span class="point"></span>
+                    </button>
                   </li>
-                  <li class="all-btn">
-                    <img src="img/coupang.png" alt="보류" />
-                    <span class="point"></span>
+
+                  <li class="hot-btn">
+                    <button
+                      type="button"
+                      class="hot-btn-inner"
+                      data-platform="쿠팡플레이"
+                    >
+                      <img src="img/coupang.png" alt="쿠팡플레이" />
+                      <span class="point"></span>
+                    </button>
                   </li>
-                  <li class="all-btn">
-                    <p>Other</p>
-                    <span class="point"></span>
+
+                  <li class="hot-btn">
+                    <button
+                      type="button"
+                      class="hot-btn-inner"
+                      data-platform="other"
+                    >
+                      <span>Other</span>
+                      <span class="point"></span>
+                    </button>
                   </li>
                 </ul>
               </div>
@@ -203,24 +258,29 @@
             <!-- 포스터 영역 -->
             <div class="poster-wrap">
               <div class="poster-box">
-                <ul class="all-posters">
+                <ul class="all-posters" id="posterList">
                   <li class="all-poster">
-                    <a href="">
+                    <a data-role="link" href="">
                       <img
+                        data-role="poster"
                         src="img/poster/poster_헤어질결심.jpg"
-                        alt="hot-product"
+                        alt="헤어질결심"
                       />
-                      <p class="poster-title">작품 제목이 들어갈 공간</p>
+                      <p class="poster-title" data-role="title">
+                        작품 제목이 들어갈 공간
+                      </p>
                     </a>
                     <div class="detail-box">
                       <div class="date-box">
                         <p>개봉일</p>
-                        <span class="date-detail">0000.00.00</span>
+                        <span data-role="date" class="date-detail"
+                          >0000.00.00</span
+                        >
                       </div>
                       <div class="score-contain">
                         <p class="score">별점</p>
-                        <ul class="score-box">
-                          <li class="score">
+                        <ul class="score-box" data-role="stars">
+                          <!-- <li class="score">
                             <img src="img/star_49E99C.png" alt="star" />
                           </li>
                           <li class="score">
@@ -234,29 +294,34 @@
                           </li>
                           <li class="score">
                             <img src="img/star_49E99C.png" alt="star" />
-                          </li>
+                          </li> -->
                         </ul>
                       </div>
                     </div>
                   </li>
 
                   <li class="all-poster">
-                    <a href="">
+                    <a data-role="link" href="">
                       <img
+                        data-role="poster"
                         src="img/poster/poster_헤어질결심.jpg"
-                        alt="hot-product"
+                        alt="헤어질결심"
                       />
-                      <p class="poster-title">작품 제목이 들어갈 공간</p>
+                      <p class="poster-title" data-role="title">
+                        작품 제목이 들어갈 공간
+                      </p>
                     </a>
                     <div class="detail-box">
                       <div class="date-box">
                         <p>개봉일</p>
-                        <span class="date-detail">0000.00.00</span>
+                        <span data-role="date" class="date-detail"
+                          >0000.00.00</span
+                        >
                       </div>
                       <div class="score-contain">
                         <p class="score">별점</p>
-                        <ul class="score-box">
-                          <li class="score">
+                        <ul class="score-box" data-role="stars">
+                          <!-- <li class="score">
                             <img src="img/star_49E99C.png" alt="star" />
                           </li>
                           <li class="score">
@@ -270,29 +335,34 @@
                           </li>
                           <li class="score">
                             <img src="img/star_49E99C.png" alt="star" />
-                          </li>
+                          </li> -->
                         </ul>
                       </div>
                     </div>
                   </li>
 
                   <li class="all-poster">
-                    <a href="">
+                    <a data-role="link" href="">
                       <img
+                        data-role="poster"
                         src="img/poster/poster_헤어질결심.jpg"
-                        alt="hot-product"
+                        alt="헤어질결심"
                       />
-                      <p class="poster-title">작품 제목이 들어갈 공간</p>
+                      <p class="poster-title" data-role="title">
+                        작품 제목이 들어갈 공간
+                      </p>
                     </a>
                     <div class="detail-box">
                       <div class="date-box">
                         <p>개봉일</p>
-                        <span class="date-detail">0000.00.00</span>
+                        <span data-role="date" class="date-detail"
+                          >0000.00.00</span
+                        >
                       </div>
                       <div class="score-contain">
                         <p class="score">별점</p>
-                        <ul class="score-box">
-                          <li class="score">
+                        <ul class="score-box" data-role="stars">
+                          <!-- <li class="score">
                             <img src="img/star_49E99C.png" alt="star" />
                           </li>
                           <li class="score">
@@ -306,7 +376,7 @@
                           </li>
                           <li class="score">
                             <img src="img/star_49E99C.png" alt="star" />
-                          </li>
+                          </li> -->
                         </ul>
                       </div>
                     </div>
@@ -324,40 +394,96 @@
               <h3 class="hot-txt">요즘 대세 프로그램은?</h3>
               <img src="img/next_icon_6F6C76.png" alt="다음 버튼" />
             </div>
+            <!-- 탭 버튼 -->
             <div class="hot-nav-container">
               <div class="hot-wrap">
                 <ul class="hot-nav-box">
-                  <li class="all-btn active">
-                    <p>All</p>
-                    <span class="point"></span>
+                  <li class="hot-btn">
+                    <button
+                      type="button"
+                      class="hot-btn-inner"
+                      data-platform="all"
+                    >
+                      <span>All</span>
+                      <span class="point"></span>
+                    </button>
                   </li>
-                  <li class="all-btn">
-                    <img src="img/netflix.png" alt="보류" />
-                    <span class="point"></span>
+
+                  <li class="hot-btn">
+                    <button
+                      type="button"
+                      class="hot-btn-inner"
+                      data-platform="넷플릭스"
+                    >
+                      <img src="img/netflix.png" alt="넷플릭스" />
+                      <span class="point"></span>
+                    </button>
                   </li>
-                  <li class="all-btn">
-                    <img src="img/watcha.png" alt="보류" />
-                    <span class="point"></span>
+
+                  <li class="hot-btn">
+                    <button
+                      type="button"
+                      class="hot-btn-inner"
+                      data-platform="왓챠"
+                    >
+                      <img src="img/watcha.png" alt="왓챠" />
+                      <span class="point"></span>
+                    </button>
                   </li>
-                  <li class="all-btn">
-                    <img src="img/wavve.png" alt="보류" />
-                    <span class="point"></span>
+
+                  <li class="hot-btn">
+                    <button
+                      type="button"
+                      class="hot-btn-inner"
+                      data-platform="웨이브"
+                    >
+                      <img src="img/wavve.png" alt="웨이브" />
+                      <span class="point"></span>
+                    </button>
                   </li>
-                  <li class="all-btn">
-                    <img src="img/TVING.png" alt="보류" />
-                    <span class="point"></span>
+
+                  <li class="hot-btn">
+                    <button
+                      type="button"
+                      class="hot-btn-inner"
+                      data-platform="티빙"
+                    >
+                      <img src="img/TVING.png" alt="티빙" />
+                      <span class="point"></span>
+                    </button>
                   </li>
-                  <li class="all-btn">
-                    <img src="img/disney.png" alt="보류" />
-                    <span class="point"></span>
+
+                  <li class="hot-btn">
+                    <button
+                      type="button"
+                      class="hot-btn-inner"
+                      data-platform="디즈니플러스"
+                    >
+                      <img src="img/disney.png" alt="디즈니플러스" />
+                      <span class="point"></span>
+                    </button>
                   </li>
-                  <li class="all-btn">
-                    <img src="img/coupang.png" alt="보류" />
-                    <span class="point"></span>
+
+                  <li class="hot-btn">
+                    <button
+                      type="button"
+                      class="hot-btn-inner"
+                      data-platform="쿠팡플레이"
+                    >
+                      <img src="img/coupang.png" alt="쿠팡플레이" />
+                      <span class="point"></span>
+                    </button>
                   </li>
-                  <li class="all-btn">
-                    <p>Other</p>
-                    <span class="point"></span>
+
+                  <li class="hot-btn">
+                    <button
+                      type="button"
+                      class="hot-btn-inner"
+                      data-platform="other"
+                    >
+                      <span>Other</span>
+                      <span class="point"></span>
+                    </button>
                   </li>
                 </ul>
               </div>
@@ -763,6 +889,7 @@
     <script src="js/import.js"></script>
     <script defer src="js/genre-bubbles_edit.js"></script>
     <script defer src="js/genre-bubbles_boot.js"></script>
+    <script defer src="js/poster-data"></script>
     <script src="js/main.js"></script>
   </body>
 </html>

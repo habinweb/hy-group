@@ -64,14 +64,14 @@ function hotTab() {
     const nav = section.querySelector(".hot-nav-box");
     if (!nav) return;
 
-    const btns = () => nav.querySelectorAll(".all-btn");
+    const btns = () => nav.querySelectorAll(".hot-btn-inner");
 
     if (!nav.querySelector(".active") && btns().length) {
       btns()[0].classList.add("active");
     }
 
     nav.addEventListener("click", (e) => {
-      const btn = e.target.closest(".all-btn");
+      const btn = e.target.closest(".hot-btn-inner");
       if (!btn) return;
 
       btns().forEach((b) => b.classList.remove("active"));
