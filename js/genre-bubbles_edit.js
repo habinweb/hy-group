@@ -59,6 +59,9 @@ posterImg.onload = () => {
     const right = Bodies.rectangle(width + 50, height / 2, 100, height, {
       isStatic: true,
     });
+    ground.render.visible = false;
+    left.render.visible = false;
+    right.render.visible = false;
     World.add(world, [ground, left, right]);
 
     const bubbles = [];

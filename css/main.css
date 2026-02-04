@@ -130,17 +130,20 @@ button {
 }
 /* 카테고리 원 박스 */
 #navi-wrap {
+  position: relative;
   width: 90%;
   margin: 0 auto;
   overflow: hidden;
-  aspect-ratio: 1.06 / 1;
+  aspect-ratio: 1.05 / 1;
   background: var(--gr-li-gray);
   border-radius: 20px;
 }
 canvas {
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  inset: 0;
+
   display: block;
+  background: var(--gr-li-gray);
 }
 .bubble-panel {
   width: 100%;
