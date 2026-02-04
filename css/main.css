@@ -828,3 +828,7 @@ canvas {
   white-space: nowrap;
   border: 0;
 }
+
+.bottom-padding {
+  padding-bottom: 2rem;
+}
