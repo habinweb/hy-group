@@ -37,12 +37,12 @@
       <div class="user-txt-box">
         <h2 class="user-txt">
           나만의 취향 탐험,<br />
-          <span class="loginBtn"><a href="login/login.php">로그인</a></span
-          >으로 시작하세요
+          <span class="loginBtn"><a href="login/login.php">무브인</a></span
+          >과 함께하세요
         </h2>
       </div>
 
-      <main>
+      <main class="main-container">
         <div class="container">
           <section id="navi-wrap">
             <div class="bubble-panel">
@@ -52,13 +52,13 @@
         </div>
 
         <!-- 데이터에 해당되는 장르를 보여주는 구간 -->
-        <section class="favorite">
+        <section class="favorite bottom-padding">
           <div class="favorite-txt-box">
             <p class="favorite-txt">
               <!-- 장르명 사용자 데이터베이스에 맞게 바뀌도록 연동
               비로그인 상태일 경우 출력 문구 "아직 수집된 취향이 없지만 이 장르는 어때요?"
               데이터 장르 랜덤 출력-->
-              <span class="input">장르명 </span
+              <span class="input">드라마 </span
               ><span>장르를 좋아하신다면, 이건 어때요?</span>
             </p>
           </div>
@@ -154,46 +154,102 @@
         </section>
 
         <!-- 요즘 대세 영화는? -->
-        <section class="hot-container">
+        <section class="hot-container bottom-padding">
           <div class="hot-title">
             <div class="hot-txt-box">
               <h3 class="hot-txt">요즘 대세 영화는?</h3>
               <img src="img/next_icon_6F6C76.png" alt="다음 버튼" />
             </div>
+            <!-- 탭 버튼 -->
             <div class="hot-nav-container">
               <div class="hot-wrap">
                 <ul class="hot-nav-box">
-                  <li class="all-btn active">
-                    <p>All</p>
-                    <span class="point"></span>
+                  <li class="hot-btn">
+                    <button
+                      type="button"
+                      class="hot-btn-inner"
+                      data-platform="all"
+                    >
+                      <span>All</span>
+                      <span class="point"></span>
+                    </button>
                   </li>
-                  <li class="all-btn">
-                    <img src="img/netflix.png" alt="보류" />
-                    <span class="point"></span>
+
+                  <li class="hot-btn">
+                    <button
+                      type="button"
+                      class="hot-btn-inner"
+                      data-platform="넷플릭스"
+                    >
+                      <img src="img/netflix.png" alt="넷플릭스" />
+                      <span class="point"></span>
+                    </button>
                   </li>
-                  <li class="all-btn">
-                    <img src="img/watcha.png" alt="보류" />
-                    <span class="point"></span>
+
+                  <li class="hot-btn">
+                    <button
+                      type="button"
+                      class="hot-btn-inner"
+                      data-platform="왓챠"
+                    >
+                      <img src="img/watcha.png" alt="왓챠" />
+                      <span class="point"></span>
+                    </button>
                   </li>
-                  <li class="all-btn">
-                    <img src="img/wavve.png" alt="보류" />
-                    <span class="point"></span>
+
+                  <li class="hot-btn">
+                    <button
+                      type="button"
+                      class="hot-btn-inner"
+                      data-platform="웨이브"
+                    >
+                      <img src="img/wavve.png" alt="웨이브" />
+                      <span class="point"></span>
+                    </button>
                   </li>
-                  <li class="all-btn">
-                    <img src="img/TVING.png" alt="보류" />
-                    <span class="point"></span>
+
+                  <li class="hot-btn">
+                    <button
+                      type="button"
+                      class="hot-btn-inner"
+                      data-platform="티빙"
+                    >
+                      <img src="img/TVING.png" alt="티빙" />
+                      <span class="point"></span>
+                    </button>
                   </li>
-                  <li class="all-btn">
-                    <img src="img/disney.png" alt="보류" />
-                    <span class="point"></span>
+
+                  <li class="hot-btn">
+                    <button
+                      type="button"
+                      class="hot-btn-inner"
+                      data-platform="디즈니플러스"
+                    >
+                      <img src="img/disney.png" alt="디즈니플러스" />
+                      <span class="point"></span>
+                    </button>
                   </li>
-                  <li class="all-btn">
-                    <img src="img/coupang.png" alt="보류" />
-                    <span class="point"></span>
+
+                  <li class="hot-btn">
+                    <button
+                      type="button"
+                      class="hot-btn-inner"
+                      data-platform="쿠팡플레이"
+                    >
+                      <img src="img/coupang.png" alt="쿠팡플레이" />
+                      <span class="point"></span>
+                    </button>
                   </li>
-                  <li class="all-btn">
-                    <p>Other</p>
-                    <span class="point"></span>
+
+                  <li class="hot-btn">
+                    <button
+                      type="button"
+                      class="hot-btn-inner"
+                      data-platform="other"
+                    >
+                      <span>Other</span>
+                      <span class="point"></span>
+                    </button>
                   </li>
                 </ul>
               </div>
@@ -202,24 +258,29 @@
             <!-- 포스터 영역 -->
             <div class="poster-wrap">
               <div class="poster-box">
-                <ul class="all-posters">
+                <ul class="all-posters" id="posterList">
                   <li class="all-poster">
-                    <a href="">
+                    <a data-role="link" href="">
                       <img
+                        data-role="poster"
                         src="img/poster/poster_헤어질결심.jpg"
-                        alt="hot-product"
+                        alt="헤어질결심"
                       />
-                      <p class="poster-title">작품 제목이 들어갈 공간</p>
+                      <p class="poster-title" data-role="title">
+                        작품 제목이 들어갈 공간
+                      </p>
                     </a>
                     <div class="detail-box">
                       <div class="date-box">
                         <p>개봉일</p>
-                        <span class="date-detail">0000.00.00</span>
+                        <span data-role="date" class="date-detail"
+                          >0000.00.00</span
+                        >
                       </div>
                       <div class="score-contain">
                         <p class="score">별점</p>
-                        <ul class="score-box">
-                          <li class="score">
+                        <ul class="score-box" data-role="stars">
+                          <!-- <li class="score">
                             <img src="img/star_49E99C.png" alt="star" />
                           </li>
                           <li class="score">
@@ -233,29 +294,34 @@
                           </li>
                           <li class="score">
                             <img src="img/star_49E99C.png" alt="star" />
-                          </li>
+                          </li> -->
                         </ul>
                       </div>
                     </div>
                   </li>
 
                   <li class="all-poster">
-                    <a href="">
+                    <a data-role="link" href="">
                       <img
+                        data-role="poster"
                         src="img/poster/poster_헤어질결심.jpg"
-                        alt="hot-product"
+                        alt="헤어질결심"
                       />
-                      <p class="poster-title">작품 제목이 들어갈 공간</p>
+                      <p class="poster-title" data-role="title">
+                        작품 제목이 들어갈 공간
+                      </p>
                     </a>
                     <div class="detail-box">
                       <div class="date-box">
                         <p>개봉일</p>
-                        <span class="date-detail">0000.00.00</span>
+                        <span data-role="date" class="date-detail"
+                          >0000.00.00</span
+                        >
                       </div>
                       <div class="score-contain">
                         <p class="score">별점</p>
-                        <ul class="score-box">
-                          <li class="score">
+                        <ul class="score-box" data-role="stars">
+                          <!-- <li class="score">
                             <img src="img/star_49E99C.png" alt="star" />
                           </li>
                           <li class="score">
@@ -269,29 +335,34 @@
                           </li>
                           <li class="score">
                             <img src="img/star_49E99C.png" alt="star" />
-                          </li>
+                          </li> -->
                         </ul>
                       </div>
                     </div>
                   </li>
 
                   <li class="all-poster">
-                    <a href="">
+                    <a data-role="link" href="">
                       <img
+                        data-role="poster"
                         src="img/poster/poster_헤어질결심.jpg"
-                        alt="hot-product"
+                        alt="헤어질결심"
                       />
-                      <p class="poster-title">작품 제목이 들어갈 공간</p>
+                      <p class="poster-title" data-role="title">
+                        작품 제목이 들어갈 공간
+                      </p>
                     </a>
                     <div class="detail-box">
                       <div class="date-box">
                         <p>개봉일</p>
-                        <span class="date-detail">0000.00.00</span>
+                        <span data-role="date" class="date-detail"
+                          >0000.00.00</span
+                        >
                       </div>
                       <div class="score-contain">
                         <p class="score">별점</p>
-                        <ul class="score-box">
-                          <li class="score">
+                        <ul class="score-box" data-role="stars">
+                          <!-- <li class="score">
                             <img src="img/star_49E99C.png" alt="star" />
                           </li>
                           <li class="score">
@@ -305,7 +376,7 @@
                           </li>
                           <li class="score">
                             <img src="img/star_49E99C.png" alt="star" />
-                          </li>
+                          </li> -->
                         </ul>
                       </div>
                     </div>
@@ -317,46 +388,102 @@
         </section>
 
         <!-- 요즘 대세 드라마는? -->
-        <section class="hot-container">
+        <section class="hot-container bottom-padding">
           <div class="hot-title">
             <div class="hot-txt-box">
               <h3 class="hot-txt">요즘 대세 프로그램은?</h3>
               <img src="img/next_icon_6F6C76.png" alt="다음 버튼" />
             </div>
+            <!-- 탭 버튼 -->
             <div class="hot-nav-container">
               <div class="hot-wrap">
                 <ul class="hot-nav-box">
-                  <li class="all-btn active">
-                    <p>All</p>
-                    <span class="point"></span>
+                  <li class="hot-btn">
+                    <button
+                      type="button"
+                      class="hot-btn-inner"
+                      data-platform="all"
+                    >
+                      <span>All</span>
+                      <span class="point"></span>
+                    </button>
                   </li>
-                  <li class="all-btn">
-                    <img src="img/netflix.png" alt="보류" />
-                    <span class="point"></span>
+
+                  <li class="hot-btn">
+                    <button
+                      type="button"
+                      class="hot-btn-inner"
+                      data-platform="넷플릭스"
+                    >
+                      <img src="img/netflix.png" alt="넷플릭스" />
+                      <span class="point"></span>
+                    </button>
                   </li>
-                  <li class="all-btn">
-                    <img src="img/watcha.png" alt="보류" />
-                    <span class="point"></span>
+
+                  <li class="hot-btn">
+                    <button
+                      type="button"
+                      class="hot-btn-inner"
+                      data-platform="왓챠"
+                    >
+                      <img src="img/watcha.png" alt="왓챠" />
+                      <span class="point"></span>
+                    </button>
                   </li>
-                  <li class="all-btn">
-                    <img src="img/wavve.png" alt="보류" />
-                    <span class="point"></span>
+
+                  <li class="hot-btn">
+                    <button
+                      type="button"
+                      class="hot-btn-inner"
+                      data-platform="웨이브"
+                    >
+                      <img src="img/wavve.png" alt="웨이브" />
+                      <span class="point"></span>
+                    </button>
                   </li>
-                  <li class="all-btn">
-                    <img src="img/TVING.png" alt="보류" />
-                    <span class="point"></span>
+
+                  <li class="hot-btn">
+                    <button
+                      type="button"
+                      class="hot-btn-inner"
+                      data-platform="티빙"
+                    >
+                      <img src="img/TVING.png" alt="티빙" />
+                      <span class="point"></span>
+                    </button>
                   </li>
-                  <li class="all-btn">
-                    <img src="img/disney.png" alt="보류" />
-                    <span class="point"></span>
+
+                  <li class="hot-btn">
+                    <button
+                      type="button"
+                      class="hot-btn-inner"
+                      data-platform="디즈니플러스"
+                    >
+                      <img src="img/disney.png" alt="디즈니플러스" />
+                      <span class="point"></span>
+                    </button>
                   </li>
-                  <li class="all-btn">
-                    <img src="img/coupang.png" alt="보류" />
-                    <span class="point"></span>
+
+                  <li class="hot-btn">
+                    <button
+                      type="button"
+                      class="hot-btn-inner"
+                      data-platform="쿠팡플레이"
+                    >
+                      <img src="img/coupang.png" alt="쿠팡플레이" />
+                      <span class="point"></span>
+                    </button>
                   </li>
-                  <li class="all-btn">
-                    <p>Other</p>
-                    <span class="point"></span>
+
+                  <li class="hot-btn">
+                    <button
+                      type="button"
+                      class="hot-btn-inner"
+                      data-platform="other"
+                    >
+                      <span>Other</span>
+                      <span class="point"></span>
+                    </button>
                   </li>
                 </ul>
               </div>
@@ -626,11 +753,9 @@
                 </div>
 
                 <!-- 버튼을 누르면 폼이 열린다 이부분 데이터 연결 후에 css 다시 만져야 할듯 -->
-                <form
-                  class="review-form open"
-                  action="review_insert.php"
-                  method="post"
-                >
+
+                <form class="review-form" method="post">
+                  <!-- action="review_insert.php" -->
                   <div class="input-box form">
                     <!-- [1] 작품명 자동검색 입력 -->
                     <div class="title-search-box">
@@ -764,6 +889,7 @@
     <script src="js/import.js"></script>
     <script defer src="js/genre-bubbles_edit.js"></script>
     <script defer src="js/genre-bubbles_boot.js"></script>
+    <script defer src="js/poster-data"></script>
     <script src="js/main.js"></script>
   </body>
 </html>

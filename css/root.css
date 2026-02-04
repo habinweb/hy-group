@@ -36,6 +36,11 @@
   --c-font: #faf5f5; /* 폰트색(화이트톤) */
   --c-main: #8670ff; /* 메인색 */
   --c-main2: #c4b9ff;
+  --c-main-gradient: linear-gradient(
+    135deg,
+    var(--c-main) 0%,
+    var(--c-main2) 100%
+  );
   --c-point: #49e99c; /* 포인트색 */
   --c-gray: #252426;
   --c-gray2: #6f6c76;
