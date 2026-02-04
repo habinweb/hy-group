@@ -206,6 +206,7 @@ canvas {
 .favorite-txt .input {
   color: var(--c-main);
   letter-spacing: -0.015rem;
+  font-weight: 800;
 }
 
 .favorite-txt span {
@@ -413,7 +414,7 @@ canvas {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  bottom: -11px;
+  bottom: -10px;
 }
 
 /* .all-btn에 액티브 붙였을 경우 변화 */
