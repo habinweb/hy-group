@@ -125,7 +125,9 @@ button {
 .user-txt > span {
   color: var(--c-main);
 }
-
+.main-container {
+  height: auto;
+}
 /* 카테고리 원 박스 */
 #navi-wrap {
   width: 90%;
@@ -671,13 +673,19 @@ canvas {
     max-height 0.3s ease;
   overflow: hidden;
 }
-
+.movein-review {
+  width: 100%;
+  margin-bottom: 7rem;
+}
 .review-form.open {
   visibility: visible;
   max-height: 200px;
   z-index: 1;
-
   overflow: hidden;
+}
+
+.movein-review:has(.review-form.open) {
+  margin-bottom: 18rem;
 }
 .input-box.form {
   padding: 0 5vw;
@@ -804,10 +812,6 @@ canvas {
   transform: rotate(90deg);
   cursor: pointer;
   z-index: 5;
-}
-
-.movein-review {
-  margin-bottom: 11rem;
 }
 
 /* 시각적으로만 숨기고 스크린리더엔 보이게 */
