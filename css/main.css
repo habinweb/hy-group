@@ -658,7 +658,6 @@ canvas {
 }
 
 .review-form {
-  visibility: hidden;
   position: absolute;
   top: 0;
   left: 50%;
@@ -806,7 +805,6 @@ canvas {
 }
 
 .prev-btn {
-  pointer-events: auto;
   width: 15px;
   height: 15px;
   transform: rotate(90deg);
