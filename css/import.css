@@ -1,3 +1,8 @@
+a {
+  color: var(--c-font);
+  text-decoration: none;
+}
+
 /* 헤더 */
 #header {
   position: fixed;
@@ -33,10 +38,32 @@
   cursor: pointer;
   margin: 0;
 }
+.hambtn {
+  display: block;
+  width: 18px;
+  height: 18px;
+}
+.hambtn-img {
+  display: block;
+  width: 100%;
+}
+.alarm-btn {
+  position: relative;
+}
+.alarm-badge {
+  position: absolute;
+  display: block;
+  bottom: -3px;
+  right: -2px;
+  width: 10px;
+  height: 10px;
+  background: var(--c-main);
+  border-radius: 10px;
+  border: 1.5px solid var(--c-bg);
+}
 
 /* ============= 햄버거 ============= */
 .modal-bg.active {
-  /* 포지션 바꿈 */
   position: fixed;
   inset: 0;
   z-index: 10;
@@ -76,7 +103,8 @@
   margin-bottom: 3rem;
 }
 
-.ham-title > span {
+.main-link {
+  cursor: pointer;
   font-weight: 800;
   font-size: var(--fs4);
   display: block;
@@ -88,7 +116,7 @@
   gap: 10px;
   font-size: var(--fs3);
 }
-.ham-sub-box li {
+.ham-sub {
   display: inline-flex;
   height: 35px;
   line-height: 40px;
@@ -99,10 +127,23 @@
   transition: all 0.3s ease-in;
 }
 
-.ham-sub-box li.active {
+.ham-sub.active {
   background: var(--c-main);
   color: var(--c-bg);
   font-weight: 800;
+}
+
+.sub-link {
+  display: block;
+  font-size: var(--fs2);
+}
+.main-link.coming-soon {
+  color: #999;
+  cursor: default;
+}
+.sub-link.coming-soon {
+  color: #999;
+  cursor: default;
 }
 
 /* ============= 바텀 네비 ============= */
