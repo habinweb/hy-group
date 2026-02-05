@@ -4,13 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sub (A+B)</title>
-
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/root.css" />
-    <link rel="stylesheet" href="css/a_sub.css" />
-    <link rel="stylesheet" href="css/b_sub.css" />
     <link rel="stylesheet" href="css/import.css" />
-
+    <link rel="stylesheet" href="css/ab_sub.css" />
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="js/import.js"></script>
     <script src="js/babel.min.js"></script>
@@ -138,13 +135,13 @@
           <!-- 탭 메뉴 -->
           <ul class="tab_menu">
             <li class="b_active"><button type="button">콘텐츠 정보</button></li>
-            <li><button type="button">감상평 99+</button></li>
+            <li><button type="button">감상평 +3</button></li>
             <li><button type="button">영상/이미지</button></li>
           </ul>
 
           <!-- 탭1 콘텐츠 정보 영역 -->
           <section class="tab_content b_active" id="tab_info">
-            <h3>이 작품을 보신 적이 있으세요?</h3>
+            <h3>이 작품에 대한 간단한 피드백을 부탁해요</h3>
 
             <div class="like_box">
               <button type="button" class="like_btn">
@@ -163,7 +160,7 @@
               <li><strong>제작</strong><span>넷플릭스</span></li>
               <li><strong>상영 시간</strong><span>136분</span></li>
               <li>
-                <strong>스트리밍</strong><span>디즈니플러스,티빙,왓챠</span>
+                <strong>스트리밍</strong><span>디즈니플러스, 티빙, 왓챠</span>
               </li>
               <li><strong>연령 등급</strong><span>ALL</span></li>
             </ul>
@@ -180,7 +177,7 @@
                 </strong>
               </p>
 
-              <!-- i아이콘 클릭 시 안내창 (기본은 숨김 상태) -->
+              <!-- 아이콘(i) 클릭 시 안내창 (기본은 숨김 상태) -->
               <div class="iicon_popup" id="iicon_popup">
                 <p>
                   무브인 사용자 리뷰를 작성하기 위한 공간입니다.<br />
@@ -228,7 +225,7 @@
               <!-- 텍스트 입력 -->
               <textarea
                 class="review_input"
-                placeholder="지금 바로 리뷰를 작성해 또다른 무브오너들의 취향 형성에 기여해주세요!"
+                placeholder="지금 바로 리뷰를 작성해 또 다른 무브 오너들의 취향 형성에 기여해 주세요!"
               ></textarea>
 
               <!-- 등록 버튼 -->
@@ -247,7 +244,7 @@
                 /></strong>
               </p>
 
-              <!-- i아이콘 클릭 시 안내창 (기본은 숨김 상태) -->
+              <!-- 아이콘(i) 클릭 시 안내창 (기본은 숨김 상태) -->
               <div class="iicon_popup" id="iicon_popup">
                 <p>
                   무브인 사용자 리뷰를 작성하기 위한 공간입니다.<br />
@@ -295,7 +292,7 @@
               <!-- 텍스트 입력 -->
               <textarea
                 class="review_input"
-                placeholder="지금 바로 리뷰를 작성해 또다른 무브오너들의 취향 형성에 기여해주세요!"
+                placeholder="지금 바로 리뷰를 작성해 또 다른 무브오너들의 취향 형성에 기여해 주세요!"
               ></textarea>
 
               <!-- 등록 버튼 -->
@@ -308,26 +305,60 @@
             <div class="review_list">
               <div class="review_header">
                 <h3>전체 리뷰</h3>
-                <button type="button" class="sort_btn">
-                  최신순
-                  <img src="img/next_icon_6F6C76.png" alt="down_icon" />
-                </button>
+
+                <!-- 정렬 드롭다운 -->
+                <div class="sort_wrap">
+                  <button type="button" class="sort_btn" aria-expanded="false">
+                    <span class="sort_label">최신순</span>
+                    <img src="img/next_icon_6F6C76.png" alt="down_icon" />
+                  </button>
+
+                  <ul class="sort_menu" aria-hidden="true">
+                    <li>
+                      <button
+                        type="button"
+                        class="sort_option"
+                        data-sort="latest"
+                      >
+                        최신순
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        type="button"
+                        class="sort_option"
+                        data-sort="rating"
+                      >
+                        별점순
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        type="button"
+                        class="sort_option"
+                        data-sort="bookmark"
+                      >
+                        북마크순
+                      </button>
+                    </li>
+                  </ul>
+                </div>
               </div>
 
               <ul>
                 <li class="review_item">
                   <div class="review_info">
                     <img src="img/user_6F6C76.png" alt="user_icon" />
-                    <span class="list_nickname">닉네임</span>
+                    <span class="list_nickname">지혜의샘</span>
                     <span class="score"
                       ><img
                         src="img/star_49E99C.png"
                         alt="star_icon"
-                      />4.0</span
+                      />4.5</span
                     >
-                    <span class="date">14일 전</span>
+                    <span class="date">7일 전</span>
                   </div>
-                  <p class="review_text">뜨개하면서 보기 좋아요</p>
+                  <p class="review_text">뜨개하면서 보기 좋아요 ^^</p>
                   <button type="button" class="bookmark_btn">
                     +5<img
                       src="img/bookmark_01_6f6c76.png"
@@ -339,7 +370,7 @@
                 <li class="review_item">
                   <div class="review_info">
                     <img src="img/user_6F6C76.png" alt="user_icon" />
-                    <span class="list_nickname">닉네임</span>
+                    <span class="list_nickname">영화편식심함</span>
                     <span class="score"
                       ><img
                         src="img/star_49E99C.png"
@@ -348,9 +379,9 @@
                     >
                     <span class="date">14일 전</span>
                   </div>
-                  <p class="review_text">생각보다 괜찮네요</p>
+                  <p class="review_text">생각보다 괜찮습니다.</p>
                   <button type="button" class="bookmark_btn">
-                    +4<img
+                    +20<img
                       src="img/bookmark_01_6f6c76.png"
                       alt="bookmark_icon"
                     />
@@ -359,16 +390,17 @@
 
                 <li class="review_item">
                   <div class="review_info">
-                    <span class="list_nickname">닉네임</span>
+                    <img src="img/user_6F6C76.png" alt="user_icon" />
+                    <span class="list_nickname">두쫀쿠빚는기계</span>
                     <span class="score"
                       ><img
                         src="img/star_49E99C.png"
                         alt="star_icon"
                       />5.0</span
                     >
-                    <span class="date">14일 전</span>
+                    <span class="date">10일 전</span>
                   </div>
-                  <p class="review_text">믿고 보는 명작입니다</p>
+                  <p class="review_text">믿고 보는 띵작입니다</p>
                   <button type="button" class="bookmark_btn">
                     +14<img
                       src="img/bookmark_01_6f6c76.png"
@@ -558,40 +590,36 @@
             </div>
           </div>
 
-          <!-- 선택 결과 -->
+          <!-- 밸런스 게임 선택 결과 -->
           <div class="a_balance_result_area">
             <div class="a_balance_result_message_wrap">
               <p class="a_balance_result_message">
-                <span id="a_result_message_text"
-                  >정의와 사명감을 가진 당신에게 어울리는 작품...</span
-                >
+                <span id="a_result_message_text">결과 메시지</span>
               </p>
               <p class="a_balance_result_title">
                 그건 바로
-                <span id="a_result_movie_title_value">가디언즈</span>
+                <span id="a_result_movie_title_value">영화 제목</span>
               </p>
             </div>
 
             <div class="a_result_content">
               <div class="a_result_poster_wrap">
                 <img
-                  src="img/poster/poster_가디언즈.jpg"
-                  alt="결과 영화 포스터"
+                  src="img/poster/default.jpg"
+                  alt=""
                   class="a_result_movie_poster"
                 />
               </div>
 
               <div class="a_result_meta">
                 <div class="a_result_tags_container">
-                  <span class="a_result_tag">#애니메이션</span>
-                  <span class="a_result_tag">#영화</span>
-                  <span class="a_result_tag">#히어로</span>
-                  <span class="a_result_tag">#겨울</span>
-                  <span class="a_result_tag">#드림웍스</span>
+                  <!-- JS가 값 넣을 곳 -->
                 </div>
+
                 <!-- 정보 보러 가기 -->
                 <a href="#" class="a_result_view_details_btn">정보 보러 가기</a>
                 <img src="img/next_icon_6F6C76.png" alt="화살표 버튼" /><br />
+
                 <!-- 다시 하기 버튼 -->
                 <button class="a_balance_restart_btn">다시 하기</button>
               </div>
@@ -646,5 +674,24 @@
     <!-- 푸터/하단 -->
     <div id="bottom-nav"></div>
     <div id="footer"></div>
+
+    <!-- 로그인 안내 팝업 -->
+    <div class="login_popup" id="login_popup" aria-hidden="true">
+      <div class="login_popup_inner" role="dialog" aria-modal="true">
+        <p class="login_popup_title">앗! 로그인을 잊으셨어요</p>
+        <p class="login_popup_desc">추천과 리뷰는 로그인 후에 가능해요</p>
+        <div class="login_popup_btns">
+          <!-- 닫기 버튼 -->
+          <button type="button" class="login_btn login_btn_cancel">
+            괜찮아요
+          </button>
+
+          <!-- 로그인 이동 버튼 -->
+          <button type="button" class="login_btn login_btn_go">
+            로그인 할게요
+          </button>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

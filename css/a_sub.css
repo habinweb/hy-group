@@ -312,35 +312,35 @@ html {
 .a_balance_card img.a_like_icon,
 .a_balance_card img.a_hate_icon {
   position: absolute;
-  height: 24px;
+  height: 20px;
   z-index: 4;
 }
 
 /* 왼쪽 카드 아이콘 */
 .a_balance_card.left img.a_like_icon {
   margin-left: 2rem;
-  top: 2rem;
+  top: 1.5rem;
 }
 
 /* 오른쪽 카드 아이콘 */
 .a_balance_card.right img.a_like_icon {
   right: 30px;
-  bottom: 6rem;
+  bottom: 90px;
 }
 
 /* 카드 내부 p (텍스트 값) */
 .a_balance_card p {
   z-index: 4;
   color: white;
-  font-size: var(--fs3);
+  font-size: var(--fs2);
   font-weight: 800;
 }
 
 /* 왼쪽 카드 텍스트 정렬 */
 .a_balance_card.left p {
   text-align: left;
-  margin-left: 2rem;
-  margin-top: 4.3rem;
+  margin-left: 1.5rem;
+  margin-top: 3.5rem;
 }
 
 /* 오른쪽 카드 텍스트 정렬 */
@@ -372,7 +372,8 @@ html {
 .a_balance_result_message_wrap #a_result_message_text,
 .a_balance_result_message_wrap .a_balance_result_title {
   color: var(--c-font);
-  font-size: var(--fs3);
+  font-size: var(--fs2);
+  line-height: 1.5;
   font-weight: 800;
 }
 
@@ -381,7 +382,7 @@ html {
   .a_balance_result_title
   #a_result_movie_title_value {
   color: var(--c-main);
-  font-size: var(--fs3);
+  font-size: var(--fs2);
   font-weight: 800;
 }
 
@@ -450,8 +451,8 @@ html {
 
 /* 정보 보러 가기 화살표 아이콘 */
 .a_result_meta > img {
-  width: 18px;
-  height: 18px;
+  width: 12px;
+  height: 12px;
   margin-left: 5px;
   vertical-align: middle;
 }
@@ -478,7 +479,7 @@ html {
 /* 자.만.추 제목 */
 .a_recommend_title {
   color: var(--c-font);
-  font-size: var(--fs4);
+  font-size: var(--fs3);
   font-weight: 800;
 }
 
@@ -495,8 +496,8 @@ html {
 .a_recommend_cards_container > div {
   background-color: var(--c-bg);
   border-radius: 15px;
-  padding: 0 30px;
-  height: 9rem;
+  padding: 0 10px;
+  height: 8rem;
 
   /* Flexbox 설정: 아이콘 + 텍스트 블록 가운데 배치 */
   display: flex;
@@ -515,8 +516,8 @@ html {
 /* 게임 영역 틀 */
 .a_card_icon_wrap {
   border-radius: 15px;
-  width: 60px;
-  height: 60px;
+  width: 45px;
+  height: 45px;
   /* 아이콘 틀 크기 고정 및 축소 방지 */
   flex: 0 0 auto;
   display: flex;
@@ -537,6 +538,8 @@ html {
   font-size: var(--fs2);
   margin: 0;
   flex-grow: 0;
+  line-height: 1.6;
+  font-weight: 600;
   display: block;
 }
 
