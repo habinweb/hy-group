@@ -25,6 +25,7 @@ $(function () {
   /* =========================
    2) 감상평 안내창
   ======================== */
+
   // 아이콘(i) 클릭했을 때 안내 팝업 토글
   $("#tab_review").on("click", 'img[alt="i_icon"]', function (e) {
     e.preventDefault();
@@ -41,6 +42,7 @@ $(function () {
   /* =========================
      3) 별점
   ========================= */
+
   $(".star_rating .star").on("click", function () {
     const rating = Number($(this).data("value"));
     const $wrap = $(this).closest(".star_rating");
@@ -59,7 +61,8 @@ $(function () {
 
   /* =========================
    4) 밸런스 게임
-========================= */
+======================== */
+
   // 카드별 대응하는 결과 미리 적어둠
   const RESULT = {
     left: {
@@ -79,6 +82,7 @@ $(function () {
   /* =========================
    카드 클릭 시
 ========================= */
+
   $(".a_balance_card").on("click", function () {
     // 왼쪽 카드면 left, 아니면 right
     const key = $(this).hasClass("left") ? "left" : "right";
@@ -119,6 +123,7 @@ $(function () {
   /* =========================
    다시 하기 버튼
 ========================= */
+
   $(".a_balance_restart_btn").on("click", function () {
     // 결과 숨기기
     $(".a_balance_result_area").hide();
@@ -129,10 +134,41 @@ $(function () {
     // 카드 active 초기화
     $(".a_balance_card").removeClass("active");
   });
+
+  /* =========================
+  로그인 유도 팝업
+======================= */
+
+  // 팝업 열기
+  function openLoginPopup() {
+    $("#login_popup").addClass("active").attr("aria-hidden", "false");
+  }
+
+  // 추천해요/별로예요 누르면 팝업
+  $("#tab_info").on("click", ".like_btn, .hate_btn", function (e) {
+    e.preventDefault();
+    openLoginPopup();
+  });
+
+  // 등록하기 누르면 팝업
+  $("#tab_review").on("click", ".register_btn", function (e) {
+    e.preventDefault();
+    openLoginPopup();
+  });
+
+  // 괜찮아요 -> 닫기
+  $(document).on("click", ".login_btn_cancel", function () {
+    $("#login_popup").removeClass("active").attr("aria-hidden", "true");
+  });
+
+  // 로그인 할게요 -> 이동
+  $(document).on("click", ".login_btn_go", function () {
+    location.href = "form.html";
+  });
 });
 
 // ===================================================================
-// 수정하기 전 기존 코드입니다. html 도 함께 백업중입니다!
+// 밸런스 게임 + 다시 하기 수정하기 전 기존 코드입니다. html 도 함께 백업중입니다!!
 
 /* =========================
      4) 밸런스 게임

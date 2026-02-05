@@ -248,7 +248,7 @@
                 /></strong>
               </p>
 
-              <!-- i아이콘 클릭 시 안내창 (기본은 숨김 상태) -->
+              <!-- 아이콘(i) 클릭 시 안내창 (기본은 숨김 상태) -->
               <div class="iicon_popup" id="iicon_popup">
                 <p>
                   무브인 사용자 리뷰를 작성하기 위한 공간입니다.<br />
@@ -644,5 +644,24 @@
     <!-- 푸터/하단 -->
     <div id="bottom-nav"></div>
     <div id="footer"></div>
+
+    <!-- 로그인 안내 팝업 -->
+    <div class="login_popup" id="login_popup" aria-hidden="true">
+      <div class="login_popup_inner" role="dialog" aria-modal="true">
+        <p class="login_popup_title">앗! 로그인을 잊으셨어요</p>
+        <p class="login_popup_desc">추천과 리뷰는 로그인 후에 가능해요</p>
+        <div class="login_popup_btns">
+          <!-- 닫기 버튼 -->
+          <button type="button" class="login_btn login_btn_cancel">
+            괜찮아요
+          </button>
+
+          <!-- 로그인 이동 버튼 -->
+          <button type="button" class="login_btn login_btn_go">
+            로그인 할게요
+          </button>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
