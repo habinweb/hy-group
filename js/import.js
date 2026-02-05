@@ -99,8 +99,7 @@ $(function () {
 
     // 클릭 시
     botNavs.forEach((nav, i) => {
-      nav.addEventListener("click", (e) => {
-        e.preventDefault(); // 혹시 a 들어가도 튀는 것 방지
+      nav.addEventListener("click", () => {
         setActive(i);
       });
     });

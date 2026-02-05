@@ -173,7 +173,10 @@ a {
   align-items: center;
   line-height: 60px;
 }
-.bot-nav-icon img {
+.bottom-btn {
+  display: block;
+}
+.bottom-btn img {
   display: flex;
   align-items: center;
   width: 20px;
