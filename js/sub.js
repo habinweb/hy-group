@@ -1,6 +1,6 @@
 $(function () {
   /* =========================
-     1) 탭
+    탭
   ========================= */
 
   const $tabMenus = $(".tab_menu li");
@@ -23,7 +23,7 @@ $(function () {
   });
 
   /* =========================
-   2) 감상평 안내창
+    감상평 안내창
   ======================== */
 
   // 아이콘(i) 클릭했을 때 안내 팝업 토글
@@ -40,7 +40,7 @@ $(function () {
   });
 
   /* =========================
-     3) 별점
+    별점
   ========================= */
 
   $(".star_rating .star").on("click", function () {
@@ -60,7 +60,60 @@ $(function () {
   });
 
   /* =========================
-   4) 밸런스 게임
+    감상평 드롭다운 정렬
+  ========================= */
+
+  $(function () {
+    // 정렬 버튼 클릭 -> 드롭다운 동작
+    $(".sort_btn").click(() => $(".sort_wrap").toggleClass("open"));
+
+    // 정렬 옵션 클릭
+    $(".sort_option").click(function () {
+      const type = $(this).data("sort"); // latest / rating / bookmark
+
+      // 버튼 텍스트 변경
+      $(".sort_label").text($(this).text());
+
+      // 드롭다운 닫기
+      $(".sort_wrap").removeClass("open");
+
+      // 리뷰 리스트 ul
+      const $ul = $(".review_list > ul");
+
+      // 정렬 대상 리뷰 li들
+      const items = $ul.children(".review_item").get();
+
+      // 정렬 기준에 따라 li 순서 변경
+      items.sort((a, b) => {
+        // 최신순
+        if (type === "latest")
+          return (
+            parseInt($(a).find(".date").text()) -
+            parseInt($(b).find(".date").text())
+          );
+
+        // 별점순
+        if (type === "rating")
+          return (
+            parseFloat($(b).find(".score").text()) -
+            parseFloat($(a).find(".score").text())
+          );
+
+        // 북마크순
+        if (type === "bookmark")
+          return (
+            parseInt($(b).find(".bookmark_btn").text()) -
+            parseInt($(a).find(".bookmark_btn").text())
+          );
+      });
+
+      // 정렬된 순서로 다시 DOM에 삽입
+      $ul.append(items);
+    });
+  });
+
+  /* =========================
+    밸런스 게임
 ======================== */
 
   // 카드별 대응하는 결과 미리 적어둠
@@ -80,7 +133,7 @@ $(function () {
   };
 
   /* =========================
-   카드 클릭 시
+    카드 클릭 시
 ========================= */
 
   $(".a_balance_card").on("click", function () {
@@ -121,7 +174,7 @@ $(function () {
   });
 
   /* =========================
-   다시 하기 버튼
+    다시 하기 버튼
 ========================= */
 
   $(".a_balance_restart_btn").on("click", function () {
@@ -136,7 +189,7 @@ $(function () {
   });
 
   /* =========================
-  로그인 유도 팝업
+    로그인 유도 팝업
 ======================= */
 
   // 팝업 열기
