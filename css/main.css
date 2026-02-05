@@ -270,7 +270,7 @@ canvas {
   z-index: 1;
 }
 
-.favorite-thing .blankbtn {
+.favorite-more .blankbtn {
   border: 2px solid var(--c-gray);
   border-radius: 10px;
   display: flex;
@@ -279,7 +279,7 @@ canvas {
   height: 75px;
 }
 
-.favorite-thing:last-child > a > img {
+.favorite-more > a > img {
   width: 15px;
   height: 15px;
 }
