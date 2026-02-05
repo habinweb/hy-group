@@ -844,3 +844,10 @@ canvas {
 .bottom-padding {
   padding-bottom: 2rem;
 }
+
+#hot-genre,
+#hot-movie,
+#hot-drama,
+#user-review {
+  scroll-margin-top: 120px;
+}
