@@ -1,16 +1,22 @@
 @charset "utf-8";
-
-/* 초기 설정 */
 *,
 *:after,
 *:before {
   box-sizing: border-box;
 }
 
-body,
 html {
   font-family: var(--font-main);
 }
+
+body {
+  font-family: var(--font-main);
+}
+
+/* =========================
+   A (a_sub.css) - posterBox + gameBox
+========================= */
+
 /* 전체 Div*/
 .posterBox {
   background-color: var(--c-bg);
@@ -21,17 +27,13 @@ html {
 
 /* 배경 스틸컷 */
 .a_background_still {
-  /* 내부 요소 기준점 */
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
   position: absolute;
-  /* z-index: 1; */
   display: block;
-  /* background-size: cover; 와 동일 */
   object-fit: cover;
-  /* background-position: center; 와 동일 */
   object-position: center;
   opacity: 0.3;
 }
@@ -54,12 +56,9 @@ html {
 .a_movie_poster img {
   width: 100%;
   display: block;
-  /* 내부 여백 제거 */
   border-radius: 10%;
   filter: drop-shadow(var(--shadow50));
-  /* 그림자 효과 */
   object-fit: cover;
-  /* 이미지 꽉 채우기 */
 }
 
 /* 영화 세부 정보 틀*/
@@ -128,6 +127,8 @@ html {
   display: block;
   color: var(--c-font);
   font-size: var(--fs2);
+  line-height: 1.6;
+  font-weight: 300;
 }
 
 /* 스트리밍 가능 플랫폼 상자*/
@@ -215,7 +216,7 @@ html {
 
 /* 제목 (비로그인) */
 .a_balance_game_title_non_login h2 {
-  font-size: var(--fs4);
+  font-size: var(--fs3);
   color: var(--c-font);
   font-weight: 800;
   text-align: left;
@@ -229,12 +230,12 @@ html {
   border-radius: 15px;
   box-sizing: border-box;
   display: flex;
-  /* 왼쪽 카드를 위해 flex-start 유지 */
   justify-content: flex-start;
   align-items: flex-start;
   position: relative;
   z-index: 1;
   transition: background-color 0.3s;
+  cursor: pointer;
 }
 
 /* 왼쪽 카드 */
@@ -242,13 +243,12 @@ html {
   clip-path: polygon(0% 0%, 100% 0%, 70% 100%, 0% 100%);
   margin-right: -6%;
 }
+
 /* 오른쪽 카드 */
 .a_balance_card.right {
   clip-path: polygon(30% 0%, 100% 0%, 100% 100%, 0% 100%);
   margin-left: -6%;
 }
-
-/* 클릭했을 때 활성화 되는 테두리 제작.... */
 
 /* 카드 본체 활성화: 배경색 포인트색으로 변경 */
 .a_balance_card.active,
@@ -258,23 +258,17 @@ html {
   filter: none;
 }
 
-/* ::after  카드 본체 위에 덮어씌울 >>검은색<< 영역 */
+/* ::after  카드 본체 위에 덮어씌울 검은색 영역 */
 .a_balance_card::after {
   content: "";
   position: absolute;
   background-color: var(--c-bg);
-
-  /* 카드 본체보다 얇게 만들어서 테두리(카드 본체요!!) 노출 */
   top: 4px;
-  /* 테두리 두께 4px */
   left: 4px;
   right: 4px;
   bottom: 4px;
-
   border-radius: 12px;
-  /* 카드 본체(15px)보다 약간 작게 */
   z-index: 2;
-  /* 카드 본체(1)와 VS(10) 사이에 위치*/
   transition: background-color 0.3s;
 }
 
@@ -308,7 +302,7 @@ html {
   z-index: 10;
 }
 
-/* 카드 내부 아이콘 (공통) - 경고 속성 제거 */
+/* 카드 내부 아이콘 (공통) */
 .a_balance_card img.a_like_icon,
 .a_balance_card img.a_hate_icon {
   position: absolute;
@@ -356,7 +350,6 @@ html {
   width: 100%;
   text-align: center;
   margin: 5rem auto;
-  /* 기본 숨김 상태 */
   display: none;
 }
 
@@ -401,7 +394,6 @@ html {
   width: 170px;
   margin: 0 auto;
   flex-shrink: 0;
-  /* 고유 너비(150px) 지키는 용도입니당 */
 }
 
 /* 영화 포스터 이미지 */
@@ -442,7 +434,7 @@ html {
   white-space: nowrap;
 }
 
-/*  정보 보러 가기 버튼 */
+/* 정보 보러 가기 버튼 */
 .a_result_view_details_btn {
   text-decoration: none;
   color: var(--c-gray2);
@@ -498,8 +490,6 @@ html {
   border-radius: 15px;
   padding: 0 10px;
   height: 8rem;
-
-  /* Flexbox 설정: 아이콘 + 텍스트 블록 가운데 배치 */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -518,7 +508,6 @@ html {
   border-radius: 15px;
   width: 45px;
   height: 45px;
-  /* 아이콘 틀 크기 고정 및 축소 방지 */
   flex: 0 0 auto;
   display: flex;
   align-items: center;
@@ -543,18 +532,7 @@ html {
   display: block;
 }
 
-/*네비게이션 바 설정*/
-#bottom-nav {
-  border: none;
-  background: var(--c-gray);
-}
-
-#main_content {
-  padding-bottom: 120px;
-  /* 100~160 사이로 조절 */
-}
-
-/*네비게이션 바 설정*/
+/* 네비게이션/하단 여백 */
 #bottom-nav {
   border: none;
   background: var(--c-gray);
@@ -562,4 +540,572 @@ html {
 
 #main_content {
   padding-bottom: 120px; /* 100~160 사이로 조절 */
+}
+
+/* =========================
+   B (b_sub.css) - tabBox + review + media
+========================= */
+
+a {
+  text-decoration: none;
+}
+
+body {
+  background: var(--c-bg);
+}
+
+/* 탭 메뉴 */
+.tab_menu {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: var(--c-bg);
+  height: 50px;
+}
+
+/* 탭 기본 안 보이게 */
+.tab_content {
+  display: none;
+}
+
+/* 콘텐츠 정보 탭만 보이는 상태 */
+.tab_content.b_active {
+  display: block;
+}
+
+.tab_menu li {
+  flex: 1;
+  text-align: center;
+}
+
+.tab_menu button {
+  width: 100%;
+  height: 100%;
+  background: none;
+  color: var(--c-gray2);
+  font-size: var(--fs2);
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.tab_menu li.b_active button {
+  color: var(--c-main);
+  background-color: var(--c-gray);
+  height: 50px;
+}
+
+/* 탭1 콘텐츠 정보 영역 */
+#tab_info {
+  width: 100%;
+  background-color: var(--c-bg);
+  color: var(--c-font);
+  font-size: var(--fs2);
+  margin: 50px auto;
+}
+
+#tab_info h3 {
+  font-size: var(--fs3);
+  font-weight: bold;
+  text-align: center;
+  /* margin: 18px; */
+  margin-bottom: 25px;
+}
+
+/* 추천 버튼 영역 */
+.like_box {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 0 auto;
+  padding-bottom: 25px;
+}
+
+.like_box button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  height: 45px;
+  background-color: var(--c-gray);
+  border-radius: 10px;
+  border: none;
+  color: var(--c-gray2);
+  font-size: var(--fs2);
+  font-weight: bold;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.like_box button img {
+  width: 14px;
+  height: 14px;
+  transition: 0.3s;
+}
+
+/* 버튼 클릭 시 활성화 */
+.like_box button.active {
+  color: #49e99c;
+}
+
+/* 영화 메타정보 */
+.movie_meta {
+  display: block;
+  width: 90%;
+  padding-top: 12px;
+  list-style: none;
+  margin: 0 auto;
+}
+
+.movie_meta li {
+  margin-bottom: 6px;
+  font-size: var(--fs2);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+.movie_meta li strong {
+  display: inline-block;
+  width: 90px;
+  font-weight: bold;
+}
+
+/* 탭2 감상평 영역 */
+#tab_review {
+  width: 100%;
+  background-color: var(--c-bg);
+  color: var(--c-font);
+  margin: 50px auto;
+}
+
+/* 텍스트 기본 */
+#tab_review p,
+#tab_review span {
+  line-height: 1.6;
+}
+
+/* 공통 별 아이콘 */
+.star_rating {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.star_rating img {
+  width: 30px !important;
+  height: 30px !important;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.star_rating img:hover {
+  transform: scale(1.1);
+}
+
+/* 로그인된 상태 */
+.review_login {
+  background-color: var(--c-bg);
+  margin-bottom: 20px;
+  position: relative;
+  text-align: center;
+  display: none;
+}
+
+.review_login > p {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: var(--fs3);
+}
+
+.review_login strong {
+  font-weight: bold;
+}
+
+.review_login .nickname {
+  color: var(--c-main);
+}
+
+.review_login img {
+  width: 16px;
+  height: 16px;
+  margin-left: 5px;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+/* i 아이콘 팝업 */
+.iicon_popup {
+  /* 기본 숨김 상태 */
+  display: none;
+  position: relative;
+  margin: 0 auto;
+  top: 0px;
+  background-color: var(--c-bg);
+  border: 2px solid #3b393c;
+  border-radius: 10px;
+  padding: 15px;
+  font-size: var(--fs1);
+  color: var(--c-font);
+  line-height: 1.6;
+  z-index: 10;
+  text-align: center;
+  opacity: 50%;
+  width: 82%;
+}
+
+/* i 아이콘 팝업 노출 상태*/
+.iicon_popup.active {
+  display: block;
+}
+
+/* 입력 영역 */
+.review_input {
+  width: 90%;
+  height: 80px;
+  border-radius: 10px;
+  background-color: var(--c-gray);
+  color: var(--c-font);
+  padding: 15px;
+  font-size: var(--fs2);
+  resize: none;
+  margin: 0 auto;
+  border: none;
+  outline: none;
+  font-family: var(--font-main);
+  /* placeholder 폰트 다시 선언 */
+}
+
+/* 클릭했을 때도 테두리 선 안 보이게 */
+.review_input:focus {
+  border: none;
+  outline: none;
+}
+
+.review_input::placeholder {
+  color: var(--c-gray2);
+}
+
+.register_btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  background-color: var(--c-gray);
+  color: var(--c-gray2);
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: var(--fs2);
+  padding: 10px 20px;
+  margin: 12px auto 0;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.register_btn img {
+  width: 16px;
+  height: 16px;
+}
+
+/* 비로그인 상태 */
+.review_unlogin {
+  background-color: var(--c-bg);
+  margin-bottom: 20px;
+  position: relative;
+  display: block;
+  text-align: center;
+}
+
+.review_unlogin > p {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: var(--fs3);
+}
+
+.review_unlogin strong {
+  font-weight: bold;
+}
+
+.review_unlogin img {
+  width: 16px;
+  height: 16px;
+  margin-left: 5px;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.review_unlogin .star_rating img {
+  cursor: not-allowed;
+}
+
+/* 전체 리뷰 리스트 */
+.review_list {
+  background-color: var(--c-bg);
+  display: block;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.review_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+/* 전체 리뷰 */
+.review_header h3 {
+  font-size: var(--fs3);
+  font-weight: bold;
+}
+
+/* 최신순 */
+.sort_btn {
+  background: none;
+  border: none;
+  color: var(--c-gray2);
+  cursor: pointer;
+  font-size: var(--fs2);
+}
+
+.sort_btn img {
+  width: 12px;
+  height: 12px;
+  transform: rotate(90deg);
+}
+
+.review_item {
+  background-color: var(--c-bg);
+  width: 100%;
+  margin: 20px auto;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: var(--shadow50);
+}
+
+.review_info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.review_info img {
+  width: 25px;
+  height: 25px;
+}
+
+.list_nickname {
+  color: var(--c-font);
+  font-weight: 500;
+  font-size: var(--fs2);
+}
+
+.score img {
+  width: 13px;
+  height: 13px;
+  vertical-align: middle;
+  margin-right: 3px;
+}
+
+.score {
+  color: var(--c-point);
+  font-weight: bold;
+}
+
+.date {
+  color: var(--c-gray3);
+  font-size: var(--fs1);
+  margin-left: auto;
+}
+
+.review_text {
+  color: var(--c-font);
+  font-size: var(--fs2);
+  margin: 20px 0;
+  padding: 5px 0 20px 0;
+  border-bottom: 1px solid var(--c-gray);
+}
+
+.bookmark_btn {
+  background: none;
+  border: none;
+  color: var(--c-gray2);
+  font-size: var(--fs1);
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-left: auto;
+}
+
+.bookmark_btn img {
+  width: 12px;
+  height: 12px;
+}
+
+.more_btn {
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: var(--c-gray);
+  border: none;
+  border-radius: 10px;
+  color: var(--c-gray2);
+  padding: 20px;
+  margin: 25px 0 50px 0;
+  cursor: pointer;
+  font-size: var(--fs2);
+  font-weight: bold;
+}
+
+.more_btn img {
+  width: 12px;
+  height: 12px;
+  padding-top: 3px;
+}
+
+/* 로그인 후 별점 남긴 상태 */
+.review_edit {
+  width: 90%;
+  background-color: var(--c-bg);
+  margin: 30px auto;
+  display: none;
+}
+
+.review_edit h3 {
+  font-size: var(--fs3);
+  font-weight: bold;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.review_edit h3 strong {
+  color: var(--c-main);
+}
+
+.review_edit .star_rating {
+  margin-bottom: 30px;
+}
+
+.edit_btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  background-color: var(--c-gray);
+  color: var(--c-gray2);
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: var(--fs2);
+  padding: 10px 20px;
+  margin: 12px auto 0;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.edit_btn img {
+  width: 16px;
+  height: 16px;
+}
+
+/* 탭3 영상/이미지 영역 */
+#tab_media {
+  width: 90%;
+  max-width: 800px;
+  margin: 100px auto;
+  background-color: var(--c-bg);
+  color: var(--c-font);
+}
+
+/* 제목 (영상,이미지) */
+.media_title {
+  font-size: var(--fs3);
+  font-weight: bold;
+  margin: 50px 0 20px;
+}
+
+/* 영상 섹션 */
+.video_box {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  background-color: var(--c-bg);
+}
+
+.video_box iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 10px;
+}
+
+/* 스틸컷 섹션 */
+.stillcuts {
+  margin-top: 30px;
+}
+
+/* 큰 이미지 */
+.image_item.large {
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.image_item.large img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 하단 3분할 레이아웃 */
+.image_layout {
+  display: flex;
+  gap: 20px;
+}
+
+/* 왼쪽 큰 이미지 */
+.image_left {
+  flex: 1;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.image_left img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 오른쪽 두 개 이미지 */
+.image_right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+}
+
+.image_small {
+  flex: 1;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.image_small img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
