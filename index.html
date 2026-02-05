@@ -154,7 +154,11 @@
         </section>
 
         <!-- 요즘 대세 영화는? -->
-        <section class="hot-container bottom-padding" id="hot-movie">
+        <section
+          class="hot-container bottom-padding"
+          id="hot-movie"
+          data-type="movie"
+        >
           <div class="hot-title">
             <div class="hot-txt-box">
               <h3 class="hot-txt">요즘 대세 영화는?</h3>
@@ -258,8 +262,27 @@
             <!-- 포스터 영역 -->
             <div class="poster-wrap">
               <div class="poster-box">
-                <ul class="all-posters" id="posterList">
-                  <li class="all-poster">
+                <ul class="all-posters posterList">
+                  <li class="all-poster posterTemplate">
+                    <a data-role="link" href="">
+                      <img data-role="poster" src="" alt="" />
+                      <p class="poster-title" data-role="title"></p>
+                    </a>
+
+                    <div class="detail-box">
+                      <div class="date-box">
+                        <p>개봉일</p>
+                        <span data-role="date" class="date-detail"></span>
+                      </div>
+
+                      <div class="score-contain">
+                        <p class="score">별점</p>
+                        <ul class="score-box" data-role="stars"></ul>
+                      </div>
+                    </div>
+                  </li>
+
+                  <!-- <li class="all-poster">
                     <a data-role="link" href="">
                       <img
                         data-role="poster"
@@ -280,21 +303,6 @@
                       <div class="score-contain">
                         <p class="score">별점</p>
                         <ul class="score-box" data-role="stars">
-                          <!-- <li class="score">
-                            <img src="img/star_49E99C.png" alt="star" />
-                          </li>
-                          <li class="score">
-                            <img src="img/star_49E99C.png" alt="star" />
-                          </li>
-                          <li class="score">
-                            <img src="img/star_49E99C.png" alt="star" />
-                          </li>
-                          <li class="score">
-                            <img src="img/star_49E99C.png" alt="star" />
-                          </li>
-                          <li class="score">
-                            <img src="img/star_49E99C.png" alt="star" />
-                          </li> -->
                         </ul>
                       </div>
                     </div>
@@ -321,66 +329,10 @@
                       <div class="score-contain">
                         <p class="score">별점</p>
                         <ul class="score-box" data-role="stars">
-                          <!-- <li class="score">
-                            <img src="img/star_49E99C.png" alt="star" />
-                          </li>
-                          <li class="score">
-                            <img src="img/star_49E99C.png" alt="star" />
-                          </li>
-                          <li class="score">
-                            <img src="img/star_49E99C.png" alt="star" />
-                          </li>
-                          <li class="score">
-                            <img src="img/star_49E99C.png" alt="star" />
-                          </li>
-                          <li class="score">
-                            <img src="img/star_49E99C.png" alt="star" />
-                          </li> -->
                         </ul>
                       </div>
                     </div>
-                  </li>
-
-                  <li class="all-poster">
-                    <a data-role="link" href="">
-                      <img
-                        data-role="poster"
-                        src="img/poster/poster_헤어질결심.jpg"
-                        alt="헤어질결심"
-                      />
-                      <p class="poster-title" data-role="title">
-                        작품 제목이 들어갈 공간
-                      </p>
-                    </a>
-                    <div class="detail-box">
-                      <div class="date-box">
-                        <p>개봉일</p>
-                        <span data-role="date" class="date-detail"
-                          >0000.00.00</span
-                        >
-                      </div>
-                      <div class="score-contain">
-                        <p class="score">별점</p>
-                        <ul class="score-box" data-role="stars">
-                          <!-- <li class="score">
-                            <img src="img/star_49E99C.png" alt="star" />
-                          </li>
-                          <li class="score">
-                            <img src="img/star_49E99C.png" alt="star" />
-                          </li>
-                          <li class="score">
-                            <img src="img/star_49E99C.png" alt="star" />
-                          </li>
-                          <li class="score">
-                            <img src="img/star_49E99C.png" alt="star" />
-                          </li>
-                          <li class="score">
-                            <img src="img/star_49E99C.png" alt="star" />
-                          </li> -->
-                        </ul>
-                      </div>
-                    </div>
-                  </li>
+                  </li> -->
                 </ul>
               </div>
             </div>
@@ -388,7 +340,11 @@
         </section>
 
         <!-- 요즘 대세 드라마는? -->
-        <section class="hot-container bottom-padding" id="hot-drama">
+        <section
+          class="hot-container bottom-padding"
+          id="hot-drama"
+          data-type="drama"
+        >
           <div class="hot-title">
             <div class="hot-txt-box">
               <h3 class="hot-txt">요즘 대세 프로그램은?</h3>
@@ -396,7 +352,7 @@
             </div>
             <!-- 탭 버튼 -->
             <div class="hot-nav-container">
-              <div class="hot-wrap">
+              <div class="hot-wrap" data-type="drama">
                 <ul class="hot-nav-box">
                   <li class="hot-btn">
                     <button
@@ -889,7 +845,7 @@
     <script src="js/import.js"></script>
     <script defer src="js/genre-bubbles_edit.js"></script>
     <script defer src="js/genre-bubbles_boot.js"></script>
-    <script defer src="js/poster-data"></script>
+    <script defer src="js/data.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>
