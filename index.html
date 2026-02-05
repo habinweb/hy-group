@@ -448,114 +448,77 @@
             <!-- 포스터 영역 -->
             <div class="poster-wrap">
               <div class="poster-box">
-                <ul class="all-posters">
-                  <li class="all-poster">
-                    <a href="">
+                <ul class="all-posters posterList">
+                  <li class="all-poster posterTemplate">
+                    <a data-role="link" href="">
+                      <img data-role="poster" src="" alt="" />
+                      <p class="poster-title" data-role="title"></p>
+                    </a>
+
+                    <div class="detail-box">
+                      <div class="date-box">
+                        <p>개봉일</p>
+                        <span data-role="date" class="date-detail"></span>
+                      </div>
+
+                      <div class="score-contain">
+                        <p class="score">별점</p>
+                        <ul class="score-box" data-role="stars"></ul>
+                      </div>
+                    </div>
+                  </li>
+
+                  <!-- <li class="all-poster">
+                    <a data-role="link" href="">
                       <img
+                        data-role="poster"
                         src="img/poster/poster_헤어질결심.jpg"
-                        alt="hot-product"
+                        alt="헤어질결심"
                       />
-                      <p class="poster-title">작품 제목이 들어갈 공간</p>
+                      <p class="poster-title" data-role="title">
+                        작품 제목이 들어갈 공간
+                      </p>
                     </a>
                     <div class="detail-box">
                       <div class="date-box">
                         <p>개봉일</p>
-                        <span class="date-detail">0000.00.00</span>
+                        <span data-role="date" class="date-detail"
+                          >0000.00.00</span
+                        >
                       </div>
                       <div class="score-contain">
                         <p class="score">별점</p>
-                        <ul class="score-box">
-                          <li class="score">
-                            <img src="img/star_49E99C.png" alt="star" />
-                          </li>
-                          <li class="score">
-                            <img src="img/star_49E99C.png" alt="star" />
-                          </li>
-                          <li class="score">
-                            <img src="img/star_49E99C.png" alt="star" />
-                          </li>
-                          <li class="score">
-                            <img src="img/star_49E99C.png" alt="star" />
-                          </li>
-                          <li class="score">
-                            <img src="img/star_49E99C.png" alt="star" />
-                          </li>
+                        <ul class="score-box" data-role="stars">
                         </ul>
                       </div>
                     </div>
                   </li>
 
                   <li class="all-poster">
-                    <a href="">
+                    <a data-role="link" href="">
                       <img
+                        data-role="poster"
                         src="img/poster/poster_헤어질결심.jpg"
-                        alt="hot-product"
+                        alt="헤어질결심"
                       />
-                      <p class="poster-title">작품 제목이 들어갈 공간</p>
+                      <p class="poster-title" data-role="title">
+                        작품 제목이 들어갈 공간
+                      </p>
                     </a>
                     <div class="detail-box">
                       <div class="date-box">
                         <p>개봉일</p>
-                        <span class="date-detail">0000.00.00</span>
+                        <span data-role="date" class="date-detail"
+                          >0000.00.00</span
+                        >
                       </div>
                       <div class="score-contain">
                         <p class="score">별점</p>
-                        <ul class="score-box">
-                          <li class="score">
-                            <img src="img/star_49E99C.png" alt="star" />
-                          </li>
-                          <li class="score">
-                            <img src="img/star_49E99C.png" alt="star" />
-                          </li>
-                          <li class="score">
-                            <img src="img/star_49E99C.png" alt="star" />
-                          </li>
-                          <li class="score">
-                            <img src="img/star_49E99C.png" alt="star" />
-                          </li>
-                          <li class="score">
-                            <img src="img/star_49E99C.png" alt="star" />
-                          </li>
+                        <ul class="score-box" data-role="stars">
                         </ul>
                       </div>
                     </div>
-                  </li>
-
-                  <li class="all-poster">
-                    <a href="">
-                      <img
-                        src="img/poster/poster_헤어질결심.jpg"
-                        alt="hot-product"
-                      />
-                      <p class="poster-title">작품 제목이 들어갈 공간</p>
-                    </a>
-                    <div class="detail-box">
-                      <div class="date-box">
-                        <p>개봉일</p>
-                        <span class="date-detail">0000.00.00</span>
-                      </div>
-                      <div class="score-contain">
-                        <p class="score">별점</p>
-                        <ul class="score-box">
-                          <li class="score">
-                            <img src="img/star_49E99C.png" alt="star" />
-                          </li>
-                          <li class="score">
-                            <img src="img/star_49E99C.png" alt="star" />
-                          </li>
-                          <li class="score">
-                            <img src="img/star_49E99C.png" alt="star" />
-                          </li>
-                          <li class="score">
-                            <img src="img/star_49E99C.png" alt="star" />
-                          </li>
-                          <li class="score">
-                            <img src="img/star_49E99C.png" alt="star" />
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </li>
+                  </li> -->
                 </ul>
               </div>
             </div>
@@ -845,7 +808,7 @@
     <script src="js/import.js"></script>
     <script defer src="js/genre-bubbles_edit.js"></script>
     <script defer src="js/genre-bubbles_boot.js"></script>
-    <script defer src="js/data.js"></script>
+    <script type="module" src="js/page/home.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>
