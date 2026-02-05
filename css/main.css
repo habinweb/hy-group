@@ -270,7 +270,7 @@ canvas {
   z-index: 1;
 }
 
-.favorite-thing .blankbtn {
+.favorite-more .blankbtn {
   border: 2px solid var(--c-gray);
   border-radius: 10px;
   display: flex;
@@ -279,7 +279,7 @@ canvas {
   height: 75px;
 }
 
-.favorite-thing:last-child > a > img {
+.favorite-more > a > img {
   width: 15px;
   height: 15px;
 }
@@ -493,6 +493,9 @@ canvas {
   font-weight: 800;
   width: 172px;
   text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .all-poster a img {
@@ -596,6 +599,10 @@ canvas {
   color: var(--c-gray2);
   font-weight: 800;
   margin-bottom: 0.2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 95%;
 }
 .user-review {
   display: -webkit-box;
@@ -843,4 +850,11 @@ canvas {
 
 .bottom-padding {
   padding-bottom: 2rem;
+}
+
+#hot-genre,
+#hot-movie,
+#hot-drama,
+#user-review {
+  scroll-margin-top: 120px;
 }

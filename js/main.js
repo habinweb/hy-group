@@ -19,16 +19,17 @@ function headerMenu() {
 
 //좋아요 버튼
 function likeToggle() {
-  const on = "img/heart_49e99c.png";
-  const off = "img/heart_6f6c76.png";
+  document.addEventListener("click", (e) => {
+    const btn = e.target.closest(".likeBtn");
+    if (!btn) return;
 
-  document.querySelectorAll(".likeBtn").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const img = btn.querySelector("img");
-      if (!img) return;
+    const img = btn.querySelector("img");
+    if (!img) return;
 
-      img.src = img.src.includes("6f6c76") ? on : off;
-    });
+    const on = "img/heart_49e99c.png";
+    const off = "img/heart_6f6c76.png";
+
+    img.src = img.src.includes("heart_6f6c76") ? on : off;
   });
 }
 

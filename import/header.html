@@ -1,110 +1,126 @@
 <header id="header">
   <div class="header-container">
     <div class="headerbox">
-      <a href="index.php">
+      <a href="index.html">
         <img src="img/logo.png" alt="MOVEINlogo" />
       </a>
     </div>
 
     <div class="header-icon">
-      <img src="img/alarm_f5f5f5.png" alt="alarm" />
-      <img class="hambtn" src="img/hamburger_f5f5f5.png" alt="hamburger" />
+      <a
+        href="alarm.html"
+        class="alarm-btn"
+        aria-label="새로운 소식, 새 알림 있음"
+      >
+        <img src="img/alarm_f5f5f5.png" alt="" aria-hidden="true" />
+        <span class="alarm-badge" aria-hidden="true"></span>
+      </a>
+      <button type="button" class="hambtn">
+        <img
+          class="hambtn-img"
+          src="img/hamburger_f5f5f5.png"
+          alt="hamburger"
+        />
+      </button>
     </div>
 
-    <nav class="hamburger">
+    <nav class="hamburger" aria-label="전체 메뉴">
       <ul class="ham-title-box">
         <li class="ham-title">
-          <span>종류별</span>
-          <ul class="ham-sub-box">
-            <li class="ham-sub active">영화</li>
-            <li class="ham-sub">드라마</li>
-            <li class="ham-sub">예능</li>
-            <li class="ham-sub">다큐멘터리</li>
-            <li class="ham-sub">애니메이션</li>
-            <li class="ham-sub">스포츠</li>
+          <a href="index.html" class="main-link">트렌드</a>
+
+          <ul class="ham-sub-box" aria-label="트렌드 하위 메뉴">
+            <li class="ham-sub">
+              <a href="index.html#hot-genre" class="sub-link">지금 핫한 장르</a>
+            </li>
+            <li class="ham-sub">
+              <a href="index.html#hot-movie" class="sub-link"
+                >OTT별 뜨는 영화</a
+              >
+            </li>
+            <li class="ham-sub">
+              <a href="index.html#hot-drama" class="sub-link"
+                >OTT별 뜨는 드라마</a
+              >
+            </li>
+            <li class="ham-sub">
+              <a href="index.html#user-review" class="sub-link"
+                >무브오너들의 감상평</a
+              >
+            </li>
           </ul>
         </li>
 
         <li class="ham-title">
-          <span>OTT별</span>
-          <ul class="ham-sub-box">
-            <li class="ham-sub">넷플릭스</li>
-            <li class="ham-sub">쿠팡플레이</li>
-            <li class="ham-sub">티빙</li>
-            <li class="ham-sub">웨이브</li>
-            <li class="ham-sub">디즈니+</li>
-            <li class="ham-sub">왓챠</li>
-            <li class="ham-sub">기타</li>
+          <span class="main-link coming-soon">탐색</span>
+
+          <ul class="ham-sub-box" aria-label="탐색 하위 메뉴">
+            <li class="ham-sub">
+              <span class="sub-link coming-soon">오늘의 티켓 뽑기</span>
+            </li>
+            <li class="ham-sub">
+              <span class="sub-link coming-soon">취향 테스트</span>
+            </li>
+            <li class="ham-sub">
+              <span class="sub-link coming-soon">잔혹한 평점 속 보석 찾기</span>
+            </li>
           </ul>
         </li>
 
         <li class="ham-title">
-          <span>장르별</span>
-          <ul class="ham-sub-box">
-            <li class="ham-sub">로맨스</li>
-            <li class="ham-sub">액션</li>
-            <li class="ham-sub">스릴러</li>
-            <li class="ham-sub">코미디</li>
-            <li class="ham-sub">미스터리</li>
-            <li class="ham-sub">판타지</li>
+          <span class="main-link coming-soon">검색</span>
+
+          <ul class="ham-sub-box" aria-label="검색 하위 메뉴">
+            <li class="ham-sub">
+              <span class="sub-link coming-soon">통합 검색</span>
+            </li>
+            <li class="ham-sub">
+              <span class="sub-link coming-soon">필터별 검색</span>
+            </li>
           </ul>
         </li>
 
         <li class="ham-title">
-          <span>랭킹순</span>
-          <ul class="ham-sub-box">
-            <li class="ham-sub">조회수 랭킹순</li>
-            <li class="ham-sub">이용자 랭킹순</li>
+          <a href="form.html" class="main-link">계정관리</a>
+
+          <ul class="ham-sub-box" aria-label="계정관리 하위 메뉴">
+            <li class="ham-sub active">
+              <a href="form.html" class="sub-link">로그인</a>
+            </li>
+            <li class="ham-sub active">
+              <a href="register.html" class="sub-link">회원가입</a>
+            </li>
           </ul>
         </li>
 
         <li class="ham-title">
-          <span>평점순</span>
-          <ul class="ham-sub-box">
-            <li class="ham-sub">전체 평점순</li>
-            <li class="ham-sub">종류별 평점순</li>
-            <li class="ham-sub">OTT별 평점순</li>
-            <li class="ham-sub">장르별 평점순</li>
+          <span class="main-link coming-soon">커뮤니티</span>
+
+          <ul class="ham-sub-box active" aria-label="커뮤니티 하위 메뉴">
+            <li class="ham-sub">
+              <span class="sub-link coming-soon">무브오너 피드 보기</span>
+            </li>
           </ul>
         </li>
 
         <li class="ham-title">
-          <span>탐색</span>
-          <ul class="ham-sub-box">
-            <li class="ham-sub">오늘의 작품 티켓 뽑기</li>
-            <li class="ham-sub">밸런스 게임</li>
-            <li class="ham-sub">나만의 보석 찾기</li>
-          </ul>
-        </li>
+          <span class="main-link coming-soon">마이페이지</span>
 
-        <li class="ham-title">
-          <span>커뮤니티</span>
-          <ul class="ham-sub-box">
-            <li class="ham-sub">감상 피드</li>
-          </ul>
-        </li>
-
-        <li class="ham-title">
-          <span>마이페이지</span>
-          <ul class="ham-sub-box">
-            <li class="ham-sub">나의 수집함</li>
-            <li class="ham-sub">내가 남긴 여정</li>
-            <li class="ham-sub">선호 장르 관리</li>
-          </ul>
-        </li>
-
-        <li class="ham-title">
-          <span>로그인 설정</span>
-          <ul class="ham-sub-box">
-            <li class="ham-sub">로그인</li>
-            <li class="ham-sub">회원가입</li>
-            <li class="ham-sub">닉네임 변경</li>
-            <li class="ham-sub">비밀번호 변경</li>
+          <ul class="ham-sub-box" aria-label="마이페이지 하위 메뉴">
+            <li class="ham-sub">
+              <span class="sub-link coming-soon">수집한 티켓함</span>
+            </li>
+            <li class="ham-sub">
+              <span class="sub-link coming-soon">내가 남긴 여정</span>
+            </li>
+            <li class="ham-sub">
+              <span class="sub-link coming-soon">선호 작품 관리</span>
+            </li>
           </ul>
         </li>
       </ul>
       <!-- 실제로 햄버거 메뉴 안에서 표시할 보이는 푸터(푸터로 인식되지 않음) -->
-      <section class="footer">
+      <div class="footer">
         <div class="pf-foot">
           <p class="foot-one">
             © 2025 MOVEON Project. Designed & Developed by Team MOVEON.
@@ -121,7 +137,7 @@
           <p>For educational and portfolio purposes only.</p>
           <p>본 사이트는 포트폴리오 및 학습 목적으로 제작되었습니다.</p>
         </div>
-      </section>
+      </div>
     </nav>
   </div>
 </header>
