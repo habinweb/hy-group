@@ -1187,3 +1187,20 @@ body {
   background: var(--c-main);
   color: var(--c-font);
 }
+
+/* 헤더 아이콘 확인용 */
+button.hambtn {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  line-height: 0;
+  cursor: pointer;
+}
+
+button.hambtn img,
+button.hambtn .hambtn-img {
+  display: block;
+  width: 18px;
+  height: 18px;
+}
