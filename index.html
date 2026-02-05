@@ -55,7 +55,7 @@
         <section class="favorite bottom-padding">
           <div class="favorite-txt-box">
             <p class="favorite-txt">
-              <span class="input">드라마 </span
+              <span class="input" data-role="genre">드라마 </span
               ><span>장르를 좋아하신다면, 이건 어때요?</span>
             </p>
           </div>
@@ -322,7 +322,7 @@
 
             <div class="detail-box">
               <div class="date-box">
-                <p>개봉일</p>
+                <p>방영일</p>
                 <span data-role="date" class="date-detail"></span>
               </div>
 
@@ -346,37 +346,7 @@
               <!-- 데이터 첨부 필요 -->
               <div class="review-wrap">
                 <ul class="review-card-box" id="reviewCardBox">
-                  <li class="review-card">
-                    <!-- 리뷰피드로 연결되는 a묶음 (구현 미정) -->
-                    <a href="" class="review">
-                      <!-- 작품 데이터가 들어가야 합니다 -->
-                      <div class="left-box">
-                        <img
-                          data-role="poster"
-                          src="img/poster/poster_3인의기사.jpg"
-                          alt="poster"
-                        />
-                      </div>
-                      <div class="right-box">
-                        <p class="work-name" data-role="title">
-                          작품 제목이 들어가는 곳
-                        </p>
-                        <p class="user-review">
-                          유저들의 리뷰가 들어가야 하는 곳으로 두줄까지 출력되며
-                          두 줄 이상은 줄바꿈으로 처리됩니다 유저들의 리뷰가
-                          들어가야 하는 곳으로 두줄까지 출력되며 두 줄 이상은
-                          줄바꿈으로 처리됩니다 css 참고
-                        </p>
-                        <div class="user-box">
-                          <img src="img/user_6F6C76.png" alt="user icon" />
-                          <p class="user-nick">한글 아이디</p>
-                          <span>님의 감상</span>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-
-                  <li class="review-card">
+                  <!-- <li class="review-card">
                     <a href="" class="review">
                       <div class="left-box">
                         <img
@@ -397,8 +367,33 @@
                         </div>
                       </div>
                     </a>
-                  </li>
+                  </li> -->
                 </ul>
+                <template id="reviewCardTemplate">
+                  <li class="review-card">
+                    <!-- 리뷰피드로 연결되는 a묶음 (구현 미정) -->
+                    <a href="" class="review" data-role="link">
+                      <!-- 작품 데이터가 들어가야 합니다 -->
+                      <div class="left-box">
+                        <img data-role="poster" src="" alt="" />
+                      </div>
+                      <div class="right-box">
+                        <p class="work-name" data-role="title"></p>
+                        <p class="user-review">
+                          유저들의 리뷰가 들어가야 하는 곳으로 두줄까지 출력되며
+                          두 줄 이상은 줄바꿈으로 처리됩니다 유저들의 리뷰가
+                          들어가야 하는 곳으로 두줄까지 출력되며 두 줄 이상은
+                          줄바꿈으로 처리됩니다 css 참고
+                        </p>
+                        <div class="user-box">
+                          <img src="img/user_6F6C76.png" alt="user icon" />
+                          <p class="user-nick">한글 아이디</p>
+                          <span>님의 감상</span>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                </template>
               </div>
 
               <!-- 감상평 남기기 버튼. 로그인이 되어 있지 않을 때에는 로그인 창으로 넘어간다 -->

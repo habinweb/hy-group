@@ -493,6 +493,9 @@ canvas {
   font-weight: 800;
   width: 172px;
   text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .all-poster a img {
@@ -596,6 +599,10 @@ canvas {
   color: var(--c-gray2);
   font-weight: 800;
   margin-bottom: 0.2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 95%;
 }
 .user-review {
   display: -webkit-box;
