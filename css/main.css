@@ -1,36 +1,56 @@
-*,
-*::after,
-*::before {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body,
-html {
-  overflow-x: hidden;
-  font-family: var(--font-main);
-  font-size: var(--fs2);
-  background: var(--c-bg);
-}
-
-p,
-button,
-span,
-h1,
-h2,
-h3,
-h4,
-h5 {
-  font-family: var(--font-main);
-}
-
 body.lock {
   overflow: hidden;
 }
 
 .loginBtn > a {
   color: var(--c-main);
+}
+/* ============= 검색창 ============= */
+.search-f {
+  width: 90%;
+  margin: 0 auto;
+  position: relative;
+  top: 70px;
+  height: 40px;
+  border-radius: 50px;
+  background: var(--c-gray);
+  display: flex;
+  align-items: center;
+}
+
+.search-box {
+  position: absolute;
+  width: 100%;
+  margin: 0 auto;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.search-btn {
+  background: var(--c-gray2);
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+}
+
+.search-btn-img {
+  height: 14px;
+  width: 14px;
+}
+
+.search-in {
+  font-size: var(--fs2);
+  padding-left: 0.5rem;
+  color: var(--c-gray2);
+  letter-spacing: 0;
 }
 
 /* 이미지 드래그 막아 가로 스크롤 방해 없게 2025.11.14 김하빈 수정 */
@@ -56,56 +76,6 @@ button {
 #container {
   width: 100%;
   background: var(--c-bg);
-}
-
-/* ============= 검색창 ============= */
-.search-f {
-  width: 90%;
-  margin: 0 auto;
-  position: relative;
-  top: 70px;
-  height: 40px;
-  border-radius: 50px;
-  background: var(--c-gray);
-  display: flex;
-  align-items: center;
-}
-
-.search-box {
-  position: absolute;
-  width: 100%;
-  margin: 0 auto;
-  padding: 6px;
-  display: flex;
-  gap: 5px;
-  left: 50%;
-  top: 50%;
-  transform: translateX(-50%) translateY(-50%);
-}
-
-.search-f button {
-  background: var(--c-gray2);
-  width: 30px;
-  height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50px;
-}
-
-.search-f button img {
-  height: 14px;
-  width: 14px;
-}
-
-.search-in {
-  border: none;
-  width: 90%;
-  font-size: var(--fs2);
-  background: transparent;
-  padding-left: 0.5rem;
-  border-radius: 50px;
-  font-family: var(--font-main);
 }
 
 /* 닉네임 활성화 칸 */
@@ -321,7 +291,6 @@ canvas {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1.5rem;
-  font-weight: 900;
   letter-spacing: -0.05rem;
 }
 
@@ -330,9 +299,10 @@ canvas {
   height: 10px;
 }
 
-.hot-txt-box h3 {
+.hot-txt {
   color: var(--c-font);
   font-size: var(--fs4);
+  font-weight: 800;
 }
 
 /* ott선택 버튼 */
