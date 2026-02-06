@@ -71,6 +71,7 @@ h5 {
   margin: 0;
 }
 .hambtn {
+  cursor: pointer;
   display: block;
   width: 18px;
   height: 18px;
@@ -92,6 +93,9 @@ h5 {
   background: var(--c-main);
   border-radius: 10px;
   border: 1.5px solid var(--c-bg);
+}
+.alarm-btn.is-read .alarm-badge {
+  display: none;
 }
 
 /* ============= 햄버거 ============= */
