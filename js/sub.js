@@ -60,56 +60,133 @@ $(function () {
   });
 
   /* =========================
-    감상평 드롭다운 정렬
+    감상평 버튼(더보기/접기) + 드롭다운 정렬(개수 유지)
   ========================= */
 
-  $(function () {
-    // 정렬 버튼 클릭 -> 드롭다운 동작
-    $(".sort_btn").click(() => $(".sort_wrap").toggleClass("open"));
+  // 상태값: 현재 몇 개 보여줄지
+  let visibleCount = 3;
+  const STEP = 3;
 
-    // 정렬 옵션 클릭
-    $(".sort_option").click(function () {
-      const type = $(this).data("sort"); // latest / rating / bookmark
+  // 리뷰 li들 현재 DOM 순서 기준으로 visibleCount만큼!! 보이게
+  function applyVisibleCount() {
+    const $items = $(".review_list .review_item");
+    const total = $items.length;
 
-      // 버튼 텍스트 변경
-      $(".sort_label").text($(this).text());
+    // 안전장치: total보다 더 크게 잡히면 total로 제한
+    if (visibleCount > total) visibleCount = total;
 
-      // 드롭다운 닫기
-      $(".sort_wrap").removeClass("open");
+    $items.hide();
+    $items.slice(0, visibleCount).show();
 
-      // 리뷰 리스트 ul
-      const $ul = $(".review_list > ul");
+    // 버튼 텍스트: 전부 보이면 "접기", 아니면 "더보기"
+    if (total <= STEP) {
+      // 3개 이하라면 버튼 숨겨도 됨(원하면 display만 조절)
+      $(".more_btn").hide();
+    } else {
+      $(".more_btn").show();
+      $(".more_btn")
+        .contents()
+        .filter(function () {
+          return this.nodeType === 3; // 텍스트 노드
+        })
+        .first()
+        .replaceWith(visibleCount >= total ? "접기 " : "더보기 ");
+    }
+  }
 
-      // 정렬 대상 리뷰 li들
-      const items = $ul.children(".review_item").get();
+  // 현재 선택된 정렬 타입으로 전체 리뷰 정렬해서 DOM 재배치
+  function sortReviews(type) {
+    const $ul = $(".review_list > ul");
+    const items = $ul.children(".review_item").get();
 
-      // 정렬 기준에 따라 li 순서 변경
-      items.sort((a, b) => {
-        // 최신순
-        if (type === "latest")
-          return (
-            parseInt($(a).find(".date").text()) -
-            parseInt($(b).find(".date").text())
-          );
+    // 값 파싱 함수들
+    const getDays = (li) => {
+      // 7일 전 -> 7
+      const t = $(li).find(".date").text();
+      const n = parseInt(t, 10);
+      return Number.isNaN(n) ? 999999 : n;
+    };
 
-        // 별점순
-        if (type === "rating")
-          return (
-            parseFloat($(b).find(".score").text()) -
-            parseFloat($(a).find(".score").text())
-          );
+    const getRating = (li) => {
+      const t = $(li).find(".score").clone().children().remove().end().text();
+      const n = parseFloat(t);
+      return Number.isNaN(n) ? -999999 : n;
+    };
 
-        // 북마크순
-        if (type === "bookmark")
-          return (
-            parseInt($(b).find(".bookmark_btn").text()) -
-            parseInt($(a).find(".bookmark_btn").text())
-          );
-      });
+    const getBookmark = (li) => {
+      const t = $(li)
+        .find(".bookmark_btn")
+        .clone()
+        .children()
+        .remove()
+        .end()
+        .text();
+      const n = parseInt(t.replace("+", "").trim(), 10);
+      return Number.isNaN(n) ? -999999 : n;
+    };
 
-      // 정렬된 순서로 다시 DOM에 삽입
-      $ul.append(items);
+    items.sort((a, b) => {
+      // 최신순: "일 전" 숫자가 작을수록 더 최신(1일 전이 최상단)
+      if (type === "latest") return getDays(a) - getDays(b);
+
+      // 별점순: 큰 값이 위로
+      if (type === "rating") return getRating(b) - getRating(a);
+
+      // 북마크순: 큰 값이 위로
+      if (type === "bookmark") return getBookmark(b) - getBookmark(a);
+
+      return 0;
     });
+
+    $ul.append(items);
+
+    // 정렬 후에도 현재 펼쳐진 개수 유지!!
+    applyVisibleCount();
+  }
+
+  // 처음엔 3개만 보이게
+
+  applyVisibleCount();
+
+  // 더보기/접기 버튼
+  $(".review_list").on("click", ".more_btn", function () {
+    const total = $(".review_list .review_item").length;
+
+    if (visibleCount >= total) {
+      // 접기
+      visibleCount = STEP;
+    } else {
+      // 더보기
+      visibleCount += STEP;
+    }
+    applyVisibleCount();
+  });
+
+  // 드롭다운 열고 닫기
+  $(".review_list").on("click", ".sort_btn", function () {
+    $(".sort_wrap").toggleClass("open");
+  });
+
+  // 정렬 옵션 클릭
+  $(".review_list").on("click", ".sort_option", function () {
+    const type = $(this).data("sort"); // latest / rating / bookmark
+
+    // 버튼 라벨 변경
+    $(".sort_label").text($(this).text());
+
+    // 드롭다운 닫기
+    $(".sort_wrap").removeClass("open");
+
+    // 정렬 실행 (개수 유지 포함)
+    sortReviews(type);
+  });
+
+  // 바깥 클릭하면 드롭다운 닫기
+  $(document).on("click", function (e) {
+    // sort_wrap 밖을 클릭했을 때만 닫기
+    if ($(e.target).closest(".sort_wrap").length === 0) {
+      $(".sort_wrap").removeClass("open");
+    }
   });
 
   /* =========================
