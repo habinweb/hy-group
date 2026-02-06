@@ -345,30 +345,7 @@
             <div class="review-container">
               <!-- 데이터 첨부 필요 -->
               <div class="review-wrap">
-                <ul class="review-card-box" id="reviewCardBox">
-                  <!-- <li class="review-card">
-                    <a href="" class="review">
-                      <div class="left-box">
-                        <img
-                          src="img/poster/poster_3인의기사.jpg"
-                          alt="poster"
-                        />
-                      </div>
-                      <div class="right-box">
-                        <p class="work-name">작품 제목이 들어가는 곳</p>
-                        <p class="user-review">
-                          유저들의 리뷰가 들어가야 하는 곳으로 두줄까지 출력되며
-                          두 줄 이상은 줄바꿈으로 처리됩니다
-                        </p>
-                        <div class="user-box">
-                          <img src="img/user_6F6C76.png" alt="user icon" />
-                          <p class="user-nick">한글 아이디</p>
-                          <span>님의 감상</span>
-                        </div>
-                      </div>
-                    </a>
-                  </li> -->
-                </ul>
+                <ul class="review-card-box" id="reviewCardBox"></ul>
                 <template id="reviewCardTemplate">
                   <li class="review-card">
                     <!-- 리뷰피드로 연결되는 a묶음 (구현 미정) -->
@@ -379,15 +356,10 @@
                       </div>
                       <div class="right-box">
                         <p class="work-name" data-role="title"></p>
-                        <p class="user-review">
-                          유저들의 리뷰가 들어가야 하는 곳으로 두줄까지 출력되며
-                          두 줄 이상은 줄바꿈으로 처리됩니다 유저들의 리뷰가
-                          들어가야 하는 곳으로 두줄까지 출력되며 두 줄 이상은
-                          줄바꿈으로 처리됩니다 css 참고
-                        </p>
+                        <p class="user-review" data-role="reviewText"></p>
                         <div class="user-box">
                           <img src="img/user_6F6C76.png" alt="user icon" />
-                          <p class="user-nick">한글 아이디</p>
+                          <p class="user-nick" data-role="reviewUser"></p>
                           <span>님의 감상</span>
                         </div>
                       </div>
