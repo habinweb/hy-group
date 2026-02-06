@@ -13,22 +13,219 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   </head>
 
-  <body class="alarm">
+  <body class="search">
     <div id="header-slot"></div>
-    <form class="search-f">
-      <label for="search" class="search skip">검색어 입력</label>
+
+    <!-- 검색 폼 -->
+    <form class="search-f" action="" method="get" role="search">
+      <label for="search" class="skip">검색어 입력</label>
       <div class="search-box">
-        <button>
-          <img src="img/search_3B393C.png" alt="search_btn" />
-        </button>
         <input
+          data-role="userInputText"
           class="search-in"
-          type="text"
+          type="search"
           id="search"
+          name="q"
+          autocomplete="off"
           placeholder="당신의 마음을 뒤흔들 작품을 검색해보세요"
         />
+        <button class="search-btn" type="submit" aria-label="검색">
+          <img src="img/search_3B393C.png" alt="" />
+        </button>
       </div>
     </form>
+
+    <section id="user-output-container" class="search-section-box">
+      <div class="user-output-title-box">
+        <p class="user-output-title">최근 검색어</p>
+        <button type="button" class="user-output-delete">전체 삭제</button>
+      </div>
+      <ul class="user-output-box" data-role="recentList">
+        <li class="user-output-item">
+          <span class="user-output-text">심부름을 가자</span>
+          <button
+            type="button"
+            class="user-output-remove"
+            aria-label="검색어 삭제"
+          >
+            <img class="user-output-remove-img" src="img/close_6f6c76.png" />
+          </button>
+        </li>
+        <li class="user-output-item">
+          <span class="user-output-text">모던 패밀리</span>
+          <button
+            type="button"
+            class="user-output-remove"
+            aria-label="검색어 삭제"
+          >
+            <img class="user-output-remove-img" src="img/close_6f6c76.png" />
+          </button>
+        </li>
+        <li class="user-output-item">
+          <span class="user-output-text">겨울왕국</span>
+          <button
+            type="button"
+            class="user-output-remove"
+            aria-label="검색어 삭제"
+          >
+            <img class="user-output-remove-img" src="img/close_6f6c76.png" />
+          </button>
+        </li>
+        <li class="user-output-item">
+          <span class="user-output-text">불량소녀 모모코</span>
+          <button
+            type="button"
+            class="user-output-remove"
+            aria-label="검색어 삭제"
+          >
+            <img class="user-output-remove-img" src="img/close_6f6c76.png" />
+          </button>
+        </li>
+        <li class="user-output-item">
+          <span class="user-output-text">인터스텔라</span>
+          <button
+            type="button"
+            class="user-output-remove"
+            aria-label="검색어 삭제"
+          >
+            <img class="user-output-remove-img" src="img/close_6f6c76.png" />
+          </button>
+        </li>
+      </ul>
+    </section>
+
+    <!-- 자.만.추 -->
+    <section class="a_recommend_section">
+      <h3 class="a_recommend_title">취향.자.만.추 여기에서 하세요</h3>
+
+      <!-- 자.만.추 영역 -->
+      <div class="a_recommend_cards_container">
+        <!-- 티켓 뽑기 -->
+        <a href="#" class="a_recommend_ticket card">
+          <div class="a_card_icon_wrap">
+            <img src="img/game1.svg" alt="티켓 아이콘" />
+          </div>
+          <p>
+            <span class="a_card_text_value">오늘의 작품<br />티켓 뽑기</span>
+          </p>
+        </a>
+
+        <!-- 밸런스 게임 -->
+        <a href="#" class="a_recommend_balance card">
+          <div class="a_card_icon_wrap">
+            <img src="img/game2.svg" alt="그래프 아이콘" />
+          </div>
+          <p>
+            <span class="a_card_text_value">밸런스<br />게임</span>
+          </p>
+        </a>
+        <!-- 보석 찾기 -->
+        <a href="#" class="a_recommend_cardgem_finder card">
+          <div class="a_card_icon_wrap img-size">
+            <img src="img/game3.png" alt="보석찾기 아이콘" />
+          </div>
+          <p>
+            <span class="a_card_text_value"
+              >잔혹한 평점 속, 나만의 보석 찾기</span
+            >
+          </p>
+        </a>
+      </div>
+    </section>
+    <section class="search-section-box hot-search">
+      <div class="user-output-title-box">
+        <p class="user-output-title">가장 많이 검색된 작품</p>
+      </div>
+
+      <div class="hot-search-container">
+        <ul class="hot-search-list">
+          <li class="hot-search-item">
+            <a class="hot-search-link" href="detail.html">
+              <img
+                class="hot-search-poster"
+                src="img/poster/poster_겨울왕국.jpg"
+                alt="겨울 왕국"
+              />
+            </a>
+          </li>
+          <li class="hot-search-item">
+            <a class="hot-search-link" href="detail.html">
+              <img
+                class="hot-search-poster"
+                src="img/poster/poster_컨택트.jpg"
+                alt="겨울 왕국"
+              />
+            </a>
+          </li>
+          <li class="hot-search-item">
+            <a class="hot-search-link" href="detail.html">
+              <img
+                class="hot-search-poster"
+                src="img/poster/poster_닥터스트레인지.jpg"
+                alt="겨울 왕국"
+              />
+            </a>
+          </li>
+          <li class="hot-search-item">
+            <a class="hot-search-link" href="detail.html">
+              <img
+                class="hot-search-poster"
+                src="img/poster/poster_언내추럴.jpg"
+                alt="겨울 왕국"
+              />
+            </a>
+          </li>
+          <li class="hot-search-item">
+            <a class="hot-search-link" href="detail.html">
+              <img
+                class="hot-search-poster"
+                src="img/poster/poster_인터스텔라.jpg"
+                alt="겨울 왕국"
+              />
+            </a>
+          </li>
+          <li class="hot-search-item">
+            <a class="hot-search-link" href="detail.html">
+              <img
+                class="hot-search-poster"
+                src="img/poster/poster_존오브인터레스트.jpg"
+                alt="겨울 왕국"
+              />
+            </a>
+          </li>
+          <li class="hot-search-item">
+            <a class="hot-search-link" href="detail.html">
+              <img
+                class="hot-search-poster"
+                src="img/poster/poster_8번출구.jpg"
+                alt="겨울 왕국"
+              />
+            </a>
+          </li>
+          <li class="hot-search-item">
+            <a class="hot-search-link" href="detail.html">
+              <img
+                class="hot-search-poster"
+                src="img/poster/poster_달까지가자.jpg"
+                alt="겨울 왕국"
+              />
+            </a>
+          </li>
+          <li class="hot-search-item">
+            <a class="hot-search-link" href="detail.html">
+              <img
+                class="hot-search-poster"
+                src="img/poster/poster_어쩔수가없다.jpg"
+                alt="겨울 왕국"
+              />
+            </a>
+          </li>
+
+          <!-- 8개 더 반복 -->
+        </ul>
+      </div>
+    </section>
+
     <div id="bottom-nav"></div>
 
     <script src="js/import.js"></script>
