@@ -40,6 +40,7 @@ $(function () {
     });
   });
 });
+
 // 하단바 루트 연결
 $(function () {
   $("#bottom-nav").load("import/bottom-nav.html", function () {
@@ -48,18 +49,8 @@ $(function () {
 
     const botNavs = container.querySelectorAll(".bot-nav-icon");
     const botImgs = container.querySelectorAll(".bot-nav-icon img");
+    const botLinks = container.querySelectorAll(".bottom-btn");
 
-    // li / img 개수 체크
-    if (botNavs.length !== 5 || botImgs.length !== 5) {
-      console.error(
-        "하단바 li/img 개수가 5가 아님:",
-        botNavs.length,
-        botImgs.length,
-      );
-      return;
-    }
-
-    // ▷ 비활성(기본) 이미지 경로
     const defaultSrcs = [
       "img/home_6f6c76.png",
       "img/spark_6f6c76.png",
@@ -68,7 +59,6 @@ $(function () {
       "img/login_6f6c76.png",
     ];
 
-    // ▷ 활성 이미지 경로
     const activeSrcs = [
       "img/home_f5f5f5.png",
       "img/spark_f5f5f5.png",
@@ -78,10 +68,9 @@ $(function () {
     ];
 
     function setActive(activeIndex) {
-      for (let i = 0; i < 5; i++) {
+      for (let i = 0; i < botNavs.length; i++) {
         const li = botNavs[i];
         const img = botImgs[i];
-
         if (!li || !img) continue;
 
         if (i === activeIndex) {
@@ -94,16 +83,15 @@ $(function () {
       }
     }
 
-    // 처음 로딩 시: 0번(home) 활성화
-    setActive(0);
+    const current = location.pathname.split("/").pop() || "index.html";
+    let activeIndex = 0;
 
-    // 클릭 시
-    botNavs.forEach((nav, i) => {
-      nav.addEventListener("click", () => {
-        setActive(i);
-      });
+    botLinks.forEach((btn, i) => {
+      if (btn.tagName === "A" && btn.getAttribute("href") === current) {
+        activeIndex = i;
+      }
     });
+
+    setActive(activeIndex);
   });
 });
-
-console.log("페이지가 로드되었습니다.");
