@@ -19,20 +19,17 @@
       <div id="header-slot"></div>
 
       <!-- 검색창 -->
-      <form class="search-f">
-        <label for="search" class="search skip">검색어 입력</label>
+      <a class="search-f" href="search.html" aria-label="검색 페이지로 이동">
         <div class="search-box">
-          <button>
-            <img src="img/search_3B393C.png" alt="search_btn" />
-          </button>
-          <input
-            class="search-in"
-            type="text"
-            id="search"
-            placeholder="당신의 마음을 뒤흔들 작품을 검색해보세요"
-          />
+          <span class="search-btn" aria-hidden="true">
+            <img class="search-btn-img" src="img/search_3B393C.png" alt="" />
+          </span>
+
+          <span class="search-in" aria-hidden="true">
+            당신의 마음을 뒤흔들 작품을 검색해보세요
+          </span>
         </div>
-      </form>
+      </a>
 
       <div class="user-txt-box" id="hot-genre">
         <h2 class="user-txt">

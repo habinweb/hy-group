@@ -1,0 +1,49 @@
+/* ============= 검색창 ============= */
+.search-f {
+  width: 90%;
+  margin: 0 auto;
+  position: relative;
+  top: 70px;
+  height: 40px;
+  border-radius: 50px;
+  background: var(--c-gray);
+  display: flex;
+  align-items: center;
+}
+
+.search-box {
+  position: absolute;
+  width: 100%;
+  margin: 0 auto;
+  padding: 6px;
+  display: flex;
+  gap: 5px;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.search-f button {
+  background: var(--c-gray2);
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+}
+
+.search-f button img {
+  height: 14px;
+  width: 14px;
+}
+
+.search-in {
+  border: none;
+  width: 90%;
+  font-size: var(--fs2);
+  background: transparent;
+  padding-left: 0.5rem;
+  border-radius: 50px;
+  font-family: var(--font-main);
+}
