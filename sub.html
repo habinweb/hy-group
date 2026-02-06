@@ -1,0 +1,866 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sub (A+B)</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/root.css" />
+    <link rel="stylesheet" href="css/import.css" />
+    <link rel="stylesheet" href="css/ab_sub.css" />
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- 헤더/푸터 삽입 -->
+    <script src="js/import.js"></script>
+    <!-- <script src="js/sub.js"></script> -->
+    <!-- 데이터 연결 + 페이지 로직 -->
+    <script type="module" src="js/sub.js"></script>
+    <!-- <script src="js/babel.min.js"></script> -->
+  </head>
+
+  <body class="sub-body">
+    <!--헤더-->
+    <div id="header-slot"></div>
+
+    <!--메인 컨텐츠-->
+    <div id="main_content">
+      <!--메인1 (a_여진)-->
+      <div class="posterBox">
+        <!-- 배경 이미지 스틸컷 -->
+        <img
+          src="img/stillcut/stillcut_헤어질결심.jpg"
+          alt="영화 배경 스틸컷"
+          class="a_background_still"
+          data-role="optional"
+        />
+        <!-- 더미 테이터 생길 시 이름 수정 -->
+
+        <!-- 메인 포스터, 제목 등 세부 정보 데이터 -->
+        <div class="a_movie_meta_wrap">
+          <!-- 세부 데이터 그룹 틀 ( flex 적용 )-->
+          <div class="a_info_group">
+            <!--  메인 포스터 영역 -->
+            <div class="a_movie_poster">
+              <img
+                src="img/poster/poster_헤어질결심.jpg"
+                alt="포스터1"
+                data-role="poster"
+              />
+            </div>
+
+            <!-- 영화 제목 + 세부 정보 + 별점 -->
+            <div class="a_meta_data">
+              <!-- 세부 텍스트 그룹 -->
+              <div class="a_movie_info_text">
+                <!-- 영화 제목-->
+                <h1>
+                  <span class="a_movie_title_value" data-role="title">
+                    헤어질 결심
+                  </span>
+                </h1>
+                <!-- 세부 정보 -->
+                <p>
+                  <span class="a_details_value" data-role="optional">
+                    <!-- 더미 테이터 생길 시 이름 수정 -->
+                    15세 · 2022 · 영화 · 로맨스/멜로 138분</span
+                  >
+                </p>
+              </div>
+
+              <!-- 평가 + 별점 -->
+              <div class="a_ratings">
+                <!-- 평점 -->
+                <p class="a_rating_percent">
+                  <img
+                    src="img/like_icon_49E99C.png"
+                    class="a_icon_like"
+                    alt="좋아요 아이콘"
+                  />
+                  <span class="rating_value">80.2%</span>
+                  <img
+                    src="img/i_6f6c76.png"
+                    class="a_icon_info"
+                    alt="정보 아이콘"
+                  />
+                </p>
+                <!-- 별점 -->
+                <p class="a_star_rating">
+                  <img
+                    src="img/star_49E99C.png"
+                    class="a_icon_star"
+                    alt="별점 아이콘"
+                  />
+                  <span class="star_value" data-role="rating">4.8</span>
+                </p>
+              </div>
+            </div>
+
+            <!-- 영화 줄거리 -->
+            <div class="a_movie_forms">
+              <p>
+                <span class="a_plot_value" data-role="plot">
+                  산 정상에서 남편이 추락사한 뒤, 담담한 아내 ‘서래’는
+                  용의선상에 오른다. 수사를 맡은 형사 ‘해준’은 그녀를
+                  의심하면서도 점점 끌리게 된다. 의심과 사랑이 교차하는 두
+                  사람의 위험한 관계가 시작된다.
+                </span>
+              </p>
+
+              <button type="button" class="a_plot_toggle_btn">더보기</button>
+            </div>
+
+            <!-- 스트리밍 가능 플랫폼 -->
+            <div class="a_movie_ott_platforms">
+              <div class="a_movie_ott_platforms_wrap">
+                <!-- 왼쪽 스트리밍 아이콘 -->
+                <div class="a_movie_streaming_icon">
+                  <img src="img/streaming_f5f5f5.png" alt="스트리밍_아이콘" />
+                </div>
+
+                <!-- 오른쪽 플랫폼 아이콘-->
+                <ul class="a_streaming_icon" data-role="optional">
+                  <!-- 더미 데이터 추가될 시 수정 -->
+                  <li>
+                    <a href="#" target="_blank">
+                      <img src="img/disney.png" alt="플랫폼_1" />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" target="_blank">
+                      <img src="img/TVING.png" alt="플랫폼_2" />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" target="_blank">
+                      <img src="img/watcha.png" alt="플랫폼_3" />
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- a_info_group 끝 -->
+        </div>
+        <!-- a_movie_meta_wrap 끝 -->
+      </div>
+      <!--posterBox 끝-->
+
+      <!--메인2 (b_혜정)-->
+      <div class="tabBox">
+        <div class="movie_detail">
+          <!-- 탭 메뉴 -->
+          <ul class="tab_menu">
+            <li class="b_active"><button type="button">콘텐츠 정보</button></li>
+            <li><button type="button">감상평 +9</button></li>
+            <li><button type="button">영상/이미지</button></li>
+          </ul>
+
+          <!-- 탭1 콘텐츠 정보 영역 -->
+          <section class="tab_content b_active" id="tab_info">
+            <h3>이 작품에 대한 간단한 피드백을 부탁해요</h3>
+
+            <div class="like_box">
+              <button type="button" class="like_btn">
+                <img src="img/like_icon_6F6C76.png" alt="like_icon" /> 추천해요
+              </button>
+              <button type="button" class="hate_btn">
+                <img src="img/hate_icon_6F6C76.png" alt="hate_icon" /> 별로예요
+              </button>
+            </div>
+
+            <ul class="movie_meta">
+              <li>
+                <strong>개봉 연도</strong><span data-role="date">2010</span>
+              </li>
+              <li><strong>종류</strong><span data-role="type">영화</span></li>
+              <li>
+                <strong>장르</strong><span data-role="genre">로맨스/SF</span>
+              </li>
+              <li>
+                <strong>감독</strong><span data-role="director">샘 헤밍턴</span>
+              </li>
+              <li>
+                <strong>제작</strong
+                ><span data-role="production">넷플릭스</span>
+              </li>
+              <li>
+                <strong>상영 시간</strong
+                ><span data-role="runningTime">136분</span>
+              </li>
+              <li>
+                <strong>스트리밍</strong
+                ><span data-role="platforms">디즈니플러스, 티빙, 왓챠</span>
+              </li>
+              <li>
+                <strong>연령 등급</strong><span data-role="ageRating">ALL</span>
+              </li>
+            </ul>
+          </section>
+
+          <!-- 탭2 감상평 영역 -->
+          <section class="tab_content" id="tab_review">
+            <!-- 로그인된 상태 -->
+            <div class="review_login">
+              <p>
+                <strong
+                  ><span class="nickname">닉네임</span>님, 이 작품을 보신 적이
+                  있으세요?<img src="img/i_6f6c76.png" alt="i_icon" />
+                </strong>
+              </p>
+
+              <!-- 아이콘(i) 클릭 시 안내창 (기본은 숨김 상태) -->
+              <div class="iicon_popup" id="iicon_popup">
+                <p>
+                  무브인 사용자 리뷰를 작성하기 위한 공간입니다.<br />
+                  부적절하거나 불법적인 리뷰 및 내용은 업로드할 수<br />
+                  없습니다. 규정을 위반할 경우 즉시 삭제되며 서비스<br />
+                  이용이 제한될 수 있습니다. 지속적인 위반 시, 별도의<br />
+                  통보 없이 탈퇴 처리될 수 있습니다.
+                </p>
+              </div>
+
+              <!-- 별점 -->
+              <div class="star_rating">
+                <img
+                  src="img/star_6f6c76.png"
+                  alt="1점"
+                  data-value="1"
+                  class="star"
+                />
+                <img
+                  src="img/star_6f6c76.png"
+                  alt="2점"
+                  data-value="2"
+                  class="star"
+                />
+                <img
+                  src="img/star_6f6c76.png"
+                  alt="3점"
+                  data-value="3"
+                  class="star"
+                />
+                <img
+                  src="img/star_6f6c76.png"
+                  alt="4점"
+                  data-value="4"
+                  class="star"
+                />
+                <img
+                  src="img/star_6f6c76.png"
+                  alt="5점"
+                  data-value="5"
+                  class="star"
+                />
+              </div>
+
+              <!-- 텍스트 입력 -->
+              <textarea
+                class="review_input"
+                placeholder="지금 바로 리뷰를 작성해 또 다른 무브 오너들의 취향 형성에 기여해 주세요!"
+              ></textarea>
+
+              <!-- 등록 버튼 -->
+              <button type="button" class="register_btn">
+                등록하기 <img src="img/pen_6f6c76.png" alt="pen_icon" />
+              </button>
+            </div>
+
+            <!-- 로그인하지 않은 상태 (비로그인 시 노출) -->
+            <div class="review_unlogin">
+              <p>
+                <strong
+                  >이 작품을 보신 적이 있으세요?<img
+                    src="img/i_6f6c76.png"
+                    alt="i_icon"
+                /></strong>
+              </p>
+
+              <!-- 아이콘(i) 클릭 시 안내창 (기본은 숨김 상태) -->
+              <div class="iicon_popup" id="iicon_popup">
+                <p>
+                  무브인 사용자 리뷰를 작성하기 위한 공간입니다.<br />
+                  부적절하거나 불법적인 리뷰 및 내용은 업로드할 수<br />
+                  없습니다. 규정을 위반할 경우 즉시 삭제되며 서비스<br />
+                  이용이 제한될 수 있습니다. 지속적인 위반 시, 별도의<br />
+                  통보 없이 탈퇴 처리될 수 있습니다.
+                </p>
+              </div>
+
+              <!-- 별점 -->
+              <div class="star_rating">
+                <img
+                  src="img/star_6f6c76.png"
+                  alt="1점"
+                  data-value="1"
+                  class="star"
+                />
+                <img
+                  src="img/star_6f6c76.png"
+                  alt="2점"
+                  data-value="2"
+                  class="star"
+                />
+                <img
+                  src="img/star_6f6c76.png"
+                  alt="3점"
+                  data-value="3"
+                  class="star"
+                />
+                <img
+                  src="img/star_6f6c76.png"
+                  alt="4점"
+                  data-value="4"
+                  class="star"
+                />
+                <img
+                  src="img/star_6f6c76.png"
+                  alt="5점"
+                  data-value="5"
+                  class="star"
+                />
+              </div>
+
+              <!-- 텍스트 입력 -->
+              <textarea
+                class="review_input"
+                placeholder="지금 바로 리뷰를 작성해 또 다른 무브오너들의 취향 형성에 기여해 주세요!"
+              ></textarea>
+
+              <!-- 등록 버튼 -->
+              <button type="button" class="register_btn">
+                등록하기 <img src="img/pen_6f6c76.png" alt="pen_icon" />
+              </button>
+            </div>
+
+            <!-- 전체 리뷰 -->
+            <div class="review_list">
+              <div class="review_header">
+                <h3>전체 리뷰</h3>
+
+                <!-- 정렬 드롭다운 -->
+                <div class="sort_wrap">
+                  <button type="button" class="sort_btn" aria-expanded="false">
+                    <span class="sort_label">최신순</span>
+                    <img src="img/next_icon_6F6C76.png" alt="down_icon" />
+                  </button>
+
+                  <ul class="sort_menu" aria-hidden="true">
+                    <li>
+                      <button
+                        type="button"
+                        class="sort_option"
+                        data-sort="latest"
+                      >
+                        최신순
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        type="button"
+                        class="sort_option"
+                        data-sort="rating"
+                      >
+                        별점순
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        type="button"
+                        class="sort_option"
+                        data-sort="bookmark"
+                      >
+                        북마크순
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <ul>
+                <li class="review_item">
+                  <div class="review_info">
+                    <img src="img/user_6F6C76.png" alt="user_icon" />
+                    <span class="list_nickname">지혜의샘</span>
+                    <span class="score"
+                      ><img
+                        src="img/star_49E99C.png"
+                        alt="star_icon"
+                      />4.5</span
+                    >
+                    <span class="date">7일 전</span>
+                  </div>
+                  <p class="review_text">뜨개하면서 보기 좋아요 ^^</p>
+                  <button type="button" class="bookmark_btn">
+                    +5<img
+                      src="img/bookmark_01_6f6c76.png"
+                      alt="bookmark_icon"
+                    />
+                  </button>
+                </li>
+
+                <li class="review_item">
+                  <div class="review_info">
+                    <img src="img/user_6F6C76.png" alt="user_icon" />
+                    <span class="list_nickname">영화편식심함</span>
+                    <span class="score"
+                      ><img
+                        src="img/star_49E99C.png"
+                        alt="star_icon"
+                      />4.0</span
+                    >
+                    <span class="date">14일 전</span>
+                  </div>
+                  <p class="review_text">생각보다 괜찮습니다.</p>
+                  <button type="button" class="bookmark_btn">
+                    +20<img
+                      src="img/bookmark_01_6f6c76.png"
+                      alt="bookmark_icon"
+                    />
+                  </button>
+                </li>
+
+                <li class="review_item">
+                  <div class="review_info">
+                    <img src="img/user_6F6C76.png" alt="user_icon" />
+                    <span class="list_nickname">두쫀쿠빚는기계</span>
+                    <span class="score"
+                      ><img
+                        src="img/star_49E99C.png"
+                        alt="star_icon"
+                      />5.0</span
+                    >
+                    <span class="date">10일 전</span>
+                  </div>
+                  <p class="review_text">믿고 보는 띵작입니다</p>
+                  <button type="button" class="bookmark_btn">
+                    +14<img
+                      src="img/bookmark_01_6f6c76.png"
+                      alt="bookmark_icon"
+                    />
+                  </button>
+                </li>
+                <!-- 리뷰 추가  -->
+                <li class="review_item">
+                  <div class="review_info">
+                    <img src="img/user_6F6C76.png" alt="user_icon" />
+                    <span class="list_nickname">급식은팝콘</span>
+                    <span class="score"
+                      ><img
+                        src="img/star_49E99C.png"
+                        alt="star_icon"
+                      />3.5</span
+                    >
+                    <span class="date">2일 전</span>
+                  </div>
+                  <p class="review_text">
+                    시험 끝나고 봤는데 엔딩에서 소리 질렀음ㅋㅋ
+                  </p>
+                  <button type="button" class="bookmark_btn">
+                    +9<img
+                      src="img/bookmark_01_6f6c76.png"
+                      alt="bookmark_icon"
+                    />
+                  </button>
+                </li>
+
+                <li class="review_item">
+                  <div class="review_info">
+                    <img src="img/user_6F6C76.png" alt="user_icon" />
+                    <span class="list_nickname">알바끝나면영화</span>
+                    <span class="score"
+                      ><img
+                        src="img/star_49E99C.png"
+                        alt="star_icon"
+                      />4.0</span
+                    >
+                    <span class="date">1일 전</span>
+                  </div>
+                  <p class="review_text">
+                    퇴근 후 멍 때리며 보기 딱ㅠ 감정이 조용히 쌓임
+                  </p>
+                  <button type="button" class="bookmark_btn">
+                    +27<img
+                      src="img/bookmark_01_6f6c76.png"
+                      alt="bookmark_icon"
+                    />
+                  </button>
+                </li>
+
+                <li class="review_item">
+                  <div class="review_info">
+                    <img src="img/user_6F6C76.png" alt="user_icon" />
+                    <span class="list_nickname">회사주세요</span>
+                    <span class="score"
+                      ><img
+                        src="img/star_49E99C.png"
+                        alt="star_icon"
+                      />4.8</span
+                    >
+                    <span class="date">5일 전</span>
+                  </div>
+                  <p class="review_text">
+                    면접 준비하다가 봤는데 나도 모르게 위로 받음.
+                  </p>
+                  <button type="button" class="bookmark_btn">
+                    +41<img
+                      src="img/bookmark_01_6f6c76.png"
+                      alt="bookmark_icon"
+                    />
+                  </button>
+                </li>
+
+                <li class="review_item">
+                  <div class="review_info">
+                    <img src="img/user_6F6C76.png" alt="user_icon" />
+                    <span class="list_nickname">육퇴희망자</span>
+                    <span class="score"
+                      ><img
+                        src="img/star_49E99C.png"
+                        alt="star_icon"
+                      />4.2</span
+                    >
+                    <span class="date">9일 전</span>
+                  </div>
+                  <p class="review_text">
+                    애 재우고 10분씩 나눠봤는데도 몰입감 미쳤다…
+                  </p>
+                  <button type="button" class="bookmark_btn">
+                    +18<img
+                      src="img/bookmark_01_6f6c76.png"
+                      alt="bookmark_icon"
+                    />
+                  </button>
+                </li>
+
+                <li class="review_item">
+                  <div class="review_info">
+                    <img src="img/user_6F6C76.png" alt="user_icon" />
+                    <span class="list_nickname">야근쮜의눈물</span>
+                    <span class="score"
+                      ><img
+                        src="img/star_49E99C.png"
+                        alt="star_icon"
+                      />3.8</span
+                    >
+                    <span class="date">12일 전</span>
+                  </div>
+                  <p class="review_text">
+                    야근 끝나고 틀었는데… 눈이 아니라 마음이 먼저 감김.
+                  </p>
+                  <button type="button" class="bookmark_btn">
+                    +6<img
+                      src="img/bookmark_01_6f6c76.png"
+                      alt="bookmark_icon"
+                    />
+                  </button>
+                </li>
+
+                <li class="review_item">
+                  <div class="review_info">
+                    <img src="img/user_6F6C76.png" alt="user_icon" />
+                    <span class="list_nickname">할머니는로맨스파</span>
+                    <span class="score"
+                      ><img
+                        src="img/star_49E99C.png"
+                        alt="star_icon"
+                      />5.0</span
+                    >
+                    <span class="date">20일 전</span>
+                  </div>
+                  <p class="review_text">
+                    젊,은 사람들. 사랑이 복잡하내요. 그래도 참 얘쁘더라.
+                  </p>
+                  <button type="button" class="bookmark_btn">
+                    +33<img
+                      src="img/bookmark_01_6f6c76.png"
+                      alt="bookmark_icon"
+                    />
+                  </button>
+                </li>
+              </ul>
+
+              <button type="button" class="more_btn">
+                더보기 <img src="img/next_icon_6F6C76.png" alt="next_icon" />
+              </button>
+            </div>
+
+            <!-- 로그인 후 별점 남겼을 시 상태 -->
+            <div class="review_edit">
+              <h3><strong>닉네임</strong> 님이 등록한 리뷰</h3>
+
+              <div class="star_rating">
+                <img
+                  src="img/star_6f6c76.png"
+                  alt="1점"
+                  data-value="1"
+                  class="star b_avtive"
+                />
+                <img
+                  src="img/star_6f6c76.png"
+                  alt="2점"
+                  data-value="2"
+                  class="star b_avtive"
+                />
+                <img
+                  src="img/star_6f6c76.png"
+                  alt="3점"
+                  data-value="3"
+                  class="star b_avtive"
+                />
+                <img
+                  src="img/star_6f6c76.png"
+                  alt="4점"
+                  data-value="4"
+                  class="star"
+                />
+                <img
+                  src="img/star_6f6c76.png"
+                  alt="5점"
+                  data-value="5"
+                  class="star"
+                />
+              </div>
+
+              <li class="review_item">
+                <div class="review_info">
+                  <span class="list_nickname">닉네임</span>
+                  <span class="score"
+                    ><img src="img/star_49E99C.png" alt="star_icon" />5.0</span
+                  >
+                  <span class="date">14일 전</span>
+                </div>
+                <p class="review_text">무난합니다</p>
+                <button type="button" class="bookmark_btn">
+                  +2
+                  <img src="img/bookmark_01_6f6c76.png" alt="bookmark_icon" />
+                </button>
+              </li>
+
+              <button type="button" class="edit_btn">
+                수정하기 <img src="img/pen_6f6c76.png" alt="pen_icon" />
+              </button>
+            </div>
+          </section>
+
+          <!-- 탭3 영상/이미지 영역 -->
+          <section class="tab_content" id="tab_media">
+            <!-- 영상 섹션 -->
+            <div class="media_section">
+              <h3 class="media_title">영상</h3>
+
+              <div class="video_box">
+                <iframe
+                  width="90%"
+                  height="315"
+                  src="https://www.youtube.com/embed/i50tT8n9fp8?si=MBFIC67575e8x7h7"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="
+                    accelerometer;
+                    autoplay;
+                    clipboard-write;
+                    encrypted-media;
+                    gyroscope;
+                    picture-in-picture;
+                    web-share;
+                  "
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+
+            <!-- 스틸컷 섹션 -->
+            <div class="media_section stillcuts">
+              <h3 class="media_title">이미지</h3>
+
+              <!-- 큰 이미지 -->
+              <div class="image_item large">
+                <img
+                  src="img/stillcut/stillcut_헤어질결심2.jpg"
+                  alt="스틸컷 큰 이미지"
+                />
+              </div>
+
+              <!-- 하단 3분할 이미지 -->
+              <div class="image_layout">
+                <div class="image_left">
+                  <img
+                    src="img/stillcut/stillcut_헤어질결심3.jpg"
+                    alt="스틸컷 왼쪽 이미지"
+                  />
+                </div>
+
+                <div class="image_right">
+                  <div class="image_small top">
+                    <img
+                      src="img/stillcut/stillcut_헤어질결심4.jpg"
+                      alt="스틸컷 상단 이미지"
+                    />
+                  </div>
+                  <div class="image_small bottom">
+                    <img
+                      src="img/stillcut/stillcut_헤어질결심5.jpg"
+                      alt="스틸컷 하단 이미지"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <!--메인3 (a_여진)-->
+      <div class="a_gameBox">
+        <section class="a_balance_game_section">
+          <!-- 로그인 시 -->
+          <div class="a_balance_game_title_login">
+            <h2><span class="a_user_nickname">닉네임</span> 님을 위한</h2>
+            <h2>오늘의 밸런스 게임이에요</h2>
+          </div>
+
+          <!-- 비로그인 시 -->
+          <div class="a_balance_game_title_non_login">
+            <h2>다양한 게임에 참여해보세요</h2>
+          </div>
+
+          <!-- 밸런스 게임 선택 영역 -->
+          <div class="a_balance_game_container">
+            <div class="a_balance_card left">
+              <img
+                src="img/like_icon_6F6C76.png"
+                class="a_like_icon"
+                alt="좋아요 아이콘"
+              />
+              <p>
+                <span class="a_balance_text_value_left">
+                  얼음 성에서 열리는<br />
+                  마법 같은 파티
+                </span>
+              </p>
+            </div>
+
+            <div class="a_vs_divider">VS</div>
+
+            <div class="a_balance_card right">
+              <div class="a_balance_card_text_right">
+                <img
+                  src="img/like_icon_6F6C76.png"
+                  class="a_like_icon"
+                  alt="좋아요 아이콘"
+                />
+                <p>
+                  <span class="a_balance_text_value_right">
+                    산타와 함께<br />전 세계 선물 배달
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 밸런스 게임 선택 결과 -->
+          <div class="a_balance_result_area">
+            <div class="a_balance_result_message_wrap">
+              <p class="a_balance_result_message">
+                <span id="a_result_message_text">결과 메시지</span>
+              </p>
+              <p class="a_balance_result_title">
+                그건 바로
+                <span id="a_result_movie_title_value">영화 제목</span>
+              </p>
+            </div>
+
+            <div class="a_result_content">
+              <div class="a_result_poster_wrap">
+                <img
+                  src="img/poster/default.jpg"
+                  alt=""
+                  class="a_result_movie_poster"
+                />
+              </div>
+
+              <div class="a_result_meta">
+                <div class="a_result_tags_container">
+                  <!-- JS가 값 넣을 곳 -->
+                </div>
+
+                <!-- 정보 보러 가기 -->
+                <a href="#" class="a_result_view_details_btn">정보 보러 가기</a>
+                <img src="img/next_icon_6F6C76.png" alt="화살표 버튼" /><br />
+
+                <!-- 다시 하기 버튼 -->
+                <button class="a_balance_restart_btn">다시 하기</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 자.만.추 -->
+        <section class="a_recommend_section">
+          <h3 class="a_recommend_title">취향.자.만.추 여기에서 하세요</h3>
+
+          <!-- 자.만.추 영역 -->
+          <div class="a_recommend_cards_container">
+            <!-- 티켓 뽑기 -->
+            <div class="a_recommend_ticket">
+              <div class="a_card_icon_wrap">
+                <img src="img/game1.svg" alt="티켓 아이콘" />
+              </div>
+              <p>
+                <span class="a_card_text_value"
+                  >오늘의 작품<br />티켓 뽑기</span
+                >
+              </p>
+            </div>
+
+            <!-- 밸런스 게임 -->
+            <div class="a_recommend_balance">
+              <div class="a_card_icon_wrap">
+                <img src="img/game2.svg" alt="그래프 아이콘" />
+              </div>
+              <p>
+                <span class="a_card_text_value">밸런스<br />게임</span>
+              </p>
+            </div>
+
+            <div class="a_recommend_cardgem_finder">
+              <div class="a_card_icon_wrap">
+                <img src="img/game3.png" alt="보석찾기 아이콘" />
+              </div>
+              <p>
+                <span class="a_card_text_value"
+                  >잔혹한 평점 속, 나만의 보석 찾기</span
+                >
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+      <!-- 메인3 끝 -->
+    </div>
+
+    <!-- 푸터/하단 -->
+    <div id="bottom-nav"></div>
+    <div id="footer"></div>
+
+    <!-- 로그인 안내 팝업 -->
+    <div class="login_popup" id="login_popup" aria-hidden="true">
+      <div class="login_popup_inner" role="dialog" aria-modal="true">
+        <p class="login_popup_title">앗! 로그인을 잊으셨어요</p>
+        <p class="login_popup_desc">추천과 리뷰는 로그인 후에 가능해요</p>
+        <div class="login_popup_btns">
+          <!-- 닫기 버튼 -->
+          <button type="button" class="login_btn login_btn_cancel">
+            괜찮아요
+          </button>
+
+          <!-- 로그인 이동 버튼 -->
+          <button type="button" class="login_btn login_btn_go">
+            로그인 할게요
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
