@@ -8,10 +8,14 @@
     <link rel="stylesheet" href="css/root.css" />
     <link rel="stylesheet" href="css/import.css" />
     <link rel="stylesheet" href="css/ab_sub.css" />
+    <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- 헤더/푸터 삽입 -->
     <script src="js/import.js"></script>
-    <script src="js/babel.min.js"></script>
-    <script src="js/sub.js"></script>
+    <!-- <script src="js/sub.js"></script> -->
+    <!-- 데이터 연결 + 페이지 로직 -->
+    <script type="module" src="js/sub.js"></script>
+    <!-- <script src="js/babel.min.js"></script> -->
   </head>
 
   <body class="sub-body">
@@ -27,7 +31,9 @@
           src="img/stillcut/stillcut_헤어질결심.jpg"
           alt="영화 배경 스틸컷"
           class="a_background_still"
+          data-role="optional"
         />
+        <!-- 더미 테이터 생길 시 이름 수정 -->
 
         <!-- 메인 포스터, 제목 등 세부 정보 데이터 -->
         <div class="a_movie_meta_wrap">
@@ -35,7 +41,11 @@
           <div class="a_info_group">
             <!--  메인 포스터 영역 -->
             <div class="a_movie_poster">
-              <img src="img/poster/poster_헤어질결심.jpg" alt="포스터1" />
+              <img
+                src="img/poster/poster_헤어질결심.jpg"
+                alt="포스터1"
+                data-role="poster"
+              />
             </div>
 
             <!-- 영화 제목 + 세부 정보 + 별점 -->
@@ -44,12 +54,15 @@
               <div class="a_movie_info_text">
                 <!-- 영화 제목-->
                 <h1>
-                  <span class="a_movie_title_value"> 헤어질 결심</span>
+                  <span class="a_movie_title_value" data-role="title">
+                    헤어질 결심
+                  </span>
                 </h1>
                 <!-- 세부 정보 -->
                 <p>
-                  <span class="a_details_value"
-                    >15세 · 2022 · 영화 · 로맨스/멜로 138분</span
+                  <span class="a_details_value" data-role="optional">
+                    <!-- 더미 테이터 생길 시 이름 수정 -->
+                    15세 · 2022 · 영화 · 로맨스/멜로 138분</span
                   >
                 </p>
               </div>
@@ -77,7 +90,7 @@
                     class="a_icon_star"
                     alt="별점 아이콘"
                   />
-                  <span class="star_value">4.8</span>
+                  <span class="star_value" data-role="rating">4.8</span>
                 </p>
               </div>
             </div>
@@ -85,13 +98,15 @@
             <!-- 영화 줄거리 -->
             <div class="a_movie_forms">
               <p>
-                <span class="a_plot_value">
+                <span class="a_plot_value" data-role="plot">
                   산 정상에서 남편이 추락사한 뒤, 담담한 아내 ‘서래’는
                   용의선상에 오른다. 수사를 맡은 형사 ‘해준’은 그녀를
                   의심하면서도 점점 끌리게 된다. 의심과 사랑이 교차하는 두
                   사람의 위험한 관계가 시작된다.
                 </span>
               </p>
+
+              <button type="button" class="a_plot_toggle_btn">더보기</button>
             </div>
 
             <!-- 스트리밍 가능 플랫폼 -->
@@ -103,7 +118,8 @@
                 </div>
 
                 <!-- 오른쪽 플랫폼 아이콘-->
-                <ul class="a_streaming_icon">
+                <ul class="a_streaming_icon" data-role="optional">
+                  <!-- 더미 데이터 추가될 시 수정 -->
                   <li>
                     <a href="#" target="_blank">
                       <img src="img/disney.png" alt="플랫폼_1" />
@@ -153,16 +169,31 @@
             </div>
 
             <ul class="movie_meta">
-              <li><strong>개봉 연도</strong><span>2010</span></li>
-              <li><strong>종류</strong><span>영화</span></li>
-              <li><strong>장르</strong><span>로맨스/SF</span></li>
-              <li><strong>감독</strong><span>샘 헤밍턴</span></li>
-              <li><strong>제작</strong><span>넷플릭스</span></li>
-              <li><strong>상영 시간</strong><span>136분</span></li>
               <li>
-                <strong>스트리밍</strong><span>디즈니플러스, 티빙, 왓챠</span>
+                <strong>개봉 연도</strong><span data-role="date">2010</span>
               </li>
-              <li><strong>연령 등급</strong><span>ALL</span></li>
+              <li><strong>종류</strong><span data-role="type">영화</span></li>
+              <li>
+                <strong>장르</strong><span data-role="genre">로맨스/SF</span>
+              </li>
+              <li>
+                <strong>감독</strong><span data-role="director">샘 헤밍턴</span>
+              </li>
+              <li>
+                <strong>제작</strong
+                ><span data-role="production">넷플릭스</span>
+              </li>
+              <li>
+                <strong>상영 시간</strong
+                ><span data-role="runningTime">136분</span>
+              </li>
+              <li>
+                <strong>스트리밍</strong
+                ><span data-role="platforms">디즈니플러스, 티빙, 왓챠</span>
+              </li>
+              <li>
+                <strong>연령 등급</strong><span data-role="ageRating">ALL</span>
+              </li>
             </ul>
           </section>
 
@@ -422,7 +453,7 @@
                     <span class="date">2일 전</span>
                   </div>
                   <p class="review_text">
-                    시험 끝나고 봤는데 엔딩에서 소리 질렀음…
+                    시험 끝나고 봤는데 엔딩에서 소리 질렀음ㅋㅋ
                   </p>
                   <button type="button" class="bookmark_btn">
                     +9<img
@@ -445,7 +476,7 @@
                     <span class="date">1일 전</span>
                   </div>
                   <p class="review_text">
-                    퇴근 후 멍 때리며 보기 딱… 감정이 조용히 쌓임
+                    퇴근 후 멍 때리며 보기 딱ㅠ 감정이 조용히 쌓임
                   </p>
                   <button type="button" class="bookmark_btn">
                     +27<img
@@ -468,7 +499,7 @@
                     <span class="date">5일 전</span>
                   </div>
                   <p class="review_text">
-                    면접 준비하다가 봤는데… 나도 모르게 위로 받음.
+                    면접 준비하다가 봤는데 나도 모르게 위로 받음.
                   </p>
                   <button type="button" class="bookmark_btn">
                     +41<img

@@ -1,5 +1,22 @@
 $(function () {
   /* =========================
+    줄거리 더보기
+  ========================= */
+
+  $(document).on("click", ".a_plot_toggle_btn", function () {
+    const $wrap = $(this).closest(".a_movie_forms");
+
+    $wrap.toggleClass("open");
+
+    // 버튼 텍스트 변경
+    if ($wrap.hasClass("open")) {
+      $(this).text("접기");
+    } else {
+      $(this).text("더보기");
+    }
+  });
+
+  /* =========================
     탭
   ========================= */
 
@@ -190,24 +207,14 @@ $(function () {
   });
 
   /* =========================
-    밸런스 게임
+  밸런스 게임 선택지 영화 상세 데이터(세부 페이지 교체용)
 ======================== */
 
-  // 카드별 대응하는 결과 미리 적어둠
-  const RESULT = {
-    left: {
-      msg: "마법 같은 분위기에 끌리는 당신에게 어울리는 작품..",
-      title: "겨울왕국",
-      poster: "img/poster/poster_겨울왕국.jpg",
-      tags: ["#애니메이션", "#영화", "#마법", "#겨울", "#디즈니"],
-    },
-    right: {
-      msg: "정의와 사명감을 가진 당신에게 어울리는 작품..",
-      title: "가디언즈",
-      poster: "img/poster/poster_가디언즈.jpg",
-      tags: ["#애니메이션", "#영화", "#모험", "#크리스마스", "#가족"],
-    },
-  };
+  // 현재 비어있음!!!!!
+
+  /* =========================
+    밸런스 게임
+======================== */
 
   /* =========================
     카드 클릭 시
@@ -236,6 +243,8 @@ $(function () {
     $(".a_result_tags_container").html(
       d.tags.map((t) => `<span class="a_result_tag">${t}</span>`).join(""),
     );
+
+    $(".a_result_view_details_btn").attr("href", `sub.html?movie=${d.id}`);
 
     // 게임 선택 영역 숨기기
     $(".a_balance_game_container").hide();
@@ -295,6 +304,64 @@ $(function () {
   $(document).on("click", ".login_btn_go", function () {
     location.href = "form.html";
   });
+});
+
+/* =========================
+    데이터 연결
+======================= */
+
+// 더미 영화 데이터 불러오기
+import { dummy } from "./data.js";
+
+$(function () {
+  // 주소창에서 영화 고유코드(id) 가져오기
+  const params = new URLSearchParams(location.search);
+  const id = Number(params.get("movie")) || 18; // 없으면 1번 기본
+
+  // 해당 id의 영화 찾기
+  const movie = dummy.find((m) => m.id === id);
+  if (!movie) return;
+
+  // 포스터 사진
+  const posterSrc = "/" + movie.poster.replace(/^\/+/, "");
+  $('[data-role="poster"]').attr("src", movie.poster);
+  $('[data-role="poster"]').attr("alt", movie.title + " 포스터");
+
+  // 영화 제목
+  $('[data-role="title"]').text(movie.title);
+
+  // 줄거리
+  $('[data-role="plot"]').text(movie.plot);
+
+  // 별점
+  $('[data-role="rating"]').text(movie.rating);
+
+  const detailText =
+    `${movie.ageRating}세 · ${movie.date} · ${movie.type} · ${movie.genre.join("/")}` +
+    ` ${movie.runningTime}분`;
+
+  //상세 정보 한 줄 텍스트
+  $('.a_details_value[data-role="optional"]').text(detailText);
+
+  // 개별 정보 바인딩
+  $('[data-role="date"]').text(movie.date);
+  $('[data-role="type"]').text(movie.type);
+  $('[data-role="genre"]').text(movie.genre.join("/"));
+  $('[data-role="director"]').text(movie.director);
+  $('[data-role="production"]').text(movie.production);
+  $('[data-role="runningTime"]').text(movie.runningTime + "분");
+  $('[data-role="platforms"]').text(movie.platforms.join(", "));
+  $('[data-role="ageRating"]').text(movie.ageRating);
+
+  // 플랫폼 아이콘 매칭용 객체
+  const platformIcons = {
+    넷플릭스: "img/netflix.png",
+    왓챠: "img/watcha.png",
+    웨이브: "img/wavve.png",
+    티빙: "img/TVING.png",
+    디즈니플러스: "img/disney.png",
+    쿠팡플레이: "img/coupangplay.png",
+  };
 });
 
 // ===================================================================
