@@ -1,5 +1,22 @@
 $(function () {
   /* =========================
+    줄거리 더보기
+  ========================= */
+
+  $(document).on("click", ".a_plot_toggle_btn", function () {
+    const $wrap = $(this).closest(".a_movie_forms");
+
+    $wrap.toggleClass("open");
+
+    // 버튼 텍스트 변경
+    if ($wrap.hasClass("open")) {
+      $(this).text("접기");
+    } else {
+      $(this).text("더보기");
+    }
+  });
+
+  /* =========================
     탭
   ========================= */
 
@@ -60,77 +77,144 @@ $(function () {
   });
 
   /* =========================
-    감상평 드롭다운 정렬
+    감상평 버튼(더보기/접기) + 드롭다운 정렬(개수 유지)
   ========================= */
 
-  $(function () {
-    // 정렬 버튼 클릭 -> 드롭다운 동작
-    $(".sort_btn").click(() => $(".sort_wrap").toggleClass("open"));
+  // 상태값: 현재 몇 개 보여줄지
+  let visibleCount = 3;
+  const STEP = 3;
 
-    // 정렬 옵션 클릭
-    $(".sort_option").click(function () {
-      const type = $(this).data("sort"); // latest / rating / bookmark
+  // 리뷰 li들 현재 DOM 순서 기준으로 visibleCount만큼!! 보이게
+  function applyVisibleCount() {
+    const $items = $(".review_list .review_item");
+    const total = $items.length;
 
-      // 버튼 텍스트 변경
-      $(".sort_label").text($(this).text());
+    // 안전장치: total보다 더 크게 잡히면 total로 제한
+    if (visibleCount > total) visibleCount = total;
 
-      // 드롭다운 닫기
-      $(".sort_wrap").removeClass("open");
+    $items.hide();
+    $items.slice(0, visibleCount).show();
 
-      // 리뷰 리스트 ul
-      const $ul = $(".review_list > ul");
+    // 버튼 텍스트: 전부 보이면 "접기", 아니면 "더보기"
+    if (total <= STEP) {
+      // 3개 이하라면 버튼 숨겨도 됨(원하면 display만 조절)
+      $(".more_btn").hide();
+    } else {
+      $(".more_btn").show();
+      $(".more_btn")
+        .contents()
+        .filter(function () {
+          return this.nodeType === 3; // 텍스트 노드
+        })
+        .first()
+        .replaceWith(visibleCount >= total ? "접기 " : "더보기 ");
+    }
+  }
 
-      // 정렬 대상 리뷰 li들
-      const items = $ul.children(".review_item").get();
+  // 현재 선택된 정렬 타입으로 전체 리뷰 정렬해서 DOM 재배치
+  function sortReviews(type) {
+    const $ul = $(".review_list > ul");
+    const items = $ul.children(".review_item").get();
 
-      // 정렬 기준에 따라 li 순서 변경
-      items.sort((a, b) => {
-        // 최신순
-        if (type === "latest")
-          return (
-            parseInt($(a).find(".date").text()) -
-            parseInt($(b).find(".date").text())
-          );
+    // 값 파싱 함수들
+    const getDays = (li) => {
+      // 7일 전 -> 7
+      const t = $(li).find(".date").text();
+      const n = parseInt(t, 10);
+      return Number.isNaN(n) ? 999999 : n;
+    };
 
-        // 별점순
-        if (type === "rating")
-          return (
-            parseFloat($(b).find(".score").text()) -
-            parseFloat($(a).find(".score").text())
-          );
+    const getRating = (li) => {
+      const t = $(li).find(".score").clone().children().remove().end().text();
+      const n = parseFloat(t);
+      return Number.isNaN(n) ? -999999 : n;
+    };
 
-        // 북마크순
-        if (type === "bookmark")
-          return (
-            parseInt($(b).find(".bookmark_btn").text()) -
-            parseInt($(a).find(".bookmark_btn").text())
-          );
-      });
+    const getBookmark = (li) => {
+      const t = $(li)
+        .find(".bookmark_btn")
+        .clone()
+        .children()
+        .remove()
+        .end()
+        .text();
+      const n = parseInt(t.replace("+", "").trim(), 10);
+      return Number.isNaN(n) ? -999999 : n;
+    };
 
-      // 정렬된 순서로 다시 DOM에 삽입
-      $ul.append(items);
+    items.sort((a, b) => {
+      // 최신순: "일 전" 숫자가 작을수록 더 최신(1일 전이 최상단)
+      if (type === "latest") return getDays(a) - getDays(b);
+
+      // 별점순: 큰 값이 위로
+      if (type === "rating") return getRating(b) - getRating(a);
+
+      // 북마크순: 큰 값이 위로
+      if (type === "bookmark") return getBookmark(b) - getBookmark(a);
+
+      return 0;
     });
+
+    $ul.append(items);
+
+    // 정렬 후에도 현재 펼쳐진 개수 유지!!
+    applyVisibleCount();
+  }
+
+  // 처음엔 3개만 보이게
+
+  applyVisibleCount();
+
+  // 더보기/접기 버튼
+  $(".review_list").on("click", ".more_btn", function () {
+    const total = $(".review_list .review_item").length;
+
+    if (visibleCount >= total) {
+      // 접기
+      visibleCount = STEP;
+    } else {
+      // 더보기
+      visibleCount += STEP;
+    }
+    applyVisibleCount();
   });
+
+  // 드롭다운 열고 닫기
+  $(".review_list").on("click", ".sort_btn", function () {
+    $(".sort_wrap").toggleClass("open");
+  });
+
+  // 정렬 옵션 클릭
+  $(".review_list").on("click", ".sort_option", function () {
+    const type = $(this).data("sort"); // latest / rating / bookmark
+
+    // 버튼 라벨 변경
+    $(".sort_label").text($(this).text());
+
+    // 드롭다운 닫기
+    $(".sort_wrap").removeClass("open");
+
+    // 정렬 실행 (개수 유지 포함)
+    sortReviews(type);
+  });
+
+  // 바깥 클릭하면 드롭다운 닫기
+  $(document).on("click", function (e) {
+    // sort_wrap 밖을 클릭했을 때만 닫기
+    if ($(e.target).closest(".sort_wrap").length === 0) {
+      $(".sort_wrap").removeClass("open");
+    }
+  });
+
+  /* =========================
+  밸런스 게임 선택지 영화 상세 데이터(세부 페이지 교체용)
+======================== */
+
+  // 현재 비어있음!!!!!
 
   /* =========================
     밸런스 게임
 ======================== */
-
-  // 카드별 대응하는 결과 미리 적어둠
-  const RESULT = {
-    left: {
-      msg: "마법 같은 분위기에 끌리는 당신에게 어울리는 작품..",
-      title: "겨울왕국",
-      poster: "img/poster/poster_겨울왕국.jpg",
-      tags: ["#애니메이션", "#영화", "#마법", "#겨울", "#디즈니"],
-    },
-    right: {
-      msg: "정의와 사명감을 가진 당신에게 어울리는 작품..",
-      title: "가디언즈",
-      poster: "img/poster/poster_가디언즈.jpg",
-      tags: ["#애니메이션", "#영화", "#모험", "#크리스마스", "#가족"],
-    },
-  };
 
   /* =========================
     카드 클릭 시
@@ -159,6 +243,8 @@ $(function () {
     $(".a_result_tags_container").html(
       d.tags.map((t) => `<span class="a_result_tag">${t}</span>`).join(""),
     );
+
+    $(".a_result_view_details_btn").attr("href", `sub.html?movie=${d.id}`);
 
     // 게임 선택 영역 숨기기
     $(".a_balance_game_container").hide();
@@ -218,6 +304,64 @@ $(function () {
   $(document).on("click", ".login_btn_go", function () {
     location.href = "form.html";
   });
+});
+
+/* =========================
+    데이터 연결
+======================= */
+
+// 더미 영화 데이터 불러오기
+import { dummy } from "./data.js";
+
+$(function () {
+  // 주소창에서 영화 고유코드(id) 가져오기
+  const params = new URLSearchParams(location.search);
+  const id = Number(params.get("movie")) || 18; // 없으면 1번 기본
+
+  // 해당 id의 영화 찾기
+  const movie = dummy.find((m) => m.id === id);
+  if (!movie) return;
+
+  // 포스터 사진
+  const posterSrc = "/" + movie.poster.replace(/^\/+/, "");
+  $('[data-role="poster"]').attr("src", movie.poster);
+  $('[data-role="poster"]').attr("alt", movie.title + " 포스터");
+
+  // 영화 제목
+  $('[data-role="title"]').text(movie.title);
+
+  // 줄거리
+  $('[data-role="plot"]').text(movie.plot);
+
+  // 별점
+  $('[data-role="rating"]').text(movie.rating);
+
+  const detailText =
+    `${movie.ageRating}세 · ${movie.date} · ${movie.type} · ${movie.genre.join("/")}` +
+    ` ${movie.runningTime}분`;
+
+  //상세 정보 한 줄 텍스트
+  $('.a_details_value[data-role="optional"]').text(detailText);
+
+  // 개별 정보 바인딩
+  $('[data-role="date"]').text(movie.date);
+  $('[data-role="type"]').text(movie.type);
+  $('[data-role="genre"]').text(movie.genre.join("/"));
+  $('[data-role="director"]').text(movie.director);
+  $('[data-role="production"]').text(movie.production);
+  $('[data-role="runningTime"]').text(movie.runningTime + "분");
+  $('[data-role="platforms"]').text(movie.platforms.join(", "));
+  $('[data-role="ageRating"]').text(movie.ageRating);
+
+  // 플랫폼 아이콘 매칭용 객체
+  const platformIcons = {
+    넷플릭스: "img/netflix.png",
+    왓챠: "img/watcha.png",
+    웨이브: "img/wavve.png",
+    티빙: "img/TVING.png",
+    디즈니플러스: "img/disney.png",
+    쿠팡플레이: "img/coupangplay.png",
+  };
 });
 
 // ===================================================================

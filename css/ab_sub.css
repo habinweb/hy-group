@@ -131,6 +131,34 @@ body {
   font-weight: 300;
 }
 
+/* 영화 줄거리: 최대 3줄만 */
+.a_movie_forms .a_plot_value {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  /* 기본 3줄 */
+  overflow: hidden;
+}
+
+/* 줄거리 더보기 버튼 */
+.a_plot_toggle_btn {
+  display: block;
+  margin-left: auto;
+  margin-top: 6px;
+  background: none;
+  border: none;
+  color: var(--c-font);
+  font-size: var(--fs1);
+  font-weight: 400;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* 열림 상태 */
+.a_movie_forms.open .a_plot_value {
+  -webkit-line-clamp: unset;
+}
+
 /* 스트리밍 가능 플랫폼 상자*/
 .a_movie_ott_platforms {
   width: 100%;
