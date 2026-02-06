@@ -294,7 +294,6 @@ canvas {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1.5rem;
-  font-weight: 900;
   letter-spacing: -0.05rem;
 }
 
@@ -303,9 +302,10 @@ canvas {
   height: 10px;
 }
 
-.hot-txt-box h3 {
+.hot-txt {
   color: var(--c-font);
   font-size: var(--fs4);
+  font-weight: 800;
 }
 
 /* ott선택 버튼 */
