@@ -382,7 +382,7 @@ $(function () {
   const params = new URLSearchParams(location.search);
 
   //2026.02.07 get("movie")를 get("id")로 변경했습니다 -김하빈 =============================================
-  const id = Number(params.get("id")) || 4;
+  const id = Number(params.get("id")) || 8;
 
   // 해당 id의 영화 찾기
   const movie = dummy.find((m) => m.id === id);
@@ -393,16 +393,31 @@ $(function () {
   $('[data-role="poster"]').attr("src", movie.poster);
   $('[data-role="poster"]').attr("alt", movie.title + " 포스터");
 
-  // 스틸컷 1~4번 고정 (부족하면 1번으로 채움)
+  // 스틸컷 배열 (최대 4장)
   const cuts = movie.stillcuts || [];
-  const fallback = cuts[0] || "";
 
-  // 상단 배경 스틸컷: 1번
-  $('[data-role="stillcuts"]').attr("src", fallback);
+  // 없을 시 아이콘
+  const PLACEHOLDER_ICON = "img/picture_6f6c76.png";
 
-  // 탭 이미지 스틸컷:1~4번
-  $("#tab_media .stillcuts img").each(function (i) {
-    $(this).attr("src", cuts[i] || fallback);
+  // 상단 배경 스틸컷 (첫 번째 스틸컷 사용, 없으면 빈 박스)
+  $('[data-role="stillcuts"]').attr("src", cuts[0] || "");
+
+  // 영상/이미지 탭 스킬컷 4칸 처리
+  $("#tab_media img[data-role='skillcut']").each(function (i) {
+    const hasCut = !!cuts[i];
+    // 해당 칸에 스틸컷 존재 여부
+
+    $(this)
+      // 스틸컷이 있으면 이미지, 없으면 아이콘
+      .attr("src", hasCut ? cuts[i] : PLACEHOLDER_ICON)
+
+      // 스틸컷이 없을 때만 placeholder 스타일 적용
+      .toggleClass("is-placeholder", !hasCut)
+
+      // 컨택트 전용!!
+      // 스틸컷이 3장이고, 4번째 칸일 때만
+      // 오른쪽 아래 아이콘 크기 조절용 클래스 추가
+      .toggleClass("is-third-missing", !hasCut && cuts.length === 3 && i === 3);
   });
 
   // 영화 제목
