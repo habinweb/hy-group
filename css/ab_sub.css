@@ -1191,7 +1191,7 @@ body {
 .image_right {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 15px;
   flex: 1;
 }
 
@@ -1220,20 +1220,20 @@ img[data-role="skillcut"].is-placeholder {
 /* 크기별 padding */
 .image_item.large img.is-placeholder {
   /*  맨 위 */
-  padding: 75px;
+  padding: 40px;
 }
 /* 왼쪽 아래 */
 .image_left img.is-placeholder {
-  padding: 80px;
+  padding: 50px;
 }
 /* 오른쪽 아래  */
 .image_small img.is-placeholder {
-  padding: 30px;
+  padding: 15px;
 }
 
 /* 스킬컷이 3장일 때만 오른쪽 아래 아이콘 작게 */
 .image_small.bottom img.is-third-missing {
-  padding: 45px;
+  padding: 30px;
 }
 
 /* placeholder일 때만 영역 높이 줄이기 */

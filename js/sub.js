@@ -383,7 +383,7 @@ $(function () {
   const params = new URLSearchParams(location.search);
 
   //2026.02.07 get("movie")를 get("id")로 변경했습니다 -김하빈 =============================================
-  const id = Number(params.get("id")) || 102;
+  const id = Number(params.get("id")) || 2;
 
   // 해당 id의 영화 찾기
   const movie = dummy.find((m) => m.id === id);
