@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MOVEIN</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/root.css" />
+    <link rel="stylesheet" href="css/import.css" />
+    <link rel="stylesheet" href="css/quest.css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  </head>
+
+  <body class="quest">
+    <div id="container">
+      <!-- 헤더 -->
+      <div id="header-slot"></div>
+
+      <main class="main-container--ticket">
+        <!-- 검색창 -->
+        <a class="search-f" href="search.html" aria-label="검색 페이지로 이동">
+          <div class="search-box">
+            <span class="search-btn" aria-hidden="true">
+              <img class="search-btn-img" src="img/search_3B393C.png" alt="" />
+            </span>
+
+            <span class="search-in" aria-hidden="true">
+              당신의 마음을 뒤흔들 작품을 검색해보세요
+            </span>
+          </div>
+        </a>
+
+        <div class="ticket-txt-box" id="hot-genre">
+          <h2 class="ticket-txt">우연한 만남, 오늘의 티켓 뽑기</h2>
+        </div>
+
+        <!-- 티켓 뽑기 -->
+        <div class="container--ticket">
+          <div class="ticket-bg">
+            <section class="ticket-wrap">
+              <div class="ticket-box" aria-label="오늘의 티켓 뽑기"></div>
+            </section>
+          </div>
+        </div>
+
+        <!-- 데이터에 해당되는 장르를 보여주는 구간 -->
+        <section class="ticket-view bottom-padding">
+          <div class="ticket-view-txt-box">
+            <p class="ticket-view-txt">
+              지금까지 수집한
+              <span class="input" data-role="ticket">티켓</span
+              ><span>들은 다음과 같아요</span>
+            </p>
+          </div>
+          <div class="ticket-view-gutter">
+            <div class="ticket-view-list">
+              <ul class="ticket-view-list-box posterList">
+                <li class="ticket-view-thing ticket-viewTemplate">
+                  <a href="" class="ticket-view-thing-one" data-role="link">
+                    <img src="" alt="" data-role="poster" />
+                  </a>
+                  <button class="likeBtn">
+                    <img src="img/heart_6f6c76.png" alt="heart button" />
+                  </button>
+                </li>
+                <li class="ticket-view-thing ticket-view-more">
+                  <a href="" class="blankbtn">
+                    <img src="img/next_icon_6F6C76.png" alt="moreBtn" />
+                  </a>
+                </li>
+              </ul>
+
+              <!-- <template id="ticket-viewItemTemplate">
+                <li class="ticket-view-thing ticket-viewTemplate">
+                  <a href="" class="ticket-view-thing-one" data-role="link">
+                    <img src="" alt="" data-role="poster" />
+                  </a>
+                  <button class="likeBtn">
+                    <img src="img/heart_6f6c76.png" alt="heart button" />
+                  </button>
+                </li>
+              </template> -->
+            </div>
+          </div>
+        </section>
+
+        <!-- 요즘 대세 영화는? -->
+        <section
+          class="hot-container bottom-padding"
+          id="hot-movie"
+          data-type="movie"
+        >
+          <div class="hot-title">
+            <div class="hot-txt-box">
+              <h3 class="hot-txt">요즘 대세 영화는?</h3>
+            </div>
+          </div>
+        </section>
+
+        <!-- 요즘 대세 드라마는? -->
+        <section
+          class="hot-container bottom-padding"
+          id="hot-drama"
+          data-type="drama"
+        >
+          <div class="hot-title">
+            <div class="hot-txt-box">
+              <h3 class="hot-txt">요즘 대세 프로그램은?</h3>
+            </div>
+          </div>
+        </section>
+
+        <!-- 무브오너들의 감상평 -->
+        <section class="movein-review" id="user-review">
+          <div class="review-txt-box">
+            <div class="hot-txt-box">
+              <h3 class="hot-txt">무브오너들의 감상평</h3>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- 접근성, 마크업을 위해 이 구조는 숨김처리 합니다. 삭제X -->
+      <footer class="footer visually-hidden">
+        <section class="pf-foot">
+          <p class="foot-one">
+            © 2025 MOVEON Project. Designed & Developed by Team MOVEON.
+          </p>
+          <p class="foot-two">
+            Icons by
+            <a
+              href="https://www.flaticon.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Flaticon</a
+            >.
+          </p>
+          <p>For educational and portfolio purposes only.</p>
+          <p>본 사이트는 포트폴리오 및 학습 목적으로 제작되었습니다.</p>
+        </section>
+      </footer>
+
+      <!-- 하단 메뉴바 -->
+      <div id="bottom-nav"></div>
+    </div>
+
+    <!-- JS -->
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"
+    ></script>
+
+    <script src="js/import.js"></script>
+    <script defer src="js/genre-bubbles_edit.js"></script>
+    <script type="module" defer src="js/genre-bubbles_boot.js"></script>
+    <script type="module" src="js/page/home.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
