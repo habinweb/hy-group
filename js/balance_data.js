@@ -1,6 +1,64 @@
 // 0206 원본 코드 백업용
 
 /* =========================
+    카드 클릭 시
+========================= */
+
+$(".a_balance_card").on("click", function () {
+  // 왼쪽 카드면 left, 아니면 right
+  const key = $(this).hasClass("left") ? "left" : "right";
+
+  // 선택한 카드에 맞는 결과 데이터 가져오기
+  const d = RESULT[key];
+
+  // 결과 메시지 텍스트 변경
+  $("#a_result_message_text").text(d.msg);
+
+  // 결과 영화 제목 변경
+  $("#a_result_movie_title_value").text(d.title);
+
+  // 결과 포스터 이미지 변경
+  $(".a_result_movie_poster").attr({
+    src: d.poster,
+    alt: d.title + " 포스터",
+  });
+
+  // 태그 영역 비우고 새 태그들 넣기
+  $(".a_result_tags_container").html(
+    d.tags.map((t) => `<span class="a_result_tag">${t}</span>`).join(""),
+  );
+
+  $(".a_result_view_details_btn").attr("href", `sub.html?movie=${d.id}`);
+
+  // 게임 선택 영역 숨기기
+  $(".a_balance_game_container").hide();
+
+  // 결과 영역 보여주기
+  $(".a_balance_result_area").show();
+
+  // active 클래스 초기화
+  $(".a_balance_card").removeClass("active");
+
+  // 클릭한 카드만 active
+  $(this).addClass("active");
+});
+
+/* =========================
+    다시 하기 버튼
+========================= */
+
+$(".a_balance_restart_btn").on("click", function () {
+  // 결과 숨기기
+  $(".a_balance_result_area").hide();
+
+  // 다시 선택 화면 보여주기
+  $(".a_balance_game_container").show();
+
+  // 카드 active 초기화
+  $(".a_balance_card").removeClass("active");
+});
+
+/* =========================
   밸런스 게임 선택지 영화 상세 데이터(세부 페이지 교체용)
 ======================== */
 
