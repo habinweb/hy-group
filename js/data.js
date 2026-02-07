@@ -14,6 +14,13 @@ export const dummy = [
     ageRating: "15",
     runningTime: 138,
     plot: "산 정상에서 추락한 한 남자의 변사 사건. 담당 형사 '해준'(박해일)은 사망자의 아내 '서래'(탕웨이)와 마주하게 된다. 남편의 죽음 앞에서 특별한 동요를 보이지 않는 '서래'. 경찰은 보통의 유가족과는 다른 '서래'를 용의선상에 올린다. '해준'은 사건 당일의 알리바이 탐문과 신문, 잠복수사를 통해 '서래'를 알아가면서 그녀에 대한 관심이 점점 커져가는 것을 느낀다.",
+    stillcuts: [
+      "img/stillcut/stillcut_헤어질결심1.jpg",
+      "img/stillcut/stillcut_헤어질결심2.jpg",
+      "img/stillcut/stillcut_헤어질결심3.jpg",
+      "img/stillcut/stillcut_헤어질결심4.jpg",
+      "img/stillcut/stillcut_헤어질결심5.jpg",
+    ],
   },
   {
     id: 2,
@@ -30,6 +37,12 @@ export const dummy = [
     ageRating: "all",
     runningTime: 138,
     plot: "‘다 이루었다’는 생각이 들 만큼 삶에 만족하던 25년 경력의 제지 전문가 ‘만수’(이병헌). 아내 ‘미리’(손예진), 두 아이, 반려견들과 함께 행복한 일상을 보내던 만수는 회사로부터 돌연 해고 통보를 받는다.",
+    stillcuts: [
+      "img/stillcut/stillcut_어쩔수가없다1.jpg",
+      "img/stillcut/stillcut_어쩔수가없다2.jpg",
+      "img/stillcut/stillcut_어쩔수가없다3.jpg",
+      "img/stillcut/stillcut_어쩔수가없다4.jpg",
+    ],
   },
   {
     id: 3,
@@ -62,6 +75,12 @@ export const dummy = [
     ageRating: "12",
     runningTime: 127,
     plot: "싱글맘 사오리(안도 사쿠라)는 아들 미나토(쿠로카와 소야)의 행동에서 이상 기운을 감지한다. 용기를 내 찾아간 학교에서 상담을 진행한 날 이후 선생님과 학생들의 분위기가 심상치 않게 흐르기 시작하고. “괴물은 누구인가?” 한편 사오리는 친구들로부터 따돌림을 당하고 있는 미나토의 친구 요리(히이라기 히나타)의 존재를 알게 되고 자신이 아는 아들의 모습과 사람들이 아는 아들의 모습이 다르다는 사실을 어렴풋이 깨닫는데… 태풍이 몰아치던 어느 날, 아무도 몰랐던 진실이 드러난다.",
+    stillcuts: [
+      "img/stillcut/stillcut_괴물1.jpg",
+      "img/stillcut/stillcut_괴물2.jpg",
+      "img/stillcut/stillcut_괴물3.jpg",
+      "img/stillcut/stillcut_괴물4.jpg",
+    ],
   },
   {
     id: 5,
@@ -78,6 +97,12 @@ export const dummy = [
     ageRating: "12",
     runningTime: 119,
     plot: "반장, 모범생, 학교 인싸인 동시에 연애가 가장 큰 관심사인 열여덟 ‘이주인’. 어느 날, 반 친구 ‘수호’가 제안한 서명운동에 전교생이 동참하던 중 오직 ‘주인’만이 내용에 동의할 수 없다며 나 홀로 서명을 거부한다. 어떻게든 설득하려는 ‘수호’와 단호한 ‘주인’의 실랑이가 결국 말싸움으로 번지고, 화가 난 ‘주인’이 아무렇게나 질러버린 한마디가 주변을 혼란에 빠뜨린다. 설상가상, ‘주인’을 추궁하는 익명의 쪽지가 배달되기 시작하는데……. 인싸? 관종? 허언증? 거짓말쟁이?",
+    stillcuts: [
+      "img/stillcut/stillcut_세계의주인1.jpg",
+      "img/stillcut/stillcut_세계의주인2.jpg",
+      "img/stillcut/stillcut_세계의주인3.jpg",
+      "img/stillcut/stillcut_세계의주인4.jpg",
+    ],
   },
   {
     id: 6,
@@ -94,6 +119,12 @@ export const dummy = [
     ageRating: "12",
     runningTime: 95,
     plot: "끝없이 반복되는 지하도에 갇힌 ‘헤매는 남자’, 아래의 규칙에 따라 8번 출구로 탈출해야만 한다. 1. 단 하나의 이상 현상도 놓치지 말 것. 2. 이상 현상을 발견하면 즉시 되돌아갈 것. 3. 이상 현상이 없다면 앞으로 나아갈 것. 4. 8번 출구를 통해서 밖으로 나갈 것.",
+    stillcuts: [
+      "img/stillcut/stillcut_8번출구1.jpg",
+      "img/stillcut/stillcut_8번출구2.jpg",
+      "img/stillcut/stillcut_8번출구3.jpg",
+      "img/stillcut/stillcut_8번출구4.jpg",
+    ],
   },
   {
     id: 7,
@@ -110,6 +141,12 @@ export const dummy = [
     ageRating: "15",
     runningTime: 139,
     plot: "미국에 이민 와 힘겹게 세탁소를 운영하던 에블린은 세무당국의 조사에 시달리던 어느 날 남편의 이혼 요구와 삐딱하게 구는 딸로 인해 대혼란에 빠진다. 그 순간 에블린은 멀티버스 안에서 수천, 수만의 자신이 세상을 살아가고 있다는 사실을 알게 되고, 그 모든 능력을 빌려와 위기의 세상과 가족을 구해야 하는 운명에 처한다.",
+    stillcuts: [
+      "img/stillcut/stillcut_에에올1.jpg",
+      "img/stillcut/stillcut_에에올2.jpg",
+      "img/stillcut/stillcut_에에올3.jpg",
+      "img/stillcut/stillcut_에에올4.jpg",
+    ],
   },
   {
     id: 8,
@@ -126,6 +163,11 @@ export const dummy = [
     ageRating: "12",
     runningTime: 116,
     plot: "12개의 외계 비행 물체(쉘)가 미국, 중국, 러시아를 비롯한 세계 각지 상공에 등장했다. 웨버 대령(포레스트 휘태커)은 언어학 전문가 루이스 뱅크스 박사(에이미 아담스)와 과학자 이안 도넬리(제레미 레너)를 통해 외계 비행 물체(쉘) 접촉하기 시작한다. 두 사람은 18시간마다 아래쪽에서 문이 열리는 외계 비행 물체(쉘) 내부로 진입해 정체 모를 생명체와 마주하게 되고, 이들은 15시간 내 그들이 지구에 온 이유를 밝혀내야 하는데...",
+    stillcuts: [
+      "img/stillcut/stillcut_컨택트1.jpg",
+      "img/stillcut/stillcut_컨택트2.jpg",
+      "img/stillcut/stillcut_컨택트3.jpg",
+    ],
   },
 
   // ===== 드라마 =====
@@ -308,6 +350,12 @@ export const dummy = [
     ageRating: "all",
     runningTime: 102,
     plot: "마법 같은 얼음 능력을 가진 엘사로 인해 아렌델 왕국에 영원한 겨울이 찾아온다. 동생 안나는 언니 엘사를 찾아 모험을 떠나고, 진정한 사랑과 용기의 의미를 깨닫게 된다.",
+    stillcuts: [
+      "img/stillcut/stillcut_겨울왕국1.jpg",
+      "img/stillcut/stillcut_겨울왕국2.jpg",
+      "img/stillcut/stillcut_겨울왕국3.jpg",
+      "img/stillcut/stillcut_겨울왕국4.jpg",
+    ],
   },
   {
     id: 102,
@@ -324,5 +372,11 @@ export const dummy = [
     ageRating: "all",
     runningTime: 97,
     plot: "산타, 부활절 토끼, 이빨 요정 등 전설 속 영웅들이 악당 피치로부터 아이들의 꿈을 지키기 위해 힘을 합친다.",
+    stillcuts: [
+      "img/stillcut/stillcut_가디언즈1.jpg",
+      "img/stillcut/stillcut_가디언즈2.jpg",
+      "img/stillcut/stillcut_가디언즈3.jpg",
+      "img/stillcut/stillcut_가디언즈4.jpg",
+    ],
   },
 ];
