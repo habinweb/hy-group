@@ -214,58 +214,114 @@ $(function () {
   });
 
   /* =========================
-  밸런스 게임 선택지 영화 상세 데이터(세부 페이지 교체용)
+  밸런스 게임 선택지 영화 상세 데이터
 ======================== */
 
-  // 현재 비어있음!!!!!
+  const BALANCE_RESULT = {
+    left: {
+      movieId: 101,
+      msg: "마법 같은 분위기에 끌리는 당신에게 어울리는 작품..",
+      tags: ["#애니메이션", "#자매", "#영화", "#마법", "#겨울", "#디즈니"],
+    },
+    right: {
+      movieId: 102,
+      msg: "정의와 사명감을 가진 당신에게 어울리는 작품..",
+      tags: ["#애니메이션", "#영화", "#겨울", "#모험", "#가족", "#드림웍스"],
+    },
+  };
 
   /* =========================
     밸런스 게임
 ======================== */
+
+  $(".a_balance_result_area").hide();
 
   /* =========================
     카드 클릭 시
 ========================= */
 
   $(".a_balance_card").on("click", function () {
-    // 왼쪽 카드면 left, 아니면 right
+    // left / right 판별
     const key = $(this).hasClass("left") ? "left" : "right";
+    const r = BALANCE_RESULT[key];
+    if (!r) return;
 
-    // 선택한 카드에 맞는 결과 데이터 가져오기
-    const d = RESULT[key];
+    // 더미 데이터에서 영화 찾기
+    const movie = dummy.find((m) => m.id === r.movieId);
+    if (!movie) return;
 
-    // 결과 메시지 텍스트 변경
-    $("#a_result_message_text").text(d.msg);
+    // 결과 메시지
+    $("#a_result_message_text").text(r.msg);
 
-    // 결과 영화 제목 변경
-    $("#a_result_movie_title_value").text(d.title);
+    // 영화 제목
+    $("#a_result_movie_title_value").text(movie.title);
 
-    // 결과 포스터 이미지 변경
+    // 포스터
     $(".a_result_movie_poster").attr({
-      src: d.poster,
-      alt: d.title + " 포스터",
+      src: movie.poster,
+      alt: movie.title + " 포스터",
     });
 
-    // 태그 영역 비우고 새 태그들 넣기
+    // 태그
     $(".a_result_tags_container").html(
-      d.tags.map((t) => `<span class="a_result_tag">${t}</span>`).join(""),
+      r.tags.map((t) => `<span class="a_result_tag">${t}</span>`).join(""),
     );
 
-    // 2026.02.07 ?movie=${d.id}를 ?id=${d.id}로 변경했습니다 -김하빈 ===========================================
-    $(".a_result_view_details_btn").attr("href", `sub.html?movie=${d.id}`);
+    // 상세 페이지 이동 (sub.js 기준: id)
+    $(".a_result_view_details_btn").attr("href", `sub.html?id=${movie.id}`);
 
-    // 게임 선택 영역 숨기기
+    // 화면 전환
     $(".a_balance_game_container").hide();
-
-    // 결과 영역 보여주기
     $(".a_balance_result_area").show();
 
-    // active 클래스 초기화
+    // 카드 active 처리
     $(".a_balance_card").removeClass("active");
-
-    // 클릭한 카드만 active
     $(this).addClass("active");
   });
+
+  /* =========================
+    카드 클릭 시
+========================= */
+
+  // $(".a_balance_card").on("click", function () {
+  //   // 왼쪽 카드면 left, 아니면 right
+  //   const key = $(this).hasClass("left") ? "left" : "right";
+
+  //   // 선택한 카드에 맞는 결과 데이터 가져오기
+  //   const d = RESULT[key];
+
+  //   // 결과 메시지 텍스트 변경
+  //   $("#a_result_message_text").text(d.msg);
+
+  //   // 결과 영화 제목 변경
+  //   $("#a_result_movie_title_value").text(d.title);
+
+  //   // 결과 포스터 이미지 변경
+  //   $(".a_result_movie_poster").attr({
+  //     src: d.poster,
+  //     alt: d.title + " 포스터",
+  //   });
+
+  //   // 태그 영역 비우고 새 태그들 넣기
+  //   $(".a_result_tags_container").html(
+  //     d.tags.map((t) => `<span class="a_result_tag">${t}</span>`).join(""),
+  //   );
+
+  // 2026.02.07 ?movie=${d.id}를 ?id=${d.id}로 변경했습니다 -김하빈 ===========================================
+  //   $(".a_result_view_details_btn").attr("href", `sub.html?movie=${d.id}`);
+
+  //   // 게임 선택 영역 숨기기
+  //   $(".a_balance_game_container").hide();
+
+  //   // 결과 영역 보여주기
+  //   $(".a_balance_result_area").show();
+
+  //   // active 클래스 초기화
+  //   $(".a_balance_card").removeClass("active");
+
+  //   // 클릭한 카드만 active
+  //   $(this).addClass("active");
+  // });
 
   /* =========================
     다시 하기 버튼
@@ -326,7 +382,7 @@ $(function () {
   const params = new URLSearchParams(location.search);
 
   //2026.02.07 get("movie")를 get("id")로 변경했습니다 -김하빈 =============================================
-  const id = Number(params.get("id")) || 102;
+  const id = Number(params.get("id")) || 4;
 
   // 해당 id의 영화 찾기
   const movie = dummy.find((m) => m.id === id);
