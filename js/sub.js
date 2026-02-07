@@ -1,19 +1,26 @@
 $(function () {
   /* =========================
-    줄거리 더보기
-  ========================= */
+   줄거리 더보기 (짧으면 버튼 숨김)
+========================= */
 
-  $(document).on("click", ".a_plot_toggle_btn", function () {
-    const $wrap = $(this).closest(".a_movie_forms");
+  $(function () {
+    const $plot = $(".a_plot_value");
+    const $btn = $(".a_plot_toggle_btn");
+    const $wrap = $(".a_movie_forms");
 
-    $wrap.toggleClass("open");
+    if (!$plot.length || !$btn.length) return;
 
-    // 버튼 텍스트 변경
-    if ($wrap.hasClass("open")) {
-      $(this).text("접기");
-    } else {
-      $(this).text("더보기");
+    // 줄거리가 넘치지 않으면 버튼 숨김
+    if ($plot[0].scrollHeight <= $plot[0].clientHeight) {
+      $btn.hide();
+      return;
     }
+
+    // 더보기 / 접기
+    $btn.on("click", function () {
+      $wrap.toggleClass("open");
+      $(this).text($wrap.hasClass("open") ? "접기" : "더보기");
+    });
   });
 
   /* =========================
@@ -207,57 +214,114 @@ $(function () {
   });
 
   /* =========================
-  밸런스 게임 선택지 영화 상세 데이터(세부 페이지 교체용)
+  밸런스 게임 선택지 영화 상세 데이터
 ======================== */
 
-  // 현재 비어있음!!!!!
+  const BALANCE_RESULT = {
+    left: {
+      movieId: 101,
+      msg: "마법 같은 분위기에 끌리는 당신에게 어울리는 작품..",
+      tags: ["#애니메이션", "#자매", "#영화", "#마법", "#겨울", "#디즈니"],
+    },
+    right: {
+      movieId: 102,
+      msg: "정의와 사명감을 가진 당신에게 어울리는 작품..",
+      tags: ["#애니메이션", "#영화", "#겨울", "#모험", "#가족", "#드림웍스"],
+    },
+  };
 
   /* =========================
     밸런스 게임
 ======================== */
+
+  $(".a_balance_result_area").hide();
 
   /* =========================
     카드 클릭 시
 ========================= */
 
   $(".a_balance_card").on("click", function () {
-    // 왼쪽 카드면 left, 아니면 right
+    // left / right 판별
     const key = $(this).hasClass("left") ? "left" : "right";
+    const r = BALANCE_RESULT[key];
+    if (!r) return;
 
-    // 선택한 카드에 맞는 결과 데이터 가져오기
-    const d = RESULT[key];
+    // 더미 데이터에서 영화 찾기
+    const movie = dummy.find((m) => m.id === r.movieId);
+    if (!movie) return;
 
-    // 결과 메시지 텍스트 변경
-    $("#a_result_message_text").text(d.msg);
+    // 결과 메시지
+    $("#a_result_message_text").text(r.msg);
 
-    // 결과 영화 제목 변경
-    $("#a_result_movie_title_value").text(d.title);
+    // 영화 제목
+    $("#a_result_movie_title_value").text(movie.title);
 
-    // 결과 포스터 이미지 변경
+    // 포스터
     $(".a_result_movie_poster").attr({
-      src: d.poster,
-      alt: d.title + " 포스터",
+      src: movie.poster,
+      alt: movie.title + " 포스터",
     });
 
-    // 태그 영역 비우고 새 태그들 넣기
+    // 태그
     $(".a_result_tags_container").html(
-      d.tags.map((t) => `<span class="a_result_tag">${t}</span>`).join(""),
+      r.tags.map((t) => `<span class="a_result_tag">${t}</span>`).join(""),
     );
 
-    $(".a_result_view_details_btn").attr("href", `sub.html?movie=${d.id}`);
+    // 상세 페이지 이동 (sub.js 기준: id)
+    $(".a_result_view_details_btn").attr("href", `sub.html?id=${movie.id}`);
 
-    // 게임 선택 영역 숨기기
+    // 화면 전환
     $(".a_balance_game_container").hide();
-
-    // 결과 영역 보여주기
     $(".a_balance_result_area").show();
 
-    // active 클래스 초기화
+    // 카드 active 처리
     $(".a_balance_card").removeClass("active");
-
-    // 클릭한 카드만 active
     $(this).addClass("active");
   });
+
+  /* =========================
+    카드 클릭 시
+========================= */
+
+  // $(".a_balance_card").on("click", function () {
+  //   // 왼쪽 카드면 left, 아니면 right
+  //   const key = $(this).hasClass("left") ? "left" : "right";
+
+  //   // 선택한 카드에 맞는 결과 데이터 가져오기
+  //   const d = RESULT[key];
+
+  //   // 결과 메시지 텍스트 변경
+  //   $("#a_result_message_text").text(d.msg);
+
+  //   // 결과 영화 제목 변경
+  //   $("#a_result_movie_title_value").text(d.title);
+
+  //   // 결과 포스터 이미지 변경
+  //   $(".a_result_movie_poster").attr({
+  //     src: d.poster,
+  //     alt: d.title + " 포스터",
+  //   });
+
+  //   // 태그 영역 비우고 새 태그들 넣기
+  //   $(".a_result_tags_container").html(
+  //     d.tags.map((t) => `<span class="a_result_tag">${t}</span>`).join(""),
+  //   );
+
+  // 2026.02.07 ?movie=${d.id}를 ?id=${d.id}로 변경했습니다 -김하빈 ===========================================
+  //   $(".a_result_view_details_btn").attr("href", `sub.html?movie=${d.id}`);
+
+  //   // 게임 선택 영역 숨기기
+  //   $(".a_balance_game_container").hide();
+
+  //   // 결과 영역 보여주기
+  //   $(".a_balance_result_area").show();
+
+  //   // active 클래스 초기화
+  //   $(".a_balance_card").removeClass("active");
+
+  //   // 클릭한 카드만 active
+  //   $(this).addClass("active");
+  // });
 
   /* =========================
     다시 하기 버튼
@@ -311,12 +375,15 @@ $(function () {
 ======================= */
 
 // 더미 영화 데이터 불러오기
-import { dummy } from "./data.js";
+// import { dummy } from "./data.js";
+import { dummy } from "./data copy.js";
 
 $(function () {
   // 주소창에서 영화 고유코드(id) 가져오기
   const params = new URLSearchParams(location.search);
-  const id = Number(params.get("movie")) || 18; // 없으면 1번 기본
+
+  //2026.02.07 get("movie")를 get("id")로 변경했습니다 -김하빈 =============================================
+  const id = Number(params.get("id")) || 102;
 
   // 해당 id의 영화 찾기
   const movie = dummy.find((m) => m.id === id);
@@ -327,6 +394,44 @@ $(function () {
   $('[data-role="poster"]').attr("src", movie.poster);
   $('[data-role="poster"]').attr("alt", movie.title + " 포스터");
 
+  // 시험용 유튜브 (없으면 섹션 숨김)
+  const $yt = $('[data-role="youtube"]');
+  if ($yt.length) {
+    if (movie.youtube) {
+      $yt.attr("src", movie.youtube);
+      $yt.closest(".media_section").show(); // 영상 섹션 유지
+    } else {
+      $yt.closest(".media_section").hide(); // 영상 없으면 섹션 숨김
+    }
+  }
+
+  // 스틸컷 배열 (최대 4장)
+  const cuts = movie.stillcuts || [];
+
+  // 없을 시 아이콘
+  const PLACEHOLDER_ICON = "img/picture_6f6c76.png";
+
+  // 상단 배경 스틸컷 (첫 번째 스틸컷 사용, 없으면 빈 박스)
+  $('[data-role="stillcuts"]').attr("src", cuts[0] || "");
+
+  // 영상/이미지 탭 스킬컷 4칸 처리
+  $("#tab_media img[data-role='skillcut']").each(function (i) {
+    const hasCut = !!cuts[i];
+    // 해당 칸에 스틸컷 존재 여부
+
+    $(this)
+      // 스틸컷이 있으면 이미지, 없으면 아이콘
+      .attr("src", hasCut ? cuts[i] : PLACEHOLDER_ICON)
+
+      // 스틸컷이 없을 때만 placeholder 스타일 적용
+      .toggleClass("is-placeholder", !hasCut)
+
+      // 컨택트 전용!!
+      // 스틸컷이 3장이고, 4번째 칸일 때만
+      // 오른쪽 아래 아이콘 크기 조절용 클래스 추가
+      .toggleClass("is-third-missing", !hasCut && cuts.length === 3 && i === 3);
+  });
+
   // 영화 제목
   $('[data-role="title"]').text(movie.title);
 
@@ -336,9 +441,25 @@ $(function () {
   // 별점
   $('[data-role="rating"]').text(movie.rating);
 
+  // 연령 등급 가공
+  const ageText = movie.ageRating === "all" ? "all" : `${movie.ageRating}세`;
+
+  // 러닝타임 / 부작 가공
+  const timeText =
+    movie.type === "drama"
+      ? `${movie.runningTime}부작`
+      : `${movie.runningTime}분`;
+
+  // 드라마일 경우 감독 / 제작 숨김
+  if (movie.type === "drama") {
+    $('[data-role="director"]').closest("li").hide();
+    $('[data-role="production"]').closest("li").hide();
+  }
+
+  // 상세 정보 한 줄
   const detailText =
-    `${movie.ageRating}세 · ${movie.date} · ${movie.type} · ${movie.genre.join("/")}` +
-    ` ${movie.runningTime}분`;
+    `${ageText} · ${movie.date} · ${movie.type} · ${movie.genre.join("/")}` +
+    ` ${timeText}`;
 
   //상세 정보 한 줄 텍스트
   $('.a_details_value[data-role="optional"]').text(detailText);
@@ -363,31 +484,3 @@ $(function () {
     쿠팡플레이: "img/coupangplay.png",
   };
 });
-
-// ===================================================================
-// 밸런스 게임 + 다시 하기 수정하기 전 기존 코드입니다. html 도 함께 백업중입니다!!
-
-/* =========================
-     4) 밸런스 게임
-  ========================= */
-
-// const $cards = $(".a_balance_card");
-// const $game = $(".a_balance_game_container");
-// const $result = $(".a_balance_result_area");
-
-// $cards.on("click", function () {
-//   $game.hide();
-//   $result.show();
-
-//   $cards.removeClass("active");
-//   $(this).addClass("active");
-// });
-
-/* =========================
-  // 5) 다시 하기 버튼
-    ========================= */
-// $(".a_balance_restart_btn").on("click", function () {
-//   $result.hide();
-//   $game.show();
-//   $cards.removeClass("active");
-// });
