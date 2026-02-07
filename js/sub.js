@@ -375,14 +375,15 @@ $(function () {
 ======================= */
 
 // 더미 영화 데이터 불러오기
-import { dummy } from "./data.js";
+// import { dummy } from "./data.js";
+import { dummy } from "./data copy.js";
 
 $(function () {
   // 주소창에서 영화 고유코드(id) 가져오기
   const params = new URLSearchParams(location.search);
 
   //2026.02.07 get("movie")를 get("id")로 변경했습니다 -김하빈 =============================================
-  const id = Number(params.get("id")) || 8;
+  const id = Number(params.get("id")) || 102;
 
   // 해당 id의 영화 찾기
   const movie = dummy.find((m) => m.id === id);
@@ -392,6 +393,17 @@ $(function () {
   const posterSrc = "/" + movie.poster.replace(/^\/+/, "");
   $('[data-role="poster"]').attr("src", movie.poster);
   $('[data-role="poster"]').attr("alt", movie.title + " 포스터");
+
+  // 시험용 유튜브 (없으면 섹션 숨김)
+  const $yt = $('[data-role="youtube"]');
+  if ($yt.length) {
+    if (movie.youtube) {
+      $yt.attr("src", movie.youtube);
+      $yt.closest(".media_section").show(); // 영상 섹션 유지
+    } else {
+      $yt.closest(".media_section").hide(); // 영상 없으면 섹션 숨김
+    }
+  }
 
   // 스틸컷 배열 (최대 4장)
   const cuts = movie.stillcuts || [];

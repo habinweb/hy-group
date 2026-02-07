@@ -529,6 +529,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 15px;
+  cursor: pointer;
 }
 
 /* 보석 찾기 영역 설정 (세 번째 아이템) */
