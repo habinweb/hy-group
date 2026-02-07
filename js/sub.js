@@ -1,19 +1,26 @@
 $(function () {
   /* =========================
-    줄거리 더보기
-  ========================= */
+   줄거리 더보기 (짧으면 버튼 숨김)
+========================= */
 
-  $(document).on("click", ".a_plot_toggle_btn", function () {
-    const $wrap = $(this).closest(".a_movie_forms");
+  $(function () {
+    const $plot = $(".a_plot_value");
+    const $btn = $(".a_plot_toggle_btn");
+    const $wrap = $(".a_movie_forms");
 
-    $wrap.toggleClass("open");
+    if (!$plot.length || !$btn.length) return;
 
-    // 버튼 텍스트 변경
-    if ($wrap.hasClass("open")) {
-      $(this).text("접기");
-    } else {
-      $(this).text("더보기");
+    // 줄거리가 넘치지 않으면 버튼 숨김
+    if ($plot[0].scrollHeight <= $plot[0].clientHeight) {
+      $btn.hide();
+      return;
     }
+
+    // 더보기 / 접기
+    $btn.on("click", function () {
+      $wrap.toggleClass("open");
+      $(this).text($wrap.hasClass("open") ? "접기" : "더보기");
+    });
   });
 
   /* =========================
@@ -319,7 +326,7 @@ $(function () {
   const params = new URLSearchParams(location.search);
 
   //2026.02.07 get("movie")를 get("id")로 변경했습니다 -김하빈 =============================================
-  const id = Number(params.get("id")) || 101;
+  const id = Number(params.get("id")) || 102;
 
   // 해당 id의 영화 찾기
   const movie = dummy.find((m) => m.id === id);
@@ -329,6 +336,18 @@ $(function () {
   const posterSrc = "/" + movie.poster.replace(/^\/+/, "");
   $('[data-role="poster"]').attr("src", movie.poster);
   $('[data-role="poster"]').attr("alt", movie.title + " 포스터");
+
+  // 스틸컷 1~4번 고정 (부족하면 1번으로 채움)
+  const cuts = movie.stillcuts || [];
+  const fallback = cuts[0] || "";
+
+  // 상단 배경 스틸컷: 1번
+  $('[data-role="stillcuts"]').attr("src", fallback);
+
+  // 탭 이미지 스틸컷:1~4번
+  $("#tab_media .stillcuts img").each(function (i) {
+    $(this).attr("src", cuts[i] || fallback);
+  });
 
   // 영화 제목
   $('[data-role="title"]').text(movie.title);
@@ -340,13 +359,24 @@ $(function () {
   $('[data-role="rating"]').text(movie.rating);
 
   // 연령 등급 가공
-  const ageText =
-    movie.ageRating === "all" ? "전체 관람가" : `${movie.ageRating}세`;
+  const ageText = movie.ageRating === "all" ? "all" : `${movie.ageRating}세`;
+
+  // 러닝타임 / 부작 가공
+  const timeText =
+    movie.type === "drama"
+      ? `${movie.runningTime}부작`
+      : `${movie.runningTime}분`;
+
+  // 드라마일 경우 감독 / 제작 숨김
+  if (movie.type === "drama") {
+    $('[data-role="director"]').closest("li").hide();
+    $('[data-role="production"]').closest("li").hide();
+  }
 
   // 상세 정보 한 줄
   const detailText =
     `${ageText} · ${movie.date} · ${movie.type} · ${movie.genre.join("/")}` +
-    ` ${movie.runningTime}분`;
+    ` ${timeText}`;
 
   //상세 정보 한 줄 텍스트
   $('.a_details_value[data-role="optional"]').text(detailText);
@@ -371,31 +401,3 @@ $(function () {
     쿠팡플레이: "img/coupangplay.png",
   };
 });
-
-// ===================================================================
-// 밸런스 게임 + 다시 하기 수정하기 전 기존 코드입니다. html 도 함께 백업중입니다!!
-
-/* =========================
-     4) 밸런스 게임
-  ========================= */
-
-// const $cards = $(".a_balance_card");
-// const $game = $(".a_balance_game_container");
-// const $result = $(".a_balance_result_area");
-
-// $cards.on("click", function () {
-//   $game.hide();
-//   $result.show();
-
-//   $cards.removeClass("active");
-//   $(this).addClass("active");
-// });
-
-/* =========================
-  // 5) 다시 하기 버튼
-    ========================= */
-// $(".a_balance_restart_btn").on("click", function () {
-//   $result.hide();
-//   $game.show();
-//   $cards.removeClass("active");
-// });
