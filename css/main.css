@@ -483,6 +483,13 @@ canvas {
   gap: 8px;
 }
 
+.date-detail {
+  width: 50%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .date-box span {
   font-weight: 300;
   letter-spacing: 0rem;
@@ -535,33 +542,36 @@ canvas {
   width: max-content;
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 0 16px;
 }
 
 .review-card {
   display: inline-block;
-  width: 257px;
+  width: calc(250px + 1rem);
   border-radius: 10px;
   background: var(--c-gray);
 }
 
 .review {
   display: flex;
-  padding: 1rem;
-  gap: 1rem;
+  padding: 1rem 0;
+  margin-left: 1rem;
 }
 
 .left-box {
-  width: 80px;
+  width: 85px;
 }
 .left-box > img {
+  display: block;
   width: 100%;
   aspect-ratio: 2 / 3;
   border-radius: 5px;
+  object-fit: fill;
 }
 
 .right-box {
   width: 100%;
+  margin-left: 1rem;
 }
 
 .work-name {
@@ -572,7 +582,7 @@ canvas {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  width: 95%;
+  width: 90%;
 }
 .user-review {
   display: -webkit-box;
@@ -583,6 +593,7 @@ canvas {
   color: var(--c-font);
   font-weight: 700;
   letter-spacing: 0rem;
+  width: 90%;
 }
 
 .user-box {
