@@ -316,7 +316,7 @@ import { dummy } from "./data.js";
 $(function () {
   // 주소창에서 영화 고유코드(id) 가져오기
   const params = new URLSearchParams(location.search);
-  const id = Number(params.get("movie")) || 18; // 없으면 1번 기본
+  const id = Number(params.get("movie")) || 3; // 없으면 1번 기본
 
   // 해당 id의 영화 찾기
   const movie = dummy.find((m) => m.id === id);
