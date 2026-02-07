@@ -1,35 +1,26 @@
 // genre-bubbles.js
-// 2025-11-10 정리본 : 전역 테두리, 패딩, 커스텀 렌더 일원화 + 라벨 폰트 고정(rem)
+// Matter.js 물리 엔진 위에 “원형 버블 UI를 캔버스로 직접 그리는 렌더러
+// 버블의 엔진, 물리, 렌더, 스타일, 이미지, 텍스트 관리
 
-const BUBBLE_PADDING = 20; // 버블 간격(px)
-const OUTLINE_COLOR = "#252426"; // 테두리 색상
-const OUTLINE_WIDTH = 4; // 테두리 두께(px)
+const OUTLINE_COLOR = "#252426";
+const OUTLINE_WIDTH = 4;
+const LABEL_FONT_FAMILY = `"NanumSquare", sans-serif`;
+const LABEL_FONT_REM = 0.9375; // 15px 기준
+const LABEL_FONT_WEIGHT_DEFAULT = 400;
+const LABEL_FONT_COLOR_DEFAULT = "#faf5f5";
 
-// === 라벨 폰트 설정(고정 크기) ===
-const LABEL_FONT_FAMILY = `"NanumSquare", sans-serif`; // 폰트
-const LABEL_FONT_REM = 0.9375; // = 15px @ root 16px (고정)
-const LABEL_FONT_WEIGHT_DEFAULT = 400; // 기본 굵기(보통)
-const LABEL_FONT_COLOR_DEFAULT = "#faf5f5"; // 기본 글자색
-
-//🔥 1) 이미지 미리 로드
-let posterImg = new Image();
-posterImg.src = "img/poster/pt283.webp";
-let posterLoaded = false;
-posterImg.onload = () => {
-  posterLoaded = true;
-};
 (function () {
   const { Engine, Render, Runner, World, Bodies, Events } = Matter;
 
   function initGenreBubbleApp(containerId) {
     const container = document.getElementById(containerId);
     if (!container) {
-      console.error(`❌ '${containerId}' 컨테이너를 찾을 수 없습니다.`);
+      console.error(`'${containerId}' 컨테이너를 찾을 수 없습니다.`);
       return null;
     }
 
     const width = container.clientWidth;
-    const height = container.clientHeight; // CSS로 고정 높이 필수
+    const height = container.clientHeight;
 
     const engine = Engine.create();
     const world = engine.world;
@@ -49,7 +40,7 @@ posterImg.onload = () => {
     Render.run(render);
     Runner.run(Runner.create(), engine);
 
-    // 경계 생성
+    // 경계
     const ground = Bodies.rectangle(width / 2, height + 50, width, 100, {
       isStatic: true,
     });
@@ -59,27 +50,23 @@ posterImg.onload = () => {
     const right = Bodies.rectangle(width + 50, height / 2, 100, height, {
       isStatic: true,
     });
+
     ground.render.visible = false;
     left.render.visible = false;
     right.render.visible = false;
+
     World.add(world, [ground, left, right]);
 
+    //생성된 모든 버블 저장
     const bubbles = [];
 
-    function createGenreBubble(name, color, radius, opts = {}, idx, stNum) {
-      if (opts.specialPoster && stNum !== undefined) {
-        posterLoaded = false;
-        posterImg.src = `img/poster/pt${stNum}.webp`;
-        console.log(stNum);
-      }
+    function createGenreBubble(name, color, radius, opts = {}, idx) {
       const lw = Number.isFinite(opts.lineWidth)
         ? opts.lineWidth
         : OUTLINE_WIDTH;
       const strokeColor = opts.strokeColor || OUTLINE_COLOR;
 
       const x = Math.random() * (width - 2 * radius) + radius;
-
-      // idx 기준으로 살짝씩 다른 높이에서 떨어지게
       const order = Number.isFinite(idx) ? idx : 0;
       const spawnY = -radius - order * (radius * 0.3);
 
@@ -89,20 +76,11 @@ posterImg.onload = () => {
         render: { visible: false },
       });
 
-      // label 매핑
-      const labelMap = {
-        애니: "애니",
-        드라마: "드라마",
-        액션: "액션",
-        SF: "SF",
-        코미디: "코미디",
-        판타지: "판타지",
-        스릴러: "스릴러",
-        로맨스: "로맨스",
-      };
+      // ✅ specialPoster 이미지 소스(버블별)
+      const specialSrc = opts.specialPoster ? opts.imageSrc || null : null;
 
       body.plugin = {
-        label: labelMap[name] || name,
+        label: name, // ✅ labelMap 제거
         fill: color,
         stroke: strokeColor,
         lineWidth: lw,
@@ -111,7 +89,25 @@ posterImg.onload = () => {
         fontColor: opts.fontColor || LABEL_FONT_COLOR_DEFAULT,
         idx,
         specialPoster: opts.specialPoster === true,
+
+        // ✅ 버블별 이미지 상태
+        specialSrc, // string | null
+        specialImg: null, // Image | null
+        specialLoaded: false, // boolean
       };
+
+      // ✅ 버블별 이미지 로드
+      if (body.plugin.specialPoster && body.plugin.specialSrc) {
+        const img = new Image();
+        img.src = body.plugin.specialSrc;
+        img.onload = () => {
+          body.plugin.specialImg = img;
+          body.plugin.specialLoaded = true;
+        };
+        img.onerror = () => {
+          console.warn("❗ special 이미지 로드 실패:", body.plugin.specialSrc);
+        };
+      }
 
       World.add(world, body);
       bubbles.push(body);
@@ -132,18 +128,20 @@ posterImg.onload = () => {
         const rDraw = Math.max(0, rOuter - lw / 2);
 
         let fillStyle;
+
+        // ✅ specialPoster: 버블별 이미지로 그리기
         if (b.plugin.specialPoster) {
           ctx.save();
           ctx.beginPath();
           ctx.arc(b.position.x, b.position.y, rDraw, 0, Math.PI * 2);
           ctx.clip();
 
-          if (posterLoaded) {
+          if (b.plugin.specialLoaded && b.plugin.specialImg) {
             ctx.save();
             ctx.filter = "blur(5px)";
             ctx.globalAlpha = 1.0;
             ctx.drawImage(
-              posterImg,
+              b.plugin.specialImg,
               b.position.x - rDraw,
               b.position.y - rDraw,
               rDraw * 2,
@@ -153,9 +151,9 @@ posterImg.onload = () => {
             ctx.restore();
           }
 
+          // 이미지 위에 얇은 그라데이션(기존 느낌 유지)
           const inner = "rgba(41, 131, 88, 0.5)";
           const outer = "rgba(73, 233, 156, 0.5)";
-
           const grd = ctx.createRadialGradient(
             b.position.x,
             b.position.y,
@@ -164,14 +162,16 @@ posterImg.onload = () => {
             b.position.y,
             rDraw,
           );
-          grd.addColorStop(1, outer);
           grd.addColorStop(0, inner);
+          grd.addColorStop(1, outer);
+
           ctx.globalAlpha = 0.1;
           fillStyle = grd;
 
           ctx.beginPath();
           ctx.arc(b.position.x, b.position.y, rDraw, 0, Math.PI * 2);
           ctx.fill();
+
           ctx.restore();
         } else if (b.plugin.gradient?.inner && b.plugin.gradient?.outer) {
           const grd = ctx.createRadialGradient(
@@ -188,6 +188,7 @@ posterImg.onload = () => {
         } else {
           fillStyle = b.plugin.fill;
         }
+
         // 채우기
         ctx.fillStyle = fillStyle;
         ctx.beginPath();

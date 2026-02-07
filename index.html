@@ -18,28 +18,28 @@
       <!-- 헤더 -->
       <div id="header-slot"></div>
 
-      <!-- 검색창 -->
-      <a class="search-f" href="search.html" aria-label="검색 페이지로 이동">
-        <div class="search-box">
-          <span class="search-btn" aria-hidden="true">
-            <img class="search-btn-img" src="img/search_3B393C.png" alt="" />
-          </span>
-
-          <span class="search-in" aria-hidden="true">
-            당신의 마음을 뒤흔들 작품을 검색해보세요
-          </span>
-        </div>
-      </a>
-
-      <div class="user-txt-box" id="hot-genre">
-        <h2 class="user-txt">
-          나만의 취향 탐험,<br />
-          <span class="loginBtn"><a href="form.html">무브인</a></span
-          >과 함께하세요
-        </h2>
-      </div>
-
       <main class="main-container">
+        <!-- 검색창 -->
+        <a class="search-f" href="search.html" aria-label="검색 페이지로 이동">
+          <div class="search-box">
+            <span class="search-btn" aria-hidden="true">
+              <img class="search-btn-img" src="img/search_3B393C.png" alt="" />
+            </span>
+
+            <span class="search-in" aria-hidden="true">
+              당신의 마음을 뒤흔들 작품을 검색해보세요
+            </span>
+          </div>
+        </a>
+
+        <div class="user-txt-box" id="hot-genre">
+          <h2 class="user-txt">
+            나만의 취향 탐험,<br />
+            <span class="loginBtn"><a href="form.html">무브인</a></span
+            >과 함께하세요
+          </h2>
+        </div>
+
         <div class="container">
           <section id="navi-wrap">
             <div class="bubble-panel">
@@ -319,7 +319,7 @@
 
             <div class="detail-box">
               <div class="date-box">
-                <p>방영일</p>
+                <p>공개일</p>
                 <span data-role="date" class="date-detail"></span>
               </div>
 
@@ -513,7 +513,7 @@
 
     <script src="js/import.js"></script>
     <script defer src="js/genre-bubbles_edit.js"></script>
-    <script defer src="js/genre-bubbles_boot.js"></script>
+    <script type="module" defer src="js/genre-bubbles_boot.js"></script>
     <script type="module" src="js/page/home.js"></script>
     <script src="js/main.js"></script>
   </body>

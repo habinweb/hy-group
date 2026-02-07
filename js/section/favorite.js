@@ -36,7 +36,7 @@ export function initFavoriteSection() {
     const link = card.querySelector('[data-role="link"]');
     const img = card.querySelector('[data-role="poster"]');
 
-    if (link) link.href = `#${item.id}`;
+    if (link) link.href = `sub.html?id=${item.id}`;
     if (img) {
       img.src = item.poster;
       img.alt = item.title;

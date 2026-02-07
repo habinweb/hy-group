@@ -17,7 +17,6 @@ body.lock {
   display: flex;
   align-items: center;
 }
-
 .search-box {
   position: absolute;
   width: 100%;
@@ -30,7 +29,6 @@ body.lock {
   top: 50%;
   transform: translateX(-50%) translateY(-50%);
 }
-
 .search-btn {
   background: var(--c-gray2);
   width: 30px;
@@ -40,35 +38,28 @@ body.lock {
   justify-content: center;
   border-radius: 50px;
 }
-
 .search-btn-img {
   height: 14px;
   width: 14px;
 }
-
 .search-in {
   font-size: var(--fs2);
   padding-left: 0.5rem;
   color: var(--c-gray2);
   letter-spacing: 0;
 }
-
-/* 이미지 드래그 막아 가로 스크롤 방해 없게 2025.11.14 김하빈 수정 */
-img {
-  -webkit-user-drag: none;
-  user-select: none;
-}
 #container {
   width: 100%;
   background: var(--c-bg);
 }
 
-/* 닉네임 활성화 칸 */
-.user-txt-box {
+/* 티켓 */
+
+.ticket-txt-box {
   width: 90%;
   margin: 80px auto 0 auto;
 }
-.user-txt {
+.ticket-txt {
   padding: 2rem 0rem;
   font-size: var(--fs5);
   color: var(--c-font);
@@ -77,124 +68,110 @@ img {
   font-weight: 800;
 }
 
-.user-txt > span {
+/* .user-txt > span {
   color: var(--c-main);
-}
-.main-container {
-  height: auto;
-}
-/* 카테고리 원 박스 */
-#navi-wrap {
-  position: relative;
-  width: 90%;
-  margin: 0 auto;
-  overflow: hidden;
-  aspect-ratio: 1.05 / 1;
-  background: var(--gr-li-gray);
-  border-radius: 20px;
-}
-canvas {
-  position: absolute;
-  inset: 0;
-
-  display: block;
-  background: var(--gr-li-gray);
-}
-.bubble-panel {
-  width: 100%;
-  height: 100%;
-}
-#genre-bubble-container {
-  width: 100%;
-  height: 100%;
-} /* 
-.navi-box ul {
-  width: 100%;
-}
-.navi-box li {
-  position: relative;
-  display: inline-block;
-  background: var(--gr-li-purple);
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-}
-.navi-box li a {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  font-size: var(--fs2);
-  font-weight: 300;
-  white-space: nowrap;
-}
-
-.navi-box li.active {
-  width: 180px;
-  height: 180px;
-  position: relative;
-  background: var(--c-point-50);
-  overflow: hidden;
-}
-
-.navi-box li.active::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: var(--bg-img) center/cover no-repeat;
-  z-index: -1;
-  opacity: 1;
-  filter: blur(10px);
-}
-
-.navi-box li.active a {
-  font-weight: 800;
 } */
 
+.main-container--ticket {
+  width: 100%;
+}
+.container--ticket {
+  width: 100%;
+  padding: 4rem 0 5rem 0;
+  background: radial-gradient(
+      ellipse 50% 40% at center,
+      /* 가로 50%, 세로 40% 비율의 타원형 */ var(--c-main),
+      transparent 100% /* 100%까지 부드럽게 빠지도록 설정 */
+    )
+    no-repeat;
+  background-position: center;
+  background-size: 100%;
+}
+.ticket-bg {
+  width: 100%;
+  height: 100%;
+}
+/* 카테고리 원 박스 */
+.ticket-wrap {
+  width: 50%;
+
+  margin: 0 auto;
+}
+.ticket-box {
+  cursor: pointer;
+  width: 100%;
+  aspect-ratio: 1/1;
+
+  isolation: isolate;
+  position: relative;
+}
+.ticket-box::after {
+  position: absolute;
+  display: block;
+  content: "";
+  width: 100%;
+  height: 100%;
+  inset: 0;
+  background: var(--c-point);
+  transform: rotate(0);
+  border-radius: 20px;
+}
+.ticket-box::before {
+  position: absolute;
+  display: block;
+  content: "";
+  width: 100%;
+  height: 100%;
+  inset: 0;
+  background: var(--c-main-50);
+  transform: rotate(-15deg) translateX(-10px);
+  border-radius: 20px;
+}
+
 /* 사용자 데이터 기반 장르 추천 */
-.favorite {
+.ticket-view {
   width: 100%;
 }
 
-.favorite-txt-box {
+.ticket-view-txt-box {
   width: 90%;
   margin: 25px 0 12px 5vw;
 }
 
-.favorite-txt .input {
+.ticket-view-txt .input {
   color: var(--c-main);
   letter-spacing: -0.015rem;
   font-weight: 800;
 }
 
-/* .favorite-txt span {
+.ticket-view-txt span {
   letter-spacing: -0.015rem;
-} */
+}
 
-.favorite-gutter {
+.ticket-view-gutter {
   width: 100%;
 }
 
 /* 가로 스크롤 세팅 2025.11.14 김하빈 수정*/
-.favorite-list {
+.ticket-view-list {
   overflow-x: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
   cursor: grab;
 }
 
-.favorite-list,
-.favorite-list * {
+.ticket-view-list,
+.ticket-view-list * {
   user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
 }
 
-.favorite-list.active {
+.ticket-view-list.active {
   cursor: grabbing;
 } /* 가로 스크롤 세팅 마무리*/
 
-.favorite-list-box {
+.ticket-view-list-box {
   display: flex;
   padding: 0 5vw;
   gap: 16px;
@@ -203,11 +180,11 @@ canvas {
   width: max-content;
 }
 
-.favorite-list-box::-webkit-scrollbar {
+.ticket-view-list-box::-webkit-scrollbar {
   display: none; /* Chrome/Safari */
 }
 
-.favorite-thing {
+.ticket-view-thing {
   cursor: pointer;
   position: relative;
   width: 100%;
@@ -216,7 +193,7 @@ canvas {
 }
 
 /* 2025-11-13 오후 5시 53분 김하빈 수정 */
-.favorite-thing > a > img {
+.ticket-view-thing > a > img {
   display: block;
   width: 100%;
   height: 100%;
@@ -225,7 +202,7 @@ canvas {
   z-index: 1;
 }
 
-.favorite-more .blankbtn {
+.ticket-view-more .blankbtn {
   border: 2px solid var(--c-gray);
   border-radius: 10px;
   display: flex;
@@ -234,14 +211,14 @@ canvas {
   height: 75px;
 }
 
-.favorite-more > a > img {
+.ticket-view-more > a > img {
   width: 15px;
   height: 15px;
 }
 
 /* 좋아요 버튼 */
 /* 좋아요 버튼 위치 오류로 2025.11.13 김하빈 수정 */
-.favorite-thing > .likeBtn {
+.ticket-view-thing > .likeBtn {
   position: absolute;
   z-index: 1;
   right: 10px;
@@ -249,7 +226,7 @@ canvas {
   transition: transform 0.15s ease-out;
 }
 
-.favorite-thing > .likeBtn .active {
+.ticket-view-thing > .likeBtn .active {
   transform: scale(1.15);
 }
 
