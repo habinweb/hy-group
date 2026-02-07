@@ -244,6 +244,7 @@ $(function () {
       d.tags.map((t) => `<span class="a_result_tag">${t}</span>`).join(""),
     );
 
+    // 2026.02.07 ?movie=${d.id}를 ?id=${d.id}로 변경했습니다 -김하빈 ===========================================
     $(".a_result_view_details_btn").attr("href", `sub.html?movie=${d.id}`);
 
     // 게임 선택 영역 숨기기
@@ -316,7 +317,9 @@ import { dummy } from "./data.js";
 $(function () {
   // 주소창에서 영화 고유코드(id) 가져오기
   const params = new URLSearchParams(location.search);
-  const id = Number(params.get("movie")) || 18; // 없으면 1번 기본
+
+  //2026.02.07 get("movie")를 get("id")로 변경했습니다 -김하빈 =============================================
+  const id = Number(params.get("id")) || 18;
 
   // 해당 id의 영화 찾기
   const movie = dummy.find((m) => m.id === id);

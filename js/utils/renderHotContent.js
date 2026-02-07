@@ -1,6 +1,6 @@
 export function fillPosterCard(card, item) {
   const link = card.querySelector('[data-role="link"]');
-  if (link) link.href = `#${item.id}`; // 퍼블리싱 단계 임시
+  if (link) link.href = `sub.html?id=${item.id}`;
 
   const img = card.querySelector('[data-role="poster"]');
   if (img) {
