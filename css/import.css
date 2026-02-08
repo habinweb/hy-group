@@ -1,6 +1,41 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+  font-family: var(--font-main);
+  font-size: var(--fs2);
+  background: var(--c-bg);
+
+  /* 스크롤은 유지, 스크롤바만 숨김 */
+  -ms-overflow-style: none; /* IE, Edge (legacy) */
+  scrollbar-width: none; /* Firefox */
+  overflow-x: hidden;
+}
+
 a {
   color: var(--c-font);
   text-decoration: none;
+}
+button {
+  border: none;
+  background: none;
+}
+
+p,
+span,
+button,
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--font-main);
+  color: var(--c-font);
+  line-height: 1.6;
+  letter-spacing: -0.05rem;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 /* 헤더 */
@@ -19,16 +54,13 @@ a {
   justify-content: space-between;
   align-items: center;
 }
-
 #header a img {
   display: flex;
   height: 18px;
 }
-
 #header a img.hide {
   display: none;
 }
-
 .header-icon {
   display: flex;
   justify-content: end;
@@ -39,6 +71,7 @@ a {
   margin: 0;
 }
 .hambtn {
+  cursor: pointer;
   display: block;
   width: 18px;
   height: 18px;
@@ -61,19 +94,24 @@ a {
   border-radius: 10px;
   border: 1.5px solid var(--c-bg);
 }
+.alarm-btn.is-read .alarm-badge {
+  display: none;
+}
 
 /* ============= 햄버거 ============= */
 .modal-bg.active {
   position: fixed;
   inset: 0;
   z-index: 10;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background: var(--c-bg);
 }
 .hamburger {
+  width: 100%;
   z-index: 20;
   position: fixed;
+  left: 0;
   visibility: hidden;
   overflow: hidden;
   transform: translateX(100%);
@@ -94,6 +132,10 @@ a {
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
   transform: translateX(0);
+
+  -ms-overflow-style: none; /* IE, Edge (legacy) */
+  scrollbar-width: none; /* Firefox */
+  overflow-x: hidden;
 }
 .ham-title-box {
   padding: 0 5vw;
