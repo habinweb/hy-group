@@ -70,7 +70,8 @@
               <!-- 평가 + 별점 -->
               <div class="a_ratings">
                 <!-- 평점 -->
-                <p class="a_rating_percent">
+                <!-- 툴팁 추가하기 위해  p -> div로 교체했습니다. -->
+                <div class="a_rating_percent">
                   <img
                     src="img/like_icon_49E99C.png"
                     class="a_icon_like"
@@ -82,16 +83,23 @@
                     class="a_icon_info"
                     alt="정보 아이콘"
                   />
-                </p>
+                  <!-- 아이콘 툴팁-->
+                  <div class="a_rating_tooltip" aria-hidden="true">
+                    <p>
+                      최근 시청한 사용자 중<br />
+                      <strong>80.2%</strong> 가 '좋아요'를 선택했어요.
+                    </p>
+                  </div>
+                </div>
                 <!-- 별점 -->
-                <p class="a_star_rating">
+                <div class="a_star_rating">
                   <img
                     src="img/star_49E99C.png"
                     class="a_icon_star"
                     alt="별점 아이콘"
                   />
                   <span class="star_value" data-role="rating">4.8</span>
-                </p>
+                </div>
               </div>
             </div>
 
@@ -118,8 +126,7 @@
                 </div>
 
                 <!-- 오른쪽 플랫폼 아이콘-->
-                <ul class="a_streaming_icon" data-role="optional">
-                  <!-- 더미 데이터 추가될 시 수정 -->
+                <ul class="a_streaming_icon" data-role="platform-icons">
                   <li>
                     <a href="#" target="_blank">
                       <img src="img/disney.png" alt="플랫폼_1" />
@@ -847,7 +854,7 @@
 
     <!-- 푸터/하단 -->
     <div id="bottom-nav"></div>
-    <div id="footer"></div>
+    <div id="footer-slot"></div>
 
     <!-- 로그인 안내 팝업 -->
     <div class="login_popup" id="login_popup" aria-hidden="true">
