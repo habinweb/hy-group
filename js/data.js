@@ -62,6 +62,12 @@ export const dummy = [
     runningTime: 138,
     youtube: "https://www.youtube.com/embed/FrgrtY7ijgU",
     plot: "점멸등이 일렁이는 근미래의 도쿄. 음악에 빠진 고등학생 ‘유타’와 ‘코우’는 친구들과 함께 자유로운 나날을 보낸다. 동아리방을 찾아 늦은 밤 학교에 잠입한 그들은 교장 ‘나가이’의 고급 차량에 발칙한 장난을 치고, 분노한 학교는 AI 감시 체제를 도입한다. 그날 이후 그들을 둘러싼 모든 것이 조금씩 달라지기 시작하는데…",
+    stillcuts: [
+      "img/stillcut/stillcut_해피엔드1.jpg",
+      "img/stillcut/stillcut_해피엔드2.jpg",
+      "img/stillcut/stillcut_해피엔드3.jpg",
+      "img/stillcut/stillcut_해피엔드4.jpg",
+    ],
   },
   {
     id: 4,
