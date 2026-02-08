@@ -1,6 +1,7 @@
 $(function () {
   loadHeader();
   loadBottomNav();
+  loadFooter();
 });
 
 function loadHeader() {
@@ -123,4 +124,7 @@ function setBottomNavActive(items, imgs, activeIndex, defaultSrcs, activeSrcs) {
     li.classList.toggle("active", isActive);
     img.src = isActive ? activeSrcs[i] : defaultSrcs[i];
   }
+}
+function loadFooter() {
+  $("#footer-slot").load("import/footer.html");
 }

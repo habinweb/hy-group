@@ -1,5 +1,29 @@
 $(function () {
   /* =========================
+   평점(80.2%) 정보 툴팁
+========================= */
+
+  // 아이콘 클릭 시 툴팁 토글
+  $(".a_rating_percent").on("click", ".a_icon_info", function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    const $tooltip = $(this).siblings(".a_rating_tooltip");
+    $tooltip.toggleClass("active");
+    $tooltip.attr("aria-hidden", !$tooltip.hasClass("active"));
+  });
+
+  // 바깥 클릭 -> 닫기
+  $(document).on("click", function () {
+    $(".a_rating_tooltip").removeClass("active").attr("aria-hidden", "true");
+  });
+
+  // 툴팁 자체 클릭은 닫히지 않게(선택/드래그 방지용!!)
+  $(".a_rating_percent").on("click", ".a_rating_tooltip", function (e) {
+    e.stopPropagation();
+  });
+
+  /* =========================
    줄거리 더보기 (짧으면 버튼 숨김)
 ========================= */
 
@@ -375,15 +399,14 @@ $(function () {
 ======================= */
 
 // 더미 영화 데이터 불러오기
-// import { dummy } from "./data.js";
-import { dummy } from "./data copy.js";
+import { dummy } from "./data.js";
 
 $(function () {
   // 주소창에서 영화 고유코드(id) 가져오기
   const params = new URLSearchParams(location.search);
 
   //2026.02.07 get("movie")를 get("id")로 변경했습니다 -김하빈 =============================================
-  const id = Number(params.get("id")) || 102;
+  const id = Number(params.get("id")) || 2;
 
   // 해당 id의 영화 찾기
   const movie = dummy.find((m) => m.id === id);
@@ -393,6 +416,54 @@ $(function () {
   const posterSrc = "/" + movie.poster.replace(/^\/+/, "");
   $('[data-role="poster"]').attr("src", movie.poster);
   $('[data-role="poster"]').attr("alt", movie.title + " 포스터");
+
+  // 플랫폼 아이콘 매칭용 객체
+  const platformIcons = {
+    넷플릭스: "img/netflix.png",
+    왓챠: "img/watcha.png",
+    웨이브: "img/wavve.png",
+    티빙: "img/TVING.png",
+    디즈니플러스: "img/disney.png",
+    쿠팡플레이: "img/coupang.png",
+  };
+
+  //플랫폼 아이콘 렌더링 (other는 제외)
+  const $platformUL = $('[data-role="platform-icons"]');
+
+  if ($platformUL.length) {
+    // 기존에 들어있던 li들 비우기(하드코딩 제거 효과)
+    $platformUL.empty();
+
+    // movie.platforms가 없을 수도 있으니 안전 처리
+    const platforms = movie.platforms || [];
+
+    platforms.forEach((name) => {
+      // other는 아이콘 표시 안 함
+      if (!name || name === "other") return;
+
+      // 매핑된 아이콘 없으면 표시 안 함(안전)
+      const src = platformIcons[name];
+      if (!src) return;
+
+      // li 생성해서 넣기
+      const $li = $(`
+        <li>
+          <a href="#" target="_blank" rel="noopener">
+            <img src="${src}" alt="${name}" />
+          </a>
+        </li>
+      `);
+
+      $platformUL.append($li);
+    });
+
+    // 아이콘이 하나도 없으면(전부 other거나 매핑 실패) UL 숨김(원하면)
+    if ($platformUL.children("li").length === 0) {
+      $platformUL.hide();
+    } else {
+      $platformUL.show();
+    }
+  }
 
   // 시험용 유튜브 (없으면 섹션 숨김)
   const $yt = $('[data-role="youtube"]');
@@ -473,14 +544,4 @@ $(function () {
   $('[data-role="runningTime"]').text(movie.runningTime + "분");
   $('[data-role="platforms"]').text(movie.platforms.join(", "));
   $('[data-role="ageRating"]').text(movie.ageRating);
-
-  // 플랫폼 아이콘 매칭용 객체
-  const platformIcons = {
-    넷플릭스: "img/netflix.png",
-    왓챠: "img/watcha.png",
-    웨이브: "img/wavve.png",
-    티빙: "img/TVING.png",
-    디즈니플러스: "img/disney.png",
-    쿠팡플레이: "img/coupangplay.png",
-  };
 });
