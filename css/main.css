@@ -332,6 +332,7 @@ canvas {
   border-radius: 50px;
   object-fit: cover;
 }
+
 .hot-btn-inner::after {
   content: "";
   position: absolute;
@@ -351,7 +352,9 @@ canvas {
   color: var(--c-gray3);
   font-size: var(--fs3);
 }
-
+.hot-all-btn {
+  width: 100%;
+}
 .hot-btn-inner img {
   display: block;
   width: 100%;
@@ -390,8 +393,11 @@ canvas {
 /* .hot-btn에 액티브 붙였을 경우 변화 */
 .hot-btn-inner.active {
   color: var(--c-main);
+  width: calc(100% + 3px);
+  height: calc(100% + 3px);
   border: 3px solid var(--c-main);
   border-radius: 50px;
+  box-sizing: border-box;
 }
 
 .hot-btn-inner.active::after {
@@ -405,10 +411,10 @@ canvas {
 }
 
 .hot-btn-inner.active span {
+  display: block;
   color: var(--c-main);
   font-weight: 800;
 }
-
 /* 포스터 들어갈 영역 */
 .poster-wrap {
   margin-top: 1.5rem;
