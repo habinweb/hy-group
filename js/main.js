@@ -33,32 +33,6 @@ function likeToggle() {
   });
 }
 
-//가로 스크롤
-function dragScroll(selector) {
-  document.querySelectorAll(selector).forEach((box) => {
-    let down = false;
-    let startX = 0;
-    let left = 0;
-
-    box.addEventListener("mousedown", (e) => {
-      down = true;
-      startX = e.pageX - box.offsetLeft;
-      left = box.scrollLeft;
-    });
-
-    box.addEventListener("mouseup", () => (down = false));
-    box.addEventListener("mouseleave", () => (down = false));
-
-    box.addEventListener("mousemove", (e) => {
-      if (!down) return;
-      e.preventDefault();
-
-      const x = e.pageX - box.offsetLeft;
-      box.scrollLeft = left - (x - startX) * 1.5;
-    });
-  });
-}
-
 //ott 탭
 function hotTab() {
   document.querySelectorAll(".hot-container").forEach((section) => {
@@ -101,7 +75,6 @@ function logReady() {
 ready(() => {
   headerMenu();
   likeToggle();
-  dragScroll(".favorite-list, .hot-wrap, .poster-box, .review-wrap");
   hotTab();
   reveiwForm();
   logReady();

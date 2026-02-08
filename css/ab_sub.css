@@ -105,7 +105,9 @@ body {
 }
 
 /* 평가 + 별점 내부 목록  */
-.a_ratings p {
+/* .a_ratings p  */
+.a_ratings .a_rating_percent,
+.a_ratings .a_star_rating {
   display: flex;
   gap: 5px;
   align-items: center;
@@ -117,6 +119,64 @@ body {
   color: var(--c-font);
   font-size: var(--fs1);
   font-weight: 800;
+}
+
+/* 툴팁 기준점 */
+.a_rating_percent {
+  position: relative;
+}
+
+/* 평점 툴팁 아이콘 */
+.a_icon_info {
+  cursor: pointer;
+}
+
+/* 말풍선 본체 */
+.a_rating_tooltip {
+  display: none;
+  position: absolute;
+  left: -35px;
+  bottom: 30px;
+  transform: translateX(-50%);
+  width: 205px;
+  height: 80px;
+  border-radius: 20px;
+  background-color: rgba(11, 11, 11, 0.4);
+  color: var(--c-font);
+  z-index: 999;
+}
+
+/* 말풍선 꼬리 */
+.a_rating_tooltip::after {
+  content: "";
+  position: absolute;
+  left: 90%;
+  top: 100%;
+  transform: translateX(-50%);
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 10px solid rgba(11, 11, 11, 0.4);
+}
+
+/* 툴팁 텍스트 */
+.a_rating_tooltip p {
+  font-size: var(--fs1);
+  font-weight: 600;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* 툴팁 텍스트 강조 부분 */
+.a_rating_tooltip strong {
+  color: var(--c-point);
+}
+/* 활성화 상태: 보이면서 flex 정렬 */
+.a_rating_tooltip.active {
+  display: flex;
+  align-items: center;
+  /* 세로 가운데 */
+  justify-content: center;
+  /* 가로 가운데 */
 }
 
 /* 아이콘 이미지들 */
@@ -1191,7 +1251,7 @@ body {
 .image_right {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 15px;
   flex: 1;
 }
 
@@ -1220,20 +1280,20 @@ img[data-role="skillcut"].is-placeholder {
 /* 크기별 padding */
 .image_item.large img.is-placeholder {
   /*  맨 위 */
-  padding: 75px;
+  padding: 40px;
 }
 /* 왼쪽 아래 */
 .image_left img.is-placeholder {
-  padding: 80px;
+  padding: 50px;
 }
 /* 오른쪽 아래  */
 .image_small img.is-placeholder {
-  padding: 30px;
+  padding: 15px;
 }
 
 /* 스킬컷이 3장일 때만 오른쪽 아래 아이콘 작게 */
 .image_small.bottom img.is-third-missing {
-  padding: 45px;
+  padding: 30px;
 }
 
 /* placeholder일 때만 영역 높이 줄이기 */

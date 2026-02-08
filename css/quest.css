@@ -237,16 +237,16 @@ body.lock {
 }
 
 /* 요즘 대세 영화는? */
-.hot-container {
+.game-container {
   width: 100%;
   margin: 5rem 0;
 }
-.hot-title {
+.game-title {
   overflow-x: hidden;
   width: 100%;
 }
 
-.hot-txt-box {
+.game-txt-box {
   width: 90%;
   margin: 0 auto;
   display: flex;
@@ -255,527 +255,323 @@ body.lock {
   margin-bottom: 1.5rem;
   letter-spacing: -0.05rem;
 }
-
-.hot-txt-box > img {
-  width: 10px;
-  height: 10px;
-}
-
-.hot-txt {
+.game-txt {
   color: var(--c-font);
   font-size: var(--fs4);
   font-weight: 800;
 }
 
-/* ott선택 버튼 */
-.hot-nav-container {
-  width: 100%;
-  overflow-x: hidden;
+/* 밸런스 게임 */
+.game-content-box {
+  width: 90%;
+  margin: 0 auto;
+  background: var(--c-gray);
+  border-radius: 20px;
+  padding: 2rem 0;
 }
-/* 가로 스크롤 세팅 2025.11.14 김하빈 수정 */
-.hot-wrap {
-  padding: 0 5vw;
-  overflow-x: auto;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  cursor: grab;
+.game-content-title {
+  text-align: center;
+  padding-bottom: 2rem;
+  color: var(--c-gray3);
+  font-weight: 800;
 }
-
-.hot-wrap,
-.hot-wrap * {
-  user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-}
-.hot-wrap.active {
-  cursor: grabbing;
-}
-
-.hot-nav-box {
-  width: max-content;
-  height: 60px;
+.game-contents-container {
+  width: 90%;
+  margin: 0 auto;
   display: flex;
-  gap: 10px;
+  gap: 20px;
+}
+.content-container {
+  cursor: pointer;
+  flex: 0 0 calc(50% - 10px);
 }
 
-.hot-btn {
+.game-content-img-box {
   position: relative;
-  color: var(--c-font);
-  background-color: var(--c-bg);
-  flex: 0 0 50px;
-  height: 50px;
-  border: 3px solid var(--c-gray);
-  border-radius: 50px;
-  object-fit: cover;
 }
-.hot-btn-inner::after {
+/* 초기 상태 : 블라인드 */
+.game-content-img-box.blind::after {
+  content: "";
+  display: block;
+  inset: 0;
+
+  background-color: rgba(var(--c-bg-rgb), 0.8);
+  backdrop-filter: blur(8px);
+  z-index: 1;
+  position: absolute;
+  border-radius: 20px;
+}
+.game-content-img {
+  border-radius: 20px;
+  display: block;
+  width: 100%;
+  border: 1.5px solid var(--c-bg);
+}
+
+.content-container.left,
+.content-container.right {
+  position: relative;
+}
+.game-content-txt-box {
+  position: absolute;
+  bottom: 0;
+  z-index: 10;
+  width: 100%;
+  background-color: rgba(var(--c-bg-rgb), 0.9);
+  padding: 1rem;
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px var(--c-main-50);
+}
+.game-content-txt {
+  width: 100%;
+  position: relative;
+  display: flex;
+
+  font-size: var(--fs3);
+}
+.game-content-txt::before {
+  content: "▶";
+  display: block;
+  width: 10px;
+  height: 10px;
+  color: var(--c-font);
+  margin-right: 10px;
+}
+/* 아이콘 박스 */
+.game-content-icon-box {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1;
+}
+.game-content-icon {
+  width: 20px;
+}
+/* 결과 선택지 */
+.game-result-box {
+  position: relative;
+  width: 90%;
+  background: var(--c-gray);
+  margin: 0 auto;
+  border-radius: 20px;
+  padding: 1.5rem 1rem;
+}
+.game-result-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  width: 90%;
+  margin: 0 auto;
+
+  background: repeating-linear-gradient(
+    to right,
+    var(--c-gray2) 0 3px,
+    transparent 3px 9px
+  );
+}
+.game-result-title {
+  font-weight: 700;
+}
+.result-box {
+  width: 96%;
+  margin: 0 auto;
+  border-radius: 50px;
+  height: 40px;
+  background: var(--c-bg);
+  position: relative;
+}
+.game-result-title {
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.user-pick-result {
+  position: absolute;
+  width: 70%;
+  height: 40px;
+  top: 0;
+  left: 0;
+  background: var(--c-main);
+  border-radius: 50px;
+}
+.result {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+
+  transform: translateY(-50%);
+  color: var(--c-bg);
+  font-weight: 800;
+}
+
+/* 잔혹한 평점 */
+.game-container.find {
+  padding-top: 3rem;
+  background: radial-gradient(
+    circle at 50% 35%,
+    var(--c-main) 0%,
+    var(--c-main-50) 20%,
+    var(--c-bg) 45%
+  );
+}
+.game-txt-box.find {
+  padding-bottom: 1rem;
+}
+.find-good-content-box {
+  width: 100%;
+  position: relative;
+}
+
+.find-good-content-wrap {
+  width: 100vw;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  margin-left: calc(50% - 50vw);
+}
+.find-good-content-list {
+  display: flex;
+  gap: 20px;
+  will-change: transform;
+  transition: transform 0.2s ease;
+  transform: translate3d(0, 0, 0);
+  list-style: none;
+
+  box-sizing: border-box;
+  padding-bottom: 50px;
+}
+/* 리스트 아이템 자체 */
+
+.find-good-content-item {
+  cursor: pointer;
+  position: relative;
+  transform: translateY(50px);
+  transition: all ease-out 0.3s;
+  flex: 0 0 45vw;
+}
+.find-good-content-item.active {
+  transform: translateY(0);
+}
+
+/* 모든 아이템을 덮는 빨간 레이어 */
+.find-good-content-item::after {
   content: "";
   position: absolute;
   inset: 0;
-  z-index: 2;
-  background: rgba(var(--c-bg-rgb), 0.5);
+  background: rgba(var(--c-bg-rgb), 0.6); /* 혹은 rgba(255, 0, 0, 0.8) */
+  /* 중요: 내부 콘텐츠보다 무조건 높게! */
+  backdrop-filter: blur(5px);
+  z-index: 10;
   pointer-events: none;
-  border-radius: inherit;
-}
-.hot-btn-inner span {
-  display: block;
-  font-weight: 800;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  color: var(--c-gray3);
-  font-size: var(--fs3);
+  transition: opacity 0.3s;
+  opacity: 1;
+  border-radius: 11px;
 }
 
-.hot-btn-inner img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 50px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
-}
-
-.hot-btn-inner .point::after {
-  content: "";
-  display: block;
-  width: 0;
-  height: 0;
-  border-left: 7px solid transparent;
-  border-right: 7px solid transparent;
-  border-top: 9px solid var(--c-gray); /* 삼각형 색상 */
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: -32px;
-}
-.hot-btn-inner {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  width: 100%;
-  height: 100%;
-  display: block;
-  cursor: pointer;
-}
-
-/* .hot-btn에 액티브 붙였을 경우 변화 */
-.hot-btn-inner.active {
-  color: var(--c-main);
-  border: 3px solid var(--c-main);
-  border-radius: 50px;
-}
-
-.hot-btn-inner.active::after {
+/* active인 경우 레이어를 투명하게 */
+.find-good-content-item.active::after {
   opacity: 0;
-  pointer-events: none;
 }
 
-.hot-btn-inner.active .point::after {
-  content: "";
-  border-top: 9px solid var(--c-main); /* 삼각형 색상 */
-}
-
-.hot-btn-inner.active span {
-  color: var(--c-main);
-  font-weight: 800;
-}
-
-/* 포스터 들어갈 영역 */
-.poster-wrap {
-  margin-top: 1.5rem;
-  width: 100%;
-  overflow-x: hidden;
-}
-
-/* 가로 스크롤 세팅 2025.11.14 김하빈 수정 */
-.poster-box {
-  display: flex;
-  overflow-x: auto;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  padding: 0 5vw;
-  cursor: grab;
-}
-
-.poster-box,
-.poster-box * {
-  user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-}
-
-.poster-box.active {
-  cursor: grabbing;
-}
-
-.all-posters {
-  display: flex;
-  gap: 16px;
-  width: 172px;
-}
-
-.poster-title {
-  margin: 5px 0;
-  font-size: var(--fs3);
-  font-weight: 800;
-  width: 172px;
-  text-align: center;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.all-poster a img {
-  width: 172px;
-  height: 252px;
-  border-radius: 10px;
-}
-.detail-box {
-  width: 172px;
-  font-size: var(--fs2);
-}
-.date-box {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-}
-
-.date-detail {
-  width: 50%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.date-box span {
-  font-weight: 300;
-  letter-spacing: 0rem;
-}
-
-.score-contain {
-  display: flex;
-  gap: 8px;
-  justify-content: center;
-  align-self: center;
-}
-.score-contain .score {
-  white-space: nowrap;
-}
-.score-box {
-  display: flex;
-  align-items: center;
-  gap: 1px;
-}
-.score-box img {
-  width: 10px;
-}
-
-/* 무브오너들의 감상평 */
-.review-container {
-  width: 100%;
-}
-
-/* 가로 스크롤 세팅 2025.11.14 김하빈 수정 */
-.review-wrap {
-  overflow-x: auto;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  padding: 0 5vw;
-  cursor: grab;
-}
-
-.review-wrap,
-.review-wrap * {
-  user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-}
-
-.review-wrap.acrive {
-  cursor: grabbing;
-}
-
-.review-card-box {
-  width: max-content;
-  display: flex;
-  align-items: center;
-  gap: 0 16px;
-}
-
-.review-card {
-  display: inline-block;
-  width: calc(250px + 1rem);
-  border-radius: 10px;
-  background: var(--c-gray);
-}
-
-.review {
-  display: flex;
-  padding: 1rem 0;
-  margin-left: 1rem;
-}
-
-.left-box {
-  width: 85px;
-}
-.left-box > img {
-  display: block;
-  width: 100%;
-  aspect-ratio: 2 / 3;
-  border-radius: 5px;
-  object-fit: fill;
-}
-
-.right-box {
-  width: 100%;
-  margin-left: 1rem;
-}
-
-.work-name {
-  font-size: var(--fs1);
-  color: var(--c-gray2);
-  font-weight: 800;
-  margin-bottom: 0.2rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  width: 90%;
-}
-.user-review {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  color: var(--c-font);
-  font-weight: 700;
-  letter-spacing: 0rem;
-  width: 90%;
-}
-
-.user-box {
-  display: flex;
-  align-items: center;
-  margin-top: 0.6rem;
-  font-size: var(--fs1);
-}
-
-.user-box > img {
-  width: 10px;
-  height: 10px;
-  margin-right: 5px;
-}
-.user-nick {
-  color: var(--c-main);
-  font-weight: 800;
-}
-
-.user-box span {
-  color: var(--c-gray2);
-  font-weight: 700;
-}
-
-/* 감상평 남기기 */
-.review-input {
-  width: 90%;
-  margin: 16px auto 5vw auto;
-}
-
-.review-input1 {
-  width: 90%;
-  margin: 16px auto 5vw auto;
-}
-.review-input-box {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 35px;
-  background: var(--c-gray);
-  border-radius: 10px;
-  padding: 0 5vw;
-}
-
-.formBtn-box {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.formBtn-box p {
-  font-size: var(--fs2);
-  color: var(--c-gray2);
-}
-
-.formBtn > img {
-  display: flex;
-  width: 15px;
-  height: 15px;
-}
-
-/* 버튼 클릭시 열리는 창 */
-.btn-form-container {
+/* 내부 콘텐츠 (이미지, 텍스트 등) */
+.find-good-content {
   position: relative;
-  z-index: 0;
-}
-
-.review-form {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  max-height: 0;
-  border-radius: 10px;
-  background: var(--c-gray);
-  height: max-content;
-  transition:
-    opacity 0.3s ease,
-    max-height 0.3s ease;
-  overflow: hidden;
-}
-.movein-review {
-  width: 100%;
-  margin-bottom: 7rem;
-}
-.review-form.open {
-  visibility: visible;
-  max-height: 200px;
   z-index: 1;
+}
+.poster-container {
+  padding: 0.7rem;
+  background: rgba(var(--c-gray-rgb), 0.5);
+  border-radius: 10px;
+}
+.poster-img {
+  width: 100%;
+  border-radius: 5px;
+  margin-bottom: 7px;
+  aspect-ratio: 2/2.9;
+}
+/* 콘텐츠 정렬 */
+.content-more {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+.more-box {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.more-icon {
+  display: block;
+  width: 12px;
+  height: 12px;
+}
+.more-box > span {
+  font-size: var(--fs2);
+  color: var(--c-gray2);
+  font-weight: 800;
+}
+/* 유저 박스 */
+.user-hate-review-box {
+  position: relative;
+  width: 100%;
+  margin: 20px auto;
+}
+.user-hate-review-wrap {
+  width: 100vw;
   overflow: hidden;
+  position: relative;
 }
-
-.movein-review:has(.review-form.open) {
-  margin-bottom: 18rem;
+.user-hate-review-list {
+  display: flex;
+  gap: 20px;
+  will-change: transform;
 }
-.input-box.form {
-  padding: 0 5vw;
+.user-hate-review-item {
+  flex: 0 0 70vw;
+  background: var(--c-gray);
+  padding: 1rem;
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
+  gap: 5px;
 }
-
-.title-search-box {
-  width: 100%;
+.hate-title {
+  color: var(--c-gray3);
+}
+.hate-desc {
+  line-height: 1.7;
+}
+.user-data {
+  margin-top: 10px;
   display: flex;
-  height: 40px;
-  margin-top: 0.5rem;
-}
-
-#work-name {
-  width: 90%;
-  background: var(--c-gray);
-  border: 0;
-  color: var(--c-font);
-  font-size: var(--fs3);
-}
-
-#work-name::placeholder {
-  font-size: var(--fs2);
-}
-
-#work-name:focus {
-  outline: none;
-}
-
-.title-search-box button {
-  width: 10%;
-  display: flex;
-  justify-content: end;
   align-items: center;
 }
-.title-search-box button > img {
-  width: 15px;
-  height: 15px;
-}
-
-/* 2025.11.13 김하빈 자동완성 목록 들어가는 곳. 추후 수정예정 */
-#search-result {
-  width: 100%;
-  height: max-content;
-  background: var(--c-gray);
-  margin-bottom: 1rem;
-}
-#search-result > li {
-  color: var(--c-gray3);
-  font-size: var(--fs2);
-  font-weight: 500;
-  line-height: 1.5;
-  padding: 8px 0;
-}
-
-/* 2025.11.13 김하빈 추가 별점 박스 */
-.star-box {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  margin: 0 0 1rem 0;
-}
-
-.rating-label {
-  color: var(--c-main2);
-  font-weight: 700;
-}
-
-.star > img {
+.user-profile {
   width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+.user-box {
+  color: var(--c-gray3);
+}
+.user-name {
+  color: var(--c-main);
+  font-weight: 800;
 }
 
-.review-text-box {
-  width: 100%;
-  display: flex;
-}
-.review-text-box textarea {
-  resize: none;
-}
-#review-text {
-  width: 100%;
-  font-size: var(--fs3);
-  background: var(--c-gray);
-  border: none;
-  color: var(--c-font);
-  font-family: var(--font-main);
-  line-height: 1.6;
-}
-
-#review-text::placeholder {
-  font-size: var(--fs2);
-  font-family: var(--font-main);
-}
-
-#review-text:focus {
-  outline: none;
-}
-
-.review-text-box .submit {
-  width: 10%;
-  display: flex;
-  justify-content: end;
-  align-items: end;
-}
-
-.review-text-box .submit > img {
-  width: 15px;
-  height: 15px;
-}
-
-.prev-btn-box {
-  margin: 1rem 0 1rem 0;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.prev-btn {
-  width: 15px;
-  height: 15px;
-  transform: rotate(90deg);
+/* 인디케이터 */
+.play-next-btn {
   cursor: pointer;
-  z-index: 5;
+  position: absolute;
+  top: -55px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 36px;
+  height: 36px;
+  background: url("/img/play-next.png") no-repeat center;
+  background-size: contain;
 }
 
 /* 시각적으로만 숨기고 스크린리더엔 보이게 */
