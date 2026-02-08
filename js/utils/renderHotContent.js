@@ -7,7 +7,7 @@ export function fillPosterCard(card, item) {
   const img = card.querySelector('[data-role="poster"]');
   if (img) {
     img.src = item.poster;
-    img.alt = item.title;
+    img.alt = "";
   }
 
   const title = card.querySelector('[data-role="title"]');

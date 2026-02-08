@@ -39,7 +39,7 @@ export function initFavoriteSection() {
     if (link) link.href = `sub.html?id=${item.id}`;
     if (img) {
       img.src = item.poster;
-      img.alt = item.title;
+      img.alt = "";
     }
 
     if (moreBtn) list.insertBefore(card, moreBtn);

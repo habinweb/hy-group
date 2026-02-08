@@ -14,496 +14,518 @@
   </head>
 
   <body class="home">
-    <div id="container">
-      <!-- 헤더 -->
-      <div id="header-slot"></div>
+    <!-- 헤더 -->
+    <div id="header-slot"></div>
 
-      <main class="main-container">
-        <!-- 검색창 -->
-        <a class="search-f" href="search.html" aria-label="검색 페이지로 이동">
-          <div class="search-box">
-            <span class="search-btn" aria-hidden="true">
-              <img class="search-btn-img" src="img/search_3B393C.png" alt="" />
-            </span>
+    <main class="main-container">
+      <!-- 검색창 -->
+      <a class="search-f" href="search.html" aria-label="검색 페이지로 이동">
+        <div class="search-box">
+          <span class="search-btn" aria-hidden="true">
+            <img class="search-btn-img" src="img/search_3B393C.png" alt="" />
+          </span>
 
-            <span class="search-in" aria-hidden="true">
-              당신의 마음을 뒤흔들 작품을 검색해보세요
-            </span>
-          </div>
-        </a>
-
-        <div class="user-txt-box" id="hot-genre">
-          <h2 class="user-txt">
-            나만의 취향 탐험,<br />
-            <span class="loginBtn"><a href="form.html">무브인</a></span
-            >과 함께하세요
-          </h2>
+          <span class="search-in" aria-hidden="true">
+            당신의 마음을 뒤흔들 작품을 검색해보세요
+          </span>
         </div>
+      </a>
 
-        <div class="container">
-          <section id="navi-wrap">
-            <div class="bubble-panel">
-              <div id="genre-bubble-container"></div>
-            </div>
-          </section>
-        </div>
+      <div class="user-txt-box" id="hot-genre">
+        <h1 class="user-txt">
+          나만의 취향 탐험,<br />
+          <span class="loginBtn"><a href="form.html">무브인</a></span
+          >과 함께하세요
+        </h1>
+      </div>
 
-        <!-- 데이터에 해당되는 장르를 보여주는 구간 -->
-        <section class="favorite bottom-padding">
-          <div class="favorite-txt-box">
-            <p class="favorite-txt">
-              <span class="input" data-role="genre">드라마 </span
-              ><span>장르를 좋아하신다면, 이건 어때요?</span>
-            </p>
+      <div class="container">
+        <section id="navi-wrap" aria-labelledby="genre-bubble-container">
+          <div class="bubble-panel">
+            <div
+              id="genre-bubble-container"
+              aria-label="지금 가장 핫한 장르"
+            ></div>
           </div>
-          <div class="favorite-gutter">
-            <div class="favorite-list">
-              <ul class="favorite-list-box posterList">
-                <li class="favorite-thing favorite-more">
-                  <a href="" class="blankbtn">
-                    <img src="img/next_icon_6F6C76.png" alt="moreBtn" />
-                  </a>
+        </section>
+      </div>
+
+      <!-- 데이터에 해당되는 장르를 보여주는 구간 -->
+      <section class="favorite bottom-padding" aria-labelledby="favorite-genre">
+        <div class="favorite-txt-box">
+          <p class="favorite-txt" id="favorite-genre">
+            <span class="input" data-role="genre">드라마 </span
+            ><span>장르를 좋아하신다면, 이건 어때요?</span>
+          </p>
+        </div>
+        <div class="favorite-gutter">
+          <div class="favorite-list">
+            <ul
+              class="favorite-list-box posterList"
+              aria-label="좋아하는 장르의 작품들"
+            >
+              <li class="favorite-thing favorite-more">
+                <a href="" class="blankbtn">
+                  <img src="img/next_icon_6F6C76.png" alt="더보기 버튼" />
+                </a>
+              </li>
+            </ul>
+
+            <template id="favoriteItemTemplate">
+              <li class="favorite-thing favoriteTemplate">
+                <a href="" class="favorite-thing-one" data-role="link">
+                  <img src="" alt="" data-role="poster" />
+                </a>
+                <button class="likeBtn">
+                  <img src="img/heart_6f6c76.png" alt="heart button" />
+                </button>
+              </li>
+            </template>
+          </div>
+        </div>
+      </section>
+
+      <!-- 요즘 대세 영화는? -->
+      <section
+        class="hot-container bottom-padding"
+        id="hot-movie"
+        data-type="movie"
+        aria-labelledby="hot-movie-sec"
+      >
+        <div class="hot-title">
+          <div class="hot-txt-box">
+            <h2 class="hot-txt" id="hot-movie-sec">요즘 대세 영화는?</h2>
+            <img src="img/next_icon_6F6C76.png" alt="자세히 보기 버튼" />
+          </div>
+          <!-- 탭 버튼 -->
+          <div class="hot-nav-container">
+            <div class="hot-wrap">
+              <ul class="hot-nav-box" aria-label="OTT 선택">
+                <li class="hot-btn">
+                  <button
+                    type="button"
+                    class="hot-btn-inner"
+                    data-platform="all"
+                    aria-label="모두"
+                  >
+                    <span>All</span>
+                    <span class="point"></span>
+                  </button>
+                </li>
+
+                <li class="hot-btn">
+                  <button
+                    type="button"
+                    class="hot-btn-inner"
+                    data-platform="넷플릭스"
+                  >
+                    <img src="img/netflix.png" alt="넷플릭스" />
+                    <span class="point"></span>
+                  </button>
+                </li>
+
+                <li class="hot-btn">
+                  <button
+                    type="button"
+                    class="hot-btn-inner"
+                    data-platform="왓챠"
+                  >
+                    <img src="img/watcha.png" alt="왓챠" />
+                    <span class="point"></span>
+                  </button>
+                </li>
+
+                <li class="hot-btn">
+                  <button
+                    type="button"
+                    class="hot-btn-inner"
+                    data-platform="웨이브"
+                  >
+                    <img src="img/wavve.png" alt="웨이브" />
+                    <span class="point"></span>
+                  </button>
+                </li>
+
+                <li class="hot-btn">
+                  <button
+                    type="button"
+                    class="hot-btn-inner"
+                    data-platform="티빙"
+                  >
+                    <img src="img/TVING.png" alt="티빙" />
+                    <span class="point"></span>
+                  </button>
+                </li>
+
+                <li class="hot-btn">
+                  <button
+                    type="button"
+                    class="hot-btn-inner"
+                    data-platform="디즈니플러스"
+                  >
+                    <img src="img/disney.png" alt="디즈니플러스" />
+                    <span class="point"></span>
+                  </button>
+                </li>
+
+                <li class="hot-btn">
+                  <button
+                    type="button"
+                    class="hot-btn-inner"
+                    data-platform="쿠팡플레이"
+                  >
+                    <img src="img/coupang.png" alt="쿠팡플레이" />
+                    <span class="point"></span>
+                  </button>
+                </li>
+
+                <li class="hot-btn">
+                  <button
+                    type="button"
+                    class="hot-btn-inner"
+                    data-platform="other"
+                    aria-label="기타"
+                  >
+                    <span>Other</span>
+                    <span class="point"></span>
+                  </button>
                 </li>
               </ul>
+            </div>
+          </div>
 
-              <template id="favoriteItemTemplate">
-                <li class="favorite-thing favoriteTemplate">
-                  <a href="" class="favorite-thing-one" data-role="link">
-                    <img src="" alt="" data-role="poster" />
-                  </a>
-                  <button class="likeBtn">
-                    <img src="img/heart_6f6c76.png" alt="heart button" />
+          <!-- 포스터 영역 -->
+          <div class="poster-wrap">
+            <div class="poster-box">
+              <ul
+                class="all-posters posterList"
+                aria-label="대세 영화 작품들"
+              ></ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 요즘 대세 드라마는? -->
+      <section
+        class="hot-container bottom-padding"
+        id="hot-drama"
+        data-type="drama"
+        aria-labelledby="hot-program-sec"
+      >
+        <div class="hot-title">
+          <div class="hot-txt-box">
+            <h2 class="hot-txt" id="hot-program-sec">요즘 대세 프로그램은?</h2>
+            <img src="img/next_icon_6F6C76.png" alt="자세히 보기 버튼" />
+          </div>
+          <!-- 탭 버튼 -->
+          <div class="hot-nav-container">
+            <div class="hot-wrap" data-type="drama">
+              <ul class="hot-nav-box" aria-label="OTT 선택">
+                <li class="hot-btn">
+                  <button
+                    type="button"
+                    class="hot-btn-inner"
+                    data-platform="all"
+                    aria-label="모두"
+                  >
+                    <span>All</span>
+                    <span class="point"></span>
                   </button>
+                </li>
+
+                <li class="hot-btn">
+                  <button
+                    type="button"
+                    class="hot-btn-inner"
+                    data-platform="넷플릭스"
+                  >
+                    <img src="img/netflix.png" alt="넷플릭스" />
+                    <span class="point"></span>
+                  </button>
+                </li>
+
+                <li class="hot-btn">
+                  <button
+                    type="button"
+                    class="hot-btn-inner"
+                    data-platform="왓챠"
+                  >
+                    <img src="img/watcha.png" alt="왓챠" />
+                    <span class="point"></span>
+                  </button>
+                </li>
+
+                <li class="hot-btn">
+                  <button
+                    type="button"
+                    class="hot-btn-inner"
+                    data-platform="웨이브"
+                  >
+                    <img src="img/wavve.png" alt="웨이브" />
+                    <span class="point"></span>
+                  </button>
+                </li>
+
+                <li class="hot-btn">
+                  <button
+                    type="button"
+                    class="hot-btn-inner"
+                    data-platform="티빙"
+                  >
+                    <img src="img/TVING.png" alt="티빙" />
+                    <span class="point"></span>
+                  </button>
+                </li>
+
+                <li class="hot-btn">
+                  <button
+                    type="button"
+                    class="hot-btn-inner"
+                    data-platform="디즈니플러스"
+                  >
+                    <img src="img/disney.png" alt="디즈니플러스" />
+                    <span class="point"></span>
+                  </button>
+                </li>
+
+                <li class="hot-btn">
+                  <button
+                    type="button"
+                    class="hot-btn-inner"
+                    data-platform="쿠팡플레이"
+                  >
+                    <img src="img/coupang.png" alt="쿠팡플레이" />
+                    <span class="point"></span>
+                  </button>
+                </li>
+
+                <li class="hot-btn">
+                  <button
+                    type="button"
+                    class="hot-btn-inner"
+                    data-platform="other"
+                  >
+                    <span>Other</span>
+                    <span class="point"></span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 포스터 영역 -->
+          <div class="poster-wrap">
+            <div class="poster-box">
+              <ul class="all-posters posterList"></ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <template id="posterTemplate">
+        <li class="all-poster">
+          <a data-role="link" href="#">
+            <img data-role="poster" src="" alt="" />
+            <p class="poster-title" data-role="title"></p>
+          </a>
+
+          <div class="detail-box" aria-label="작품 간략 정보">
+            <div class="date-box">
+              <p>공개일</p>
+              <span data-role="date" class="date-detail"></span>
+            </div>
+
+            <div class="score-contain">
+              <p class="score">별점</p>
+              <ul class="score-box" data-role="stars"></ul>
+            </div>
+          </div>
+        </li>
+      </template>
+
+      <!-- 무브오너들의 감상평 -->
+      <section
+        class="movein-review"
+        id="user-review"
+        aria-labelledby="user-review-sec"
+      >
+        <div class="review-txt-box">
+          <div class="hot-txt-box">
+            <h2 class="hot-txt" id="user-review-sec">무브오너들의 감상평</h2>
+            <img src="img/next_icon_6F6C76.png" alt="자세히 보기 버튼" />
+          </div>
+
+          <div class="review-container">
+            <!-- 데이터 첨부 필요 -->
+            <div class="review-wrap">
+              <ul
+                class="review-card-box"
+                id="reviewCardBox"
+                aria-label="감상평 보기"
+              ></ul>
+
+              <template id="reviewCardTemplate">
+                <li class="review-card">
+                  <a href="" class="review" data-role="link">
+                    <div class="left-box">
+                      <img data-role="poster" src="" alt="" />
+                    </div>
+                    <div class="right-box">
+                      <p
+                        class="work-name"
+                        id="review-card-sec"
+                        data-role="title"
+                      ></p>
+                      <p class="user-review" data-role="reviewText"></p>
+                      <div class="user-box">
+                        <img src="img/user_6F6C76.png" alt="user icon" />
+                        <p class="user-nick" data-role="reviewUser"></p>
+                        <span>님의 감상</span>
+                      </div>
+                    </div>
+                  </a>
                 </li>
               </template>
             </div>
-          </div>
-        </section>
 
-        <!-- 요즘 대세 영화는? -->
-        <section
-          class="hot-container bottom-padding"
-          id="hot-movie"
-          data-type="movie"
-        >
-          <div class="hot-title">
-            <div class="hot-txt-box">
-              <h3 class="hot-txt">요즘 대세 영화는?</h3>
-              <img src="img/next_icon_6F6C76.png" alt="다음 버튼" />
-            </div>
-            <!-- 탭 버튼 -->
-            <div class="hot-nav-container">
-              <div class="hot-wrap">
-                <ul class="hot-nav-box">
-                  <li class="hot-btn">
-                    <button
-                      type="button"
-                      class="hot-btn-inner"
-                      data-platform="all"
-                    >
-                      <span>All</span>
-                      <span class="point"></span>
+            <!-- 감상평 남기기 버튼. 로그인이 되어 있지 않을 때에는 로그인 창으로 넘어간다 -->
+            <div class="btn-form-container">
+              <div class="review-input">
+                <div class="review-input-box">
+                  <div class="formBtn-box">
+                    <p class="btn-text">감상평 남기기</p>
+                    <button class="formBtn">
+                      <img src="img/pen_6f6c76.png" alt="review icon" />
                     </button>
-                  </li>
-
-                  <li class="hot-btn">
-                    <button
-                      type="button"
-                      class="hot-btn-inner"
-                      data-platform="넷플릭스"
-                    >
-                      <img src="img/netflix.png" alt="넷플릭스" />
-                      <span class="point"></span>
-                    </button>
-                  </li>
-
-                  <li class="hot-btn">
-                    <button
-                      type="button"
-                      class="hot-btn-inner"
-                      data-platform="왓챠"
-                    >
-                      <img src="img/watcha.png" alt="왓챠" />
-                      <span class="point"></span>
-                    </button>
-                  </li>
-
-                  <li class="hot-btn">
-                    <button
-                      type="button"
-                      class="hot-btn-inner"
-                      data-platform="웨이브"
-                    >
-                      <img src="img/wavve.png" alt="웨이브" />
-                      <span class="point"></span>
-                    </button>
-                  </li>
-
-                  <li class="hot-btn">
-                    <button
-                      type="button"
-                      class="hot-btn-inner"
-                      data-platform="티빙"
-                    >
-                      <img src="img/TVING.png" alt="티빙" />
-                      <span class="point"></span>
-                    </button>
-                  </li>
-
-                  <li class="hot-btn">
-                    <button
-                      type="button"
-                      class="hot-btn-inner"
-                      data-platform="디즈니플러스"
-                    >
-                      <img src="img/disney.png" alt="디즈니플러스" />
-                      <span class="point"></span>
-                    </button>
-                  </li>
-
-                  <li class="hot-btn">
-                    <button
-                      type="button"
-                      class="hot-btn-inner"
-                      data-platform="쿠팡플레이"
-                    >
-                      <img src="img/coupang.png" alt="쿠팡플레이" />
-                      <span class="point"></span>
-                    </button>
-                  </li>
-
-                  <li class="hot-btn">
-                    <button
-                      type="button"
-                      class="hot-btn-inner"
-                      data-platform="other"
-                    >
-                      <span>Other</span>
-                      <span class="point"></span>
-                    </button>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <!-- 포스터 영역 -->
-            <div class="poster-wrap">
-              <div class="poster-box">
-                <ul class="all-posters posterList"></ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- 요즘 대세 드라마는? -->
-        <section
-          class="hot-container bottom-padding"
-          id="hot-drama"
-          data-type="drama"
-        >
-          <div class="hot-title">
-            <div class="hot-txt-box">
-              <h3 class="hot-txt">요즘 대세 프로그램은?</h3>
-              <img src="img/next_icon_6F6C76.png" alt="다음 버튼" />
-            </div>
-            <!-- 탭 버튼 -->
-            <div class="hot-nav-container">
-              <div class="hot-wrap" data-type="drama">
-                <ul class="hot-nav-box">
-                  <li class="hot-btn">
-                    <button
-                      type="button"
-                      class="hot-btn-inner"
-                      data-platform="all"
-                    >
-                      <span>All</span>
-                      <span class="point"></span>
-                    </button>
-                  </li>
-
-                  <li class="hot-btn">
-                    <button
-                      type="button"
-                      class="hot-btn-inner"
-                      data-platform="넷플릭스"
-                    >
-                      <img src="img/netflix.png" alt="넷플릭스" />
-                      <span class="point"></span>
-                    </button>
-                  </li>
-
-                  <li class="hot-btn">
-                    <button
-                      type="button"
-                      class="hot-btn-inner"
-                      data-platform="왓챠"
-                    >
-                      <img src="img/watcha.png" alt="왓챠" />
-                      <span class="point"></span>
-                    </button>
-                  </li>
-
-                  <li class="hot-btn">
-                    <button
-                      type="button"
-                      class="hot-btn-inner"
-                      data-platform="웨이브"
-                    >
-                      <img src="img/wavve.png" alt="웨이브" />
-                      <span class="point"></span>
-                    </button>
-                  </li>
-
-                  <li class="hot-btn">
-                    <button
-                      type="button"
-                      class="hot-btn-inner"
-                      data-platform="티빙"
-                    >
-                      <img src="img/TVING.png" alt="티빙" />
-                      <span class="point"></span>
-                    </button>
-                  </li>
-
-                  <li class="hot-btn">
-                    <button
-                      type="button"
-                      class="hot-btn-inner"
-                      data-platform="디즈니플러스"
-                    >
-                      <img src="img/disney.png" alt="디즈니플러스" />
-                      <span class="point"></span>
-                    </button>
-                  </li>
-
-                  <li class="hot-btn">
-                    <button
-                      type="button"
-                      class="hot-btn-inner"
-                      data-platform="쿠팡플레이"
-                    >
-                      <img src="img/coupang.png" alt="쿠팡플레이" />
-                      <span class="point"></span>
-                    </button>
-                  </li>
-
-                  <li class="hot-btn">
-                    <button
-                      type="button"
-                      class="hot-btn-inner"
-                      data-platform="other"
-                    >
-                      <span>Other</span>
-                      <span class="point"></span>
-                    </button>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <!-- 포스터 영역 -->
-            <div class="poster-wrap">
-              <div class="poster-box">
-                <ul class="all-posters posterList"></ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <template id="posterTemplate">
-          <li class="all-poster">
-            <a data-role="link" href="#">
-              <img data-role="poster" src="" alt="" />
-              <p class="poster-title" data-role="title"></p>
-            </a>
-
-            <div class="detail-box">
-              <div class="date-box">
-                <p>공개일</p>
-                <span data-role="date" class="date-detail"></span>
-              </div>
-
-              <div class="score-contain">
-                <p class="score">별점</p>
-                <ul class="score-box" data-role="stars"></ul>
-              </div>
-            </div>
-          </li>
-        </template>
-
-        <!-- 무브오너들의 감상평 -->
-        <section class="movein-review" id="user-review">
-          <div class="review-txt-box">
-            <div class="hot-txt-box">
-              <h3 class="hot-txt">무브오너들의 감상평</h3>
-              <img src="img/next_icon_6F6C76.png" alt="다음 버튼" />
-            </div>
-
-            <div class="review-container">
-              <!-- 데이터 첨부 필요 -->
-              <div class="review-wrap">
-                <ul class="review-card-box" id="reviewCardBox"></ul>
-                <template id="reviewCardTemplate">
-                  <li class="review-card">
-                    <!-- 리뷰피드로 연결되는 a묶음 (구현 미정) -->
-                    <a href="" class="review" data-role="link">
-                      <!-- 작품 데이터가 들어가야 합니다 -->
-                      <div class="left-box">
-                        <img data-role="poster" src="" alt="" />
-                      </div>
-                      <div class="right-box">
-                        <p class="work-name" data-role="title"></p>
-                        <p class="user-review" data-role="reviewText"></p>
-                        <div class="user-box">
-                          <img src="img/user_6F6C76.png" alt="user icon" />
-                          <p class="user-nick" data-role="reviewUser"></p>
-                          <span>님의 감상</span>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                </template>
-              </div>
-
-              <!-- 감상평 남기기 버튼. 로그인이 되어 있지 않을 때에는 로그인 창으로 넘어간다 -->
-              <div class="btn-form-container">
-                <div class="review-input">
-                  <div class="review-input-box">
-                    <div class="formBtn-box">
-                      <p class="btn-text">감상평 남기기</p>
-                      <button class="formBtn">
-                        <img src="img/pen_6f6c76.png" alt="review icon" />
-                      </button>
-                    </div>
                   </div>
                 </div>
+              </div>
 
-                <!-- 버튼을 누르면 폼이 열린다 이부분 데이터 연결 후에 css 다시 만져야 할듯 -->
+              <!-- 버튼을 누르면 폼이 열린다 이부분 데이터 연결 후에 css 다시 만져야 할듯 -->
 
-                <form class="review-form" method="post">
-                  <div class="input-box form">
-                    <!-- [1] 작품명 자동검색 입력 -->
-                    <div class="title-search-box">
-                      <label for="work-name" class="skip">작품 이름</label>
-                      <input
-                        type="text"
-                        id="work-name"
-                        name="work_name"
-                        placeholder="작품 이름을 입력하세요"
-                        autocomplete="off"
-                        required
-                      />
-                      <button>
-                        <img src="img/search_6f6c76.png" alt="search btn" />
+              <form class="review-form" method="post">
+                <div class="input-box form">
+                  <!-- [1] 작품명 자동검색 입력 -->
+                  <div class="title-search-box">
+                    <label for="work-name" class="skip">작품 이름</label>
+                    <input
+                      type="text"
+                      id="work-name"
+                      name="work_name"
+                      placeholder="작품 이름을 입력하세요"
+                      autocomplete="off"
+                      required
+                    />
+                    <button>
+                      <img src="img/search_6f6c76.png" alt="search btn" />
+                    </button>
+                  </div>
+                  <!-- 자동완성 목록 들어가는 곳(나중에 css 잡기)-->
+                  <ul id="search-result" class="search-result"></ul>
+
+                  <!-- 2025.11.13 김하빈 추가 (별점) -->
+                  <!-- 별 한개~다섯개까지 별점을 줄 수 있음 -->
+                  <!-- 위 작품 검색해서 작품을 검색하고 지정했을 시에만 별점을 줄 수 있습니다 -->
+                  <!-- img/star_6f6c76.png 에서 선택되면 img/star_49E99C.png로 아이콘 변경 -->
+                  <div class="star-box">
+                    <p class="rating-label">선택한 이 작품, 내 별점은?</p>
+                    <div class="rating-stars" data-rating="0">
+                      <button
+                        type="button"
+                        class="star"
+                        data-value="1"
+                        aria-label="star1"
+                      >
+                        <img src="img/star_6f6c76.png" alt="starBtn" />
                       </button>
-                    </div>
-                    <!-- 자동완성 목록 들어가는 곳(나중에 css 잡기)-->
-                    <ul id="search-result" class="search-result"></ul>
-
-                    <!-- 2025.11.13 김하빈 추가 (별점) -->
-                    <!-- 별 한개~다섯개까지 별점을 줄 수 있음 -->
-                    <!-- 위 작품 검색해서 작품을 검색하고 지정했을 시에만 별점을 줄 수 있습니다 -->
-                    <!-- img/star_6f6c76.png 에서 선택되면 img/star_49E99C.png로 아이콘 변경 -->
-                    <div class="star-box">
-                      <p class="rating-label">선택한 이 작품, 내 별점은?</p>
-                      <div class="rating-stars" data-rating="0">
-                        <button
-                          type="button"
-                          class="star"
-                          data-value="1"
-                          aria-label="star1"
-                        >
-                          <img src="img/star_6f6c76.png" alt="starBtn" />
-                        </button>
-                        <button
-                          type="button"
-                          class="star"
-                          data-value="2"
-                          aria-label="star2"
-                        >
-                          <img src="img/star_6f6c76.png" alt="starBtn" />
-                        </button>
-                        <button
-                          type="button"
-                          class="star"
-                          data-value="3"
-                          aria-label="star3"
-                        >
-                          <img src="img/star_6f6c76.png" alt="starBtn" />
-                        </button>
-                        <button
-                          type="button"
-                          class="star"
-                          data-value="4"
-                          aria-label="star4"
-                        >
-                          <img src="img/star_6f6c76.png" alt="starBtn" />
-                        </button>
-                        <button
-                          type="button"
-                          class="star"
-                          data-value="5"
-                          aria-label="star5"
-                        >
-                          <img src="img/star_6f6c76.png" alt="starBtn" />
-                        </button>
-                      </div>
-                    </div>
-
-                    <!-- [2] 감상평 입력 -->
-                    <div class="review-text-box">
-                      <label for="review-text" class="skip">감상평</label>
-                      <textarea
-                        id="review-text"
-                        name="review"
-                        placeholder="감상평을 작성하세요"
-                        required
-                      ></textarea>
-
-                      <!-- [3] 제출 버튼 -->
-                      <button type="submit" class="submit">
-                        <img src="img/pen_6f6c76.png" alt="submit btn" />
+                      <button
+                        type="button"
+                        class="star"
+                        data-value="2"
+                        aria-label="star2"
+                      >
+                        <img src="img/star_6f6c76.png" alt="starBtn" />
                       </button>
-                    </div>
-
-                    <div class="prev-btn-box">
-                      <img
-                        class="prev-btn"
-                        src="img/prev_6f6c76.png"
-                        alt="prev btn"
-                      />
+                      <button
+                        type="button"
+                        class="star"
+                        data-value="3"
+                        aria-label="star3"
+                      >
+                        <img src="img/star_6f6c76.png" alt="starBtn" />
+                      </button>
+                      <button
+                        type="button"
+                        class="star"
+                        data-value="4"
+                        aria-label="star4"
+                      >
+                        <img src="img/star_6f6c76.png" alt="starBtn" />
+                      </button>
+                      <button
+                        type="button"
+                        class="star"
+                        data-value="5"
+                        aria-label="star5"
+                      >
+                        <img src="img/star_6f6c76.png" alt="starBtn" />
+                      </button>
                     </div>
                   </div>
-                </form>
-              </div>
+
+                  <!-- [2] 감상평 입력 -->
+                  <div class="review-text-box">
+                    <label for="review-text" class="skip">감상평</label>
+                    <textarea
+                      id="review-text"
+                      name="review"
+                      placeholder="감상평을 작성하세요"
+                      required
+                    ></textarea>
+
+                    <!-- [3] 제출 버튼 -->
+                    <button type="submit" class="submit">
+                      <img src="img/pen_6f6c76.png" alt="submit btn" />
+                    </button>
+                  </div>
+
+                  <div class="prev-btn-box">
+                    <img
+                      class="prev-btn"
+                      src="img/prev_6f6c76.png"
+                      alt="prev btn"
+                    />
+                  </div>
+                </div>
+              </form>
             </div>
           </div>
-        </section>
-      </main>
+        </div>
+      </section>
+    </main>
+    <!-- 하단 메뉴바 -->
+    <div id="bottom-nav"></div>
 
-      <!-- 접근성, 마크업을 위해 이 구조는 숨김처리 합니다. 삭제X -->
-      <footer class="footer visually-hidden">
-        <section class="pf-foot">
-          <p class="foot-one">
-            © 2025 MOVEON Project. Designed & Developed by Team MOVEON.
-          </p>
-          <p class="foot-two">
-            Icons by
-            <a
-              href="https://www.flaticon.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Flaticon</a
-            >.
-          </p>
-          <p>For educational and portfolio purposes only.</p>
-          <p>본 사이트는 포트폴리오 및 학습 목적으로 제작되었습니다.</p>
-        </section>
-      </footer>
-
-      <!-- 하단 메뉴바 -->
-      <div id="bottom-nav"></div>
-    </div>
+    <!-- 접근성, 마크업을 위해 이 구조는 숨김처리 합니다. 삭제X -->
+    <footer class="footer visually-hidden">
+      <div class="pf-foot">
+        <p class="foot-one">
+          © 2025 MOVEON Project. Designed & Developed by Team MOVEON.
+        </p>
+        <p class="foot-two">
+          Icons by
+          <a
+            href="https://www.flaticon.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Flaticon</a
+          >.
+        </p>
+        <p>For educational and portfolio purposes only.</p>
+        <p>본 사이트는 포트폴리오 및 학습 목적으로 제작되었습니다.</p>
+      </div>
+    </footer>
 
     <!-- JS -->
     <script
