@@ -1,5 +1,29 @@
 $(function () {
   /* =========================
+   평점(80.2%) 정보 툴팁
+========================= */
+
+  // 아이콘 클릭 시 툴팁 토글
+  $(".a_rating_percent").on("click", ".a_icon_info", function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    const $tooltip = $(this).siblings(".a_rating_tooltip");
+    $tooltip.toggleClass("active");
+    $tooltip.attr("aria-hidden", !$tooltip.hasClass("active"));
+  });
+
+  // 바깥 클릭 -> 닫기
+  $(document).on("click", function () {
+    $(".a_rating_tooltip").removeClass("active").attr("aria-hidden", "true");
+  });
+
+  // 툴팁 자체 클릭은 닫히지 않게(선택/드래그 방지용!!)
+  $(".a_rating_percent").on("click", ".a_rating_tooltip", function (e) {
+    e.stopPropagation();
+  });
+
+  /* =========================
    줄거리 더보기 (짧으면 버튼 숨김)
 ========================= */
 
@@ -400,7 +424,7 @@ $(function () {
     웨이브: "img/wavve.png",
     티빙: "img/TVING.png",
     디즈니플러스: "img/disney.png",
-    쿠팡플레이: "img/coupangplay.png",
+    쿠팡플레이: "img/coupang.png",
   };
 
   //플랫폼 아이콘 렌더링 (other는 제외)
