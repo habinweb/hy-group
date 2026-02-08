@@ -531,7 +531,7 @@ body.lock {
 .user-hate-review-item {
   flex: 0 0 70vw;
   background: var(--c-gray);
-  padding: 1rem;
+  padding: 1rem 1.5rem;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
