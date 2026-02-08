@@ -375,8 +375,7 @@ $(function () {
 ======================= */
 
 // 더미 영화 데이터 불러오기
-// import { dummy } from "./data.js";
-import { dummy } from "./data copy.js";
+import { dummy } from "./data.js";
 
 $(function () {
   // 주소창에서 영화 고유코드(id) 가져오기
@@ -393,6 +392,54 @@ $(function () {
   const posterSrc = "/" + movie.poster.replace(/^\/+/, "");
   $('[data-role="poster"]').attr("src", movie.poster);
   $('[data-role="poster"]').attr("alt", movie.title + " 포스터");
+
+  // 플랫폼 아이콘 매칭용 객체
+  const platformIcons = {
+    넷플릭스: "img/netflix.png",
+    왓챠: "img/watcha.png",
+    웨이브: "img/wavve.png",
+    티빙: "img/TVING.png",
+    디즈니플러스: "img/disney.png",
+    쿠팡플레이: "img/coupangplay.png",
+  };
+
+  //플랫폼 아이콘 렌더링 (other는 제외)
+  const $platformUL = $('[data-role="platform-icons"]');
+
+  if ($platformUL.length) {
+    // 기존에 들어있던 li들 비우기(하드코딩 제거 효과)
+    $platformUL.empty();
+
+    // movie.platforms가 없을 수도 있으니 안전 처리
+    const platforms = movie.platforms || [];
+
+    platforms.forEach((name) => {
+      // other는 아이콘 표시 안 함
+      if (!name || name === "other") return;
+
+      // 매핑된 아이콘 없으면 표시 안 함(안전)
+      const src = platformIcons[name];
+      if (!src) return;
+
+      // li 생성해서 넣기
+      const $li = $(`
+        <li>
+          <a href="#" target="_blank" rel="noopener">
+            <img src="${src}" alt="${name}" />
+          </a>
+        </li>
+      `);
+
+      $platformUL.append($li);
+    });
+
+    // 아이콘이 하나도 없으면(전부 other거나 매핑 실패) UL 숨김(원하면)
+    if ($platformUL.children("li").length === 0) {
+      $platformUL.hide();
+    } else {
+      $platformUL.show();
+    }
+  }
 
   // 시험용 유튜브 (없으면 섹션 숨김)
   const $yt = $('[data-role="youtube"]');
@@ -473,14 +520,4 @@ $(function () {
   $('[data-role="runningTime"]').text(movie.runningTime + "분");
   $('[data-role="platforms"]').text(movie.platforms.join(", "));
   $('[data-role="ageRating"]').text(movie.ageRating);
-
-  // 플랫폼 아이콘 매칭용 객체
-  const platformIcons = {
-    넷플릭스: "img/netflix.png",
-    왓챠: "img/watcha.png",
-    웨이브: "img/wavve.png",
-    티빙: "img/TVING.png",
-    디즈니플러스: "img/disney.png",
-    쿠팡플레이: "img/coupangplay.png",
-  };
 });
