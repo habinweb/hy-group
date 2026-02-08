@@ -41,10 +41,10 @@ export function initReviewCards() {
     const img = card.querySelector('[data-role="poster"]');
     const title = card.querySelector('[data-role="title"]');
 
-    // if (link) link.href = `movie_detail.php?id=${item.id}`;
+    if (link) link.href = `sub.html?id=${item.id}`;
     if (img) {
       img.src = item.poster;
-      img.alt = item.title;
+      img.alt = "";
     }
     if (title) title.textContent = item.title;
 
