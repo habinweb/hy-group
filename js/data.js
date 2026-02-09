@@ -184,6 +184,53 @@ export const dummy = [
     ],
   },
 
+  {
+    id: 19,
+    type: "movie",
+    title: "인터스텔라",
+    poster: "img/poster/poster_인터스텔라.jpg",
+    date: "2014.11.06",
+    rating: 5,
+    platforms: ["디즈니플러스", "쿠팡플레이"],
+    genre: ["드라마", "판타지"],
+    director: "크리스토퍼 놀란",
+    production: "워너 브러더스 코리아㈜",
+    distributor: "워너 브러더스 코리아㈜",
+    ageRating: "12",
+    runningTime: 169,
+    youtube: "https://www.youtube.com/embed/vABfjuXZhYY",
+    plot: "세계 각국의 정부와 경제가 완전히 붕괴된 미래가 다가온다. 지난 20세기에 범한 잘못이 전 세계적인 식량 부족을 불러왔고, NASA도 해체되었다. 이때 시공간에 불가사의한 틈이 열리고, 남은 자들에게는 이 곳을 탐험해 인류를 구해야 하는 임무가 지워진다. 사랑하는 가족들을 뒤로 한 채 인류라는 더 큰 가족을 위해, 그들은 이제 희망을 찾아 우주로 간다. 그리고 우린 답을 찾을 것이다. 늘 그랬듯이…",
+    stillcuts: [
+      "img/stillcut/stillcut_인터스텔라1.jpg",
+      "img/stillcut/stillcut_인터스텔라2.jpg",
+      "img/stillcut/stillcut_인터스텔라3.jpg",
+      "img/stillcut/stillcut_인터스텔라4.jpg",
+    ],
+  },
+
+  {
+    id: 20,
+    type: "movie",
+    title: "존 오브 인터레스트",
+    poster: "img/poster/poster_존오브인터레스트.jpg",
+    date: "2024.06.05",
+    rating: 5,
+    platforms: ["넷플릭스", "왓챠", "웨이브", "디즈니플러스"],
+    genre: ["드라마", "판타지"],
+    director: "조나단 글래이저",
+    production: "TCO㈜더콘텐츠온",
+    distributor: "TCO㈜더콘텐츠온",
+    ageRating: "12",
+    runningTime: 105,
+    youtube: "https://www.youtube.com/embed/sNy59FG4Jgg",
+    plot: "독일 장교 루돌프 회스(크리스티안 프리델)의 가족이 사는 그들만의 꿈의 왕국 아우슈비츠. 아내 헤트비히(산드라 휠러)가 정성스럽게 가꾼 꽃이 만발한 정원에는 재잘거리는 아이들의 웃음소리로 가득하다. 마치 한 폭의 그림 같은 집. 과연 악마는 다른 세상을 사는가?",
+    stillcuts: [
+      "img/stillcut/stillcut_존오브인터레스트1.jpg",
+      "img/stillcut/stillcut_존오브인터레스트2.jpg",
+      "img/stillcut/stillcut_존오브인터레스트3.jpg",
+    ],
+  },
+
   // ===== 드라마 =====
 
   {
