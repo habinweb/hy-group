@@ -83,6 +83,8 @@ a {
   color: var(--c-font);
   font-size: var(--fs3);
   font-weight: 800;
+  width: 90%;
+  display: block;
 }
 
 .a_details_value {
