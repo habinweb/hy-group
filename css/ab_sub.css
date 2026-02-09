@@ -580,7 +580,7 @@ body {
 }
 
 /* 자.만.추 공통 적용 */
-.a_recommend_cards_container > div {
+.a_recommend_cards_container > a {
   background-color: var(--c-bg);
   border-radius: 15px;
   padding: 0 10px;
@@ -593,7 +593,7 @@ body {
 }
 
 /* 보석 찾기 영역 설정 (세 번째 아이템) */
-.a_recommend_cards_container > div:nth-child(3) {
+.a_recommend_cards_container > a:nth-child(3) {
   grid-column: span 2;
   height: 8rem;
   justify-content: center;
@@ -1382,7 +1382,7 @@ img[data-role="skillcut"].is-placeholder {
   color: var(--c-font);
 }
 
-/* 헤더 아이콘 확인용 */
+/* 헤더 아이콘 확인용(1) */
 button.hambtn {
   background: transparent;
   border: 0;
@@ -1391,7 +1391,7 @@ button.hambtn {
   line-height: 0;
   cursor: pointer;
 }
-
+/* 헤더 아이콘 확인용(2) */
 button.hambtn img,
 button.hambtn .hambtn-img {
   display: block;
