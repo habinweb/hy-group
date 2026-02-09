@@ -77,7 +77,7 @@ function initTicketModal() {
   let lastFocus = null;
 
   const open = () => {
-    // lastFocus = document.activeElement;
+    lastFocus = document.activeElement;
 
     ticket.classList.add("rotated");
     ticket.classList.add("opacity");
@@ -96,16 +96,16 @@ function initTicketModal() {
       timer = null;
     }
 
-    modal.classList.remove("open");
-    document.body.classList.remove("lock");
+    if (document.activeElement === closeBtn) closeBtn.blur();
 
-    // lastFocus?.focus();
+    if (lastFocus) lastFocus.focus();
     lastFocus = null;
 
+    modal.classList.remove("open");
     modal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("lock");
 
-    ticket.classList.remove("opacity");
-    ticket.classList.remove("rotated");
+    ticket.classList.remove("opacity", "rotated");
   };
 
   ticket.addEventListener("click", open);
