@@ -25,12 +25,8 @@
     <link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png" />
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <!-- 헤더/푸터 삽입 -->
     <script src="js/import.js"></script>
-    <!-- <script src="js/sub.js"></script> -->
-    <!-- 데이터 연결 + 페이지 로직 -->
     <script type="module" src="js/sub.js"></script>
-    <!-- <script src="js/babel.min.js"></script> -->
   </head>
 
   <body class="sub-body">
@@ -41,20 +37,15 @@
     <div id="main_content">
       <!--메인1 (a_여진)-->
       <div class="posterBox">
-        <!-- 배경 이미지 스틸컷 -->
         <img
           src="img/stillcut/stillcut_헤어질결심.jpg"
           alt="영화 배경 스틸컷"
           class="a_background_still"
           data-role="stillcuts"
         />
-        <!-- 더미 테이터 생길 시 이름 수정 -->
 
-        <!-- 메인 포스터, 제목 등 세부 정보 데이터 -->
         <div class="a_movie_meta_wrap">
-          <!-- 세부 데이터 그룹 틀 ( flex 적용 )-->
           <div class="a_info_group">
-            <!--  메인 포스터 영역 -->
             <div class="a_movie_poster">
               <img
                 src="img/poster/poster_헤어질결심.jpg"
@@ -63,20 +54,15 @@
               />
             </div>
 
-            <!-- 영화 제목 + 세부 정보 + 별점 -->
             <div class="a_meta_data">
-              <!-- 세부 텍스트 그룹 -->
               <div class="a_movie_info_text">
-                <!-- 영화 제목-->
                 <h1>
                   <span class="a_movie_title_value" data-role="title">
                     헤어질 결심
                   </span>
                 </h1>
-                <!-- 세부 정보 -->
                 <p>
                   <span class="a_details_value" data-role="optional">
-                    <!-- 더미 테이터 생길 시 이름 수정 -->
                     15세 · 2022 · 영화 · 로맨스/멜로 138분</span
                   >
                 </p>
@@ -84,8 +70,6 @@
 
               <!-- 평가 + 별점 -->
               <div class="a_ratings">
-                <!-- 평점 -->
-                <!-- 툴팁 추가하기 위해  p -> div로 교체했습니다. -->
                 <div class="a_rating_percent">
                   <img
                     src="img/like_icon_49E99C.png"
@@ -98,7 +82,6 @@
                     class="a_icon_info"
                     alt="정보 아이콘"
                   />
-                  <!-- 아이콘 툴팁-->
                   <div class="a_rating_tooltip" aria-hidden="true">
                     <p>
                       최근 시청한 사용자 중<br />
@@ -135,12 +118,10 @@
             <!-- 스트리밍 가능 플랫폼 -->
             <div class="a_movie_ott_platforms">
               <div class="a_movie_ott_platforms_wrap">
-                <!-- 왼쪽 스트리밍 아이콘 -->
                 <div class="a_movie_streaming_icon">
                   <img src="img/streaming_f5f5f5.png" alt="스트리밍_아이콘" />
                 </div>
 
-                <!-- 오른쪽 플랫폼 아이콘-->
                 <ul class="a_streaming_icon" data-role="platform-icons">
                   <li>
                     <a href="#" target="_blank">
@@ -161,11 +142,8 @@
               </div>
             </div>
           </div>
-          <!-- a_info_group 끝 -->
         </div>
-        <!-- a_movie_meta_wrap 끝 -->
       </div>
-      <!--posterBox 끝-->
 
       <!--메인2 (b_혜정)-->
       <div class="tabBox">
@@ -606,7 +584,6 @@
               </button>
             </div>
 
-            <!-- 로그인 후 별점 남겼을 시 상태 -->
             <div class="review_edit">
               <h3><strong>닉네임</strong> 님이 등록한 리뷰</h3>
 
@@ -664,14 +641,11 @@
             </div>
           </section>
 
-          <!-- 탭3 영상/이미지 영역 -->
           <section class="tab_content" id="tab_media">
-            <!-- 영상 섹션 -->
             <div class="media_section">
               <h3 class="media_title">영상</h3>
 
               <div class="video_box">
-                <!-- 시험용 -->
                 <iframe
                   data-role="youtube"
                   width="90%"
@@ -694,10 +668,8 @@
               </div>
             </div>
 
-            <!-- 스틸컷 섹션 -->
             <div class="media_section stillcuts">
               <h3 class="media_title">이미지</h3>
-              <!-- 큰 이미지 -->
               <div class="image_item large">
                 <img
                   data-role="skillcut"
@@ -706,7 +678,6 @@
                 />
               </div>
 
-              <!-- 하단 3분할 이미지 -->
               <div class="image_layout">
                 <div class="image_left">
                   <img
@@ -741,18 +712,15 @@
       <!--메인3 (a_여진)-->
       <div class="a_gameBox">
         <section class="a_balance_game_section">
-          <!-- 로그인 시 -->
           <div class="a_balance_game_title_login">
             <h2><span class="a_user_nickname">닉네임</span> 님을 위한</h2>
             <h2>오늘의 밸런스 게임이에요</h2>
           </div>
 
-          <!-- 비로그인 시 -->
           <div class="a_balance_game_title_non_login">
             <h2>다양한 게임에 참여해보세요</h2>
           </div>
 
-          <!-- 밸런스 게임 선택 영역 -->
           <div class="a_balance_game_container">
             <div class="a_balance_card left">
               <img
@@ -786,7 +754,6 @@
             </div>
           </div>
 
-          <!-- 밸런스 게임 선택 결과 -->
           <div class="a_balance_result_area">
             <div class="a_balance_result_message_wrap">
               <p class="a_balance_result_message">
@@ -808,15 +775,11 @@
               </div>
 
               <div class="a_result_meta">
-                <div class="a_result_tags_container">
-                  <!-- JS가 값 넣을 곳 -->
-                </div>
+                <div class="a_result_tags_container"></div>
 
-                <!-- 정보 보러 가기 -->
                 <a href="#" class="a_result_view_details_btn">정보 보러 가기</a>
                 <img src="img/next_icon_6F6C76.png" alt="화살표 버튼" /><br />
 
-                <!-- 다시 하기 버튼 -->
                 <button class="a_balance_restart_btn">다시 하기</button>
               </div>
             </div>
@@ -827,9 +790,7 @@
         <section class="a_recommend_section">
           <h3 class="a_recommend_title">취향.자.만.추 여기에서 하세요</h3>
 
-          <!-- 자.만.추 영역 -->
           <div class="a_recommend_cards_container">
-            <!-- 티켓 뽑기 -->
             <a
               class="a_recommend_card a_recommend_ticket"
               href="quest.html#hot-ticket"
@@ -864,7 +825,6 @@
           </div>
         </section>
       </div>
-      <!-- 메인3 끝 -->
     </div>
 
     <!-- 푸터/하단 -->
