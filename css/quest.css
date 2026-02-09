@@ -85,22 +85,25 @@ body.lock {
 .ticket-bg {
   width: 100%;
   height: 100%;
+  display: flex;
+  justify-content: center;
 }
 
-.ticket-wrap {
+/* .ticket-wrap {
+  display: block;
   width: 50%;
   margin: 0 auto;
-}
+} */
 .ticket-box {
   cursor: pointer;
-  width: 100%;
+  width: 50%;
   aspect-ratio: 1/1;
 
   isolation: isolate;
   position: relative;
   transition:
     transform 2s cubic-bezier(0.5, 0, 0.2, 1),
-    opacity 0.5s ease;
+    opacity 4s ease;
 }
 
 .ticket-box.rotated {
@@ -108,7 +111,7 @@ body.lock {
 }
 .ticket-box.opacity {
   opacity: 0.5;
-  pointer-events: none; /* 선택: 모달 열렸을 때 다시 못 누르게 */
+  pointer-events: none;
 }
 .ticket-box::after {
   position: absolute;
@@ -137,21 +140,34 @@ body.lock {
 }
 /* 클릭시 티켓 팝업 */
 .ticket-modal {
-  display: none;
   width: 90%;
   position: absolute;
-  top: calc(50% - 0.5rem);
+  top: 50%;
   left: 50%;
-  transform: translateY(-50%) translateX(-50%);
-  margin: 0 auto;
+  transform: translate(-50%, -40px); /* 살짝 아래 */
+  opacity: 0;
+  visibility: hidden;
+
+  pointer-events: none; /* 클릭 방지 */
   z-index: 10;
-  transition: all 1s ease-in-out;
+
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 0s linear 0.6s;
 }
 body.lock {
   overflow: hidden;
 }
 .ticket-modal.open {
-  display: block;
+  visibility: visible;
+  opacity: 1;
+  transform: translate(-50%, -50%);
+  pointer-events: auto;
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 0s;
 }
 .ticket-modal-content {
   position: relative;

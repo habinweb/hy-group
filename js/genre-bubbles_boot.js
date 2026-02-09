@@ -52,9 +52,6 @@ import { dummy } from "./data.js";
   // ✅ 드라마 버블에 들어갈 이미지 소스 (stillcuts 우선)
   const imageSrc = randomDrama ? getRandomImage(randomDrama) : null;
 
-  console.log("드라마 랜덤:", randomDrama?.id, randomDrama?.title);
-  console.log("드라마 이미지:", imageSrc);
-
   // ===== 버블 생성 =====
   for (let i = 0; i < GENRES.length; i++) {
     const isSpecial = i === specialIdx;

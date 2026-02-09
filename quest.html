@@ -59,19 +59,18 @@
       <div class="container--ticket-wrap">
         <!-- 티켓 뽑기 -->
         <div class="container--ticket">
-          <div class="ticket-bg">
-            <section class="ticket-wrap" aria-labelledby="hot-ticket-title">
-              <div class="ticket-box"></div>
-            </section>
-          </div>
+          <section class="ticket-bg" aria-labelledby="hot-ticket-title">
+            <button type="button" class="ticket-box"></button>
+          </section>
         </div>
         <!-- 티켓 결과 모달 -->
-        <div
-          class="ticket-modal"
-          aria-hidden="true"
-          aria-label="티켓 뽑기 결과"
-        >
-          <article class="ticket-modal-content" role="dialog" aria-modal="true">
+        <div class="ticket-modal" aria-hidden="true">
+          <article
+            class="ticket-modal-content"
+            role="dialog"
+            aria-label="티켓 뽑기 결과"
+            aria-modal="true"
+          >
             <!-- 창닫기버튼 -->
             <button class="modal-close" type="button">
               <img
@@ -83,7 +82,7 @@
             <!-- 티켓 ui -->
             <div class="ticket-modal-box">
               <!-- 왼쪽 영역 -->
-              <div class="ticket-modal-poster" aria-label="바로가기">
+              <div class="ticket-modal-poster" aria-label="작품 정보로 이동">
                 <img
                   class="ticket-modal-img"
                   src="img/poster/poster_존오브인터레스트.jpg"
@@ -204,14 +203,14 @@
             <!-- 왼쪽 박스 -->
             <article class="content-container left">
               <!-- 컨텐츠 이미지 박스 -->
-              <div class="game-content-img-box blind">
+              <button type="button" class="game-content-img-box blind">
                 <img
                   class="game-content-img"
                   src="img/poster/poster_겨울왕국.jpg"
                   alt="겨울왕국 포스터"
                   data-role="poster"
                 />
-              </div>
+              </button>
               <!-- 텍스트 박스 -->
               <div class="game-content-txt-box">
                 <p class="game-content-txt">얼음성에서 열리는 마법같은 파티</p>
@@ -228,14 +227,14 @@
             <!-- 오른쪽 박스 -->
             <article class="content-container right">
               <!-- 컨텐츠 이미지 박스 -->
-              <div class="game-content-img-box blind">
+              <button type="button" class="game-content-img-box blind">
                 <img
                   class="game-content-img"
                   src="img/poster/poster_가디언즈.jpg"
                   alt="가디언즈 포스터"
                   data-role="poster"
                 />
-              </div>
+              </button>
               <!-- 텍스트 박스 -->
               <div class="game-content-txt-box">
                 <p class="game-content-txt">산타와 함께 전세계 선물 배달</p>
@@ -293,30 +292,30 @@
                       data-role="poster"
                     />
                     <div class="content-more">
-                      <div class="more-box">
+                      <button type="button" class="more-box">
                         <img
                           class="more-icon"
                           src="img/like_icon_6F6C76.png"
                           alt="좋아요 누른 수"
                         />
                         <span class="like">12</span>
-                      </div>
-                      <div class="more-box">
+                      </button>
+                      <button type="button" class="more-box">
                         <img
                           class="more-icon"
                           src="img/hate_icon_6F6C76.png"
                           alt="싫어요 누른 수"
                         />
                         <span class="hate">152</span>
-                      </div>
-                      <div class="more-box">
+                      </button>
+                      <button type="button" class="more-box">
                         <img
                           class="more-icon"
                           src="img/star_6f6c76.png"
                           alt="평균 별점"
                         />
                         <span class="like">1</span>
-                      </div>
+                      </button>
                     </div>
                   </div>
                 </article>
@@ -332,30 +331,30 @@
                       data-role="poster"
                     />
                     <div class="content-more">
-                      <div class="more-box">
+                      <button type="button" class="more-box">
                         <img
                           class="more-icon"
                           src="img/like_icon_6F6C76.png"
                           alt="좋아요 누른 수"
                         />
                         <span class="like">2</span>
-                      </div>
-                      <div class="more-box">
+                      </button>
+                      <button type="button" class="more-box">
                         <img
                           class="more-icon"
                           src="img/hate_icon_6F6C76.png"
                           alt="싫어요 누른 수"
                         />
                         <span class="hate">112</span>
-                      </div>
-                      <div class="more-box">
+                      </button>
+                      <button type="button" class="more-box">
                         <img
                           class="more-icon"
                           src="img/star_6f6c76.png"
                           alt="평균 별점"
                         />
                         <span class="like">1</span>
-                      </div>
+                      </button>
                     </div>
                   </div>
                 </article>
@@ -371,30 +370,30 @@
                       data-role="poster"
                     />
                     <div class="content-more">
-                      <div class="more-box">
+                      <button type="button" class="more-box">
                         <img
                           class="more-icon"
                           src="img/like_icon_6F6C76.png"
                           alt="좋아요 누른 수"
                         />
                         <span class="like">12</span>
-                      </div>
-                      <div class="more-box">
+                      </button>
+                      <button type="button" class="more-box">
                         <img
                           class="more-icon"
                           src="img/hate_icon_6F6C76.png"
                           alt="싫어요 누른 수"
                         />
                         <span class="hate">152</span>
-                      </div>
-                      <div class="more-box">
+                      </button>
+                      <button type="button" class="more-box">
                         <img
                           class="more-icon"
                           src="img/star_6f6c76.png"
                           alt="평균 별점"
                         />
                         <span class="like">2</span>
-                      </div>
+                      </button>
                     </div>
                   </div>
                 </article>

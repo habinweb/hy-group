@@ -68,55 +68,55 @@ function initBalanceGame() {
 function initTicketModal() {
   const ticket = document.querySelector(".ticket-box");
   const modal = document.querySelector(".ticket-modal");
-  const modalContent = document.querySelector(".ticket-modal-content");
+  const content = document.querySelector(".ticket-modal-content");
   const closeBtn = document.querySelector(".modal-close");
 
-  if (!ticket || !modal || !modalContent || !closeBtn) return;
+  if (!ticket || !modal || !content || !closeBtn) return;
 
-  let openTimer = null;
+  let timer = null;
+  let lastFocus = null;
 
-  function openModalWithDelay() {
+  const open = () => {
+    // lastFocus = document.activeElement;
+
     ticket.classList.add("rotated");
+    ticket.classList.add("opacity");
 
-    ticket.style.pointerEvents = "none";
-
-    if (openTimer) clearTimeout(openTimer);
-
-    openTimer = setTimeout(() => {
+    timer = setTimeout(() => {
       modal.classList.add("open");
       modal.setAttribute("aria-hidden", "false");
       document.body.classList.add("lock");
-
-      ticket.classList.add("opacity");
-
-      ticket.style.pointerEvents = "";
-      openTimer = null;
+      closeBtn.focus();
     }, 1000);
-  }
+  };
 
-  function closeModal() {
-    if (openTimer) {
-      clearTimeout(openTimer);
-      openTimer = null;
+  const close = () => {
+    if (timer) {
+      clearTimeout(timer);
+      timer = null;
     }
 
     modal.classList.remove("open");
-    modal.setAttribute("aria-hidden", "true");
     document.body.classList.remove("lock");
+
+    // lastFocus?.focus();
+    lastFocus = null;
+
+    modal.setAttribute("aria-hidden", "true");
 
     ticket.classList.remove("opacity");
     ticket.classList.remove("rotated");
-  }
+  };
 
-  ticket.addEventListener("click", openModalWithDelay);
-  closeBtn.addEventListener("click", closeModal);
+  ticket.addEventListener("click", open);
+  closeBtn.addEventListener("click", close);
 
   modal.addEventListener("click", (e) => {
-    if (!modalContent.contains(e.target)) closeModal();
+    if (!content.contains(e.target)) close();
   });
 
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && modal.classList.contains("open")) closeModal();
+    if (e.key === "Escape" && modal.classList.contains("open")) close();
   });
 }
 
@@ -138,17 +138,9 @@ function initLikeToggle() {
     );
   });
 }
-// =========================
-// 3) 상자 애니메이션(기존 로직 유지, init 형태)
-// =========================
-const ticket = document.querySelector(".ticket-box");
-
-ticket.addEventListener("click", () => {
-  ticket.classList.toggle("rotated");
-});
 
 // =========================
-// 4) 잔혹한 평점 슬라이더(기존 로직 유지, init 형태)
+// 3) 잔혹한 평점 슬라이더(기존 로직 유지, init 형태)
 // =========================
 function initDualSlider() {
   const s = SELECTOR.slider;
@@ -278,5 +270,4 @@ function initAll() {
   initBalanceGame();
   initDualSlider();
 }
-
 initAll();
