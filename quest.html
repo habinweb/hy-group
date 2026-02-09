@@ -10,359 +10,472 @@
     <link rel="stylesheet" href="css/root.css" />
     <link rel="stylesheet" href="css/import.css" />
     <link rel="stylesheet" href="css/quest.css" />
+
+    <link rel="icon" href="img/favicon/favicon.ico" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="img/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="img/favicon/favicon-16x16.png"
+    />
+    <link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png" />
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   </head>
 
   <body class="quest">
-    <div id="container">
-      <!-- 헤더 -->
-      <div id="header-slot"></div>
+    <!-- 헤더 -->
+    <div id="header-slot"></div>
 
-      <main class="main-container--ticket">
-        <!-- 검색창 -->
-        <a class="search-f" href="search.html" aria-label="검색 페이지로 이동">
-          <div class="search-box">
-            <span class="search-btn" aria-hidden="true">
-              <img class="search-btn-img" src="img/search_3B393C.png" alt="" />
-            </span>
+    <main class="main-container--ticket">
+      <!-- 검색창 -->
+      <a class="search-f" href="search.html" aria-label="검색 페이지로 이동">
+        <div class="search-box">
+          <span class="search-btn" aria-hidden="true">
+            <img
+              class="search-btn-img"
+              src="img/search_3B393C.png"
+              alt="검색 아이콘"
+            />
+          </span>
 
-            <span class="search-in" aria-hidden="true">
-              당신의 마음을 뒤흔들 작품을 검색해보세요
-            </span>
-          </div>
-        </a>
-
-        <div class="ticket-txt-box" id="hot-genre">
-          <h1 class="ticket-txt">우연한 만남, 오늘의 티켓 뽑기</h1>
+          <span class="search-in" aria-hidden="true">
+            당신의 마음을 뒤흔들 작품을 검색해보세요
+          </span>
         </div>
+      </a>
 
+      <div class="ticket-txt-box" id="hot-ticket">
+        <h1 class="ticket-txt" id="hot-ticket-title">
+          우연한 만남, 오늘의 티켓 뽑기
+        </h1>
+      </div>
+
+      <div class="container--ticket-wrap">
         <!-- 티켓 뽑기 -->
         <div class="container--ticket">
           <div class="ticket-bg">
-            <section
-              class="ticket-wrap"
-              aria-label="도형을 클릭해 오늘의 티켓을 뽑아보세요"
-            >
+            <section class="ticket-wrap" aria-labelledby="hot-ticket-title">
               <div class="ticket-box"></div>
             </section>
           </div>
         </div>
-
-        <!-- 데이터에 해당되는 장르를 보여주는 구간 -->
-        <section
-          class="ticket-view bottom-padding"
-          aria-labelledby="ticket-title"
+        <!-- 티켓 결과 모달 -->
+        <div
+          class="ticket-modal"
+          aria-hidden="true"
+          aria-label="티켓 뽑기 결과"
         >
-          <div class="ticket-view-txt-box">
-            <p class="ticket-view-txt" id="ticket-title">
-              지금까지 수집한
-              <span class="input" data-role="ticket">티켓</span
-              ><span>들은 다음과 같아요</span>
-            </p>
-          </div>
-          <div class="ticket-view-gutter">
-            <div class="ticket-view-list">
-              <ul
-                class="ticket-view-list-box posterList"
-                aria-label="수집한 티켓 목록"
-              >
-                <li class="ticket-view-thing ticket-view-more">
-                  <a href="" class="blankbtn">
-                    <img src="img/next_icon_6F6C76.png" alt="moreBtn" />
-                  </a>
-                </li>
-              </ul>
-              <template id="ticketItemTemplate">
-                <li class="ticket-view-thing ticket-viewTemplate">
-                  <a href="" class="ticket-view-thing-one" data-role="link">
-                    <img src="" alt="" data-role="poster" />
-                  </a>
-
-                  <button class="likeBtn" type="button" aria-label="찜하기">
-                    <img src="img/heart_6f6c76.png" alt="" aria-hidden="true" />
-                  </button>
-                </li>
-              </template>
-            </div>
-          </div>
-        </section>
-
-        <!-- 밸런스 게임 -->
-        <section class="game-container" aria-labelledby="game-title">
-          <div class="game-title">
-            <div class="game-txt-box">
-              <h2 class="game-txt" id="game-title">
-                취향 테스트: 오늘의 선택은?
-              </h2>
-            </div>
-          </div>
-
-          <div class="game-content-box">
-            <h3 class="game-content-title" data-role="title">
-              다가오는 크리스마스, 어떤 게 좋아?
-            </h3>
-            <!-- 게임 -->
-            <div class="game-contents-container">
-              <!-- 왼쪽 박스 -->
-              <article class="content-container left">
-                <!-- 컨텐츠 이미지 박스 -->
-                <div class="game-content-img-box blind">
-                  <img
-                    class="game-content-img"
-                    src="img/poster/poster_겨울왕국.jpg"
-                    alt=""
-                  />
-                </div>
-                <!-- 텍스트 박스 -->
-                <div class="game-content-txt-box">
-                  <p class="game-content-txt">
-                    얼음성에서 열리는 마법같은 파티
-                  </p>
-                </div>
-                <!-- 아이콘 박스 -->
-                <div class="game-content-icon-box">
-                  <img
-                    class="game-content-icon"
-                    src="img/like_icon_6F6C76.png"
-                    alt=""
-                  />
-                </div>
-              </article>
-              <!-- 오른쪽 박스 -->
-              <article class="content-container right">
-                <!-- 컨텐츠 이미지 박스 -->
-                <div class="game-content-img-box blind">
-                  <img
-                    class="game-content-img"
-                    src="img/poster/poster_가디언즈.jpg"
-                    alt=""
-                  />
-                </div>
-                <!-- 텍스트 박스 -->
-                <div class="game-content-txt-box">
-                  <p class="game-content-txt">산타와 함께 전세계 선물 배달</p>
-                </div>
-                <!-- 아이콘 박스 -->
-                <div class="game-content-icon-box">
-                  <img
-                    class="game-content-icon"
-                    src="img/like_icon_6F6C76.png"
-                    alt=""
-                  />
-                </div>
-              </article>
-            </div>
-          </div>
-          <!-- 클릭시 열림 -->
-          <div class="game-result-box" aria-label="밸런스 게임 결과창">
-            <p class="game-result-title">내가 고른 선택지 결과</p>
-            <div class="result-box">
-              <div class="user-pick-result">
-                <span class="result">70%</span>
+          <article class="ticket-modal-content" role="dialog" aria-modal="true">
+            <!-- 창닫기버튼 -->
+            <button class="modal-close" type="button">
+              <img
+                class="modal-close-img"
+                src="img/close_6f6c76.png"
+                alt="닫기 버튼"
+              />
+            </button>
+            <!-- 티켓 ui -->
+            <div class="ticket-modal-box">
+              <!-- 왼쪽 영역 -->
+              <div class="ticket-modal-poster" aria-label="바로가기">
+                <img
+                  class="ticket-modal-img"
+                  src="img/poster/poster_존오브인터레스트.jpg"
+                  alt="존 오브 인터레스트 포스터"
+                />
               </div>
-              <div class="other-result"></div>
-            </div>
-          </div>
-        </section>
-
-        <!-- 잔혹한 평점 -->
-        <section
-          class="game-container find bottom-padding"
-          aria-label="game-title"
-        >
-          <div class="game-title">
-            <div class="game-txt-box find">
-              <h2 class="game-txt" id="game-title">
-                잔혹한 평점 속, 나만의 보석 찾기
-              </h2>
-            </div>
-          </div>
-          <!-- 작품 리스트 -->
-          <div class="find-good-content-box">
-            <div class="find-good-content-wrap">
-              <ul class="find-good-content-list">
-                <!-- 작품1 -->
-                <li class="find-good-content-item">
-                  <article class="find-good-content">
-                    <div class="poster-container">
-                      <img
-                        class="poster-img"
-                        src="img/poster/poster_클레멘타인.jpg"
-                      />
-                      <div class="content-more">
-                        <div class="more-box">
-                          <img
-                            class="more-icon"
-                            src="img/like_icon_6F6C76.png"
-                            alt=""
-                          />
-                          <span class="like">12</span>
-                        </div>
-                        <div class="more-box">
-                          <img
-                            class="more-icon"
-                            src="img/hate_icon_6F6C76.png"
-                            alt=""
-                          />
-                          <span class="hate">152</span>
-                        </div>
-                        <div class="more-box">
-                          <img
-                            class="more-icon"
-                            src="img/star_6f6c76.png"
-                            alt=""
-                          />
-                          <span class="like">1</span>
-                        </div>
-                      </div>
-                    </div>
-                  </article>
-                </li>
-                <!-- 작품2 -->
-                <li class="find-good-content-item">
-                  <article class="find-good-content">
-                    <div class="poster-container">
-                      <img
-                        class="poster-img"
-                        src="img/poster/poster_주글래살래.jpg"
-                      />
-                      <div class="content-more">
-                        <div class="more-box">
-                          <img
-                            class="more-icon"
-                            src="img/like_icon_6F6C76.png"
-                            alt=""
-                          />
-                          <span class="like">12</span>
-                        </div>
-                        <div class="more-box">
-                          <img
-                            class="more-icon"
-                            src="img/hate_icon_6F6C76.png"
-                            alt=""
-                          />
-                          <span class="hate">152</span>
-                        </div>
-                        <div class="more-box">
-                          <img
-                            class="more-icon"
-                            src="img/star_6f6c76.png"
-                            alt=""
-                          />
-                          <span class="like">1</span>
-                        </div>
-                      </div>
-                    </div>
-                  </article>
-                </li>
-                <!-- 작품3 -->
-                <li class="find-good-content-item">
-                  <article class="find-good-content">
-                    <div class="poster-container">
-                      <img
-                        class="poster-img"
-                        src="img/poster/poster_김치전사.jpg"
-                      />
-                      <div class="content-more">
-                        <div class="more-box">
-                          <img
-                            class="more-icon"
-                            src="img/like_icon_6F6C76.png"
-                            alt=""
-                          />
-                          <span class="like">12</span>
-                        </div>
-                        <div class="more-box">
-                          <img
-                            class="more-icon"
-                            src="img/hate_icon_6F6C76.png"
-                            alt=""
-                          />
-                          <span class="hate">152</span>
-                        </div>
-                        <div class="more-box">
-                          <img
-                            class="more-icon"
-                            src="img/star_6f6c76.png"
-                            alt=""
-                          />
-                          <span class="like">2</span>
-                        </div>
-                      </div>
-                    </div>
-                  </article>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="user-hate-review-box">
-            <div class="indicator">
-              <button type="button" class="play-next-btn"></button>
-            </div>
-            <div class="user-hate-review-wrap">
-              <ul class="user-hate-review-list">
-                <li class="user-hate-review-item">
-                  <p class="hate-title" data-role="title">클레멘타인</p>
-                  <p class="hate-desc" data-role="hate-review">
-                    당신이 이 영화를 보지 않았다면 아직 살아있을 이유 하나를
-                    간직하고 있는 것이다
+              <!-- 오른쪽 영역 -->
+              <div class="ticket-modal-desc">
+                <!-- 타이틀 -->
+                <div class="ticket-modal-desc-top">
+                  <p class="ticket-modal-title" data-role="title">
+                    존 오브 인터레스트
                   </p>
-                  <div class="user-data">
+                  <div class="ticket-modal-score">
                     <img
-                      class="user-profile"
-                      src="img/user_6F6C76.png"
-                      data-role="profile"
+                      class="score-img"
+                      src="img/star_6f6c76.png"
+                      alt="평균 별점"
                     />
-                    <p class="user-box">
-                      <span class="user-name">이럴수가저럴수가</span>님의 감상
-                    </p>
+                    <span class="score-txt">5</span>
                   </div>
-                </li>
-                <li class="user-hate-review-item">
+                </div>
+                <!-- 설명 -->
+                <p class="ticket-modal-txt">
+                  <span class="modal-title" data-role="title"
+                    >존 오브 인터레스트</span
+                  >를 뽑으셨군요! 포스터를 클릭하시면 작품 정보로 이동할게요.
+                </p>
+                <!-- 오티티 -->
+                <div class="ticket-modal-ott-box">
+                  <img
+                    class="ticket-modal-ott-icon"
+                    src="img/streaming_f5f5f5.png"
+                    alt="OTT 아이콘"
+                  />
+                  <!-- 리스트 -->
+                  <ul
+                    class="ticket-modal-ott-list"
+                    aria-label="스트리밍 가능한 OTT 목록"
+                  >
+                    <li class="ticket-modal-ott-item">
+                      <img
+                        class="ticket-modal-ott-img"
+                        src="img/wavve.png"
+                        alt="웨이브"
+                      />
+                    </li>
+                    <li class="ticket-modal-ott-item">
+                      <img
+                        class="ticket-modal-ott-img"
+                        src="img/watcha.png"
+                        alt="넷플릭스"
+                      />
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- 데이터에 해당되는 장르를 보여주는 구간 -->
+      <section
+        class="ticket-view bottom-padding"
+        aria-labelledby="ticket-title"
+      >
+        <div class="ticket-view-txt-box">
+          <p class="ticket-view-txt" id="ticket-title">
+            지금까지 수집한
+            <span class="input" data-role="ticket">티켓</span
+            ><span>들은 다음과 같아요</span>
+          </p>
+        </div>
+        <div class="ticket-view-gutter">
+          <div class="ticket-view-list">
+            <ul
+              class="ticket-view-list-box posterList"
+              aria-label="수집한 티켓 목록"
+            >
+              <li class="ticket-view-thing ticket-view-more">
+                <a href="" class="blankbtn">
+                  <img src="img/next_icon_6F6C76.png" alt="더보기 버튼" />
+                </a>
+              </li>
+            </ul>
+            <template id="ticketItemTemplate">
+              <li class="ticket-view-thing ticket-viewTemplate">
+                <a href="" class="ticket-view-thing-one" data-role="link">
+                  <img src="" alt="" data-role="poster" />
+                </a>
+
+                <button class="likeBtn" type="button" aria-label="찜하기">
+                  <img src="img/heart_6f6c76.png" alt="" aria-hidden="true" />
+                </button>
+              </li>
+            </template>
+          </div>
+        </div>
+      </section>
+
+      <!-- 밸런스 게임 -->
+      <section class="game-container" id="game" aria-labelledby="game-title">
+        <div class="game-title">
+          <div class="game-txt-box">
+            <h2 class="game-txt" id="game-title">
+              취향 테스트: 오늘의 선택은?
+            </h2>
+          </div>
+        </div>
+
+        <div class="game-content-box">
+          <h3 class="game-content-title" data-role="title">
+            다가오는 크리스마스, 어떤 게 좋아?
+          </h3>
+          <!-- 게임 -->
+          <div class="game-contents-container">
+            <!-- 왼쪽 박스 -->
+            <article class="content-container left">
+              <!-- 컨텐츠 이미지 박스 -->
+              <div class="game-content-img-box blind">
+                <img
+                  class="game-content-img"
+                  src="img/poster/poster_겨울왕국.jpg"
+                  alt="겨울왕국 포스터"
+                  data-role="poster"
+                />
+              </div>
+              <!-- 텍스트 박스 -->
+              <div class="game-content-txt-box">
+                <p class="game-content-txt">얼음성에서 열리는 마법같은 파티</p>
+              </div>
+              <!-- 아이콘 박스 -->
+              <div class="game-content-icon-box">
+                <img
+                  class="game-content-icon"
+                  src="img/like_icon_6F6C76.png"
+                  alt="추천해요 버튼"
+                />
+              </div>
+            </article>
+            <!-- 오른쪽 박스 -->
+            <article class="content-container right">
+              <!-- 컨텐츠 이미지 박스 -->
+              <div class="game-content-img-box blind">
+                <img
+                  class="game-content-img"
+                  src="img/poster/poster_가디언즈.jpg"
+                  alt="가디언즈 포스터"
+                  data-role="poster"
+                />
+              </div>
+              <!-- 텍스트 박스 -->
+              <div class="game-content-txt-box">
+                <p class="game-content-txt">산타와 함께 전세계 선물 배달</p>
+              </div>
+              <!-- 아이콘 박스 -->
+              <div class="game-content-icon-box">
+                <img
+                  class="game-content-icon"
+                  src="img/like_icon_6F6C76.png"
+                  alt="추천해요 포스터"
+                />
+              </div>
+            </article>
+          </div>
+        </div>
+        <!-- 클릭시 열림 -->
+        <div class="game-result-box" aria-label="밸런스 게임 결과창">
+          <p class="game-result-title">내가 고른 선택지 결과</p>
+          <div class="result-box">
+            <div class="user-pick-result">
+              <span class="result">70%</span>
+            </div>
+            <div class="other-result"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 잔혹한 평점 -->
+      <section
+        class="game-container find bottom-padding"
+        aria-labelledby="find-title"
+      >
+        <div class="game-title">
+          <div class="game-txt-box find">
+            <h2 class="game-txt" id="find-title">
+              잔혹한 평점 속, 나만의 보석 찾기
+            </h2>
+          </div>
+        </div>
+        <!-- 작품 리스트 -->
+        <div class="find-good-content-box">
+          <div class="find-good-content-wrap">
+            <ul
+              class="find-good-content-list"
+              aria-label="평점이 낮은 작품 목록들"
+            >
+              <!-- 작품1 -->
+              <li class="find-good-content-item">
+                <article class="find-good-content">
+                  <div class="poster-container">
+                    <img
+                      class="poster-img"
+                      src="img/poster/poster_클레멘타인.jpg"
+                      alt="클레멘타인 포스터"
+                      data-role="poster"
+                    />
+                    <div class="content-more">
+                      <div class="more-box">
+                        <img
+                          class="more-icon"
+                          src="img/like_icon_6F6C76.png"
+                          alt="좋아요 누른 수"
+                        />
+                        <span class="like">12</span>
+                      </div>
+                      <div class="more-box">
+                        <img
+                          class="more-icon"
+                          src="img/hate_icon_6F6C76.png"
+                          alt="싫어요 누른 수"
+                        />
+                        <span class="hate">152</span>
+                      </div>
+                      <div class="more-box">
+                        <img
+                          class="more-icon"
+                          src="img/star_6f6c76.png"
+                          alt="평균 별점"
+                        />
+                        <span class="like">1</span>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </li>
+              <!-- 작품2 -->
+              <li class="find-good-content-item">
+                <article class="find-good-content">
+                  <div class="poster-container">
+                    <img
+                      class="poster-img"
+                      src="img/poster/poster_주글래살래.jpg"
+                      alt="주글래살래 포스터"
+                      data-role="poster"
+                    />
+                    <div class="content-more">
+                      <div class="more-box">
+                        <img
+                          class="more-icon"
+                          src="img/like_icon_6F6C76.png"
+                          alt="좋아요 누른 수"
+                        />
+                        <span class="like">2</span>
+                      </div>
+                      <div class="more-box">
+                        <img
+                          class="more-icon"
+                          src="img/hate_icon_6F6C76.png"
+                          alt="싫어요 누른 수"
+                        />
+                        <span class="hate">112</span>
+                      </div>
+                      <div class="more-box">
+                        <img
+                          class="more-icon"
+                          src="img/star_6f6c76.png"
+                          alt="평균 별점"
+                        />
+                        <span class="like">1</span>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </li>
+              <!-- 작품3 -->
+              <li class="find-good-content-item">
+                <article class="find-good-content">
+                  <div class="poster-container">
+                    <img
+                      class="poster-img"
+                      src="img/poster/poster_김치전사.jpg"
+                      alt="김치전사 포스터"
+                      data-role="poster"
+                    />
+                    <div class="content-more">
+                      <div class="more-box">
+                        <img
+                          class="more-icon"
+                          src="img/like_icon_6F6C76.png"
+                          alt="좋아요 누른 수"
+                        />
+                        <span class="like">12</span>
+                      </div>
+                      <div class="more-box">
+                        <img
+                          class="more-icon"
+                          src="img/hate_icon_6F6C76.png"
+                          alt="싫어요 누른 수"
+                        />
+                        <span class="hate">152</span>
+                      </div>
+                      <div class="more-box">
+                        <img
+                          class="more-icon"
+                          src="img/star_6f6c76.png"
+                          alt="평균 별점"
+                        />
+                        <span class="like">2</span>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="user-hate-review-box">
+          <div class="indicator">
+            <button
+              type="button"
+              class="play-next-btn"
+              aria-label="다음 작품으로 넘어가기"
+            ></button>
+          </div>
+          <div class="user-hate-review-wrap">
+            <ul class="user-hate-review-list">
+              <li class="user-hate-review-item">
+                <p class="hate-title" data-role="title">클레멘타인</p>
+                <p class="hate-desc" data-role="hate-review">
+                  축하드립니다. 당신이 이 영화를 보지 않았다면 아직 살아있을
+                  이유 하나를 간직하고 있는 것이니까요.
+                </p>
+                <div class="user-data">
+                  <img
+                    class="user-profile"
+                    src="img/user_6F6C76.png"
+                    data-role="profile"
+                  />
+                  <p class="user-box">
+                    <span class="user-name">이럴수가저럴수가</span>님의 감상
+                  </p>
+                </div>
+              </li>
+              <li class="user-hate-review-item">
+                <div class="user-hate-review-txt-box">
                   <p class="hate-title" data-role="title">주글래살래</p>
                   <p class="hate-desc" data-role="hate-review">
                     이 영화를 보고 죽었던 친구가 깨어났습니다 정말 쌩뚱맞은
                     영화! 너무 기분이 좋아 열받고 싶을때 보면 됨 ☆
                   </p>
-                  <div class="user-data">
-                    <img
-                      class="user-profile"
-                      src="img/user_6F6C76.png"
-                      data-role="profile"
-                    />
-                    <p class="user-box">
-                      <span class="user-name">눈물핑</span>님의 감상
-                    </p>
-                  </div>
-                </li>
-                <li class="user-hate-review-item">
-                  <p class="hate-title" data-role="title">김치 전사</p>
-                  <p class="hate-desc" data-role="hate-review">
-                    80년대 ~ 90년대 생이라면 다 잊고 싶어하는 그 전설의 띵작...
-                    보면 알아요
+                </div>
+                <div class="user-data">
+                  <img
+                    class="user-profile"
+                    src="img/user_6F6C76.png"
+                    data-role="profile"
+                  />
+                  <p class="user-box">
+                    <span class="user-name">눈물핑</span>님의 감상
                   </p>
-                  <div class="user-data">
-                    <img
-                      class="user-profile"
-                      src="img/user_6F6C76.png"
-                      data-role="profile"
-                    />
-                    <p class="user-box">
-                      <span class="user-name">인생은추억여행</span>님의 감상
-                    </p>
-                  </div>
-                </li>
-              </ul>
-            </div>
+                </div>
+              </li>
+              <li class="user-hate-review-item">
+                <p class="hate-title" data-role="title">김치전사</p>
+                <p class="hate-desc" data-role="hate-review">
+                  80년대 ~ 90년대 생이라면 다 잊고 싶어하는 그 전설의 띵작...
+                  보면 알아요^^ 아직도 김치전사의 그림자 아래에서 사는 것
+                  같네요~
+                </p>
+                <div class="user-data">
+                  <img
+                    class="user-profile"
+                    src="img/user_6F6C76.png"
+                    data-role="profile"
+                  />
+                  <p class="user-box">
+                    <span class="user-name">인생은추억여행</span>님의 감상
+                  </p>
+                </div>
+              </li>
+            </ul>
           </div>
-        </section>
-      </main>
+        </div>
+      </section>
+    </main>
 
-      <!-- 하단 메뉴바 -->
-      <div id="bottom-nav"></div>
-      <div id="footer-slot"></div>
-    </div>
+    <!-- 하단 메뉴바 -->
+    <div id="bottom-nav"></div>
+    <div id="footer-slot"></div>
 
     <!-- JS -->
     <script

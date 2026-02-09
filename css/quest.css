@@ -48,13 +48,12 @@ body.lock {
   color: var(--c-gray2);
   letter-spacing: 0;
 }
-#container {
+.body {
   width: 100%;
   background: var(--c-bg);
 }
 
 /* 티켓 */
-
 .ticket-txt-box {
   width: 90%;
   margin: 80px auto 0 auto;
@@ -67,10 +66,6 @@ body.lock {
   letter-spacing: -0.02rem;
   font-weight: 800;
 }
-
-/* .user-txt > span {
-  color: var(--c-main);
-} */
 
 .main-container--ticket {
   width: 100%;
@@ -91,10 +86,9 @@ body.lock {
   width: 100%;
   height: 100%;
 }
-/* 카테고리 원 박스 */
+
 .ticket-wrap {
   width: 50%;
-
   margin: 0 auto;
 }
 .ticket-box {
@@ -104,6 +98,17 @@ body.lock {
 
   isolation: isolate;
   position: relative;
+  transition:
+    transform 2s cubic-bezier(0.5, 0, 0.2, 1),
+    opacity 0.5s ease;
+}
+
+.ticket-box.rotated {
+  transform: rotate(360deg);
+}
+.ticket-box.opacity {
+  opacity: 0.5;
+  pointer-events: none; /* 선택: 모달 열렸을 때 다시 못 누르게 */
 }
 .ticket-box::after {
   position: absolute;
@@ -127,7 +132,137 @@ body.lock {
   transform: rotate(-15deg) translateX(-10px);
   border-radius: 20px;
 }
+.container--ticket-wrap {
+  position: relative;
+}
+/* 클릭시 티켓 팝업 */
+.ticket-modal {
+  display: none;
+  width: 90%;
+  position: absolute;
+  top: calc(50% - 0.5rem);
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  margin: 0 auto;
+  z-index: 10;
+  transition: all 1s ease-in-out;
+}
+body.lock {
+  overflow: hidden;
+}
+.ticket-modal.open {
+  display: block;
+}
+.ticket-modal-content {
+  position: relative;
+}
+.modal-close {
+  position: absolute;
+  top: -30px;
+  right: 0;
+}
+.modal-close-img {
+  width: 10px;
+  height: 10px;
+}
+.ticket-modal-box {
+  width: 100%;
+  display: flex;
+}
+.ticket-modal-poster {
+  padding: 1rem;
+  border-radius: 20px;
+  background: var(--c-gray);
+  flex: 0 0 35%;
+  box-shadow: 0 0 20px var(--c-bg);
+  position: relative;
+}
+.ticket-modal-poster::after {
+  position: absolute;
+  content: "";
+  display: block;
+  top: 50%;
+  transform: translateY(-50%);
+  right: -3px;
+  width: 6px;
+  height: 80%;
 
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--c-bg),
+    var(--c-bg) 6px,
+    /* 점 길이 */ transparent 6px,
+    transparent 12px /* 점 간격 */
+  );
+}
+.ticket-modal-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.ticket-modal-desc {
+  padding: 1rem;
+  border-radius: 20px;
+  background: var(--c-gray);
+  flex: 0 0 65%;
+  box-shadow: 0 0 20px var(--c-bg);
+}
+.ticket-modal-desc-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.ticket-modal-title {
+  font-weight: 800;
+  font-size: var(--fs3);
+}
+.ticket-modal-score {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+.score-img {
+  display: block;
+  width: 12px;
+  height: 12px;
+}
+.score-txt {
+  font-weight: 800;
+}
+.ticket-modal-txt {
+  margin-bottom: 15px;
+  font-size: var(--fs1);
+}
+.modal-title {
+  font-weight: 800;
+}
+.ticket-modal-ott-box {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+.ticket-modal-ott-icon {
+  width: 15px;
+  height: 15px;
+}
+.ticket-modal-ott-list {
+  display: flex;
+  gap: 0.5rem;
+}
+.ticket-modal-ott-item {
+  border-radius: 50px;
+}
+.ticket-modal-ott-img {
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-radius: inherit;
+}
 /* 사용자 데이터 기반 장르 추천 */
 .ticket-view {
   width: 100%;
@@ -225,7 +360,9 @@ body.lock {
   bottom: 5px;
   transition: transform 0.15s ease-out;
 }
-
+.likeBtn {
+  cursor: pointer;
+}
 .ticket-view-thing > .likeBtn .active {
   transform: scale(1.15);
 }
@@ -307,7 +444,6 @@ body.lock {
   width: 100%;
   border: 1.5px solid var(--c-bg);
 }
-
 .content-container.left,
 .content-container.right {
   position: relative;
@@ -321,7 +457,19 @@ body.lock {
   padding: 1rem;
   border-radius: 20px;
   box-shadow: 0px 0px 10px var(--c-main-50);
+  border: 1.5px solid var(--c-bg);
 }
+
+/* 클릭 시 */
+/* 클릭하면 .game-content-img-box.blind::after 의 블라인드 클래스가 사라짐*/
+.content-container.active .game-content-img {
+  border: 1.5px solid var(--c-point);
+}
+.content-container.active .game-content-txt-box {
+  border: 1.5px solid var(--c-point);
+  background-color: rgba(var(--c-bg-rgb), 0.7);
+}
+
 .game-content-txt {
   width: 100%;
   position: relative;
@@ -355,6 +503,10 @@ body.lock {
   margin: 0 auto;
   border-radius: 20px;
   padding: 1.5rem 1rem;
+  display: none;
+}
+.game-result-box.show {
+  display: block;
 }
 .game-result-box::before {
   content: "";
@@ -535,7 +687,12 @@ body.lock {
   border-radius: 20px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+}
+.user-hate-review-txt-box {
+  display: flex;
   gap: 5px;
+  flex-direction: column;
 }
 .hate-title {
   color: var(--c-gray3);
@@ -570,7 +727,7 @@ body.lock {
   transform: translateX(-50%);
   width: 36px;
   height: 36px;
-  background: url("/img/play-next.png") no-repeat center;
+  background: url("../img/play-next.png") no-repeat center;
   background-size: contain;
 }
 
@@ -591,9 +748,8 @@ body.lock {
   padding-bottom: 2rem;
 }
 
-#hot-genre,
-#hot-movie,
-#hot-drama,
-#user-review {
-  scroll-margin-top: 120px;
+#hot-ticket,
+#game,
+#find-title {
+  scroll-margin-top: 150px;
 }

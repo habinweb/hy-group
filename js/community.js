@@ -149,11 +149,19 @@ $(function () {
     if (visibleCount >= total) {
       // 접기 -> 기본 상태(6개)
       visibleCount = STEP;
-    } else {
-      // 더보기 -> 6개씩 증가
-      visibleCount += STEP;
+      applyVisibleCount();
+
+      // 접기 누르면 상단으로 자연스럽게 이동
+      const top = $("#review_container").length
+        ? $("#review_container").offset().top - 60
+        : $(".review_list").offset().top - 60;
+
+      $("html, body").stop().animate({ scrollTop: top }, 350);
+      return;
     }
 
+    // 더보기 -> 6개씩 증가
+    visibleCount += STEP;
     applyVisibleCount();
   });
 });
