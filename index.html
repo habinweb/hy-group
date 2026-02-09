@@ -33,7 +33,6 @@
     <div id="header-slot"></div>
 
     <main class="main-container">
-      <!-- 검색창 -->
       <a class="search-f" href="search.html" aria-label="검색 페이지로 이동">
         <div class="search-box">
           <span class="search-btn" aria-hidden="true">
@@ -65,7 +64,6 @@
         </section>
       </div>
 
-      <!-- 데이터에 해당되는 장르를 보여주는 구간 -->
       <section class="favorite bottom-padding" aria-labelledby="favorite-genre">
         <div class="favorite-txt-box">
           <p class="favorite-txt" id="favorite-genre">
@@ -372,7 +370,6 @@
           </div>
 
           <div class="review-container">
-            <!-- 데이터 첨부 필요 -->
             <div class="review-wrap">
               <ul
                 class="review-card-box"
@@ -404,7 +401,7 @@
               </template>
             </div>
 
-            <!-- 감상평 남기기 버튼. 로그인이 되어 있지 않을 때에는 로그인 창으로 넘어간다 -->
+            <!-- 감상평 남기기 버튼 -->
             <div class="btn-form-container">
               <div class="review-input">
                 <div class="review-input-box">
@@ -417,11 +414,8 @@
                 </div>
               </div>
 
-              <!-- 버튼을 누르면 폼이 열린다 이부분 데이터 연결 후에 css 다시 만져야 할듯 -->
-
-              <form class="review-form" method="post">
+              <form class="review-form" method="post" id="review-form">
                 <div class="input-box form">
-                  <!-- [1] 작품명 자동검색 입력 -->
                   <div class="title-search-box">
                     <label for="work-name" class="skip">작품 이름</label>
                     <input
@@ -436,14 +430,9 @@
                       <img src="img/search_6f6c76.png" alt="search btn" />
                     </button>
                   </div>
-                  <!-- 자동완성 목록 들어가는 곳(나중에 css 잡기)-->
                   <ul id="search-result" class="search-result"></ul>
 
-                  <!-- 2025.11.13 김하빈 추가 (별점) -->
-                  <!-- 별 한개~다섯개까지 별점을 줄 수 있음 -->
-                  <!-- 위 작품 검색해서 작품을 검색하고 지정했을 시에만 별점을 줄 수 있습니다 -->
-                  <!-- img/star_6f6c76.png 에서 선택되면 img/star_49E99C.png로 아이콘 변경 -->
-                  <div class="star-box">
+                  <div class="star-box" id="star">
                     <p class="rating-label">선택한 이 작품, 내 별점은?</p>
                     <div class="rating-stars" data-rating="0">
                       <button
@@ -489,7 +478,7 @@
                     </div>
                   </div>
 
-                  <!-- [2] 감상평 입력 -->
+                  <!-- 감상평 입력 -->
                   <div class="review-text-box">
                     <label for="review-text" class="skip">감상평</label>
                     <textarea
@@ -499,7 +488,7 @@
                       required
                     ></textarea>
 
-                    <!-- [3] 제출 버튼 -->
+                    <!-- 제출 버튼 -->
                     <button type="submit" class="submit">
                       <img src="img/pen_6f6c76.png" alt="submit btn" />
                     </button>
@@ -518,6 +507,25 @@
           </div>
         </div>
       </section>
+
+      <!-- 로그인 안내 팝업 - 여진님 작업 -->
+      <div class="login_popup" id="login_popup" aria-hidden="true">
+        <div class="login_popup_inner" role="dialog" aria-modal="true">
+          <p class="login_popup_title">앗! 로그인을 잊으셨어요</p>
+          <p class="login_popup_desc">추천과 리뷰는 로그인 후에 가능해요</p>
+          <div class="login_popup_btns">
+            <!-- 닫기 버튼 -->
+            <button type="button" class="login_btn login_btn_cancel">
+              괜찮아요
+            </button>
+
+            <!-- 로그인 이동 버튼 -->
+            <button type="button" class="login_btn login_btn_go">
+              로그인 할게요
+            </button>
+          </div>
+        </div>
+      </div>
     </main>
     <!-- 하단 메뉴바 -->
     <div id="bottom-nav"></div>

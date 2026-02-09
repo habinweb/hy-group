@@ -1,48 +1,76 @@
-// 데이터 가져오기
 import { dummy } from "../data.js";
 
+const SELECTOR = {
+  list: ".favorite-list-box",
+  template: "#favoriteItemTemplate",
+  genre: '[data-role="genre"]',
+  item: ".favorite-thing",
+  more: ".favorite-more",
+  link: '[data-role="link"]',
+  poster: '[data-role="poster"]',
+};
+
+const MAX_ITEMS = 7;
+
 export function initFavoriteSection() {
-  const list = document.querySelector(".favorite-list-box");
+  const list = document.querySelector(SELECTOR.list);
   if (!list) return;
 
-  const templateEl = document.querySelector("#favoriteItemTemplate");
+  const templateEl = document.querySelector(SELECTOR.template);
   if (!templateEl) return;
 
-  // ✅ 기준 장르(문구에 있는 값) 읽기
-  const genreEl = document.querySelector('[data-role="genre"]');
-  const targetGenre = (genreEl?.textContent ?? "").trim();
+  const targetGenre = getTargetGenre();
   if (!targetGenre) return;
 
-  const moreBtn = list.querySelector(".favorite-more");
+  const moreEl = list.querySelector(SELECTOR.more);
 
-  list
-    .querySelectorAll(".favorite-thing:not(.favorite-more)")
-    .forEach((el) => el.remove());
+  clearItems(list);
 
-  // ✅ 렌더링 시작: "기준 장르"로 필터링 추가
-  const items = [...dummy]
-    .filter(
-      (item) => Array.isArray(item.genre) && item.genre.includes(targetGenre),
-    )
-    .sort((a, b) => b.date.localeCompare(a.date))
-    .slice(0, 7);
-
+  const items = pickItemsByGenre(dummy, targetGenre, MAX_ITEMS);
   items.forEach((item) => {
-    const fragment = templateEl.content.cloneNode(true);
-
-    const card = fragment.querySelector(".favorite-thing");
+    const card = createCard(templateEl, item);
     if (!card) return;
 
-    const link = card.querySelector('[data-role="link"]');
-    const img = card.querySelector('[data-role="poster"]');
-
-    if (link) link.href = `sub.html?id=${item.id}`;
-    if (img) {
-      img.src = item.poster;
-      img.alt = "";
-    }
-
-    if (moreBtn) list.insertBefore(card, moreBtn);
-    else list.appendChild(card);
+    insertCard(list, card, moreEl);
   });
+}
+
+function getTargetGenre() {
+  const genreEl = document.querySelector(SELECTOR.genre);
+  return (genreEl?.textContent ?? "").trim();
+}
+
+function clearItems(listEl) {
+  listEl
+    .querySelectorAll(`${SELECTOR.item}:not(${SELECTOR.more})`)
+    .forEach((el) => el.remove());
+}
+
+function pickItemsByGenre(data, genre, limit) {
+  return [...data]
+    .filter((item) => Array.isArray(item.genre) && item.genre.includes(genre))
+    .sort((a, b) => String(b.date).localeCompare(String(a.date)))
+    .slice(0, limit);
+}
+
+function createCard(templateEl, item) {
+  const fragment = templateEl.content.cloneNode(true);
+  const card = fragment.querySelector(SELECTOR.item);
+  if (!card) return null;
+
+  const link = card.querySelector(SELECTOR.link);
+  const img = card.querySelector(SELECTOR.poster);
+
+  if (link) link.href = `sub.html?id=${item.id}`;
+  if (img) {
+    img.src = item.poster;
+    img.alt = ""; // 장식용이면 OK. 정보용이면 item.title 권장.
+  }
+
+  return card;
+}
+
+function insertCard(listEl, cardEl, moreEl) {
+  if (moreEl) listEl.insertBefore(cardEl, moreEl);
+  else listEl.appendChild(cardEl);
 }

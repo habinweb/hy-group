@@ -9,30 +9,31 @@ export function initTicketSection() {
   const templateEl = document.querySelector("#ticketItemTemplate");
   if (!templateEl) return;
 
-  // ✅ 더보기 버튼(li)
+  // 더보기 li (유지 대상)
   const moreItem = list.querySelector(".ticket-view-more");
 
-  // ✅ 기존 아이템 제거 (더보기는 유지)
+  // 기존 렌더된 아이템 제거 (더보기 제외)
   list
     .querySelectorAll(".ticket-view-thing:not(.ticket-view-more)")
     .forEach((el) => el.remove());
 
-  // ✅ 랜덤 7개
+  // 랜덤 아이템 추출
   const items = pickRandom(dummy, MAX_ITEMS);
 
-  // ✅ 렌더
-  const frag = document.createDocumentFragment();
+  // 아이템 렌더
+  const fragment = document.createDocumentFragment();
   items.forEach((item) => {
-    frag.appendChild(buildItem(templateEl, item));
+    fragment.appendChild(buildItem(templateEl, item));
   });
 
-  // ✅ 더보기 앞에 삽입
-  if (moreItem) list.insertBefore(frag, moreItem);
-  else list.appendChild(frag);
+  // 더보기 앞에 삽입
+  if (moreItem) list.insertBefore(fragment, moreItem);
+  else list.appendChild(fragment);
 }
 
-/* ---------------- helpers ---------------- */
+/* helpers */
 
+// 배열에서 랜덤 n개 추출
 function pickRandom(arr, limit) {
   const copy = [...arr];
   for (let i = copy.length - 1; i > 0; i--) {
@@ -42,9 +43,10 @@ function pickRandom(arr, limit) {
   return copy.slice(0, limit);
 }
 
+// 템플릿 기반 아이템 생성
 function buildItem(templateEl, item) {
-  const frag = templateEl.content.cloneNode(true);
-  const root = frag.querySelector(".ticket-view-thing");
+  const fragment = templateEl.content.cloneNode(true);
+  const root = fragment.querySelector(".ticket-view-thing");
 
   root.querySelector('[data-role="link"]').href = `sub.html?id=${item.id}`;
 

@@ -1,73 +1,86 @@
+/* Alarm / New Articles */
 .new-article-container {
   width: 90%;
-  margin: 0 auto;
-  margin-top: 100px;
-  margin-bottom: 100px;
+  margin: 100px auto;
 }
+
 .alarm-title {
   font-size: var(--fs5);
   font-weight: 800;
 }
+
 .txt-point {
   color: var(--c-main);
   font-weight: 800;
 }
+
+/* Tabs */
 .tab-box {
   padding-top: 1rem;
   display: flex;
   gap: 0.6rem;
 }
+
 .tab-btn {
   cursor: pointer;
-  border: 1.5px solid var(--c-gray1);
   padding: 0.4rem 1.2rem;
   border-radius: 50px;
+  border: 1.5px solid var(--c-gray1);
   color: var(--c-gray2);
   font-size: var(--fs3);
   font-weight: 800;
 }
 
 .tab-btn.active {
-  border: 1.5px solid var(--c-main);
+  border-color: var(--c-main);
   color: var(--c-main);
   background: var(--c-gray);
 }
 
-/* 카드 */
+/* Cards */
 .new-article-list {
-  margin-top: 2rem;
   width: 100%;
+  margin-top: 2rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
 }
+
 .new-article {
   border-radius: 10px;
   background: var(--c-gray);
+  overflow: hidden;
 }
+
 .new-article-img {
   width: 100%;
-  aspect-ratio: 1/0.5;
+  aspect-ratio: 1 / 0.5;
   object-fit: cover;
-  border-radius: 10px 10px 0 0;
+  display: block;
 }
+
 .new-article-txt {
-  padding: 0.8rem 1rem 1rem 1rem;
+  padding: 0.8rem 1rem 1rem;
 }
 
 .new-article-title {
   font-size: var(--fs3);
   margin-bottom: 0.2rem;
 }
+
+/* Meta */
 .article-data {
   display: flex;
 }
+
 .article-data > p {
   color: var(--c-gray3);
 }
+
 .category {
   position: relative;
 }
+
 .category::after {
   content: "│";
   color: var(--c-gray3);

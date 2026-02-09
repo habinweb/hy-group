@@ -1,7 +1,9 @@
 @charset "utf-8";
+
+/* ============= Base ============= */
 *,
-*:after,
-*:before {
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -11,25 +13,26 @@ body {
   background-color: var(--c-bg);
 }
 
-/* 메인 컨텐츠 */
+/* ============= Layout ============= */
 #main_content {
   padding-top: 4rem;
+  padding-bottom: 80px;
 }
 
-/* 재목 */
+/* ============= Title ============= */
 .community_guide {
+  padding: 1rem 1.5rem;
   font-size: var(--fs5);
-  color: var(--c-font);
   font-weight: 800;
   line-height: 1.6;
-  padding: 1rem 1.5rem;
+  color: var(--c-font);
 }
-/* 제목 강조 부분 (무브인) */
+
 .community_guide > .highlight {
   color: var(--c-main);
 }
 
-/* 리뷰 + 정렬 버튼 전체 영역 */
+/* ============= Review Container ============= */
 #review_container {
   width: 95%;
   margin: 0 auto;
@@ -38,71 +41,65 @@ body {
   align-items: flex-end;
 }
 
-/* 리뷰 틀 */
+.review_list {
+  width: 100%;
+  padding: 10px 0 30px;
+  background-color: var(--c-bg);
+}
+
 .review_ul {
-  list-style: none;
   width: 100%;
   margin: 0 auto;
   padding: 10px 0;
+  list-style: none;
 }
 
-/* 전체 리뷰 리스트 */
-.review_list {
-  background-color: var(--c-bg);
-  width: 100%;
-  padding: 10px 0 30px 0;
-}
-
-/* 전체 리뷰 + 드롭다운 버튼 한 줄 배치 */
+/* ============= Header (count + sort) ============= */
 .review_header {
+  margin-top: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 10px;
 }
 
-/* 전체 리뷰 */
 .review_header h3 {
   font-size: var(--fs3);
   font-weight: 600;
   color: var(--c-font);
 }
 
-/* 최신순 텍스트 + 화살표(v) 아이콘 */
-.sort_btn {
-  background: none;
-  border: none;
-  color: var(--c-gray2);
-  cursor: pointer;
-  font-size: var(--fs2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-}
-
-/* 정렬 버튼 화살표 아이콘 */
-.sort_btn img {
-  width: 12px;
-  height: 12px;
-  transform: rotate(90deg);
-}
-
-/* 버튼 + 메뉴 묶는 기준 선언 */
 .sort_wrap {
   position: relative;
   display: inline-block;
   margin-right: 0.5rem;
 }
 
-/* 드롭다운 메뉴 */
+.sort_btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: var(--fs2);
+  color: var(--c-gray2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.sort_btn img {
+  width: 12px;
+  height: 12px;
+  transform: rotate(90deg);
+}
+
 .sort_menu {
   position: absolute;
   z-index: 20;
   left: 50%;
   top: 100%;
-  margin-top: 6px;
   transform: translateX(-50%);
+  margin-top: 6px;
+
   min-width: 90px;
   padding: 8px 0;
   list-style: none;
@@ -110,41 +107,39 @@ body {
   box-shadow: var(--shadow50);
   background: var(--c-bg);
   display: none;
-  /* 기본 숨김 */
 }
 
-/* 내부 옵션 버튼 */
 .sort_option {
   width: 100%;
+  padding: 10px 12px;
   background: none;
   border: none;
-  padding: 10px 12px;
-  text-align: left;
-  font-size: var(--fs2);
   cursor: pointer;
+  font-size: var(--fs2);
   color: var(--c-gray2);
   text-align: center;
 }
 
-/* sort_wrap에 open 클래스가 붙으면 메뉴 표시 */
 .sort_wrap.open .sort_menu {
   display: block;
 }
 
+/* ============= Review Card ============= */
 .review_item {
+  width: 100%;
   margin: 2rem auto 0;
   padding: 14px;
-  width: 100%;
-  background-color: var(--c-gray);
   border-radius: 18px;
+  background-color: var(--c-gray);
   box-shadow: var(--shadow50);
+
   display: flex;
   align-items: stretch;
   gap: 14px;
+
   cursor: pointer;
 }
 
-/* 영화 포스터 틀 */
 .review_poster {
   width: 110px;
   min-width: 100px;
@@ -152,7 +147,6 @@ body {
   border-radius: 15px;
 }
 
-/* 영화 포스터 이미지 */
 .review_poster .poster {
   width: 100%;
   height: 100%;
@@ -160,101 +154,96 @@ body {
   border-radius: 15px;
 }
 
-/* 오른쪽 내용 래퍼 */
 .review_body {
   flex: 1;
+  min-width: 0;
   display: flex;
   flex-direction: column;
-  min-width: 0; /* 줄바꿈/말줄임 안정 */
 }
 
-/* 상단 정보(닉네임+별점+날짜 등) */
+/* top info */
 .review_info {
+  margin-bottom: 10px;
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 10px;
 }
 
-/* 유저 프로필 사진 */
 .review_info .user_icon {
   width: 25px;
   height: 25px;
 }
 
-/* 닉네임 */
 .list_nickname {
-  color: var(--c-font);
-  font-weight: 600;
   font-size: var(--fs2);
+  font-weight: 600;
+  color: var(--c-font);
 }
 
-/* 별점 */
 .score {
-  color: var(--c-point);
-  font-weight: 800;
   font-size: var(--fs1);
+  font-weight: 800;
+  color: var(--c-point);
   display: inline-flex;
   align-items: center;
   gap: 4px;
 }
 
-/* 별점 이미지 */
 .score img {
   width: 12px;
   height: 12px;
 }
 
-/* 날짜(오른쪽 끝) */
 .date {
   margin-left: auto;
-  color: var(--c-gray3);
   font-size: var(--fs1);
+  color: var(--c-gray3);
   white-space: nowrap;
 }
 
-/* 리뷰 본문 + 구분선 */
+/* content */
 .review_text {
-  color: var(--c-font);
+  margin: 6px 0 10px;
+  padding: 0 0 12px;
   font-size: var(--fs2);
   line-height: 1.6;
-  margin: 6px 0 10px 0;
-  padding: 0 0 12px 0;
+  color: var(--c-font);
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
-/* 하단(영화 제목 + 북마크) */
+/* bottom */
 .review_bottom {
+  margin-top: auto;
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-top: auto;
 }
 
-/* 영화 제목(왼쪽) */
 .movie_title {
-  color: var(--c-gray2);
   font-size: var(--fs1);
-  line-height: 1.6;
   font-weight: 600;
+  line-height: 1.6;
+  color: var(--c-gray2);
+
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-/* 북마크(오른쪽) */
 .bookmark_btn {
   margin-left: auto;
   background: none;
   border: none;
-  color: var(--c-gray3);
+  cursor: pointer;
+
   font-size: var(--fs1);
   font-weight: 600;
+  color: var(--c-gray3);
+
   display: inline-flex;
   align-items: center;
   gap: 5px;
   white-space: nowrap;
-  cursor: pointer;
 }
 
 .bookmark_btn img {
@@ -262,31 +251,27 @@ body {
   height: 12px;
 }
 
-/* 리뷰 더보기 버튼 */
+/* ============= More Button ============= */
 .review_more_btn {
   width: 100%;
-  justify-content: center;
+  margin: 25px 0 50px;
+  padding: 20px;
+  border-radius: 10px;
+  border: transparent;
+  background-color: var(--c-gray);
+
   display: flex;
+  justify-content: center;
   align-items: center;
   gap: 5px;
-  background-color: var(--c-gray);
-  border: transparent;
-  border-radius: 10px;
-  color: var(--c-gray2);
-  padding: 20px;
-  margin: 25px 0 50px 0;
+
   cursor: pointer;
   font-size: var(--fs2);
   font-weight: bold;
+  color: var(--c-gray2);
 }
 
-/* 하단 네비게이션 바 조절 */
-#main_content {
-  padding-bottom: 80px;
-  /* 100~160 사이로 조절 */
-}
-
-/* 헤더 아이콘 확인용 */
+/* ============= Header icon (debug) ============= */
 button.hambtn {
   background: transparent;
   border: 0;

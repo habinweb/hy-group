@@ -5,7 +5,8 @@ body.lock {
 .loginBtn > a {
   color: var(--c-main);
 }
-/* ============= 검색창 ============= */
+
+/* 검색 */
 .search-f {
   width: 90%;
   margin: 0 auto;
@@ -48,6 +49,8 @@ body.lock {
   color: var(--c-gray2);
   letter-spacing: 0;
 }
+
+/* 주의: .body 클래스(태그 body 아님) */
 .body {
   width: 100%;
   background: var(--c-bg);
@@ -75,8 +78,8 @@ body.lock {
   padding: 4rem 0 5rem 0;
   background: radial-gradient(
       ellipse 50% 40% at center,
-      /* 가로 50%, 세로 40% 비율의 타원형 */ var(--c-main),
-      transparent 100% /* 100%까지 부드럽게 빠지도록 설정 */
+      var(--c-main),
+      transparent 100%
     )
     no-repeat;
   background-position: center;
@@ -133,17 +136,18 @@ body.lock {
 .container--ticket-wrap {
   position: relative;
 }
-/* 클릭시 티켓 팝업 */
+
+/* 티켓 모달 */
 .ticket-modal {
   width: 90%;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -40px); /* 살짝 아래 */
+  transform: translate(-50%, -40px);
   opacity: 0;
   visibility: hidden;
 
-  pointer-events: none; /* 클릭 방지 */
+  pointer-events: none;
   z-index: 10;
 
   transition:
@@ -151,9 +155,7 @@ body.lock {
     transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
     visibility 0s linear 0.6s;
 }
-body.lock {
-  overflow: hidden;
-}
+
 .ticket-modal.open {
   visibility: visible;
   opacity: 1;
@@ -173,6 +175,7 @@ body.lock {
   right: 0;
 }
 .modal-close-img {
+  cursor: pointer;
   width: 10px;
   height: 10px;
 }
@@ -202,8 +205,8 @@ body.lock {
     to bottom,
     var(--c-bg),
     var(--c-bg) 6px,
-    /* 점 길이 */ transparent 6px,
-    transparent 12px /* 점 간격 */
+    transparent 6px,
+    transparent 12px
   );
 }
 .ticket-modal-img {
@@ -274,7 +277,8 @@ body.lock {
   height: 20px;
   border-radius: inherit;
 }
-/* 사용자 데이터 기반 장르 추천 */
+
+/* 티켓 추천 리스트 */
 .ticket-view {
   width: 100%;
 }
@@ -298,7 +302,7 @@ body.lock {
   width: 100%;
 }
 
-/* 가로 스크롤 세팅 2025.11.14 김하빈 수정*/
+/* 가로 스크롤 */
 .ticket-view-list {
   overflow-x: auto;
   scrollbar-width: none;
@@ -315,7 +319,7 @@ body.lock {
 
 .ticket-view-list.active {
   cursor: grabbing;
-} /* 가로 스크롤 세팅 마무리*/
+}
 
 .ticket-view-list-box {
   display: flex;
@@ -327,7 +331,7 @@ body.lock {
 }
 
 .ticket-view-list-box::-webkit-scrollbar {
-  display: none; /* Chrome/Safari */
+  display: none;
 }
 
 .ticket-view-thing {
@@ -338,7 +342,6 @@ body.lock {
   aspect-ratio: 1 / 1;
 }
 
-/* 2025-11-13 오후 5시 53분 김하빈 수정 */
 .ticket-view-thing > a > img {
   display: block;
   width: 100%;
@@ -362,8 +365,7 @@ body.lock {
   height: 15px;
 }
 
-/* 좋아요 버튼 */
-/* 좋아요 버튼 위치 오류로 2025.11.13 김하빈 수정 */
+/* 좋아요 */
 .ticket-view-thing > .likeBtn {
   position: absolute;
   z-index: 1;
@@ -384,7 +386,7 @@ body.lock {
   filter: drop-shadow(var(--shadow50));
 }
 
-/* 요즘 대세 영화는? */
+/* 게임 */
 .game-container {
   width: 100%;
   margin: 5rem 0;
@@ -437,7 +439,8 @@ body.lock {
 .game-content-img-box {
   position: relative;
 }
-/* 초기 상태 : 블라인드 */
+
+/* 블라인드 */
 .game-content-img-box.blind::after {
   content: "";
   display: block;
@@ -449,6 +452,7 @@ body.lock {
   position: absolute;
   border-radius: 20px;
 }
+
 .game-content-img {
   border-radius: 20px;
   display: block;
@@ -471,8 +475,7 @@ body.lock {
   border: 1.5px solid var(--c-bg);
 }
 
-/* 클릭 시 */
-/* 클릭하면 .game-content-img-box.blind::after 의 블라인드 클래스가 사라짐*/
+/* 선택 상태 */
 .content-container.active .game-content-img {
   border: 1.5px solid var(--c-point);
 }
@@ -496,7 +499,8 @@ body.lock {
   color: var(--c-font);
   margin-right: 10px;
 }
-/* 아이콘 박스 */
+
+/* 아이콘 */
 .game-content-icon-box {
   position: absolute;
   top: 20px;
@@ -506,7 +510,8 @@ body.lock {
 .game-content-icon {
   width: 20px;
 }
-/* 결과 선택지 */
+
+/* 결과 */
 .game-result-box {
   position: relative;
   width: 90%;
@@ -605,8 +610,8 @@ body.lock {
   box-sizing: border-box;
   padding-bottom: 50px;
 }
-/* 리스트 아이템 자체 */
 
+/* 리스트 아이템 */
 .find-good-content-item {
   cursor: pointer;
   position: relative;
@@ -618,13 +623,12 @@ body.lock {
   transform: translateY(0);
 }
 
-/* 모든 아이템을 덮는 빨간 레이어 */
+/* 비활성 레이어 */
 .find-good-content-item::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(var(--c-bg-rgb), 0.6); /* 혹은 rgba(255, 0, 0, 0.8) */
-  /* 중요: 내부 콘텐츠보다 무조건 높게! */
+  background: rgba(var(--c-bg-rgb), 0.6);
   backdrop-filter: blur(5px);
   z-index: 10;
   pointer-events: none;
@@ -633,12 +637,12 @@ body.lock {
   border-radius: 11px;
 }
 
-/* active인 경우 레이어를 투명하게 */
+/* 활성 레이어 제거 */
 .find-good-content-item.active::after {
   opacity: 0;
 }
 
-/* 내부 콘텐츠 (이미지, 텍스트 등) */
+/* 내부 콘텐츠 */
 .find-good-content {
   position: relative;
   z-index: 1;
@@ -654,7 +658,8 @@ body.lock {
   margin-bottom: 7px;
   aspect-ratio: 2/2.9;
 }
-/* 콘텐츠 정렬 */
+
+/* 메타 정보 */
 .content-more {
   display: flex;
   gap: 15px;
@@ -675,7 +680,8 @@ body.lock {
   color: var(--c-gray2);
   font-weight: 800;
 }
-/* 유저 박스 */
+
+/* 하단 리뷰 */
 .user-hate-review-box {
   position: relative;
   width: 100%;
@@ -742,7 +748,7 @@ body.lock {
   background-size: contain;
 }
 
-/* 시각적으로만 숨기고 스크린리더엔 보이게 */
+/* 접근성 숨김 */
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -759,6 +765,7 @@ body.lock {
   padding-bottom: 2rem;
 }
 
+/* 앵커 위치 보정 */
 #hot-ticket,
 #game,
 #find-title {

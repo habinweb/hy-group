@@ -1,11 +1,11 @@
 // genre-bubbles.js
-// Matter.js 물리 엔진 위에 “원형 버블 UI를 캔버스로 직접 그리는 렌더러
-// 버블의 엔진, 물리, 렌더, 스타일, 이미지, 텍스트 관리
+// Matter.js 기반 원형 버블 UI 렌더러
 
 const OUTLINE_COLOR = "#252426";
 const OUTLINE_WIDTH = 4;
+
 const LABEL_FONT_FAMILY = `"NanumSquare", sans-serif`;
-const LABEL_FONT_REM = 0.9375; // 15px 기준
+const LABEL_FONT_REM = 0.9375; // 15px
 const LABEL_FONT_WEIGHT_DEFAULT = 400;
 const LABEL_FONT_COLOR_DEFAULT = "#faf5f5";
 
@@ -14,13 +14,12 @@ const LABEL_FONT_COLOR_DEFAULT = "#faf5f5";
 
   function initGenreBubbleApp(containerId) {
     const container = document.getElementById(containerId);
-    if (!container) {
-      console.error(`'${containerId}' 컨테이너를 찾을 수 없습니다.`);
-      return null;
-    }
+    if (!container) return null;
 
     const width = container.clientWidth;
     const height = container.clientHeight;
+
+    /* ===== Matter.js 기본 세팅 ===== */
 
     const engine = Engine.create();
     const world = engine.world;
@@ -40,7 +39,8 @@ const LABEL_FONT_COLOR_DEFAULT = "#faf5f5";
     Render.run(render);
     Runner.run(Runner.create(), engine);
 
-    // 경계
+    /* ===== 월드 경계 ===== */
+
     const ground = Bodies.rectangle(width / 2, height + 50, width, 100, {
       isStatic: true,
     });
@@ -57,18 +57,19 @@ const LABEL_FONT_COLOR_DEFAULT = "#faf5f5";
 
     World.add(world, [ground, left, right]);
 
-    //생성된 모든 버블 저장
+    /* ===== 버블 저장소 ===== */
+
     const bubbles = [];
 
-    function createGenreBubble(name, color, radius, opts = {}, idx) {
+    /* ===== 버블 생성 ===== */
+
+    function createGenreBubble(name, color, radius, opts = {}, idx = 0) {
       const lw = Number.isFinite(opts.lineWidth)
         ? opts.lineWidth
         : OUTLINE_WIDTH;
-      const strokeColor = opts.strokeColor || OUTLINE_COLOR;
 
-      const x = Math.random() * (width - 2 * radius) + radius;
-      const order = Number.isFinite(idx) ? idx : 0;
-      const spawnY = -radius - order * (radius * 0.3);
+      const x = Math.random() * (width - radius * 2) + radius;
+      const spawnY = -radius - idx * (radius * 0.3);
 
       const body = Bodies.circle(x, spawnY, radius, {
         restitution: 0.6,
@@ -76,27 +77,25 @@ const LABEL_FONT_COLOR_DEFAULT = "#faf5f5";
         render: { visible: false },
       });
 
-      // ✅ specialPoster 이미지 소스(버블별)
-      const specialSrc = opts.specialPoster ? opts.imageSrc || null : null;
+      const specialSrc =
+        opts.specialPoster === true ? opts.imageSrc || null : null;
 
       body.plugin = {
-        label: name, // ✅ labelMap 제거
+        label: name,
         fill: color,
-        stroke: strokeColor,
+        stroke: opts.strokeColor || OUTLINE_COLOR,
         lineWidth: lw,
         gradient: opts.gradient || null,
+
         fontWeight: opts.fontWeight || LABEL_FONT_WEIGHT_DEFAULT,
         fontColor: opts.fontColor || LABEL_FONT_COLOR_DEFAULT,
-        idx,
-        specialPoster: opts.specialPoster === true,
 
-        // ✅ 버블별 이미지 상태
-        specialSrc, // string | null
-        specialImg: null, // Image | null
-        specialLoaded: false, // boolean
+        specialPoster: opts.specialPoster === true,
+        specialSrc,
+        specialImg: null,
+        specialLoaded: false,
       };
 
-      // ✅ 버블별 이미지 로드
       if (body.plugin.specialPoster && body.plugin.specialSrc) {
         const img = new Image();
         img.src = body.plugin.specialSrc;
@@ -104,14 +103,13 @@ const LABEL_FONT_COLOR_DEFAULT = "#faf5f5";
           body.plugin.specialImg = img;
           body.plugin.specialLoaded = true;
         };
-        img.onerror = () => {
-          console.warn("❗ special 이미지 로드 실패:", body.plugin.specialSrc);
-        };
       }
 
       World.add(world, body);
       bubbles.push(body);
     }
+
+    /* ===== 커스텀 렌더링 ===== */
 
     Events.on(render, "afterRender", () => {
       const ctx = render.context;
@@ -120,67 +118,56 @@ const LABEL_FONT_COLOR_DEFAULT = "#faf5f5";
 
       const rootPx =
         parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
-      const fixedPx = Math.round(LABEL_FONT_REM * rootPx);
+      const fontPx = Math.round(LABEL_FONT_REM * rootPx);
 
       bubbles.forEach((b) => {
-        const rOuter = b.circleRadius;
-        const lw = b.plugin.lineWidth || OUTLINE_WIDTH;
-        const rDraw = Math.max(0, rOuter - lw / 2);
+        const r = b.circleRadius;
+        const lw = b.plugin.lineWidth;
+        const drawR = Math.max(0, r - lw / 2);
 
         let fillStyle;
 
-        // ✅ specialPoster: 버블별 이미지로 그리기
         if (b.plugin.specialPoster) {
           ctx.save();
           ctx.beginPath();
-          ctx.arc(b.position.x, b.position.y, rDraw, 0, Math.PI * 2);
+          ctx.arc(b.position.x, b.position.y, drawR, 0, Math.PI * 2);
           ctx.clip();
 
           if (b.plugin.specialLoaded && b.plugin.specialImg) {
-            ctx.save();
             ctx.filter = "blur(5px)";
-            ctx.globalAlpha = 1.0;
             ctx.drawImage(
               b.plugin.specialImg,
-              b.position.x - rDraw,
-              b.position.y - rDraw,
-              rDraw * 2,
-              rDraw * 2,
+              b.position.x - drawR,
+              b.position.y - drawR,
+              drawR * 2,
+              drawR * 2,
             );
             ctx.filter = "none";
-            ctx.restore();
           }
 
-          // 이미지 위에 얇은 그라데이션(기존 느낌 유지)
-          const inner = "rgba(41, 131, 88, 0.5)";
-          const outer = "rgba(73, 233, 156, 0.5)";
           const grd = ctx.createRadialGradient(
             b.position.x,
             b.position.y,
             0,
             b.position.x,
             b.position.y,
-            rDraw,
+            drawR,
           );
-          grd.addColorStop(0, inner);
-          grd.addColorStop(1, outer);
+          grd.addColorStop(0, "rgba(41, 131, 88, 0.5)");
+          grd.addColorStop(1, "rgba(73, 233, 156, 0.5)");
 
           ctx.globalAlpha = 0.1;
           fillStyle = grd;
-
-          ctx.beginPath();
-          ctx.arc(b.position.x, b.position.y, rDraw, 0, Math.PI * 2);
-          ctx.fill();
-
+          ctx.fillRect(0, 0, width, height);
           ctx.restore();
-        } else if (b.plugin.gradient?.inner && b.plugin.gradient?.outer) {
+        } else if (b.plugin.gradient) {
           const grd = ctx.createRadialGradient(
             b.position.x,
             b.position.y,
             0,
             b.position.x,
             b.position.y,
-            rDraw,
+            drawR,
           );
           grd.addColorStop(0, b.plugin.gradient.inner);
           grd.addColorStop(1, b.plugin.gradient.outer);
@@ -189,25 +176,18 @@ const LABEL_FONT_COLOR_DEFAULT = "#faf5f5";
           fillStyle = b.plugin.fill;
         }
 
-        // 채우기
         ctx.fillStyle = fillStyle;
         ctx.beginPath();
-        ctx.arc(b.position.x, b.position.y, rDraw, 0, Math.PI * 2);
+        ctx.arc(b.position.x, b.position.y, drawR, 0, Math.PI * 2);
         ctx.fill();
 
-        // 테두리
         ctx.lineWidth = lw;
-        ctx.strokeStyle = b.plugin.stroke || OUTLINE_COLOR;
-        ctx.beginPath();
-        ctx.arc(b.position.x, b.position.y, rDraw, 0, Math.PI * 2);
+        ctx.strokeStyle = b.plugin.stroke;
         ctx.stroke();
 
-        // 라벨
-        const name = b.plugin.label;
-        const weight = b.plugin.fontWeight || LABEL_FONT_WEIGHT_DEFAULT;
-        ctx.font = `${weight} ${fixedPx}px ${LABEL_FONT_FAMILY}`;
-        ctx.fillStyle = b.plugin.fontColor || LABEL_FONT_COLOR_DEFAULT;
-        ctx.fillText(name, b.position.x, b.position.y);
+        ctx.font = `${b.plugin.fontWeight} ${fontPx}px ${LABEL_FONT_FAMILY}`;
+        ctx.fillStyle = b.plugin.fontColor;
+        ctx.fillText(b.plugin.label, b.position.x, b.position.y);
       });
     });
 

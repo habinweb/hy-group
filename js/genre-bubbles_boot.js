@@ -1,14 +1,10 @@
-// js/bubble-boot.js
-// ✅ 드라마(genre.includes("드라마")) 작품 중 랜덤 1개를 뽑고,
-// ✅ 그 작품의 stillcuts(있으면)에서 랜덤 1장을 "드라마 버블" 이미지로 전달
-
 import { dummy } from "./data.js";
 
 (function () {
+  // 장르 버블 앱 초기화
   const app = window.genreBubbleApp?.init("genre-bubble-container");
   if (!app) return;
 
-  const GRAD_OPT = { gradient: { inner: "#504399", outer: "#8670FF" } };
   const GENRES = [
     "애니",
     "드라마",
@@ -20,26 +16,30 @@ import { dummy } from "./data.js";
     "로맨스",
   ];
 
-  const COLOR = "#8670FF";
-  const baseRadius = 45;
-  const specialRadius = 95;
+  const BASE_COLOR = "#8670FF";
+  const SPECIAL_COLOR = "#49e99c";
 
-  // ✅ "드라마" 버블만 special
+  const BASE_RADIUS = 45;
+  const SPECIAL_RADIUS = 95;
+
+  const GRAD_OPT = {
+    gradient: { inner: "#504399", outer: "#8670FF" },
+  };
+
+  // 드라마 버블만 특별 처리
   const specialIdx = GENRES.indexOf("드라마");
 
-  // ===== 유틸 =====
-  function pickRandom(arr) {
-    return arr[Math.floor(Math.random() * arr.length)];
-  }
+  /* ===== utils ===== */
 
-  function getRandomImage(item) {
-    if (Array.isArray(item?.stillcuts) && item.stillcuts.length > 0) {
-      return pickRandom(item.stillcuts);
-    }
-    return null;
-  }
+  const pickRandom = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
-  // ===== 드라마 데이터 랜덤 =====
+  const getRandomImage = (item) =>
+    Array.isArray(item?.stillcuts) && item.stillcuts.length
+      ? pickRandom(item.stillcuts)
+      : null;
+
+  /* ===== 드라마 랜덤 이미지 ===== */
+
   const dramaItems = dummy.filter(
     (item) =>
       item.genre?.includes("드라마") &&
@@ -48,26 +48,25 @@ import { dummy } from "./data.js";
   );
 
   const randomDrama = dramaItems.length ? pickRandom(dramaItems) : null;
-
-  // ✅ 드라마 버블에 들어갈 이미지 소스 (stillcuts 우선)
   const imageSrc = randomDrama ? getRandomImage(randomDrama) : null;
 
-  // ===== 버블 생성 =====
-  for (let i = 0; i < GENRES.length; i++) {
-    const isSpecial = i === specialIdx;
+  /* ===== 버블 생성 ===== */
 
-    const color = isSpecial ? "#49e99c" : COLOR;
-    const radius = isSpecial ? specialRadius : baseRadius;
+  GENRES.forEach((label, idx) => {
+    const isSpecial = idx === specialIdx;
 
-    const opts = isSpecial
+    const color = isSpecial ? SPECIAL_COLOR : BASE_COLOR;
+    const radius = isSpecial ? SPECIAL_RADIUS : BASE_RADIUS;
+
+    const options = isSpecial
       ? {
           ...GRAD_OPT,
           fontWeight: 700,
           specialPoster: true,
-          imageSrc, // ✅ 드라마 버블에만 전달
+          imageSrc,
         }
       : GRAD_OPT;
 
-    app.createGenreBubble(GENRES[i], color, radius, opts, i);
-  }
+    app.createGenreBubble(label, color, radius, options, idx);
+  });
 })();

@@ -1,5 +1,7 @@
+/* =========================
+   Selectors & constants
+========================= */
 const SELECTOR = {
-  // balance game
   game: {
     article: ".content-container",
     imgBox: ".game-content-img-box",
@@ -9,14 +11,12 @@ const SELECTOR = {
     blindClass: "blind",
   },
 
-  // like button
   like: {
     btn: ".likeBtn",
     on: "img/heart_49e99c.png",
     off: "img/heart_6f6c76.png",
   },
 
-  // slider
   slider: {
     wrapTop: ".find-good-content-wrap",
     listTop: ".find-good-content-list",
@@ -27,44 +27,42 @@ const SELECTOR = {
   },
 };
 
+/* =========================
+   1) Balance game (single pick)
+========================= */
 function initBalanceGame() {
-  let isLocked = false; // ✅ 선택 확정 여부
+  let isLocked = false;
 
   document.addEventListener("click", (e) => {
-    if (isLocked) return; // 🔒 이미 선택했으면 무시
+    if (isLocked) return;
 
     const s = SELECTOR.game;
     const article = e.target.closest(s.article);
     if (!article) return;
 
-    // 모든 article 비활성화
     document.querySelectorAll(s.article).forEach((el) => {
       el.classList.remove(s.activeClass);
     });
 
-    // 모든 이미지 다시 가림
     document.querySelectorAll(s.imgBox).forEach((box) => {
       box.classList.add(s.blindClass);
     });
 
-    // 클릭한 article 활성화
     article.classList.add(s.activeClass);
 
-    // 클릭한 article의 이미지 오픈
     const imgBox = article.querySelector(s.imgBox);
     if (imgBox) imgBox.classList.remove(s.blindClass);
 
-    // 결과 박스 열기
     const resultBox = document.querySelector(s.resultBox);
     if (resultBox) resultBox.classList.add(s.resultShowClass);
 
-    // ✅ 여기서 잠금
     isLocked = true;
   });
 }
-// =========================
-// 1) Ticket modal
-// =========================
+
+/* =========================
+   2) Ticket modal (open/close + focus restore)
+========================= */
 function initTicketModal() {
   const ticket = document.querySelector(".ticket-box");
   const modal = document.querySelector(".ticket-modal");
@@ -79,8 +77,7 @@ function initTicketModal() {
   const open = () => {
     lastFocus = document.activeElement;
 
-    ticket.classList.add("rotated");
-    ticket.classList.add("opacity");
+    ticket.classList.add("rotated", "opacity");
 
     timer = setTimeout(() => {
       modal.classList.add("open");
@@ -120,9 +117,9 @@ function initTicketModal() {
   });
 }
 
-// =========================
-// 2) 좋아요 버튼: 하트 토글
-// =========================
+/* =========================
+   3) Like button (heart toggle)
+========================= */
 function initLikeToggle() {
   document.addEventListener("click", (e) => {
     const btn = e.target.closest(SELECTOR.like.btn);
@@ -139,9 +136,9 @@ function initLikeToggle() {
   });
 }
 
-// =========================
-// 3) 잔혹한 평점 슬라이더(기존 로직 유지, init 형태)
-// =========================
+/* =========================
+   4) Dual slider (poster + review sync)
+========================= */
 function initDualSlider() {
   const s = SELECTOR.slider;
 
@@ -264,6 +261,9 @@ function initDualSlider() {
   build();
 }
 
+/* =========================
+   Boot
+========================= */
 function initAll() {
   initTicketModal();
   initLikeToggle();

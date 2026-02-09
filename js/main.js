@@ -1,7 +1,8 @@
 function ready(fn) {
   document.addEventListener("DOMContentLoaded", fn);
 }
-//헤더 메뉴
+
+// 헤더 메뉴
 function headerMenu() {
   const items = document.querySelectorAll(".ham-sub-box li");
   if (!items.length) return;
@@ -17,7 +18,7 @@ function headerMenu() {
   });
 }
 
-//좋아요 버튼
+// 좋아요 버튼
 function likeToggle() {
   document.addEventListener("click", (e) => {
     const btn = e.target.closest(".likeBtn");
@@ -33,7 +34,7 @@ function likeToggle() {
   });
 }
 
-//ott 탭
+// OTT 탭
 function hotTab() {
   document.querySelectorAll(".hot-container").forEach((section) => {
     const nav = section.querySelector(".hot-nav-box");
@@ -59,12 +60,46 @@ function reveiwForm() {
   const reviewContainer = document.querySelector(".btn-form-container");
   const reviewTab = document.querySelector(".review-form");
   const closebtn = document.querySelector(".prev-btn");
+
+  // ✅ 요소 없으면 여기서 종료 (에러 방지)
+  if (!reviewContainer || !reviewTab || !closebtn) return;
+
+  // 리뷰 폼 열고 닫기
   reviewContainer.addEventListener("click", () => {
     reviewTab.classList.add("open");
   });
+
   closebtn.addEventListener("click", (e) => {
     e.stopPropagation();
     reviewTab.classList.remove("open");
+  });
+
+  /* =========================
+     Login required popup (like/hate/register)
+  ========================= */
+
+  const POPUP_ID = "#login_popup";
+  const OPEN_CLASS = "active";
+
+  function openLoginPopup() {
+    $(POPUP_ID).addClass(OPEN_CLASS).attr("aria-hidden", "false");
+  }
+
+  function closeLoginPopup() {
+    $(POPUP_ID).removeClass(OPEN_CLASS).attr("aria-hidden", "true");
+  }
+
+  $("#star").on("click", ".star", function (e) {
+    e.preventDefault();
+    openLoginPopup();
+  });
+
+  $(document).on("click", ".login_btn_cancel", function () {
+    closeLoginPopup();
+  });
+
+  $(document).on("click", ".login_btn_go", function () {
+    location.href = "form.html";
   });
 }
 

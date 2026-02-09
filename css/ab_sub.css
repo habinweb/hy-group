@@ -1,4 +1,5 @@
 @charset "utf-8";
+
 *,
 *:after,
 *:before {
@@ -11,28 +12,28 @@ html {
 
 body {
   font-family: var(--font-main);
+  background: var(--c-bg);
+}
+
+a {
+  text-decoration: none;
 }
 
 /* =========================
-   A (a_sub.css) - posterBox + gameBox
+   A - posterBox + gameBox
 ========================= */
 
-/* 전체 Div*/
 .posterBox {
   background-color: var(--c-bg);
   position: relative;
   width: 100%;
   height: auto;
-  /* 줄거리 높이에 따라 늘어나게 */
   padding-bottom: 2rem;
-
   overflow: hidden;
 }
 
-/* 배경 스틸컷 */
 .a_background_still {
   width: 100%;
-  /* height: 100%; */
   height: 52rem;
   top: 0;
   left: 0;
@@ -43,23 +44,18 @@ body {
   opacity: 0.3;
 }
 
-/* 포스터 박스 */
 .a_movie_meta_wrap {
   width: 90%;
-  position: relative; /* absolute 제거 */
-  top: auto;
-  left: auto;
+  position: relative;
   z-index: 10;
   margin: 0 auto;
-  padding-top: 7rem; /* top:20% 대신 고정 여백 (조절 가능) */
+  padding-top: 7rem;
 }
 
-/* 영화 포스터 틀 */
 .a_movie_poster {
   width: 30%;
 }
 
-/* 영화 포스터 이미지 세부 설정 */
 .a_movie_poster img {
   width: 100%;
   display: block;
@@ -68,44 +64,36 @@ body {
   object-fit: cover;
 }
 
-/* 영화 세부 정보 틀*/
 .a_meta_data {
   margin-top: 0.5rem;
   display: flex;
   justify-content: space-between;
 }
 
-/* 영화 세부 정보 텍스트 틀*/
 .a_movie_info_text {
   margin-top: 0.5rem;
 }
 
-/* 영화 제목 틀 */
 .a_movie_info_text h1 {
   padding-bottom: 0.5rem;
   line-height: var(--fs5);
 }
 
-/* 영화 제목 */
 .a_movie_title_value {
   color: var(--c-font);
   font-size: var(--fs3);
   font-weight: 800;
 }
 
-/* 영화 세부 정보 */
 .a_details_value {
   color: var(--c-font);
   font-size: var(--fs1);
 }
 
-/* 평가 + 별점 틀 */
 .a_ratings {
   margin-top: 0.5rem;
 }
 
-/* 평가 + 별점 내부 목록  */
-/* .a_ratings p  */
 .a_ratings .a_rating_percent,
 .a_ratings .a_star_rating {
   display: flex;
@@ -114,24 +102,21 @@ body {
   margin-bottom: 0.5rem;
 }
 
-/* 별점 + 평가 텍스트 */
 .posterBox .a_ratings span {
   color: var(--c-font);
   font-size: var(--fs1);
   font-weight: 800;
 }
 
-/* 툴팁 기준점 */
+/* Tooltip (평점 안내) */
 .a_rating_percent {
   position: relative;
 }
 
-/* 평점 툴팁 아이콘 */
 .a_icon_info {
   cursor: pointer;
 }
 
-/* 말풍선 본체 */
 .a_rating_tooltip {
   display: none;
   position: absolute;
@@ -146,7 +131,6 @@ body {
   z-index: 999;
 }
 
-/* 말풍선 꼬리 */
 .a_rating_tooltip::after {
   content: "";
   position: absolute;
@@ -158,7 +142,6 @@ body {
   border-top: 10px solid rgba(11, 11, 11, 0.4);
 }
 
-/* 툴팁 텍스트 */
 .a_rating_tooltip p {
   font-size: var(--fs1);
   font-weight: 600;
@@ -166,30 +149,24 @@ body {
   margin: 0;
 }
 
-/* 툴팁 텍스트 강조 부분 */
 .a_rating_tooltip strong {
   color: var(--c-point);
 }
-/* 활성화 상태: 보이면서 flex 정렬 */
+
 .a_rating_tooltip.active {
   display: flex;
   align-items: center;
-  /* 세로 가운데 */
   justify-content: center;
-  /* 가로 가운데 */
 }
 
-/* 아이콘 이미지들 */
 .posterBox .a_ratings img {
   height: 12px;
 }
 
-/* 영화 줄거리 틀*/
 .posterBox .a_movie_forms {
   margin-top: 1.3rem;
 }
 
-/* 영화 줄거리 텍스트 */
 .a_movie_forms .a_plot_value {
   display: block;
   color: var(--c-font);
@@ -198,16 +175,14 @@ body {
   font-weight: 300;
 }
 
-/* 영화 줄거리: 최대 3줄만 */
+/* 기본 3줄, open 시 전체 노출 */
 .a_movie_forms .a_plot_value {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
-  /* 기본 3줄 */
   overflow: hidden;
 }
 
-/* 줄거리 더보기 버튼 */
 .a_plot_toggle_btn {
   display: block;
   margin-left: auto;
@@ -221,12 +196,10 @@ body {
   padding: 0;
 }
 
-/* 열림 상태 */
 .a_movie_forms.open .a_plot_value {
   -webkit-line-clamp: unset;
 }
 
-/* 스트리밍 가능 플랫폼 상자*/
 .a_movie_ott_platforms {
   width: 100%;
   height: 7rem;
@@ -235,7 +208,6 @@ body {
   border-radius: 20px;
 }
 
-/* 내부 요소 감싸는 틀 */
 .a_movie_ott_platforms_wrap {
   width: 90%;
   height: 7rem;
@@ -245,7 +217,6 @@ body {
   align-items: center;
 }
 
-/* 왼쪽 스트리밍 아이콘 */
 .a_movie_streaming_icon {
   width: 25px;
   height: 25px;
@@ -256,7 +227,6 @@ body {
   height: 25px;
 }
 
-/* 오른쪽 플랫폼 아이콘들 */
 .a_streaming_icon {
   display: flex;
   gap: 10px;
@@ -275,21 +245,18 @@ body {
   border-radius: 40px;
 }
 
-/* 밸런스 게임 + 자. 메. 추. 전체 영역*/
 .a_gameBox {
   width: 100%;
   background: var(--c-gray);
   padding-bottom: 3rem;
 }
 
-/* 밸런스 게임 틀 */
 .a_balance_game_section {
   width: 90%;
   margin: 3rem auto;
   padding-top: 3rem;
 }
 
-/* 밸런스 게임 제목 (로그인) */
 .a_balance_game_title_login h2 {
   font-size: var(--fs4);
   color: var(--c-font);
@@ -298,18 +265,15 @@ body {
   text-align: left;
 }
 
-/* 밸런스 게임 닉네임 */
 .a_balance_game_title_login h2 .a_user_nickname {
   color: var(--c-main);
 }
 
-/* 제목(로그인)*/
 .a_balance_game_title_login {
   padding-top: 3rem;
   display: none;
 }
 
-/* 제목 (비로그인) */
 .a_balance_game_title_non_login h2 {
   font-size: var(--fs3);
   color: var(--c-font);
@@ -317,7 +281,6 @@ body {
   text-align: left;
 }
 
-/* 밸런스 카드 공통 */
 .a_balance_card {
   width: 100%;
   height: 15rem;
@@ -333,19 +296,16 @@ body {
   cursor: pointer;
 }
 
-/* 왼쪽 카드 */
 .a_balance_card.left {
   clip-path: polygon(0% 0%, 100% 0%, 70% 100%, 0% 100%);
   margin-right: -6%;
 }
 
-/* 오른쪽 카드 */
 .a_balance_card.right {
   clip-path: polygon(30% 0%, 100% 0%, 100% 100%, 0% 100%);
   margin-left: -6%;
 }
 
-/* 카드 본체 활성화: 배경색 포인트색으로 변경 */
 .a_balance_card.active,
 .a_balance_card:active {
   background-color: var(--c-point);
@@ -353,7 +313,6 @@ body {
   filter: none;
 }
 
-/* ::after  카드 본체 위에 덮어씌울 검은색 영역 */
 .a_balance_card::after {
   content: "";
   position: absolute;
@@ -367,7 +326,6 @@ body {
   transition: background-color 0.3s;
 }
 
-/* ::after 요소에도 clip-path 적용하여 사다리꼴 모양 유지 */
 .a_balance_card.left::after {
   clip-path: polygon(0% 0%, 100% 0%, 70% 100%, 0% 100%);
 }
@@ -376,7 +334,6 @@ body {
   clip-path: polygon(30% 0%, 100% 0%, 100% 100%, 0% 100%);
 }
 
-/* 두 카드 거의 딱 붙이고 VS 위에 띄우기*/
 .a_balance_game_container {
   position: relative;
   display: flex;
@@ -385,7 +342,6 @@ body {
   justify-content: center;
 }
 
-/* vs */
 .a_vs_divider {
   position: absolute;
   top: 50%;
@@ -397,7 +353,6 @@ body {
   z-index: 10;
 }
 
-/* 카드 내부 아이콘 (공통) */
 .a_balance_card img.a_like_icon,
 .a_balance_card img.a_hate_icon {
   position: absolute;
@@ -405,19 +360,16 @@ body {
   z-index: 4;
 }
 
-/* 왼쪽 카드 아이콘 */
 .a_balance_card.left img.a_like_icon {
   margin-left: 2rem;
   top: 1.5rem;
 }
 
-/* 오른쪽 카드 아이콘 */
 .a_balance_card.right img.a_like_icon {
   right: 30px;
   bottom: 90px;
 }
 
-/* 카드 내부 p (텍스트 값) */
 .a_balance_card p {
   z-index: 4;
   color: white;
@@ -425,14 +377,12 @@ body {
   font-weight: 800;
 }
 
-/* 왼쪽 카드 텍스트 정렬 */
 .a_balance_card.left p {
   text-align: left;
   margin-left: 1.5rem;
   margin-top: 3.5rem;
 }
 
-/* 오른쪽 카드 텍스트 정렬 */
 .a_balance_card.right p {
   text-align: right;
   position: absolute;
@@ -440,7 +390,6 @@ body {
   bottom: 30px;
 }
 
-/* 밸런스 게임 선택지 결과 */
 .a_balance_result_area {
   width: 100%;
   text-align: center;
@@ -448,7 +397,6 @@ body {
   display: none;
 }
 
-/* 결과 텍스트 틀 */
 .a_balance_result_message #a_result_message_text {
   margin-top: 3.5rem;
   width: 80%;
@@ -456,7 +404,6 @@ body {
   text-align: center;
 }
 
-/* 결과 텍스트 */
 .a_balance_result_message_wrap #a_result_message_text,
 .a_balance_result_message_wrap .a_balance_result_title {
   color: var(--c-font);
@@ -465,7 +412,6 @@ body {
   font-weight: 800;
 }
 
-/* 영화 제목 출력 */
 .a_balance_result_message_wrap
   .a_balance_result_title
   #a_result_movie_title_value {
@@ -474,7 +420,6 @@ body {
   font-weight: 800;
 }
 
-/* 결과창 틀*/
 .a_result_content {
   width: 100%;
   margin: 2rem auto;
@@ -484,14 +429,12 @@ body {
   gap: 1.5rem;
 }
 
-/* 영화 포스터 */
 .a_result_poster_wrap {
   width: 170px;
   margin: 0 auto;
   flex-shrink: 0;
 }
 
-/* 영화 포스터 이미지 */
 .a_result_poster_wrap .a_result_movie_poster {
   width: 100%;
   height: auto;
@@ -501,7 +444,6 @@ body {
   box-shadow: 0 0 15px 3px var(--c-main);
 }
 
-/* 포스터 밑 태그 */
 .a_result_meta {
   width: 100%;
   max-width: 300px;
@@ -509,7 +451,6 @@ body {
   text-align: center;
 }
 
-/* 태그 감싸는 틀 */
 .a_result_meta .a_result_tags_container {
   display: flex;
   flex-wrap: wrap;
@@ -518,7 +459,6 @@ body {
   margin-bottom: 1.5rem;
 }
 
-/* 태그 공통 설정 */
 .a_result_meta .a_result_tags_container .a_result_tag {
   border: 2px solid var(--c-gray2);
   color: var(--c-gray2);
@@ -529,14 +469,12 @@ body {
   white-space: nowrap;
 }
 
-/* 정보 보러 가기 버튼 */
 .a_result_view_details_btn {
   text-decoration: none;
   color: var(--c-gray2);
   font-size: var(--fs2);
 }
 
-/* 정보 보러 가기 화살표 아이콘 */
 .a_result_meta > img {
   width: 12px;
   height: 12px;
@@ -544,7 +482,6 @@ body {
   vertical-align: middle;
 }
 
-/* 다시 하기 버튼 */
 .a_balance_restart_btn {
   background: none;
   border: none;
@@ -557,20 +494,17 @@ body {
   margin-bottom: 2rem;
 }
 
-/* 자.만.추 섹션 */
 .a_recommend_section {
   width: 90%;
   margin: 3rem auto 0;
 }
 
-/* 자.만.추 제목 */
 .a_recommend_title {
   color: var(--c-font);
   font-size: var(--fs3);
   font-weight: 800;
 }
 
-/* 자.만.추 실제 영역 (grid) */
 .a_recommend_cards_container {
   width: 100%;
   display: grid;
@@ -579,7 +513,6 @@ body {
   margin-top: 1.5rem;
 }
 
-/* 자.만.추 공통 적용 */
 .a_recommend_cards_container > a {
   background-color: var(--c-bg);
   border-radius: 15px;
@@ -592,14 +525,12 @@ body {
   cursor: pointer;
 }
 
-/* 보석 찾기 영역 설정 (세 번째 아이템) */
 .a_recommend_cards_container > a:nth-child(3) {
   grid-column: span 2;
   height: 8rem;
   justify-content: center;
 }
 
-/* 게임 영역 틀 */
 .a_card_icon_wrap {
   border-radius: 15px;
   width: 45px;
@@ -610,14 +541,12 @@ body {
   justify-content: center;
 }
 
-/* 아이콘 이미지 */
 .a_card_icon_wrap img {
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
 
-/* 카드 내부 텍스트 */
 .a_recommend_cards_container p {
   color: var(--c-font);
   font-size: var(--fs2);
@@ -628,7 +557,6 @@ body {
   display: block;
 }
 
-/* 네비게이션/하단 여백 */
 #bottom-nav {
   border: none;
   background: var(--c-gray);
@@ -636,22 +564,12 @@ body {
 
 #main_content {
   padding-bottom: 120px;
-  /* 100~160 사이로 조절 */
 }
 
 /* =========================
-   B (b_sub.css) - tabBox + review + media
+   B - tabBox + review + media
 ========================= */
 
-a {
-  text-decoration: none;
-}
-
-body {
-  background: var(--c-bg);
-}
-
-/* 탭 메뉴 */
 .tab_menu {
   display: flex;
   justify-content: space-around;
@@ -660,12 +578,10 @@ body {
   height: 50px;
 }
 
-/* 탭 기본 안 보이게 */
 .tab_content {
   display: none;
 }
 
-/* 콘텐츠 정보 탭만 보이는 상태 */
 .tab_content.b_active {
   display: block;
 }
@@ -692,7 +608,6 @@ body {
   height: 50px;
 }
 
-/* 탭1 콘텐츠 정보 영역 */
 #tab_info {
   width: 100%;
   background-color: var(--c-bg);
@@ -705,11 +620,9 @@ body {
   font-size: var(--fs3);
   font-weight: bold;
   text-align: center;
-  /* margin: 18px; */
   margin-bottom: 25px;
 }
 
-/* 추천 버튼 영역 */
 .like_box {
   width: 90%;
   display: flex;
@@ -742,12 +655,10 @@ body {
   transition: 0.3s;
 }
 
-/* 버튼 클릭 시 활성화 */
 .like_box button.active {
   color: #49e99c;
 }
 
-/* 영화 메타정보 */
 .movie_meta {
   display: block;
   width: 90%;
@@ -769,7 +680,6 @@ body {
   font-weight: bold;
 }
 
-/* 탭2 감상평 영역 */
 #tab_review {
   width: 100%;
   background-color: var(--c-bg);
@@ -777,13 +687,11 @@ body {
   margin: 50px auto;
 }
 
-/* 텍스트 기본 */
 #tab_review p,
 #tab_review span {
   line-height: 1.6;
 }
 
-/* 공통 별 아이콘 */
 .star_rating {
   display: flex;
   justify-content: center;
@@ -802,7 +710,6 @@ body {
   transform: scale(1.1);
 }
 
-/* 로그인된 상태 */
 .review_login {
   background-color: var(--c-bg);
   margin-bottom: 20px;
@@ -833,9 +740,8 @@ body {
   vertical-align: middle;
 }
 
-/* i 아이콘 팝업 */
+/* i icon popup (사용자 안내) */
 .iicon_popup {
-  /* 기본 숨김 상태 */
   display: none;
   position: relative;
   margin: 0 auto;
@@ -853,12 +759,10 @@ body {
   width: 82%;
 }
 
-/* i 아이콘 팝업 노출 상태*/
 .iicon_popup.active {
   display: block;
 }
 
-/* 입력 영역 */
 .review_input {
   width: 90%;
   height: 80px;
@@ -872,10 +776,8 @@ body {
   border: none;
   outline: none;
   font-family: var(--font-main);
-  /* placeholder 폰트 다시 선언 */
 }
 
-/* 클릭했을 때도 테두리 선 안 보이게 */
 .review_input:focus {
   border: none;
   outline: none;
@@ -907,7 +809,6 @@ body {
   height: 16px;
 }
 
-/* 비로그인 상태 */
 .review_unlogin {
   background-color: var(--c-bg);
   margin-bottom: 20px;
@@ -938,7 +839,6 @@ body {
   cursor: not-allowed;
 }
 
-/* 전체 리뷰 리스트 */
 .review_list {
   background-color: var(--c-bg);
   display: block;
@@ -946,7 +846,6 @@ body {
   margin: 0 auto;
 }
 
-/* 전체 리뷰 + 드롭다운 버튼 한 줄 배치 */
 .review_header {
   display: flex;
   justify-content: space-between;
@@ -954,13 +853,11 @@ body {
   margin-bottom: 5px;
 }
 
-/* 전체 리뷰 */
 .review_header h3 {
   font-size: var(--fs3);
   font-weight: 600;
 }
 
-/* 최신순 텍스트 + 화살표(v) 아이콘 */
 .sort_btn {
   background: none;
   border: none;
@@ -970,16 +867,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  /*텍스트 + 아이콘을 가운데 */
   gap: 10px;
 }
 
-/* 버튼 + 메뉴 묵는 기준 선언 */
 .sort_wrap {
   position: relative;
 }
 
-/* 드롭다운 메뉴*/
 .sort_menu {
   position: absolute;
   left: 50%;
@@ -992,18 +886,14 @@ body {
   border-radius: 10px;
   box-shadow: var(--shadow50);
   background: var(--c-bg);
-
   display: none;
-  /* 기본 숨김 */
   z-index: 20;
 }
 
-/* sort_wrap에 open 클래스가 붙으면 메뉴 표시 */
 .sort_wrap.open .sort_menu {
   display: block;
 }
 
-/* 내부 옵션 버튼 */
 .sort_option {
   width: 100%;
   background: none;
@@ -1019,15 +909,12 @@ body {
   background-color: var(--c-bg);
 }
 
-/* 정렬 버튼 화살표(v) 아이콘 */
 .sort_btn img {
   width: 12px;
   height: 12px;
   transform: rotate(90deg);
-  /* 아이콘 방향 조정 */
 }
 
-/* 리뷰 카드 */
 .review_item {
   background-color: var(--c-bg);
   width: 100%;
@@ -1037,7 +924,6 @@ body {
   box-shadow: var(--shadow50);
 }
 
-/* 상단 정보(닉네임+별점+날짜 등) */
 .review_info {
   display: flex;
   align-items: center;
@@ -1045,20 +931,17 @@ body {
   margin-bottom: 20px;
 }
 
-/* 유저 아이콘 */
 .review_info img {
   width: 25px;
   height: 25px;
 }
 
-/* 닉네임 */
 .list_nickname {
   color: var(--c-font);
   font-weight: 500;
   font-size: var(--fs2);
 }
 
-/* 별 아이콘 */
 .score img {
   width: 13px;
   height: 13px;
@@ -1066,20 +949,17 @@ body {
   margin-right: 3px;
 }
 
-/* 점수 텍스트 */
 .score {
   color: var(--c-point);
   font-weight: bold;
 }
 
-/* 날짜 */
 .date {
   color: var(--c-gray3);
   font-size: var(--fs1);
   margin-left: auto;
 }
 
-/* 리뷰 본문(구분선 포함) */
 .review_text {
   color: var(--c-font);
   font-size: var(--fs2);
@@ -1129,7 +1009,6 @@ body {
   padding-top: 3px;
 }
 
-/* 로그인 후 별점 남긴 상태 */
 .review_edit {
   width: 90%;
   background-color: var(--c-bg);
@@ -1174,7 +1053,6 @@ body {
   height: 16px;
 }
 
-/* 탭3 영상/이미지 영역 */
 #tab_media {
   width: 90%;
   max-width: 800px;
@@ -1183,14 +1061,12 @@ body {
   color: var(--c-font);
 }
 
-/* 제목 (영상,이미지) */
 .media_title {
   font-size: var(--fs3);
   font-weight: bold;
   margin: 50px 0 20px;
 }
 
-/* 영상 섹션 */
 .video_box {
   position: relative;
   width: 100%;
@@ -1210,12 +1086,10 @@ body {
   border-radius: 10px;
 }
 
-/* 스틸컷 섹션 */
 .stillcuts {
   margin-top: 30px;
 }
 
-/* 큰 이미지 */
 .image_item.large {
   width: 100%;
   border-radius: 10px;
@@ -1229,13 +1103,11 @@ body {
   display: block;
 }
 
-/* 하단 3분할 레이아웃 */
 .image_layout {
   display: flex;
   gap: 20px;
 }
 
-/* 왼쪽 큰 이미지 */
 .image_left {
   flex: 1;
   border-radius: 10px;
@@ -1248,7 +1120,6 @@ body {
   object-fit: cover;
 }
 
-/* 오른쪽 두 개 이미지 */
 .image_right {
   display: flex;
   flex-direction: column;
@@ -1268,9 +1139,7 @@ body {
   object-fit: cover;
 }
 
-/* 스틸컷 없을 시 */
-
-/* 공통  */
+/* stillcut placeholder (이미지 없을 때 UI 유지) */
 img[data-role="skillcut"].is-placeholder {
   width: 100%;
   height: 100%;
@@ -1278,42 +1147,35 @@ img[data-role="skillcut"].is-placeholder {
   background: var(--c-gray);
 }
 
-/* 크기별 padding */
 .image_item.large img.is-placeholder {
-  /*  맨 위 */
   padding: 40px;
 }
-/* 왼쪽 아래 */
+
 .image_left img.is-placeholder {
   padding: 50px;
 }
-/* 오른쪽 아래  */
+
 .image_small img.is-placeholder {
   padding: 15px;
 }
 
-/* 스킬컷이 3장일 때만 오른쪽 아래 아이콘 작게 */
 .image_small.bottom img.is-third-missing {
   padding: 30px;
 }
 
-/* placeholder일 때만 영역 높이 줄이기 */
 .image_item.large:has(img.is-placeholder),
 .image_left:has(img.is-placeholder),
 .image_small:has(img.is-placeholder) {
   aspect-ratio: 16 / 6;
 }
 
-/* 로그인 안내 팝업: 전체 오버레이 */
+/* 로그인 안내 팝업 (overlay) */
 .login_popup {
   display: none;
   position: fixed;
   inset: 0;
   z-index: 9999;
-
-  /* 뒤 배경 어둡게 + 클릭 막기 */
   background: rgba(0, 0, 0, 0.55);
-
   justify-content: center;
   align-items: center;
   padding: 20px;
@@ -1323,7 +1185,6 @@ img[data-role="skillcut"].is-placeholder {
   display: flex;
 }
 
-/* 팝업 카드 */
 .login_popup_inner {
   width: 400px;
   height: 200px;
@@ -1334,7 +1195,6 @@ img[data-role="skillcut"].is-placeholder {
   filter: drop-shadow(var(--shadow50));
 }
 
-/* 제목 */
 .login_popup_title {
   color: var(--c-font);
   font-size: var(--fs3);
@@ -1343,7 +1203,6 @@ img[data-role="skillcut"].is-placeholder {
   padding: 8px;
 }
 
-/* 안내 문구 */
 .login_popup_desc {
   font-weight: 600;
   color: var(--c-gray2);
@@ -1352,14 +1211,12 @@ img[data-role="skillcut"].is-placeholder {
   padding-top: 8px;
 }
 
-/* 버튼 영역 */
 .login_popup_btns {
   margin-top: 18px;
   display: flex;
   gap: 12px;
 }
 
-/* 버튼 공통 */
 .login_btn {
   flex: 1;
   padding: 12px 10px;
@@ -1370,19 +1227,17 @@ img[data-role="skillcut"].is-placeholder {
   cursor: pointer;
 }
 
-/* 괜찮아요 -> 닫기 */
 .login_btn_cancel {
   background: var(--c-gray);
   color: var(--c-gray2);
 }
 
-/* 로그인 할게요 -> 로그인 페이지 */
 .login_btn_go {
   background: var(--c-main);
   color: var(--c-font);
 }
 
-/* 헤더 아이콘 확인용(1) */
+/* header icon button reset */
 button.hambtn {
   background: transparent;
   border: 0;
@@ -1391,7 +1246,7 @@ button.hambtn {
   line-height: 0;
   cursor: pointer;
 }
-/* 헤더 아이콘 확인용(2) */
+
 button.hambtn img,
 button.hambtn .hambtn-img {
   display: block;
