@@ -193,6 +193,7 @@ canvas {
 
 /* 좋아요 버튼 */
 .favorite-thing > .likeBtn {
+  cursor: pointer;
   position: absolute;
   z-index: 1;
   right: 10px;

@@ -24,22 +24,45 @@ $(function () {
   /* =========================
      2) Plot "more/less" (hide if not overflow)
   ========================= */
-  {
-    const $plot = $(".a_plot_value");
-    const $btn = $(".a_plot_toggle_btn");
-    const $wrap = $(".a_movie_forms");
+  $(function () {
+    // 1) 이벤트 위임: 나중에 DOM이 로드되어도 동작
+    $(document).on("click", ".a_plot_toggle_btn", function () {
+      const $wrap = $(this).closest(".a_movie_forms");
+      $wrap.toggleClass("open");
+      $(this).text($wrap.hasClass("open") ? "접기" : "더보기");
+    });
 
-    if ($plot.length && $btn.length) {
-      if ($plot[0].scrollHeight <= $plot[0].clientHeight) {
-        $btn.hide();
-      } else {
-        $btn.on("click", function () {
-          $wrap.toggleClass("open");
-          $(this).text($wrap.hasClass("open") ? "접기" : "더보기");
-        });
-      }
+    function updatePlotToggleButtons() {
+      $(".a_movie_forms").each(function () {
+        const $wrap = $(this);
+        const $plot = $wrap.find(".a_plot_value");
+        const $btn = $wrap.find(".a_plot_toggle_btn");
+
+        if (!$plot.length || !$btn.length) return;
+
+        $wrap.removeClass("open");
+        const closedH = $plot[0].getBoundingClientRect().height;
+
+        $wrap.addClass("open");
+        const openH = $plot[0].getBoundingClientRect().height;
+
+        $wrap.removeClass("open");
+        $btn.text("더보기");
+
+        if (openH <= closedH + 1) {
+          $btn.hide();
+        } else {
+          $btn.show();
+        }
+      });
     }
-  }
+
+    updatePlotToggleButtons();
+
+    $(window).on("resize", function () {
+      updatePlotToggleButtons();
+    });
+  });
 
   /* =========================
      3) Tabs (info / review / media)
