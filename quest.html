@@ -14,7 +14,6 @@
   </head>
 
   <body class="quest">
-    <div id="container">
       <!-- 헤더 -->
       <div id="header-slot"></div>
 
@@ -32,7 +31,7 @@
           </div>
         </a>
 
-        <div class="ticket-txt-box" id="hot-genre">
+        <div class="ticket-txt-box" id="hot-ticket">
           <h1 class="ticket-txt">우연한 만남, 오늘의 티켓 뽑기</h1>
         </div>
 
@@ -47,6 +46,68 @@
             </section>
           </div>
         </div>
+        <!-- 티켓 결과 모달 -->
+        <div class="ticket-modal" aria-hidden="true">
+          <article class="ticket-modal-content" role="dialog" aria-modal="true">
+            <!-- 창닫기버튼 -->
+            <button class="modal-close" aria-label="닫기">×</button>
+            <!-- 티켓 ui -->
+            <div class="ticket-modal-box">
+              <!-- 왼쪽 영역 -->
+              <div class="ticket-modal-poster">
+                <img class="ticket-modal-img" src="img/poster/poster_존오브인터레스트.jpg" alt="" />
+              </div>
+              <!-- 오른쪽 영역 -->
+              <div class="ticket-modal-desc">
+                <!-- 타이틀 -->
+                <div class="ticket-modal-desc-top">
+                  <p class="ticket-modal-title" data-role="title">
+                    존 오브 인터레스트
+                  </p>
+                  <div class="ticket-modal-score">
+                    <img class="score-img" src="img/star_6f6c76.png" alt="" />
+                    <span class="score-txt">5</span>
+                  </div>
+                </div>
+                <!-- 설명 -->
+                <p class="ticket-modal-txt">
+                  <span class="modal-title" data-data-role="title"
+                    >존 오브 인터레스트</span
+                  >를 뽑으셨군요! 포스터를 클릭하시면 작품 정보로 이동할게요.
+                </p>
+                <!-- 오티티 -->
+                <div class="ticket-modal-ott-box">
+                  <img
+                    class="ticket-modal-ott-icon"
+                    src="img/streaming_f5f5f5.png"
+                    alt=""
+                  />
+                  <!-- 리스트 -->
+                  <ul
+                    class="ticket-modal-ott-list"
+                    aria-label="스트리밍 가능한 OTT 목록"
+                  >
+                    <li class="ticket-modal-ott-item">
+                      <img
+                        class="ticket-modal-ott-img"
+                        src="img/netflix.png"
+                        alt=""
+                      />
+                    </li>
+                    <li class="ticket-modal-ott-item">
+                      <img
+                        class="ticket-modal-ott-img"
+                        src="img/netflix.png"
+                        alt=""
+                      />
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>  
+          </article>
+        </div>
+
 
         <!-- 데이터에 해당되는 장르를 보여주는 구간 -->
         <section
@@ -88,7 +149,7 @@
         </section>
 
         <!-- 밸런스 게임 -->
-        <section class="game-container" aria-labelledby="game-title">
+        <section class="game-container" id="game" aria-labelledby="game-title">
           <div class="game-title">
             <div class="game-txt-box">
               <h2 class="game-txt" id="game-title">
@@ -111,6 +172,7 @@
                     class="game-content-img"
                     src="img/poster/poster_겨울왕국.jpg"
                     alt=""
+                    data-role="poster"
                   />
                 </div>
                 <!-- 텍스트 박스 -->
@@ -136,6 +198,7 @@
                     class="game-content-img"
                     src="img/poster/poster_가디언즈.jpg"
                     alt=""
+                    data-role="poster"
                   />
                 </div>
                 <!-- 텍스트 박스 -->
@@ -168,11 +231,11 @@
         <!-- 잔혹한 평점 -->
         <section
           class="game-container find bottom-padding"
-          aria-label="game-title"
+          aria-labelledby="find-title"
         >
           <div class="game-title">
             <div class="game-txt-box find">
-              <h2 class="game-txt" id="game-title">
+              <h2 class="game-txt" id="find-title">
                 잔혹한 평점 속, 나만의 보석 찾기
               </h2>
             </div>
@@ -188,13 +251,15 @@
                       <img
                         class="poster-img"
                         src="img/poster/poster_클레멘타인.jpg"
+                        alt=""
+                        data-role="poster"
                       />
                       <div class="content-more">
                         <div class="more-box">
                           <img
                             class="more-icon"
                             src="img/like_icon_6F6C76.png"
-                            alt=""
+                            alt="좋아요 누른 수"
                           />
                           <span class="like">12</span>
                         </div>
@@ -202,7 +267,7 @@
                           <img
                             class="more-icon"
                             src="img/hate_icon_6F6C76.png"
-                            alt=""
+                            alt="싫어요 누른 수"
                           />
                           <span class="hate">152</span>
                         </div>
@@ -210,7 +275,7 @@
                           <img
                             class="more-icon"
                             src="img/star_6f6c76.png"
-                            alt=""
+                            alt="평균 별점"
                           />
                           <span class="like">1</span>
                         </div>
@@ -225,29 +290,31 @@
                       <img
                         class="poster-img"
                         src="img/poster/poster_주글래살래.jpg"
+                        alt=""
+                        data-role="poster"
                       />
                       <div class="content-more">
                         <div class="more-box">
                           <img
                             class="more-icon"
                             src="img/like_icon_6F6C76.png"
-                            alt=""
+                            alt="좋아요 누른 수"
                           />
-                          <span class="like">12</span>
+                          <span class="like">2</span>
                         </div>
                         <div class="more-box">
                           <img
                             class="more-icon"
                             src="img/hate_icon_6F6C76.png"
-                            alt=""
+                            alt="싫어요 누른 수"
                           />
-                          <span class="hate">152</span>
+                          <span class="hate">112</span>
                         </div>
                         <div class="more-box">
                           <img
                             class="more-icon"
                             src="img/star_6f6c76.png"
-                            alt=""
+                            alt="평균 별점"
                           />
                           <span class="like">1</span>
                         </div>
@@ -262,13 +329,15 @@
                       <img
                         class="poster-img"
                         src="img/poster/poster_김치전사.jpg"
+                        alt=""
+                        data-role="poster"
                       />
                       <div class="content-more">
                         <div class="more-box">
                           <img
                             class="more-icon"
                             src="img/like_icon_6F6C76.png"
-                            alt=""
+                            alt="좋아요 누른 수"
                           />
                           <span class="like">12</span>
                         </div>
@@ -276,7 +345,7 @@
                           <img
                             class="more-icon"
                             src="img/hate_icon_6F6C76.png"
-                            alt=""
+                            alt="싫어요 누른 수"
                           />
                           <span class="hate">152</span>
                         </div>
@@ -284,7 +353,7 @@
                           <img
                             class="more-icon"
                             src="img/star_6f6c76.png"
-                            alt=""
+                            alt="평균 별점"
                           />
                           <span class="like">2</span>
                         </div>
@@ -337,7 +406,7 @@
                   </div>
                 </li>
                 <li class="user-hate-review-item">
-                  <p class="hate-title" data-role="title">김치 전사</p>
+                  <p class="hate-title" data-role="title">김치전사</p>
                   <p class="hate-desc" data-role="hate-review">
                     80년대 ~ 90년대 생이라면 다 잊고 싶어하는 그 전설의 띵작...
                     보면 알아요
