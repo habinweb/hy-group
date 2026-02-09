@@ -1,0 +1,783 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sub (A+B)</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/root.css" />
+    <link rel="stylesheet" href="css/import.css" />
+    <link rel="stylesheet" href="css/sub_community.css" />
+
+    <link rel="icon" href="img/favicon/favicon.ico" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="img/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="img/favicon/favicon-16x16.png"
+    />
+    <link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png" />
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/import.js"></script>
+    <script type="module" src="js/community.js"></script>
+  </head>
+
+  <body class="sub-body">
+    <!--헤더-->
+    <div id="header-slot"></div>
+
+    <!-- 메인 콘텐츠 -->
+    <div id="main_content">
+      <section class="review_list">
+        <!-- 헤더(전체 리뷰 + 정렬) -->
+        <div class="review_header">
+          <h1 class="community_guide">
+            마음이 남긴 기록,<br />
+            <span class="highlight">무브인</span>과 함께 하세요
+          </h1>
+        </div>
+
+        <!-- 리뷰 + 정렬 버튼 전체 영역 -->
+        <div id="review_container">
+          <div class="sort_wrap">
+            <button type="button" class="sort_btn">
+              최신순
+              <img src="img/next_icon_6F6C76.png" alt="arrow_icon" />
+            </button>
+            <!-- 드롭다운 메뉴 -->
+            <ul class="sort_menu">
+              <li>
+                <button
+                  type="button"
+                  class="sort_option active"
+                  data-sort="latest"
+                >
+                  최신순
+                </button>
+              </li>
+              <li>
+                <button type="button" class="sort_option" data-sort="rating">
+                  별점순
+                </button>
+              </li>
+              <li>
+                <button type="button" class="sort_option" data-sort="bookmark">
+                  북마크순
+                </button>
+              </li>
+            </ul>
+          </div>
+          <ul class="review_ul">
+            <!-- 리뷰 1 -->
+            <li class="review_item">
+              <div class="review_poster">
+                <img
+                  class="poster"
+                  src="img/poster/poster_8번출구.jpg"
+                  alt="8번출구_포스터"
+                />
+              </div>
+
+              <div class="review_body">
+                <div class="review_info">
+                  <img
+                    class="user_icon"
+                    src="img/user_6F6C76.png"
+                    alt="유저 이미지"
+                  />
+                  <span class="list_nickname">뜨개요정</span>
+                  <span class="score">
+                    <img src="img/star_49E99C.png" alt="star_icon" />4.0
+                  </span>
+                  <span class="date">3일 전</span>
+                </div>
+
+                <p class="review_text">
+                  뜨개질하다가 계속 멈추게 됨.. 다음 장면이 자꾸 신경 쓰여서
+                  손이 안 움직여요ㅠㅠ
+                </p>
+
+                <div class="review_bottom">
+                  <span class="movie_title">8번 출구</span>
+                  <button type="button" class="bookmark_btn">
+                    +12
+                    <img src="img/bookmark_01_6f6c76.png" alt="bookmark_icon" />
+                  </button>
+                </div>
+              </div>
+            </li>
+            <!-- 리뷰 2 -->
+            <li class="review_item">
+              <div class="review_poster">
+                <img
+                  class="poster"
+                  src="img/poster/poster_대기업다니는김부장.jpg"
+                  alt="대기업다니는김부장_포스터"
+                />
+              </div>
+
+              <div class="review_body">
+                <div class="review_info">
+                  <img
+                    class="user_icon"
+                    src="img/user_6F6C76.png"
+                    alt="유저 이미지"
+                  />
+                  <span class="list_nickname">회사주세요</span>
+                  <span class="score">
+                    <img src="img/star_49E99C.png" alt="star_icon" />4.3
+                  </span>
+                  <span class="date">1주 전</span>
+                </div>
+
+                <p class="review_text">
+                  현실 고증 너무 잘돼서 웃다가 현타 옴;; 퇴근하고 보면 위로가
+                  되기도 하고 씁쓸하기도 해요.
+                </p>
+
+                <div class="review_bottom">
+                  <span class="movie_title">대기업 다니는 김부장</span>
+                  <button type="button" class="bookmark_btn">
+                    +9
+                    <img src="img/bookmark_01_6f6c76.png" alt="bookmark_icon" />
+                  </button>
+                </div>
+              </div>
+            </li>
+
+            <!-- 리뷰 3 -->
+            <li class="review_item">
+              <div class="review_poster">
+                <img
+                  class="poster"
+                  src="img/poster/poster_모던패밀리.jpg"
+                  alt="모던패밀리_포스터"
+                />
+              </div>
+
+              <div class="review_body">
+                <div class="review_info">
+                  <img
+                    class="user_icon"
+                    src="img/user_6F6C76.png"
+                    alt="유저 이미지"
+                  />
+                  <span class="list_nickname">백두강태공</span>
+                  <span class="score">
+                    <img src="img/star_49E99C.png" alt="star_icon" />4.6
+                  </span>
+                  <span class="date">2주 전</span>
+                </div>
+
+                <p class="review_text">
+                  아무. 생갹없이. 틀어놨. 다 가. 어느 새. 시즌을, 건너뛰고.
+                  있는, 나의. 이야기. ^^
+                </p>
+
+                <div class="review_bottom">
+                  <span class="movie_title">모던 패밀리</span>
+                  <button type="button" class="bookmark_btn">
+                    +21
+                    <img src="img/bookmark_01_6f6c76.png" alt="bookmark_icon" />
+                  </button>
+                </div>
+              </div>
+            </li>
+            <!-- 리뷰 4 -->
+            <li class="review_item">
+              <div class="review_poster">
+                <img
+                  class="poster"
+                  src="img/poster/poster_달까지가자.jpg"
+                  alt="달까지가자_포스터"
+                />
+              </div>
+
+              <div class="review_body">
+                <div class="review_info">
+                  <img
+                    class="user_icon"
+                    src="img/user_6F6C76.png"
+                    alt="유저 이미지"
+                  />
+                  <span class="list_nickname">캐모마밀</span>
+                  <span class="score">
+                    <img src="img/star_49E99C.png" alt="star_icon" />2.5
+                  </span>
+                  <span class="date">5일 전</span>
+                </div>
+
+                <p class="review_text">
+                  다들 재밌다길래 봤는데 제 취향은 아니었어요.
+                </p>
+
+                <div class="review_bottom">
+                  <span class="movie_title">달까지 가자</span>
+                  <button type="button" class="bookmark_btn">
+                    +3
+                    <img src="img/bookmark_01_6f6c76.png" alt="bookmark_icon" />
+                  </button>
+                </div>
+              </div>
+            </li>
+
+            <!-- 리뷰 5 -->
+            <li class="review_item">
+              <div class="review_poster">
+                <img
+                  class="poster"
+                  src="img/poster/poster_베이비레인디어.jpg"
+                  alt="베이비레인디어_포스터"
+                />
+              </div>
+
+              <div class="review_body">
+                <div class="review_info">
+                  <img
+                    class="user_icon"
+                    src="img/user_6F6C76.png"
+                    alt="유저 이미지"
+                  />
+                  <span class="list_nickname">두쫀구리</span>
+                  <span class="score">
+                    <img src="img/star_49E99C.png" alt="star_icon" />5.0
+                  </span>
+                  <span class="date">1주 전</span>
+                </div>
+
+                <p class="review_text">
+                  피곤한 날 아무 생각 없이 보기 딱 좋아요. 현실에서 도망치고
+                  싶을 때 최고의 선택…
+                </p>
+
+                <div class="review_bottom">
+                  <span class="movie_title">베이비 레인디어</span>
+                  <button type="button" class="bookmark_btn">
+                    +18
+                    <img src="img/bookmark_01_6f6c76.png" alt="bookmark_icon" />
+                  </button>
+                </div>
+              </div>
+            </li>
+
+            <!-- 리뷰 6 -->
+            <li class="review_item">
+              <div class="review_poster">
+                <img
+                  class="poster"
+                  src="img/poster/poster_세계의주인.jpg"
+                  alt="세계의주인_포스터"
+                />
+              </div>
+
+              <div class="review_body">
+                <div class="review_info">
+                  <img
+                    class="user_icon"
+                    src="img/user_6F6C76.png"
+                    alt="유저 이미지"
+                  />
+                  <span class="list_nickname">시즌삭제범</span>
+                  <span class="score">
+                    <img src="img/star_49E99C.png" alt="star_icon" />3.0
+                  </span>
+                  <span class="date">2주 전</span>
+                </div>
+
+                <p class="review_text">
+                  재미없는 건 아닌데 시즌이 너무 길어요. 중간에 쉬었다가 다시
+                  보게 되는 타입입니다.
+                </p>
+
+                <div class="review_bottom">
+                  <span class="movie_title">세계의 주인</span>
+                  <button type="button" class="bookmark_btn">
+                    +6
+                    <img src="img/bookmark_01_6f6c76.png" alt="bookmark_icon" />
+                  </button>
+                </div>
+              </div>
+            </li>
+            <!-- 리뷰 7 -->
+            <li class="review_item">
+              <div class="review_poster">
+                <img
+                  class="poster"
+                  src="img/poster/poster_헤어질결심.jpg"
+                  alt="헤어질결심_포스터"
+                />
+              </div>
+
+              <div class="review_body">
+                <div class="review_info">
+                  <img
+                    class="user_icon"
+                    src="img/user_6F6C76.png"
+                    alt="유저 이미지"
+                  />
+                  <span class="list_nickname">지혜의샘</span>
+                  <span class="score">
+                    <img src="img/star_49E99C.png" alt="star_icon" />4.6
+                  </span>
+                  <span class="date">3주 전</span>
+                </div>
+
+                <p class="review_text">
+                  조용한데.. 묘하게, 계속.생각나요 ^^. 다 보고 나서, 바로, 다른
+                  영상 못 틀겠는, 아이러니 한. 느낌. 이런 영화가 오래 여운을
+                  남기는 듯. 합니다. 추천..
+                </p>
+
+                <div class="review_bottom">
+                  <span class="movie_title">헤어질 결심</span>
+                  <button type="button" class="bookmark_btn">
+                    +22
+                    <img src="img/bookmark_01_6f6c76.png" alt="bookmark_icon" />
+                  </button>
+                </div>
+              </div>
+            </li>
+
+            <!-- 리뷰 8 -->
+            <li class="review_item">
+              <div class="review_poster">
+                <img
+                  class="poster"
+                  src="img/poster/poster_해피엔드.jpg"
+                  alt="해피엔드_포스터"
+                />
+              </div>
+
+              <div class="review_body">
+                <div class="review_info">
+                  <img
+                    class="user_icon"
+                    src="img/user_6F6C76.png"
+                    alt="유저 이미지"
+                  />
+                  <span class="list_nickname">잡식성</span>
+                  <span class="score">
+                    <img src="img/star_49E99C.png" alt="star_icon" />2.0
+                  </span>
+                  <span class="date">6일 전</span>
+                </div>
+
+                <p class="review_text">
+                  영화는 해피엔드. <br />내 기분은 배드엔드.
+                </p>
+
+                <div class="review_bottom">
+                  <span class="movie_title">해피엔드</span>
+                  <button type="button" class="bookmark_btn">
+                    +3
+                    <img src="img/bookmark_01_6f6c76.png" alt="bookmark_icon" />
+                  </button>
+                </div>
+              </div>
+            </li>
+
+            <!-- 리뷰 9 -->
+            <li class="review_item">
+              <div class="review_poster">
+                <img
+                  class="poster"
+                  src="img/poster/poster_컨택트.jpg"
+                  alt="컨택트_포스터"
+                />
+              </div>
+
+              <div class="review_body">
+                <div class="review_info">
+                  <img
+                    class="user_icon"
+                    src="img/user_6F6C76.png"
+                    alt="유저 이미지"
+                  />
+                  <span class="list_nickname">야식참는중</span>
+                  <span class="score">
+                    <img src="img/star_49E99C.png" alt="star_icon" />4.9
+                  </span>
+                  <span class="date">1주 전</span>
+                </div>
+
+                <p class="review_text">
+                  하루 끝에 틀어두기 너무 좋음. 자극 없고 조용해서 괜히 마음
+                  정리되는 느낌 들어요.
+                </p>
+
+                <div class="review_bottom">
+                  <span class="movie_title">컨택트</span>
+                  <button type="button" class="bookmark_btn">
+                    +31
+                    <img src="img/bookmark_01_6f6c76.png" alt="bookmark_icon" />
+                  </button>
+                </div>
+              </div>
+            </li>
+
+            <!-- 리뷰 10 -->
+            <li class="review_item">
+              <div class="review_poster">
+                <img
+                  class="poster"
+                  src="img/poster/poster_가디언즈.jpg"
+                  alt="가디언즈_포스터"
+                />
+              </div>
+
+              <div class="review_body">
+                <div class="review_info">
+                  <img
+                    class="user_icon"
+                    src="img/user_6F6C76.png"
+                    alt="유저 이미지"
+                  />
+                  <span class="list_nickname">설정충주의</span>
+                  <span class="score">
+                    <img src="img/star_49E99C.png" alt="star_icon" />3.8
+                  </span>
+                  <span class="date">2주 전</span>
+                </div>
+
+                <p class="review_text">
+                  스토리는 모르겠고.. <br />
+                  잭 얼굴이 다 함ㅎㅎ 또 봐야지
+                </p>
+
+                <div class="review_bottom">
+                  <span class="movie_title">가디언즈</span>
+                  <button type="button" class="bookmark_btn">
+                    +11
+                    <img src="img/bookmark_01_6f6c76.png" alt="bookmark_icon" />
+                  </button>
+                </div>
+              </div>
+            </li>
+
+            <!-- 리뷰 11 -->
+            <li class="review_item">
+              <div class="review_poster">
+                <img
+                  class="poster"
+                  src="img/poster/poster_겨울왕국.jpg"
+                  alt="겨울왕국_포스터"
+                />
+              </div>
+
+              <div class="review_body">
+                <div class="review_info">
+                  <img
+                    class="user_icon"
+                    src="img/user_6F6C76.png"
+                    alt="유저 이미지"
+                  />
+                  <span class="list_nickname">시골쥐</span>
+                  <span class="score">
+                    <img src="img/star_49E99C.png" alt="star_icon" />2.9
+                  </span>
+                  <span class="date">4일 전</span>
+                </div>
+
+                <p class="review_text">
+                  겨울에 보기 좋아요..ㅠ <br />
+                  크리스마스 영화로 강추하빈당 S2 S2
+                </p>
+
+                <div class="review_bottom">
+                  <span class="movie_title">겨울왕국</span>
+                  <button type="button" class="bookmark_btn">
+                    +7
+                    <img src="img/bookmark_01_6f6c76.png" alt="bookmark_icon" />
+                  </button>
+                </div>
+              </div>
+            </li>
+            <!-- 리뷰 12 -->
+            <li class="review_item">
+              <div class="review_poster">
+                <img
+                  class="poster"
+                  src="img/poster/poster_언내추럴.jpg"
+                  alt="언내추럴_포스터"
+                />
+              </div>
+
+              <div class="review_body">
+                <div class="review_info">
+                  <img
+                    class="user_icon"
+                    src="img/user_6F6C76.png"
+                    alt="유저 이미지"
+                  />
+                  <span class="list_nickname">명작콜렉터</span>
+                  <span class="score">
+                    <img src="img/star_49E99C.png" alt="star_icon" />2.3
+                  </span>
+                  <span class="date">2주 전</span>
+                </div>
+
+                <p class="review_text">
+                  명작이라고 해서 봤는데 솔직히 왜 명작인지 모르겠어요.. 조용한
+                  건 알겠는데 너무 조용해서 집중되는 게 아니라 잠이 옵니다;;
+                </p>
+
+                <div class="review_bottom">
+                  <span class="movie_title">언내추럴</span>
+                  <button type="button" class="bookmark_btn">
+                    +6
+                    <img src="img/bookmark_01_6f6c76.png" alt="bookmark_icon" />
+                  </button>
+                </div>
+              </div>
+            </li>
+
+            <!-- 리뷰 13 -->
+            <li class="review_item">
+              <div class="review_poster">
+                <img
+                  class="poster"
+                  src="img/poster/poster_괴물.jpg"
+                  alt="괴물_포스터"
+                />
+              </div>
+
+              <div class="review_body">
+                <div class="review_info">
+                  <img
+                    class="user_icon"
+                    src="img/user_6F6C76.png"
+                    alt="유저 이미지"
+                  />
+                  <span class="list_nickname">두쫀쿠도둑</span>
+                  <span class="score">
+                    <img src="img/star_49E99C.png" alt="star_icon" />1.8
+                  </span>
+                  <span class="date">4일 전</span>
+                </div>
+
+                <p class="review_text">
+                  이거 보느라 쓴 시간이 아까움. 무서운 줄 알고 봤는데 긴장감도
+                  없고 끝나고 나서 허탈했어요 ㅡㅡ
+                </p>
+
+                <div class="review_bottom">
+                  <span class="movie_title">괴물</span>
+                  <button type="button" class="bookmark_btn">
+                    +2
+                    <img src="img/bookmark_01_6f6c76.png" alt="bookmark_icon" />
+                  </button>
+                </div>
+              </div>
+            </li>
+
+            <!-- 리뷰 14 -->
+            <li class="review_item">
+              <div class="review_poster">
+                <img
+                  class="poster"
+                  src="img/poster/poster_해피엔드.jpg"
+                  alt="해피엔드_포스터"
+                />
+              </div>
+
+              <div class="review_body">
+                <div class="review_info">
+                  <img
+                    class="user_icon"
+                    src="img/user_6F6C76.png"
+                    alt="유저 이미지"
+                  />
+                  <span class="list_nickname">뱃살공주</span>
+                  <span class="score">
+                    <img src="img/star_49E99C.png" alt="star_icon" />4.9
+                  </span>
+                  <span class="date">1주 전</span>
+                </div>
+
+                <p class="review_text">
+                  이거 힐링 영화 맞음. 근데 안 맞는 사람은 지루하다고 할 수도
+                  있음.. 난 극호.
+                </p>
+
+                <div class="review_bottom">
+                  <span class="movie_title">해피엔드</span>
+                  <button type="button" class="bookmark_btn">
+                    +41
+                    <img src="img/bookmark_01_6f6c76.png" alt="bookmark_icon" />
+                  </button>
+                </div>
+              </div>
+            </li>
+
+            <!-- 리뷰 15 -->
+            <li class="review_item">
+              <div class="review_poster">
+                <img
+                  class="poster"
+                  src="img/poster/poster_에에올.jpg"
+                  alt="에에올_포스터"
+                />
+              </div>
+
+              <div class="review_body">
+                <div class="review_info">
+                  <img
+                    class="user_icon"
+                    src="img/user_6F6C76.png"
+                    alt="유저 이미지"
+                  />
+                  <span class="list_nickname">여수불바다</span>
+                  <span class="score">
+                    <img src="img/star_49E99C.png" alt="star_icon" />2.9
+                  </span>
+                  <span class="date">3주 전</span>
+                </div>
+
+                <p class="review_text">
+                  어렵다는 말로 포장된 영화 같아요. 이해 안 되면 공부 부족이라는
+                  분위기부터가 별로임
+                </p>
+
+                <div class="review_bottom">
+                  <span class="movie_title">에에올</span>
+                  <button type="button" class="bookmark_btn">
+                    +13
+                    <img src="img/bookmark_01_6f6c76.png" alt="bookmark_icon" />
+                  </button>
+                </div>
+              </div>
+            </li>
+
+            <!-- 리뷰 16 -->
+            <li class="review_item">
+              <div class="review_poster">
+                <img
+                  class="poster"
+                  src="img/poster/poster_에에올.jpg"
+                  alt="에에올_포스터"
+                />
+              </div>
+
+              <div class="review_body">
+                <div class="review_info">
+                  <img
+                    class="user_icon"
+                    src="img/user_6F6C76.png"
+                    alt="유저 이미지"
+                  />
+                  <span class="list_nickname">빚갚으리오</span>
+                  <span class="score">
+                    <img src="img/star_49E99C.png" alt="star_icon" />4.9
+                  </span>
+                  <span class="date">2주 전</span>
+                </div>
+
+                <p class="review_text">
+                  진지하게 이해 못하는사람들 다 중딩임?? 애들도 잘만본다ㅋㅋ
+                </p>
+
+                <div class="review_bottom">
+                  <span class="movie_title">에에올</span>
+                  <button type="button" class="bookmark_btn">
+                    +23
+                    <img src="img/bookmark_01_6f6c76.png" alt="bookmark_icon" />
+                  </button>
+                </div>
+              </div>
+            </li>
+
+            <!-- 리뷰 17 -->
+            <li class="review_item">
+              <div class="review_poster">
+                <img
+                  class="poster"
+                  src="img/poster/poster_중쇄를찍자.jpg"
+                  alt="중쇄를찍자_포스터"
+                />
+              </div>
+
+              <div class="review_body">
+                <div class="review_info">
+                  <img
+                    class="user_icon"
+                    src="img/user_6F6C76.png"
+                    alt="유저 이미지"
+                  />
+                  <span class="list_nickname">오즈의맙소사</span>
+                  <span class="score">
+                    <img src="img/star_49E99C.png" alt="star_icon" />2.7
+                  </span>
+                  <span class="date">4주 전</span>
+                </div>
+
+                <p class="review_text">
+                  솔직히 이 영화가 이렇게까지 칭찬받는 이유를 모르겠어요. 무난한
+                  영화지 인생 영화까진 절대 아님ㅠ
+                </p>
+
+                <div class="review_bottom">
+                  <span class="movie_title">중쇄를찍자</span>
+                  <button type="button" class="bookmark_btn">
+                    +7
+                    <img src="img/bookmark_01_6f6c76.png" alt="bookmark_icon" />
+                  </button>
+                </div>
+              </div>
+            </li>
+
+            <!-- 리뷰 18 -->
+            <li class="review_item">
+              <div class="review_poster">
+                <img
+                  class="poster"
+                  src="img/poster/poster_닥터스트레인지.jpg"
+                  alt="닥터스트레인지_포스터"
+                />
+              </div>
+
+              <div class="review_body">
+                <div class="review_info">
+                  <img
+                    class="user_icon"
+                    src="img/user_6F6C76.png"
+                    alt="유저 이미지"
+                  />
+                  <span class="list_nickname">이게풍자?</span>
+                  <span class="score">
+                    <img src="img/star_49E99C.png" alt="star_icon" />2.5
+                  </span>
+                  <span class="date">1주 전</span>
+                </div>
+
+                <p class="review_text">
+                  풍자라고 하기엔 너무 직설적이고 뻔했어요. 웃기지도 않고 보고
+                  나서 기분만 애매해짐.
+                </p>
+
+                <div class="review_bottom">
+                  <span class="movie_title">닥터스트레인지</span>
+                  <button type="button" class="bookmark_btn">
+                    +10
+                    <img src="img/bookmark_01_6f6c76.png" alt="bookmark_icon" />
+                  </button>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <button type="button" class="review_more_btn">더보기</button>
+        </div>
+      </section>
+    </div>
+
+    <!-- 푸터/하단 -->
+    <div id="bottom-nav"></div>
+    <div id="footer-slot"></div>
+  </body>
+</html>

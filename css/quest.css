@@ -1,0 +1,773 @@
+body.lock {
+  overflow: hidden;
+}
+
+.loginBtn > a {
+  color: var(--c-main);
+}
+
+/* 검색 */
+.search-f {
+  width: 90%;
+  margin: 0 auto;
+  position: relative;
+  top: 70px;
+  height: 40px;
+  border-radius: 50px;
+  background: var(--c-gray);
+  display: flex;
+  align-items: center;
+}
+.search-box {
+  position: absolute;
+  width: 100%;
+  margin: 0 auto;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+.search-btn {
+  background: var(--c-gray2);
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+}
+.search-btn-img {
+  height: 14px;
+  width: 14px;
+}
+.search-in {
+  font-size: var(--fs2);
+  padding-left: 0.5rem;
+  color: var(--c-gray2);
+  letter-spacing: 0;
+}
+
+/* 주의: .body 클래스(태그 body 아님) */
+.body {
+  width: 100%;
+  background: var(--c-bg);
+}
+
+/* 티켓 */
+.ticket-txt-box {
+  width: 90%;
+  margin: 80px auto 0 auto;
+}
+.ticket-txt {
+  padding: 2rem 0rem;
+  font-size: var(--fs5);
+  color: var(--c-font);
+  line-height: 160%;
+  letter-spacing: -0.02rem;
+  font-weight: 800;
+}
+
+.main-container--ticket {
+  width: 100%;
+}
+.container--ticket {
+  width: 100%;
+  padding: 4rem 0 5rem 0;
+  background: radial-gradient(
+      ellipse 50% 40% at center,
+      var(--c-main),
+      transparent 100%
+    )
+    no-repeat;
+  background-position: center;
+  background-size: 100%;
+}
+.ticket-bg {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.ticket-box {
+  cursor: pointer;
+  width: 50%;
+  aspect-ratio: 1/1;
+
+  isolation: isolate;
+  position: relative;
+  transition:
+    transform 2s cubic-bezier(0.5, 0, 0.2, 1),
+    opacity 4s ease;
+}
+
+.ticket-box.rotated {
+  transform: rotate(360deg);
+}
+.ticket-box.opacity {
+  opacity: 0.5;
+  pointer-events: none;
+}
+.ticket-box::after {
+  position: absolute;
+  display: block;
+  content: "";
+  width: 100%;
+  height: 100%;
+  inset: 0;
+  background: var(--c-point);
+  transform: rotate(0);
+  border-radius: 20px;
+}
+.ticket-box::before {
+  position: absolute;
+  display: block;
+  content: "";
+  width: 100%;
+  height: 100%;
+  inset: 0;
+  background: var(--c-main-50);
+  transform: rotate(-15deg) translateX(-10px);
+  border-radius: 20px;
+}
+.container--ticket-wrap {
+  position: relative;
+}
+
+/* 티켓 모달 */
+.ticket-modal {
+  width: 90%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -40px);
+  opacity: 0;
+  visibility: hidden;
+
+  pointer-events: none;
+  z-index: 10;
+
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 0s linear 0.6s;
+}
+
+.ticket-modal.open {
+  visibility: visible;
+  opacity: 1;
+  transform: translate(-50%, -50%);
+  pointer-events: auto;
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 0s;
+}
+.ticket-modal-content {
+  position: relative;
+}
+.modal-close {
+  position: absolute;
+  top: -30px;
+  right: 0;
+}
+.modal-close-img {
+  cursor: pointer;
+  width: 10px;
+  height: 10px;
+}
+.ticket-modal-box {
+  width: 100%;
+  display: flex;
+}
+.ticket-modal-poster {
+  padding: 1rem;
+  border-radius: 20px;
+  background: var(--c-gray);
+  flex: 0 0 35%;
+  box-shadow: 0 0 20px var(--c-bg);
+  position: relative;
+}
+.ticket-modal-poster::after {
+  position: absolute;
+  content: "";
+  display: block;
+  top: 50%;
+  transform: translateY(-50%);
+  right: -3px;
+  width: 6px;
+  height: 80%;
+
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--c-bg),
+    var(--c-bg) 6px,
+    transparent 6px,
+    transparent 12px
+  );
+}
+.ticket-modal-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.ticket-modal-desc {
+  padding: 1rem;
+  border-radius: 20px;
+  background: var(--c-gray);
+  flex: 0 0 65%;
+  box-shadow: 0 0 20px var(--c-bg);
+}
+.ticket-modal-desc-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.ticket-modal-title {
+  font-weight: 800;
+  font-size: var(--fs3);
+}
+.ticket-modal-score {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+.score-img {
+  display: block;
+  width: 12px;
+  height: 12px;
+}
+.score-txt {
+  font-weight: 800;
+}
+.ticket-modal-txt {
+  margin-bottom: 15px;
+  font-size: var(--fs1);
+}
+.modal-title {
+  font-weight: 800;
+}
+.ticket-modal-ott-box {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+.ticket-modal-ott-icon {
+  width: 15px;
+  height: 15px;
+}
+.ticket-modal-ott-list {
+  display: flex;
+  gap: 0.5rem;
+}
+.ticket-modal-ott-item {
+  border-radius: 50px;
+}
+.ticket-modal-ott-img {
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-radius: inherit;
+}
+
+/* 티켓 추천 리스트 */
+.ticket-view {
+  width: 100%;
+}
+
+.ticket-view-txt-box {
+  width: 90%;
+  margin: 25px 0 12px 5vw;
+}
+
+.ticket-view-txt .input {
+  color: var(--c-main);
+  letter-spacing: -0.015rem;
+  font-weight: 800;
+}
+
+.ticket-view-txt span {
+  letter-spacing: -0.015rem;
+}
+
+.ticket-view-gutter {
+  width: 100%;
+}
+
+/* 가로 스크롤 */
+.ticket-view-list {
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  cursor: grab;
+}
+
+.ticket-view-list,
+.ticket-view-list * {
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+.ticket-view-list.active {
+  cursor: grabbing;
+}
+
+.ticket-view-list-box {
+  display: flex;
+  padding: 0 5vw;
+  gap: 16px;
+  height: 75px;
+  flex-wrap: nowrap;
+  width: max-content;
+}
+
+.ticket-view-list-box::-webkit-scrollbar {
+  display: none;
+}
+
+.ticket-view-thing {
+  cursor: pointer;
+  position: relative;
+  width: 100%;
+  flex: 0 0 var(--card-w);
+  aspect-ratio: 1 / 1;
+}
+
+.ticket-view-thing > a > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  z-index: 1;
+}
+
+.ticket-view-more .blankbtn {
+  border: 2px solid var(--c-gray);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 75px;
+}
+
+.ticket-view-more > a > img {
+  width: 15px;
+  height: 15px;
+}
+
+/* 좋아요 */
+.ticket-view-thing > .likeBtn {
+  position: absolute;
+  z-index: 1;
+  right: 10px;
+  bottom: 5px;
+  transition: transform 0.15s ease-out;
+}
+.likeBtn {
+  cursor: pointer;
+}
+.ticket-view-thing > .likeBtn .active {
+  transform: scale(1.15);
+}
+
+.likeBtn > img {
+  width: 15px;
+  height: 15px;
+  filter: drop-shadow(var(--shadow50));
+}
+
+/* 게임 */
+.game-container {
+  width: 100%;
+  margin: 5rem 0;
+}
+.game-title {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+.game-txt-box {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.05rem;
+}
+.game-txt {
+  color: var(--c-font);
+  font-size: var(--fs4);
+  font-weight: 800;
+}
+
+/* 밸런스 게임 */
+.game-content-box {
+  width: 90%;
+  margin: 0 auto;
+  background: var(--c-gray);
+  border-radius: 20px;
+  padding: 2rem 0;
+}
+.game-content-title {
+  text-align: center;
+  padding-bottom: 2rem;
+  color: var(--c-gray3);
+  font-weight: 800;
+}
+.game-contents-container {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  gap: 20px;
+}
+.content-container {
+  cursor: pointer;
+  flex: 0 0 calc(50% - 10px);
+}
+
+.game-content-img-box {
+  position: relative;
+}
+
+/* 블라인드 */
+.game-content-img-box.blind::after {
+  content: "";
+  display: block;
+  inset: 0;
+
+  background-color: rgba(var(--c-bg-rgb), 0.8);
+  backdrop-filter: blur(8px);
+  z-index: 1;
+  position: absolute;
+  border-radius: 20px;
+}
+
+.game-content-img {
+  border-radius: 20px;
+  display: block;
+  width: 100%;
+  border: 1.5px solid var(--c-bg);
+}
+.content-container.left,
+.content-container.right {
+  position: relative;
+}
+.game-content-txt-box {
+  position: absolute;
+  bottom: 0;
+  z-index: 10;
+  width: 100%;
+  background-color: rgba(var(--c-bg-rgb), 0.9);
+  padding: 1rem;
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px var(--c-main-50);
+  border: 1.5px solid var(--c-bg);
+}
+
+/* 선택 상태 */
+.content-container.active .game-content-img {
+  border: 1.5px solid var(--c-point);
+}
+.content-container.active .game-content-txt-box {
+  border: 1.5px solid var(--c-point);
+  background-color: rgba(var(--c-bg-rgb), 0.7);
+}
+
+.game-content-txt {
+  width: 100%;
+  position: relative;
+  display: flex;
+
+  font-size: var(--fs3);
+}
+.game-content-txt::before {
+  content: "▶";
+  display: block;
+  width: 10px;
+  height: 10px;
+  color: var(--c-font);
+  margin-right: 10px;
+}
+
+/* 아이콘 */
+.game-content-icon-box {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1;
+}
+.game-content-icon {
+  width: 20px;
+}
+
+/* 결과 */
+.game-result-box {
+  position: relative;
+  width: 90%;
+  background: var(--c-gray);
+  margin: 0 auto;
+  border-radius: 20px;
+  padding: 1.5rem 1rem;
+  display: none;
+}
+.game-result-box.show {
+  display: block;
+}
+.game-result-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  width: 90%;
+  margin: 0 auto;
+
+  background: repeating-linear-gradient(
+    to right,
+    var(--c-gray2) 0 3px,
+    transparent 3px 9px
+  );
+}
+.game-result-title {
+  font-weight: 700;
+}
+.result-box {
+  width: 96%;
+  margin: 0 auto;
+  border-radius: 50px;
+  height: 40px;
+  background: var(--c-bg);
+  position: relative;
+}
+.game-result-title {
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.user-pick-result {
+  position: absolute;
+  width: 70%;
+  height: 40px;
+  top: 0;
+  left: 0;
+  background: var(--c-main);
+  border-radius: 50px;
+}
+.result {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+
+  transform: translateY(-50%);
+  color: var(--c-bg);
+  font-weight: 800;
+}
+
+/* 잔혹한 평점 */
+.game-container.find {
+  padding-top: 3rem;
+  background: radial-gradient(
+    circle at 50% 35%,
+    var(--c-main) 0%,
+    var(--c-main-50) 20%,
+    var(--c-bg) 45%
+  );
+}
+.game-txt-box.find {
+  padding-bottom: 1rem;
+}
+.find-good-content-box {
+  width: 100%;
+  position: relative;
+}
+
+.find-good-content-wrap {
+  width: 100vw;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  margin-left: calc(50% - 50vw);
+}
+.find-good-content-list {
+  display: flex;
+  gap: 20px;
+  will-change: transform;
+  transition: transform 0.2s ease;
+  transform: translate3d(0, 0, 0);
+  list-style: none;
+
+  box-sizing: border-box;
+  padding-bottom: 50px;
+}
+
+/* 리스트 아이템 */
+.find-good-content-item {
+  cursor: pointer;
+  position: relative;
+  transform: translateY(50px);
+  transition: all ease-out 0.3s;
+  flex: 0 0 45vw;
+}
+.find-good-content-item.active {
+  transform: translateY(0);
+}
+
+/* 비활성 레이어 */
+.find-good-content-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(var(--c-bg-rgb), 0.6);
+  backdrop-filter: blur(5px);
+  z-index: 10;
+  pointer-events: none;
+  transition: opacity 0.3s;
+  opacity: 1;
+  border-radius: 11px;
+}
+
+/* 활성 레이어 제거 */
+.find-good-content-item.active::after {
+  opacity: 0;
+}
+
+/* 내부 콘텐츠 */
+.find-good-content {
+  position: relative;
+  z-index: 1;
+}
+.poster-container {
+  padding: 0.7rem;
+  background: rgba(var(--c-gray-rgb), 0.5);
+  border-radius: 10px;
+}
+.poster-img {
+  width: 100%;
+  border-radius: 5px;
+  margin-bottom: 7px;
+  aspect-ratio: 2/2.9;
+}
+
+/* 메타 정보 */
+.content-more {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+.more-box {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.more-icon {
+  display: block;
+  width: 12px;
+  height: 12px;
+}
+.more-box > span {
+  font-size: var(--fs2);
+  color: var(--c-gray2);
+  font-weight: 800;
+}
+
+/* 하단 리뷰 */
+.user-hate-review-box {
+  position: relative;
+  width: 100%;
+  margin: 20px auto;
+}
+.user-hate-review-wrap {
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
+}
+.user-hate-review-list {
+  display: flex;
+  gap: 20px;
+  will-change: transform;
+}
+.user-hate-review-item {
+  flex: 0 0 70vw;
+  background: var(--c-gray);
+  padding: 1rem 1.5rem;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.user-hate-review-txt-box {
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
+}
+.hate-title {
+  color: var(--c-gray3);
+}
+.hate-desc {
+  line-height: 1.7;
+}
+.user-data {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+.user-profile {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+.user-box {
+  color: var(--c-gray3);
+}
+.user-name {
+  color: var(--c-main);
+  font-weight: 800;
+}
+
+/* 인디케이터 */
+.play-next-btn {
+  cursor: pointer;
+  position: absolute;
+  top: -55px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 36px;
+  height: 36px;
+  background: url("../img/play-next.png") no-repeat center;
+  background-size: contain;
+}
+
+/* 접근성 숨김 */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.bottom-padding {
+  padding-bottom: 2rem;
+}
+
+/* 앵커 위치 보정 */
+#hot-ticket,
+#game,
+#find-title {
+  scroll-margin-top: 150px;
+}

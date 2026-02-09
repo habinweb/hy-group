@@ -1,0 +1,289 @@
+@charset "utf-8";
+
+/* ============= Base ============= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: var(--font-main);
+  background-color: var(--c-bg);
+}
+
+/* ============= Layout ============= */
+#main_content {
+  padding-top: 4rem;
+  padding-bottom: 80px;
+}
+
+/* ============= Title ============= */
+.community_guide {
+  padding: 1rem 1.5rem;
+  font-size: var(--fs5);
+  font-weight: 800;
+  line-height: 1.6;
+  color: var(--c-font);
+}
+
+.community_guide > .highlight {
+  color: var(--c-main);
+}
+
+/* ============= Review Container ============= */
+#review_container {
+  width: 95%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.review_list {
+  width: 100%;
+  padding: 10px 0 30px;
+  background-color: var(--c-bg);
+}
+
+.review_ul {
+  width: 100%;
+  margin: 0 auto;
+  padding: 10px 0;
+  list-style: none;
+}
+
+/* ============= Header (count + sort) ============= */
+.review_header {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.review_header h3 {
+  font-size: var(--fs3);
+  font-weight: 600;
+  color: var(--c-font);
+}
+
+.sort_wrap {
+  position: relative;
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+
+.sort_btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: var(--fs2);
+  color: var(--c-gray2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.sort_btn img {
+  width: 12px;
+  height: 12px;
+  transform: rotate(90deg);
+}
+
+.sort_menu {
+  position: absolute;
+  z-index: 20;
+  left: 50%;
+  top: 100%;
+  transform: translateX(-50%);
+  margin-top: 6px;
+
+  min-width: 90px;
+  padding: 8px 0;
+  list-style: none;
+  border-radius: 12px;
+  box-shadow: var(--shadow50);
+  background: var(--c-bg);
+  display: none;
+}
+
+.sort_option {
+  width: 100%;
+  padding: 10px 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: var(--fs2);
+  color: var(--c-gray2);
+  text-align: center;
+}
+
+.sort_wrap.open .sort_menu {
+  display: block;
+}
+
+/* ============= Review Card ============= */
+.review_item {
+  width: 100%;
+  margin: 2rem auto 0;
+  padding: 14px;
+  border-radius: 18px;
+  background-color: var(--c-gray);
+  box-shadow: var(--shadow50);
+
+  display: flex;
+  align-items: stretch;
+  gap: 14px;
+
+  cursor: pointer;
+}
+
+.review_poster {
+  width: 110px;
+  min-width: 100px;
+  height: 160px;
+  border-radius: 15px;
+}
+
+.review_poster .poster {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.review_body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* top info */
+.review_info {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.review_info .user_icon {
+  width: 25px;
+  height: 25px;
+}
+
+.list_nickname {
+  font-size: var(--fs2);
+  font-weight: 600;
+  color: var(--c-font);
+}
+
+.score {
+  font-size: var(--fs1);
+  font-weight: 800;
+  color: var(--c-point);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.score img {
+  width: 12px;
+  height: 12px;
+}
+
+.date {
+  margin-left: auto;
+  font-size: var(--fs1);
+  color: var(--c-gray3);
+  white-space: nowrap;
+}
+
+/* content */
+.review_text {
+  margin: 6px 0 10px;
+  padding: 0 0 12px;
+  font-size: var(--fs2);
+  line-height: 1.6;
+  color: var(--c-font);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* bottom */
+.review_bottom {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.movie_title {
+  font-size: var(--fs1);
+  font-weight: 600;
+  line-height: 1.6;
+  color: var(--c-gray2);
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bookmark_btn {
+  margin-left: auto;
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  font-size: var(--fs1);
+  font-weight: 600;
+  color: var(--c-gray3);
+
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+}
+
+.bookmark_btn img {
+  width: 12px;
+  height: 12px;
+}
+
+/* ============= More Button ============= */
+.review_more_btn {
+  width: 100%;
+  margin: 25px 0 50px;
+  padding: 20px;
+  border-radius: 10px;
+  border: transparent;
+  background-color: var(--c-gray);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+
+  cursor: pointer;
+  font-size: var(--fs2);
+  font-weight: bold;
+  color: var(--c-gray2);
+}
+
+/* ============= Header icon (debug) ============= */
+button.hambtn {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  line-height: 0;
+  cursor: pointer;
+}
+
+button.hambtn img,
+button.hambtn .hambtn-img {
+  display: block;
+  width: 18px;
+  height: 18px;
+}
