@@ -89,11 +89,6 @@ body.lock {
   justify-content: center;
 }
 
-/* .ticket-wrap {
-  display: block;
-  width: 50%;
-  margin: 0 auto;
-} */
 .ticket-box {
   cursor: pointer;
   width: 50%;
